@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="936" pageHeight="612" orientation="Landscape" columnWidth="936" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bf65554e-5fbf-4f4e-8710-63bfd2dd4911">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="num" class="java.lang.String"/>
+	<parameter name="day" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="priest" class="java.lang.String"/>
+	<parameter name="asst_priest" class="java.lang.String"/>
+	<parameter name="series_of" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="father" class="java.lang.String"/>
+	<parameter name="mother" class="java.lang.String"/>
+	<parameter name="place_of_birth" class="java.lang.String"/>
+	<parameter name="date_of_birth" class="java.lang.String"/>
+	<parameter name="date_of_baptism" class="java.lang.String"/>
+	<parameter name="bapt_time" class="java.lang.String"/>
+	<parameter name="baptized_by" class="java.lang.String"/>
+	<parameter name="book_number" class="java.lang.String"/>
+	<parameter name="page_number" class="java.lang.String"/>
+	<parameter name="sponsors" class="java.lang.String"/>
+	<parameter name="index_no" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band height="612" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6190eac5-628c-4b02-ba37-01d20e78b15f" x="98" y="73" width="247" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f3f8a6c2-b84d-4336-afa4-1602b4147547" x="98" y="49" width="247" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a691b095-6c31-40ab-abf8-8067a17e35b7" x="98" y="35" width="247" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fcc31bf9-5bf6-4caa-9d6f-24e40d52c526" x="98" y="61" width="247" height="16"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="207" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="0d65920a-aa7d-499a-9fe7-82cbb3bc6197" x="96" y="0" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Name of Child:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c44c6e61-07a7-4e8b-a4ad-97bf6e7e4ac4" x="96" y="20" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Name of Father:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="21ffb256-7881-47dd-bbff-7c1ce944e95a" x="96" y="64" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Place of Birth:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="88ead4b1-1dcb-4138-abb0-0daa08a4db1a" x="96" y="86" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Date of Birth:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2b81c406-7935-42ac-abf7-fbd50a75a35e" x="96" y="42" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Name of Mother:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f445018c-1e3c-4b2f-ad91-290e59a14d22" x="96" y="110" width="331" height="30"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Was baptized according to the Roman Catholic Rite at the St. Catherine of Alexandria Cathedral Dumaguete City]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3d73ed73-4c8b-49fc-86eb-9375696f27e5" x="96" y="144" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Date of Baptism:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d2a76fba-c4f3-4138-9b9c-7fac693dbb56" x="96" y="166" width="101" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Baptized by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="467fe83f-cd44-43b1-8042-3563df594322" x="197" y="0" width="315" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5a832537-5635-4aab-9c42-5b31fd238d46" x="197" y="21" width="315" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{father}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a9a6eea9-dcbc-453c-9dbc-a4045ebfc10f" x="197" y="64" width="315" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{place_of_birth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="51e4ddd0-9a69-4c4b-b169-9ce919a87cad" x="197" y="42" width="315" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{mother}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="ffcbeccd-b5ff-44e5-a2a7-5deb86349ffb" x="197" y="86" width="315" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_of_birth}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="a0f728d2-9d6f-4dbf-99e6-0d4f045fe29c" x="197" y="144" width="315" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_of_baptism}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="701c942a-72f4-4b60-9adc-24c78a94b7c7" x="197" y="166" width="230" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{baptized_by}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement uuid="ace85ee0-d074-421f-a317-c418547a2a07" x="156" y="0" width="258" height="17"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sponsors}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="8a67f026-7c23-4921-b4aa-e8a48ee94258" x="96" y="0" width="60" height="17"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Sponsors:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="206" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="611a1742-cfc8-4d41-af82-90f6d6617f35" x="96" y="35" width="342" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="9"/>
+				</textElement>
+				<text><![CDATA[In Witness thereof hereunto I affix my signature and the seal of the Parish this ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5240ee67-38af-4de3-83fc-096f9b8b5709" x="95" y="163" width="46" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Book No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0a5f835e-023a-4f4c-a688-88a338f29eff" x="95" y="183" width="46" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<text><![CDATA[Page No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="fdef9924-eb12-4a63-8b14-b7bd0f850fa6" x="141" y="163" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{book_number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ed6bcd9b-4975-41e7-9b9c-56297456e2dd" x="141" y="183" width="100" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{page_number}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b8998924-7328-453d-9954-b64f3e407d09" x="156" y="46" width="41" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[day of]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="69c88147-5525-49a0-94e6-b0422c6633c2" x="197" y="46" width="96" height="22"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6dfc5a99-8b18-44bf-93ee-e2ff863d65f4" x="298" y="46" width="47" height="22"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f3dfc198-7610-4832-a393-e443efcb910a" x="294" y="46" width="4" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="12965747-27e8-4670-bd11-df472e1c35a3" x="186" y="123" width="252" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{priest}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b7abc7ad-6e54-4388-b3eb-51dfc0b696b3" x="126" y="46" width="30" height="22"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Tahoma" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fae5553a-2945-476e-8f64-fee3449be662" x="186" y="143" width="252" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{asst_priest}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="89f5d1fa-9a21-4cad-bede-a859e9b89c68" x="314" y="163" width="124" height="20"/>
+				<textElement verticalAlignment="Bottom"/>
+				<textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

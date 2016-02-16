@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="92d00368-940f-4c9f-b96d-ff27a5915fd0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="business_name" class="java.lang.String"/>
+	<parameter name="operated_by" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="account" class="java.lang.String"/>
+	<parameter name="pay_to" class="java.lang.String"/>
+	<parameter name="no" class="java.lang.String"/>
+	<parameter name="prepared_by" class="java.lang.String"/>
+	<parameter name="verified_by" class="java.lang.String"/>
+	<parameter name="approved_by" class="java.lang.String"/>
+	<parameter name="amount_in_words" class="java.lang.String"/>
+	<parameter name="check_no" class="java.lang.String"/>
+	<parameter name="received_by" class="java.lang.String"/>
+	<field name="particular" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Double"/>
+	<variable name="amount_1" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="128" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="df049e49-1a42-4631-aa1e-c87586978eda" x="144" y="0" width="253" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Diocese of Dumaguete]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df049e49-1a42-4631-aa1e-c87586978eda" x="144" y="15" width="253" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df049e49-1a42-4631-aa1e-c87586978eda" x="144" y="30" width="253" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Dumaguete City, Negros Oriental]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df049e49-1a42-4631-aa1e-c87586978eda" x="145" y="56" width="253" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="15" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Check Disbursement Voucher]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="53c284cb-920d-4c22-bef9-68ffb1cfe0be" x="45" y="96" width="202" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{pay_to}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="0" y="96" width="45" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Pay to:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="53c284cb-920d-4c22-bef9-68ffb1cfe0be" x="440" y="96" width="115" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="398" y="96" width="42" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="440" y="56" width="42" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="15"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="53c284cb-920d-4c22-bef9-68ffb1cfe0be" x="482" y="56" width="73" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="15"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{no}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="ec72d862-d76e-4534-833d-be079aa26b6b" x="0" y="0" width="247" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Particulars]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="247" y="0" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Amount]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="72063828-2c5e-4a48-a320-052cb85f17c5" x="0" y="0" width="247" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{particular}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0.00">
+				<reportElement uuid="e4f21c20-4d58-4eba-b8d6-c02f9401bcfa" x="247" y="0" width="100" height="15"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="184" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="24" y="16" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Prepared by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="228" y="16" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Verified by:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="420" y="16" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Approved by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e3df502f-4bb6-4966-86cc-edaed6c4847f" x="24" y="48" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{prepared_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="1d1523d7-c8ce-4eeb-9c91-00a7e0a6ab31" x="228" y="48" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{verified_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d1f0a2ec-77df-4581-8351-ac955cc4f9e0" x="420" y="48" width="100" height="20"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{approved_by}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="0" y="163" width="61" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Check No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f719ee67-0475-4b6b-b80c-a76ea1851563" x="61" y="163" width="185" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{check_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="396" y="131" width="100" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[Received by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="549c2ef7-670b-4a10-ab70-88d60223c54c" x="396" y="163" width="159" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{received_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eb5536f4-d780-4a94-ba9f-ef78378fc5e9" x="24" y="131" width="63" height="20"/>
+				<box>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{amount_1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="0" y="131" width="24" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[(P]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="87" y="131" width="148" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[) as payment for the above.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="968a86e8-781f-4347-892f-2b8f3e07715f" x="24" y="101" width="121" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Received the amount of]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="971a9273-0d50-462b-8bf5-dfc0e702a257" x="147" y="101" width="375" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{amount_in_words}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

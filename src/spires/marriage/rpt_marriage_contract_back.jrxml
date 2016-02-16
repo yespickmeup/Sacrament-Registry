@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1296" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="05fde73f-6bfc-4e49-ad31-905e3d6da0bf">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<field name="witnesses5" class="java.lang.String"/>
+	<field name="witnesses6" class="java.lang.String"/>
+	<field name="witnesses7" class="java.lang.String"/>
+	<field name="witnesses8" class="java.lang.String"/>
+	<field name="witnesses9" class="java.lang.String"/>
+	<field name="witnesses10" class="java.lang.String"/>
+	<field name="witnesses11" class="java.lang.String"/>
+	<field name="witnesses12" class="java.lang.String"/>
+	<field name="solem_officer" class="java.lang.String"/>
+	<field name="solem_of" class="java.lang.String"/>
+	<field name="solem_at" class="java.lang.String"/>
+	<field name="solem_one1" class="java.lang.String"/>
+	<field name="solem_one2" class="java.lang.String"/>
+	<field name="solem_two1" class="java.lang.String"/>
+	<field name="solem_two2" class="java.lang.String"/>
+	<field name="solem_two3" class="java.lang.String"/>
+	<field name="solem_two4" class="java.lang.String"/>
+	<field name="solem_two5" class="java.lang.String"/>
+	<field name="solem_two6" class="java.lang.String"/>
+	<field name="solem_two7" class="java.lang.String"/>
+	<field name="solem_administer1" class="java.lang.String"/>
+	<field name="solem_administer2" class="java.lang.String"/>
+	<field name="solem_administer3" class="java.lang.String"/>
+	<field name="solem_administer4" class="java.lang.String"/>
+	<field name="solem_administer5" class="java.lang.String"/>
+	<field name="solem_administer6" class="java.lang.String"/>
+	<field name="solem_administer7" class="java.lang.String"/>
+	<field name="solem_administer8" class="java.lang.String"/>
+	<field name="solem_administer9" class="java.lang.String"/>
+	<field name="solem_administer10" class="java.lang.String"/>
+	<field name="affid_by" class="java.lang.String"/>
+	<field name="affid_address" class="java.lang.String"/>
+	<field name="affid_one1" class="java.lang.String"/>
+	<field name="affid_one2" class="java.lang.String"/>
+	<field name="affid_one3" class="java.lang.String"/>
+	<field name="affid_one4" class="java.lang.String"/>
+	<field name="affid_one5" class="java.lang.String"/>
+	<field name="affid_one6" class="java.lang.String"/>
+	<field name="affid_one7" class="java.lang.String"/>
+	<field name="affid_one8" class="java.lang.String"/>
+	<field name="affid_one9" class="java.lang.String"/>
+	<field name="affid_two1" class="java.lang.String"/>
+	<field name="affid_two2" class="java.lang.String"/>
+	<field name="affid_two3" class="java.lang.String"/>
+	<field name="affid_two4" class="java.lang.String"/>
+	<field name="affid_two5" class="java.lang.String"/>
+	<field name="affid_three1" class="java.lang.String"/>
+	<field name="affid_three2" class="java.lang.String"/>
+	<field name="affid_three3" class="java.lang.String"/>
+	<field name="affid_three4" class="java.lang.String"/>
+	<field name="affid_three5" class="java.lang.String"/>
+	<field name="affid_three6" class="java.lang.String"/>
+	<field name="affid_four1" class="java.lang.String"/>
+	<field name="affid_four2" class="java.lang.String"/>
+	<field name="affid_four3" class="java.lang.String"/>
+	<field name="affid_four4" class="java.lang.String"/>
+	<field name="affid_five" class="java.lang.String"/>
+	<field name="affid_administer1" class="java.lang.String"/>
+	<field name="affid_administer2" class="java.lang.String"/>
+	<field name="affid_administer3" class="java.lang.String"/>
+	<field name="affid_administer4" class="java.lang.String"/>
+	<field name="affid_administer5" class="java.lang.String"/>
+	<field name="affid_administer6" class="java.lang.String"/>
+	<field name="affid_administer7" class="java.lang.String"/>
+	<field name="affid_administer8" class="java.lang.String"/>
+	<field name="affid_administer9" class="java.lang.String"/>
+	<field name="affid_administer10" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="1227" splitType="Stretch">
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="36" y="48" width="127" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses5}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="36" y="83" width="127" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses6}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="162" y="48" width="129" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses7}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="162" y="83" width="129" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses8}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="291" y="48" width="135" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses9}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="291" y="83" width="135" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses10}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="426" y="48" width="138" height="22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses11}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="95da03bb-0abe-4a35-a169-fbb87fbc4b7e" x="426" y="83" width="138" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8dd3edaf-c8a6-4e91-919f-b3d28e930174" x="91" y="127" width="191" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_officer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="666d0323-eb68-429d-842f-14cdd1860187" x="361" y="127" width="203" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_of}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="81d4fbba-531b-4690-b0b1-bad1cab5e752" x="40" y="143" width="242" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_at}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="214" y="158" width="132" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_one1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="363" y="158" width="203" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_one2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="59" y="177" width="100" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="58" y="219" width="100" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="58" y="246" width="100" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="256805ec-c5b6-43b4-92a9-ffa79a171d79" x="313" y="332" width="248" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_administer1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e09b705b-3b49-4e79-a664-ae4069c00fe1" x="42" y="345" width="288" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_administer2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8dd3edaf-c8a6-4e91-919f-b3d28e930174" x="304" y="363" width="257" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_officer}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ac334ff4-4e70-4c31-a4c9-83a72c5a1348" x="282" y="431" width="234" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_administer9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ac334ff4-4e70-4c31-a4c9-83a72c5a1348" x="74" y="455" width="192" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_administer8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="ac334ff4-4e70-4c31-a4c9-83a72c5a1348" x="282" y="456" width="234" height="14"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_administer10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="58" y="197" width="100" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="58" y="267" width="100" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="204" y="205" width="132" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a85a05b4-86a0-43af-b52a-079e2558d65b" x="340" y="205" width="203" height="14"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{solem_two5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4793f139-e21b-47f1-8617-83faf11a9e3c" x="90" y="501" width="402" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="48e407a3-bbc5-480e-b7dd-c48efaaab951" x="104" y="515" width="460" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71452ace-d08f-4c63-a09a-d63fac37caa2" x="58" y="557" width="102" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="14c02460-3b27-47be-8d63-7016d060868f" x="167" y="552" width="100" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="365a9e0b-341e-4c4c-97d5-3f0a64284d3e" x="288" y="551" width="100" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71452ace-d08f-4c63-a09a-d63fac37caa2" x="58" y="572" width="100" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="14c02460-3b27-47be-8d63-7016d060868f" x="169" y="566" width="148" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="14c02460-3b27-47be-8d63-7016d060868f" x="337" y="567" width="170" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71452ace-d08f-4c63-a09a-d63fac37caa2" x="60" y="584" width="100" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_one8}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2ce34da4-2297-411d-a5b4-9900629c6644" x="187" y="605" width="229" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_two1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="304aabf5-a27d-4de2-aa96-f0e54ace9762" x="93" y="622" width="78" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_two2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="304aabf5-a27d-4de2-aa96-f0e54ace9762" x="191" y="622" width="78" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_two3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="304aabf5-a27d-4de2-aa96-f0e54ace9762" x="287" y="620" width="78" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_two4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="304aabf5-a27d-4de2-aa96-f0e54ace9762" x="380" y="619" width="78" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_two5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ed446f0-a02a-4754-9a83-ff2fb47630c4" x="69" y="647" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_three1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2f8815fa-87b5-4daa-bb5c-457eaac85b9d" x="180" y="643" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_three2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="61b3564d-202f-4368-8522-5914d7440194" x="366" y="643" width="139" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_three4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ed446f0-a02a-4754-9a83-ff2fb47630c4" x="70" y="662" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_three5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="4ed446f0-a02a-4754-9a83-ff2fb47630c4" x="141" y="663" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_three6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a4048e7-3ab9-4eec-b221-526524cfb92b" x="295" y="676" width="224" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_four1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a4048e7-3ab9-4eec-b221-526524cfb92b" x="65" y="691" width="191" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_four2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a4048e7-3ab9-4eec-b221-526524cfb92b" x="352" y="703" width="204" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_four3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="2a4048e7-3ab9-4eec-b221-526524cfb92b" x="109" y="718" width="224" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_four4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="426e085d-a537-4b6b-bf86-7770ccb36d09" x="290" y="733" width="249" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_five}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="54" y="780" width="235" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="274" y="798" width="235" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_by}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="49" y="857" width="228" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="49" y="872" width="124" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="213" y="873" width="150" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="361" y="872" width="194" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="319" y="907" width="173" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="319" y="938" width="173" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer10}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="02fd392e-fcae-4a95-b772-4e9f46fd6f09" x="130" y="938" width="173" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{affid_administer8}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="936" pageHeight="612" orientation="Landscape" columnWidth="936" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="bf65554e-5fbf-4f4e-8710-63bfd2dd4911">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1328"/>
+	<parameter name="num" class="java.lang.String"/>
+	<parameter name="day" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="priest" class="java.lang.String"/>
+	<parameter name="asst_priest" class="java.lang.String"/>
+	<parameter name="series_of" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="father" class="java.lang.String"/>
+	<parameter name="mother" class="java.lang.String"/>
+	<parameter name="place_of_birth" class="java.lang.String"/>
+	<parameter name="date_of_birth" class="java.lang.String"/>
+	<parameter name="date_of_baptism" class="java.lang.String"/>
+	<parameter name="bapt_time" class="java.lang.String"/>
+	<parameter name="baptized_by" class="java.lang.String"/>
+	<parameter name="book_number" class="java.lang.String"/>
+	<parameter name="page_number" class="java.lang.String"/>
+	<parameter name="sponsors" class="java.lang.String"/>
+	<parameter name="index_no" class="java.lang.String"/>
+	<parameter name="purpose" class="java.lang.String"/>
+	<parameter name="img_path" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band height="612" splitType="Stretch">
+			<image>
+				<reportElement uuid="9a336182-6472-4458-baa9-333be144d42e" x="11" y="12" width="472" height="600"/>
+				<imageExpression><![CDATA[$P{img_path}+"images\\baptism (Custom).png"]]></imageExpression>
+			</image>
+		</band>
+	</background>
+	<title>
+		<band height="152" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="207" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="17" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="206" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b29cac32-db4e-4cf3-b531-50df84c5792f" x="186" y="143" width="253" height="20"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+				</box>
+				<textElement/>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

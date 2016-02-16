@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="968" leftMargin="20" rightMargin="20" topMargin="36" bottomMargin="20" uuid="82874506-e649-4f45-8365-93b85b00b5aa">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="business_name" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="printed_by" class="java.lang.String"/>
+	<field name="ref_no" class="java.lang.String"/>
+	<field name="fname" class="java.lang.String"/>
+	<field name="mname" class="java.lang.String"/>
+	<field name="lname" class="java.lang.String"/>
+	<field name="mother" class="java.lang.String"/>
+	<field name="father" class="java.lang.String"/>
+	<field name="book_no" class="java.lang.String"/>
+	<field name="page_no" class="java.lang.String"/>
+	<field name="index_no" class="java.lang.String"/>
+	<field name="sponsors" class="java.lang.String"/>
+	<field name="baptism_date" class="java.lang.String"/>
+	<field name="confirmation_date" class="java.lang.String"/>
+	<field name="priest" class="java.lang.String"/>
+	<field name="place_of_birth" class="java.lang.String"/>
+	<field name="date_of_birth" class="java.lang.String"/>
+	<variable name="ref_no_1" class="java.lang.Integer" resetType="Group" resetGroup="book_no" calculation="Count">
+		<variableExpression><![CDATA[$F{ref_no}]]></variableExpression>
+	</variable>
+	<group name="book_no">
+		<groupExpression><![CDATA[$F{book_no}]]></groupExpression>
+		<groupHeader>
+			<band height="40">
+				<textField>
+					<reportElement uuid="d40dd490-60c2-49f3-811a-faa5ea80f8cb" x="42" y="0" width="100" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{book_no}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="d86c53f0-f4f1-48a7-8bdc-7b790168159f" x="0" y="0" width="42" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Book no:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="03ad3718-f6ab-4999-88d5-3fa51f75ab5a" x="91" y="20" width="77" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[First Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="65b28bea-a0af-4b60-8717-26164a7ce882" x="168" y="20" width="25" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[MI]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="85ffcc22-332a-4a13-8342-210772b208a9" x="192" y="20" width="70" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Last Name]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="675d6b20-a83b-4453-8fec-9e492bfa948d" x="262" y="20" width="100" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Mother]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="93f6175f-7529-4e4e-8999-b6ec71bdf414" x="362" y="20" width="100" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Father]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="68a46295-857d-44a2-bf9e-bbd96c1088e0" x="0" y="20" width="42" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Index]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="9bfa15cd-420b-451b-8d79-0cd2779eb409" x="42" y="20" width="49" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Page #]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="6e9883d6-e69d-4d95-a2ea-30efd7079222" x="828" y="20" width="70" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Baptism]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="18eaa6de-45b9-40ef-9bd7-5939e992ddc6" x="898" y="20" width="70" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Confirmation]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="93f6175f-7529-4e4e-8999-b6ec71bdf414" x="605" y="20" width="223" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Sponsors]]></text>
+				</staticText>
+				<staticText>
+					<reportElement uuid="93f6175f-7529-4e4e-8999-b6ec71bdf414" x="462" y="20" width="143" height="20"/>
+					<box>
+						<bottomPen lineWidth="0.5"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Priest]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="28">
+				<staticText>
+					<reportElement uuid="d86c53f0-f4f1-48a7-8bdc-7b790168159f" x="0" y="0" width="42" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10"/>
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<text><![CDATA[Total:]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="23d22735-9e8c-454c-971e-5cb874877b50" x="42" y="0" width="49" height="20"/>
+					<textElement verticalAlignment="Middle">
+						<paragraph leftIndent="5"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{ref_no_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement uuid="da4eab48-fd4a-42a1-bd3b-f1530cdfe3a3" x="0" y="20" width="225" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c2bcee46-2924-49f3-9c1f-5dea651011c5" x="0" y="0" width="225" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{business_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d86c53f0-f4f1-48a7-8bdc-7b790168159f" x="0" y="40" width="225" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Confirmation Records]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField>
+				<reportElement uuid="53054ffe-1689-44ae-b8e3-a78f7dd26bcb" x="91" y="0" width="77" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f6fd1863-9b42-45eb-9b53-8458cbdb7630" x="168" y="0" width="25" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="8d4e1f43-4fe6-4c13-9038-e73e667f4075" x="192" y="0" width="70" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="93802f8c-b18a-4c4f-b7c8-3b0178633691" x="262" y="0" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mother}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="35dbc866-5628-4fd7-922e-1d75a9944d09" x="362" y="0" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{father}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="61cf50ee-69af-481f-a329-3ef89c4e6a9f" x="0" y="0" width="42" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{index_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e2991af-0c60-4ed5-be64-0d1a2a8d86f6" x="42" y="0" width="49" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{page_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5832064e-186d-4abb-8818-30807c19de65" x="828" y="0" width="70" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{baptism_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5aad556d-24d4-4661-b2b4-3d7c4323461a" x="898" y="0" width="70" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{confirmation_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="35dbc866-5628-4fd7-922e-1d75a9944d09" x="605" y="0" width="223" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sponsors}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="35dbc866-5628-4fd7-922e-1d75a9944d09" x="462" y="0" width="143" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{priest}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d86c53f0-f4f1-48a7-8bdc-7b790168159f" x="888" y="0" width="38" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Page:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="ddde685a-6a11-4181-9ca9-8365e0d2b471" x="926" y="0" width="42" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<textField>
+				<reportElement uuid="62bcfe2f-9ec0-4407-a369-7885bf35a86a" x="80" y="22" width="225" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{printed_by}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="d86c53f0-f4f1-48a7-8bdc-7b790168159f" x="0" y="22" width="80" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[Printed by:]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

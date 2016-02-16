@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="612" pageHeight="1008" columnWidth="612" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="58f50d8e-5615-43b0-975b-fe454e7543d0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="149"/>
+	<field name="province" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="registry_no" class="java.lang.String"/>
+	<field name="place_of_marriage" class="java.lang.String"/>
+	<field name="date_of_marriage" class="java.lang.String"/>
+	<field name="time_of_marriage" class="java.lang.String"/>
+	<field name="certification_contracting_parties1" class="java.lang.String"/>
+	<field name="certification_contracting_parties2" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties1" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties2" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties3" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties4" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties5" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties6" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties7" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties8" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties9" class="java.lang.String"/>
+	<field name="certification_solemnizing_parties10" class="java.lang.String"/>
+	<field name="witnesses" class="java.lang.String"/>
+	<field name="received_by1" class="java.lang.String"/>
+	<field name="received_by2" class="java.lang.String"/>
+	<field name="received_by3" class="java.lang.String"/>
+	<field name="registered_by1" class="java.lang.String"/>
+	<field name="registered_by2" class="java.lang.String"/>
+	<field name="registered_by3" class="java.lang.String"/>
+	<field name="remarks" class="java.lang.String"/>
+	<field name="h_ref_no" class="java.lang.String"/>
+	<field name="h_fname" class="java.lang.String"/>
+	<field name="h_mi" class="java.lang.String"/>
+	<field name="h_lname" class="java.lang.String"/>
+	<field name="h_bday" class="java.lang.String"/>
+	<field name="h_place_of_birth1" class="java.lang.String"/>
+	<field name="h_place_of_birth2" class="java.lang.String"/>
+	<field name="h_place_of_birth3" class="java.lang.String"/>
+	<field name="h_citizenship1" class="java.lang.String"/>
+	<field name="h_citizenship2" class="java.lang.String"/>
+	<field name="h_residence" class="java.lang.String"/>
+	<field name="h_religion" class="java.lang.String"/>
+	<field name="h_civil_status" class="java.lang.String"/>
+	<field name="h_father1" class="java.lang.String"/>
+	<field name="h_father2" class="java.lang.String"/>
+	<field name="h_father3" class="java.lang.String"/>
+	<field name="h_father_citizenship" class="java.lang.String"/>
+	<field name="h_mother1" class="java.lang.String"/>
+	<field name="h_mother2" class="java.lang.String"/>
+	<field name="h_mother3" class="java.lang.String"/>
+	<field name="h_mother_citizenship" class="java.lang.String"/>
+	<field name="h_consent_by1" class="java.lang.String"/>
+	<field name="h_consent_by2" class="java.lang.String"/>
+	<field name="h_consent_by3" class="java.lang.String"/>
+	<field name="h_consent_by_relation" class="java.lang.String"/>
+	<field name="h_consent_by_residence" class="java.lang.String"/>
+	<field name="w_ref_no" class="java.lang.String"/>
+	<field name="w_fname" class="java.lang.String"/>
+	<field name="w_mi" class="java.lang.String"/>
+	<field name="w_lname" class="java.lang.String"/>
+	<field name="w_bday" class="java.lang.String"/>
+	<field name="w_place_of_birth1" class="java.lang.String"/>
+	<field name="w_place_of_birth2" class="java.lang.String"/>
+	<field name="w_place_of_birth3" class="java.lang.String"/>
+	<field name="w_citizenship1" class="java.lang.String"/>
+	<field name="w_citizenship2" class="java.lang.String"/>
+	<field name="w_residence" class="java.lang.String"/>
+	<field name="w_religion" class="java.lang.String"/>
+	<field name="w_civil_status" class="java.lang.String"/>
+	<field name="w_father1" class="java.lang.String"/>
+	<field name="w_father2" class="java.lang.String"/>
+	<field name="w_father3" class="java.lang.String"/>
+	<field name="w_father_citizenship" class="java.lang.String"/>
+	<field name="w_mother1" class="java.lang.String"/>
+	<field name="w_mother2" class="java.lang.String"/>
+	<field name="w_mother3" class="java.lang.String"/>
+	<field name="w_mother_citizenship" class="java.lang.String"/>
+	<field name="w_consent_by1" class="java.lang.String"/>
+	<field name="w_consent_by2" class="java.lang.String"/>
+	<field name="w_consent_by3" class="java.lang.String"/>
+	<field name="w_consent_by_relation" class="java.lang.String"/>
+	<field name="w_consent_by_residence" class="java.lang.String"/>
+	<field name="witnesses1" class="java.lang.String"/>
+	<field name="witnesses2" class="java.lang.String"/>
+	<field name="witnesses3" class="java.lang.String"/>
+	<field name="witnesses4" class="java.lang.String"/>
+	<field name="certification_contracting_parties3" class="java.lang.String"/>
+	<field name="h_pob1" class="java.lang.String"/>
+	<field name="h_pob2" class="java.lang.String"/>
+	<field name="h_pob3" class="java.lang.String"/>
+	<field name="w_pob1" class="java.lang.String"/>
+	<field name="w_pob2" class="java.lang.String"/>
+	<field name="w_pob3" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="980" splitType="Stretch">
+			<textField>
+				<reportElement uuid="f04ba5da-92c6-4c32-a70a-88c10a4ef1b4" x="129" y="78" width="227" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{province}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="9d708648-1a57-420e-bcb3-77306f391736" x="151" y="94" width="205" height="14"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="713f39b0-aaf9-491a-a0a1-cd5291fc845f" x="414" y="93" width="170" height="16"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registry_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="cdf87609-d6dd-436d-a9e0-80587d2e94bd" x="151" y="471" width="433" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{place_of_marriage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6a474747-6eac-4738-9bf9-b10502e183f2" x="173" y="499" width="186" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{date_of_marriage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3cf526b4-73cb-467f-b28d-1dabe39d1bbe" x="470" y="499" width="82" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{time_of_marriage}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c718862b-a4c8-4a37-b5ac-3ee03eb303dd" x="233" y="555" width="161" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{certification_contracting_parties1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bfeb7eea-2592-401c-83c6-2b274436d161" x="456" y="563" width="194" height="14"/>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{certification_contracting_parties2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a5c2c93c-ab2a-4df9-8067-0b521efaea03" x="66" y="646" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f38dd153-8585-44b2-8a91-777b5231e98d" x="197" y="640" width="79" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f2cdd107-d9e9-4276-981f-6e6dadacda76" x="354" y="661" width="79" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties6}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="89e18935-c3d4-4cf2-a28a-968dd828aa96" x="450" y="640" width="136" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b69652da-2747-4ec3-aad0-a2a1a539b11e" x="66" y="664" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f39001dc-eefd-47bb-a12c-8d1290161ad6" x="66" y="682" width="44" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties7}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="3fa86461-54b6-402d-8483-c67f1ca8a432" x="53" y="699" width="203" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties8}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="bcc0dae8-6b0b-4f0d-bde8-20c3884d70b1" x="256" y="699" width="126" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties9}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="43c0e36e-01b0-4199-9a67-68ec9e015ca6" x="381" y="699" width="206" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties10}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f3eec784-de6d-4f69-bcda-afe9b418e33f" x="66" y="746" width="126" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="24d4328d-dd9f-47cc-b955-09c0594be195" x="118" y="793" width="211" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{received_by1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="070ea15b-05f3-4d2c-8713-8ddc6e25fd93" x="126" y="813" width="203" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{received_by2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="83d0b34a-c55a-4ef3-bf22-ce1eceee9d65" x="380" y="793" width="215" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registered_by1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c86f6f16-7226-4651-a88f-82e75414fc67" x="387" y="813" width="208" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registered_by2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="8fb4bb2b-4daf-4c52-b130-327aea746de3" x="66" y="864" width="529" height="84"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{remarks}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b881f8f0-f897-4eb9-9d4a-6d9bb0dd8d16" x="173" y="121" width="183" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3ead2771-7c51-41e7-9f36-d40e3101a406" x="173" y="133" width="183" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_mi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e27b54ad-6074-4d8b-8e93-03b99645c025" x="173" y="145" width="183" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_lname}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="b30dd494-4ca4-4ec6-9b3d-3768819a14ec" mode="Transparent" x="151" y="170" width="179" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_bday}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="129" y="191" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_pob1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6390f863-97ff-4464-b710-9410ea178827" x="129" y="221" width="56" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_citizenship1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c52de6a9-ec73-47e8-94e4-efc4f1a0f673" x="228" y="221" width="118" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_citizenship2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="4c3c0e92-de46-4c24-9fec-446d674f0865" x="129" y="241" width="227" height="14"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_residence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7e5b71db-46fc-426b-bee3-1b928c478466" x="129" y="267" width="227" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_religion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="792c10de-4c07-4478-abed-8c39df07bc5a" x="129" y="288" width="227" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_civil_status}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="129" y="311" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_father1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5549ccbe-8f45-49fa-9d2e-0397c842358a" x="129" y="336" width="227" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_father_citizenship}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be134c0f-6eef-4686-8632-5dc82337ea35" x="129" y="384" width="227" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_mother_citizenship}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="14429f48-da16-45a9-a977-9f5d962b981d" x="129" y="431" width="227" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by_relation}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="7ea061c0-e5c3-4719-a79c-ade5585ea732" x="129" y="450" width="229" height="14"/>
+				<textElement>
+					<font size="8"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by_residence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e024728e-ed06-466f-a08d-4d3d0b693c5d" x="397" y="122" width="187" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_fname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="565333c7-de07-4aa1-9642-d4da20c66d70" x="397" y="134" width="187" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_mi}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="754d21cd-1661-4028-8037-6da992104807" x="397" y="145" width="187" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_lname}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement uuid="a0301716-1fea-41ec-b16f-37d831895e62" mode="Transparent" x="382" y="170" width="176" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_bday}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fd1758f7-71d2-4c14-958c-832ae9270733" x="363" y="221" width="58" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_citizenship1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fda5de1f-8522-47ff-b814-635a7df190ee" x="450" y="221" width="134" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_citizenship2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="d61e0d1c-55a5-4b7c-9023-2bdfe193c69f" x="363" y="241" width="221" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_residence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="16afd809-328f-4ecd-9147-af173d3802ac" x="363" y="268" width="221" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_religion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="6fa90513-4206-4e43-bf43-f9d34911da13" x="363" y="288" width="221" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_civil_status}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3b1b87c3-3f38-411d-927b-b5c82d51e9ec" x="363" y="336" width="221" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_father_citizenship}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="eb966676-ae64-4a57-9254-77bff283880e" x="363" y="384" width="219" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_mother_citizenship}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5754d32a-7b6a-4671-84a0-c0bb68fb3466" x="363" y="431" width="221" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_consent_by_relation}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="28d522a7-e8e4-4d26-8a29-66399d0d26a0" x="365" y="450" width="219" height="14"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_consent_by_residence}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b881f8f0-f897-4eb9-9d4a-6d9bb0dd8d16" x="214" y="529" width="176" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_fname}+" "+$F{h_mi}+" "+$F{h_lname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e024728e-ed06-466f-a08d-4d3d0b693c5d" x="399" y="529" width="181" height="12"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_fname}+" "+$F{w_mi}+" "+$F{w_lname}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f3eec784-de6d-4f69-bcda-afe9b418e33f" x="192" y="746" width="137" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f3eec784-de6d-4f69-bcda-afe9b418e33f" x="329" y="746" width="121" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="f3eec784-de6d-4f69-bcda-afe9b418e33f" x="452" y="746" width="133" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{witnesses4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c718862b-a4c8-4a37-b5ac-3ee03eb303dd" x="423" y="554" width="161" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{certification_contracting_parties3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f2cdd107-d9e9-4276-981f-6e6dadacda76" x="335" y="639" width="79" height="20"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[$F{certification_solemnizing_parties3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="213" y="311" width="59" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_father2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="271" y="311" width="85" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_father3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="363" y="311" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_father1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="505" y="311" width="85" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_father3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="447" y="311" width="59" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_father2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="129" y="358" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_mother1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="271" y="358" width="85" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_mother3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="213" y="358" width="59" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_mother2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="505" y="358" width="85" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_mother3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="447" y="358" width="59" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_mother2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="363" y="358" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_mother1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="271" y="407" width="85" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="213" y="407" width="59" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="129" y="407" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="505" y="407" width="85" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+					<paragraph leftIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="447" y="407" width="59" height="14"/>
+				<textElement textAlignment="Center">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="2a4a043d-2d09-47d5-8c64-a1f173724f4a" x="363" y="407" width="85" height="14"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_consent_by1}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="329" y="170" width="27" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_place_of_birth2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="557" y="170" width="27" height="15" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_place_of_birth2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="205" y="191" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_pob2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="281" y="191" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{h_pob3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="515" y="191" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" rightIndent="2"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_pob3}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="439" y="191" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_pob2}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="false">
+				<reportElement uuid="bcaa018d-9de8-42df-9b5c-445555d8a662" mode="Transparent" x="363" y="191" width="75" height="14" forecolor="#000000" backcolor="#FFFFFF"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle" rotation="None" markup="none">
+					<font fontName="SansSerif" size="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single" leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{w_pob1}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

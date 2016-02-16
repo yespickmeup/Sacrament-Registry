@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="1008" pageHeight="612" orientation="Landscape" columnWidth="1008" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="fc8f9f7a-2db0-493f-a5f1-5c8480768bc1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="num" class="java.lang.String"/>
+	<parameter name="day" class="java.lang.String"/>
+	<parameter name="month" class="java.lang.String"/>
+	<parameter name="year" class="java.lang.String"/>
+	<parameter name="priest" class="java.lang.String"/>
+	<parameter name="asst_priest" class="java.lang.String"/>
+	<parameter name="series_of" class="java.lang.String"/>
+	<parameter name="path" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="scheduled_date" class="java.lang.String"/>
+	<parameter name="priests" class="java.lang.String"/>
+	<parameter name="cause_of_death" class="java.lang.String"/>
+	<parameter name="date_died" class="java.lang.String"/>
+	<parameter name="buried_at" class="java.lang.String"/>
+	<parameter name="book_no" class="java.lang.String"/>
+	<parameter name="page_no" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select 
+
+ concat(f.fname,space(2),f.mi,space(2),f.lname) as name
+,p.address1 as address
+,f.funeral_date as scheduled_date
+,f.priest
+,f.cause_of_death
+,f.date_died as date_died
+,f.place_buried as buried_at
+,f.book_no
+,f.page_no
+from db_bulletin.funeral_1 f
+join db_bulletin.parishioners_1 p
+on f.ref_no=p.ref_id
+ where  f.ref_no=$P{num};]]>
+	</queryString>
+	<background>
+		<band height="612" splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7a2bc6c8-9e66-44e0-8ddb-01b2f9fb73f0" x="124" y="68" width="247" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="320e48a1-852c-48b0-a115-6e1c77437bad" x="124" y="42" width="285" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d695f838-036a-4774-b60f-0168b26063ea" x="155" y="27" width="197" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIOCESE OF DUMAGUETE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0fe2f909-d4f1-4e71-ad81-d7bae309f385" x="124" y="54" width="247" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="12"/>
+				</textElement>
+				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="441" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6b436fdd-aa8f-47c7-ba6e-19e0fb24caaf" x="88" y="49" width="113" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Name of Deceased:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5763f339-a6ca-4d7b-803c-d91277b2a00a" x="88" y="72" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="eb25cce9-97d3-4bef-ab8c-d65bed1c648c" x="103" y="146" width="98" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[was burried at the]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c0d490a3-1fa1-44dd-8dc9-b4b9615017f5" x="88" y="95" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Cause of Death:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a9ef9090-dcb4-4bb0-ba47-b5e304e26cfb" x="88" y="170" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date of Burial:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5aa7510f-16d7-40ad-b4ee-af1126366b95" x="88" y="196" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Priest:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5dc566ee-b719-4f58-86a6-08a1faab3da5" x="90" y="245" width="335" height="22"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[In Witness thereof hereunto I affix my signature and the seal of the Parish this ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9a860c3c-f7b1-4946-bd76-607bc5a4db9b" x="90" y="265" width="34" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{day}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ba581786-eae0-438e-983d-410270563ffb" x="124" y="265" width="31" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[day of]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2821c363-3287-4f04-984b-3420c8d7301d" x="155" y="265" width="70" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{month}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="acb82c58-1115-41a6-928f-8b6e56638ac4" x="233" y="266" width="48" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{year}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="193b76cd-687d-4c14-9c52-3690d735548b" x="90" y="382" width="52" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Book No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e786f7e5-368e-46ce-ac0e-3d41154472ef" x="91" y="402" width="51" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Page No:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="7ad49849-1fad-456b-a715-8a26519cbe5b" x="201" y="49" width="246" height="20"/>
+				<textElement verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="92a8439b-88e9-490f-9167-aeae3ae318b6" x="201" y="72" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="43f43e2b-1a26-45da-97e5-a07a82275c29" x="201" y="95" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cause_of_death}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bb1437e7-bfe2-4b43-8b3e-971693b8253e" x="201" y="146" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{buried_at}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="d71986d8-cf40-46da-99e6-cbbd30d51716" x="201" y="170" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{scheduled_date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="bced9583-c424-450e-aaff-90cf7ceeddd9" x="201" y="196" width="246" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{priests}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9730eccf-0f7e-4f0c-9557-9b8ed0f63d2a" x="148" y="382" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{book_no}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="15ccc88c-76de-4ed1-90a1-b35ec7feb8ea" x="148" y="402" width="100" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{page_no}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ad38653d-3ab8-4434-8f88-536a41aca0a6" x="88" y="118" width="112" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Date of Death:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement uuid="1315f7d9-9b36-4a4e-829e-ce72d03aa027" x="201" y="119" width="116" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date_died}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="3beb30b2-f018-4f3b-a58b-d787df3fcc1d" x="124" y="0" width="247" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[THIS IS TO CERTIFY THAT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4c8ff9c2-100d-4c2c-b1e6-db1de45024b7" x="223" y="265" width="14" height="20"/>
+				<textElement textAlignment="Left" verticalAlignment="Bottom">
+					<font size="10"/>
+				</textElement>
+				<text><![CDATA[,]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="12965747-27e8-4670-bd11-df472e1c35a3" x="257" y="317" width="190" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Tahoma" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{priest}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fae5553a-2945-476e-8f64-fee3449be662" x="257" y="337" width="190" height="20"/>
+				<box>
+					<topPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font fontName="Tahoma" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{asst_priest}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
