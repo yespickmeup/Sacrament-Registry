@@ -1609,9 +1609,10 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
 
-        jLabel52.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel52.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel52.setForeground(new java.awt.Color(255, 255, 255));
         jLabel52.setIcon(new javax.swing.ImageIcon(getClass().getResource("/SR/main/spi (Custom) (Custom).png"))); // NOI18N
+        jLabel52.setText("Version 1.20160408");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
