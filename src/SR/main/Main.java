@@ -4,6 +4,7 @@
  */
 package SR.main;
 
+import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.io.File;
@@ -25,6 +26,8 @@ public class Main {
     public void start() {
         Application.setSystemLookAndFeel();
         Dashboard dialog = new Dashboard();
+        Image image = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/SR/main/spi (Custom) (Custom).png"));
+        dialog.setIconImage(image);
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().
                 getWidth());
@@ -128,7 +131,7 @@ public class Main {
             System.setProperty("slogan", prop.getProperty("slogan", ""));
 
             System.setProperty("cashier_print", prop.getProperty("cashier_print", "false"));
-            
+
             System.setProperty("print_baptism", prop.getProperty("print_baptism", "default"));
 
             Lg.$.severe(System.getProperty("receipt_printer"));
