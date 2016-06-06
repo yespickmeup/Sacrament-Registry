@@ -1313,7 +1313,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
                 SRpt_baptism rpt = new SRpt_baptism(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, place_of_birth, date_of_birth, date_of_confirmation, "", tf_priest.getText(), book_no, page_no, sponsor_name, tf_index_no.getText(), purpose, img_path, place_of_baptism, parish_priest);
                 try {
                     String jrxml = "rpt_baptism_new.jrxml";
-                    String cert = System.getProperty("print_baptism", "default");
+                    String cert = System.getProperty("print_baptism", "Bacong");
                     if (cert.equalsIgnoreCase("bacong")) {
                         jrxml = "rpt_baptism_bacong.jrxml";
                     }

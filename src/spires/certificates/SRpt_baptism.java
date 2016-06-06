@@ -109,7 +109,7 @@ public class SRpt_baptism {
 
     public static JasperReport compileJasper() {
         try {
-            String jrxml = "rpt_baptism.jrxml";
+            String jrxml = "rpt_baptism_bacong.jrxml";
             InputStream is = SRpt_baptism.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
             return jasper;

@@ -48,6 +48,9 @@ public class Confirmation_records {
                     + ",bapt_date"
                     + ",bapt_place"
                     + ",status"
+                    + ",address_of_parents"
+                    + ",place_of_confirmation"
+                    + ",registry_no"
                     + ")values("
                     + ":ref_no"
                     + ",:date_added"
@@ -71,6 +74,9 @@ public class Confirmation_records {
                     + ",:bapt_date"
                     + ",:bapt_place"
                     + ",:status"
+                    + ",:address_of_parents"
+                    + ",:place_of_confirmation"
+                    + ",:registry_no"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -81,7 +87,7 @@ public class Confirmation_records {
                     .setString("mi", to_encoding_confirmation.getMname())
                     .setString("lname", to_encoding_confirmation.getLname())
                     .setString("b_place", to_encoding_confirmation.getPlace_of_birth())
-                    .setString("address", "")
+                    .setString("address", to_encoding_confirmation.getPlace_of_birth())
                     .setString("father", to_encoding_confirmation.getFather())
                     .setString("mother", to_encoding_confirmation.getMother())
                     .setString("b_day", to_encoding_confirmation.getDate_of_birth())
@@ -94,8 +100,11 @@ public class Confirmation_records {
                     .setString("sponsors", to_encoding_confirmation.getSponsors())
                     .setString("remarks", to_encoding_confirmation.getRemarks())
                     .setString("bapt_date", to_encoding_confirmation.getBaptism_date())
-                    .setString("bapt_place", to_encoding_confirmation.getPlace_of_birth())
+                    .setString("bapt_place", to_encoding_confirmation.getPlace_of_baptism())
                     .setNumber("status", 1)
+                    .setString("address_of_parents", to_encoding_confirmation.getAddress_of_parents())
+                    .setString("place_of_confirmation", to_encoding_confirmation.getPlace_of_confirmation())
+                    .setString("registry_no", to_encoding_confirmation.getRegistry_no())
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
@@ -128,6 +137,9 @@ public class Confirmation_records {
                     + ",remarks= :remarks "
                     + ",bapt_date= :bapt_date "
                     + ",bapt_place= :bapt_place "
+                    + ",place_of_confirmation= :place_of_confirmation"
+                    + ",registry_no= :registry_no"
+                    + ",address_of_parents= :address_of_parents"
                     + " where id='" + to_encoding_confirmation.getId() + "' "
                     + " ";
 
@@ -148,6 +160,9 @@ public class Confirmation_records {
                     .setString("remarks", to_encoding_confirmation.getRemarks())
                     .setString("bapt_date", to_encoding_confirmation.getBaptism_date())
                     .setString("bapt_place", to_encoding_confirmation.getPlace_of_baptism())
+                    .setString("place_of_confirmation", to_encoding_confirmation.getPlace_of_confirmation())
+                    .setString("registry_no", to_encoding_confirmation.getRegistry_no())
+                    .setString("address_of_parents", to_encoding_confirmation.getAddress_of_parents())
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);

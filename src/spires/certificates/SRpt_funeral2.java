@@ -40,11 +40,8 @@ public class SRpt_funeral2 {
     public final String date_of_baptism;
     public final String place_of_baptism;
     public final String purpose;
-    public SRpt_funeral2(String num, String day, String month, String year, String priest
-            , String asst_priest, String series_of, String path, String name, String father
-            , String mother, String date_of_confirmation, String book_no, String page_no
-            , String confirmed_by, String sponsor_name, String place_of_birth
-            , String date_of_birth,String img_path,String date_of_baptism,String place_of_baptism,String purpose) {
+
+    public SRpt_funeral2(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String father, String mother, String date_of_confirmation, String book_no, String page_no, String confirmed_by, String sponsor_name, String place_of_birth, String date_of_birth, String img_path, String date_of_baptism, String place_of_baptism, String purpose) {
         this.num = num;
         this.day = day;
         this.month = month;
@@ -63,10 +60,10 @@ public class SRpt_funeral2 {
         this.sponsor_name = sponsor_name;
         this.place_of_birth = place_of_birth;
         this.date_of_birth = date_of_birth;
-        this.img_path=img_path;
-        this.date_of_baptism=date_of_baptism;
-        this.place_of_baptism=place_of_baptism;
-        this.purpose=purpose;
+        this.img_path = img_path;
+        this.date_of_baptism = date_of_baptism;
+        this.place_of_baptism = place_of_baptism;
+        this.purpose = purpose;
     }
 
     public static void main(String[] args) {
@@ -88,13 +85,11 @@ public class SRpt_funeral2 {
         String sponsor_name = "sponsor1,sponsor2,sponsro3";
         String place_of_birth = "place of b";
         String date_of_birth = "date f b";
-          String img_path="C:\\Users\\Maytopacka\\";
-          String date_of_baptism="";
-          String place_of_baptism="";
-        SRpt_funeral2 rpt = new SRpt_funeral2(num, day, month, year, priest, asst_priest, series_of
-                , path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by
-                , sponsor_name, place_of_birth, date_of_birth,img_path,date_of_baptism,place_of_baptism,"");
-      
+        String img_path = "C:\\Users\\Maytopacka\\";
+        String date_of_baptism = "";
+        String place_of_baptism = "";
+        SRpt_funeral2 rpt = new SRpt_funeral2(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, "");
+
         JRViewer viewer = SRpt_funeral2.get_viewer(rpt);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
 

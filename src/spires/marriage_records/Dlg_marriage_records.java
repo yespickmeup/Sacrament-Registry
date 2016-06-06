@@ -925,7 +925,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1290,7 +1290,11 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
                 final SRpt_marriage rpt = new SRpt_marriage(day, month, year, priest, asst_priest, series_of, g_ref_no, b_ref_no, g_address, b_address, path, groom, groom_father, groom_mother, bride, bride_father, bride_mother, date_of_marriage, marr_time, solemnized_by, book_number, page_number, date_added, sponsors);
 
                 try {
+                    String print = System.getProperty("print_marriage", "default");
                     String jrxml = "rpt_marriage.jrxml";
+                    if (print.equalsIgnoreCase("Bacong")) {
+                        jrxml = "rpt_marriage_bacong.jrxml";
+                    }
                     InputStream is = SRpt_marriage.class.getResourceAsStream(jrxml);
                     JasperReport jasperReport;
                     jasperReport = JasperCompileManager.compileReport(is);

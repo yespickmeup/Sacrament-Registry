@@ -27,16 +27,23 @@ public class SRpt_funeral {
     public final String series_of;
     public final String path;
     public final String name;
-    public final String address;
-    public final String scheduled_date;
-    public final String priests;
-    public final String cause_of_death;
-    public final String date_died;
-    public final String buried_at;
+    public final String father;
+    public final String mother;
+    public final String date_of_confirmation;
     public final String book_no;
     public final String page_no;
+    public final String confirmed_by;
+    public final String sponsor_name;
+    public final String place_of_birth;
+    public final String date_of_birth;
+    public final String date_of_baptism;
+    public final String place_of_baptism;
+    public final String purpose;
+    public final String date_of_death;
+    public final String age;
+    public final String index_no;
 
-    public SRpt_funeral(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String address, String scheduled_date, String priests, String cause_of_death, String date_died, String buried_at, String book_no, String page_no) {
+    public SRpt_funeral(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String father, String mother, String date_of_confirmation, String book_no, String page_no, String confirmed_by, String sponsor_name, String place_of_birth, String date_of_birth, String date_of_baptism, String place_of_baptism, String purpose, String date_of_death, String age, String index_no) {
         this.num = num;
         this.day = day;
         this.month = month;
@@ -46,37 +53,52 @@ public class SRpt_funeral {
         this.series_of = series_of;
         this.path = path;
         this.name = name;
-        this.address = address;
-        this.scheduled_date = scheduled_date;
-        this.priests = priests;
-        this.cause_of_death = cause_of_death;
-        this.date_died = date_died;
-        this.buried_at = buried_at;
+        this.father = father;
+        this.mother = mother;
+        this.date_of_confirmation = date_of_confirmation;
         this.book_no = book_no;
         this.page_no = page_no;
+        this.confirmed_by = confirmed_by;
+        this.sponsor_name = sponsor_name;
+        this.place_of_birth = place_of_birth;
+        this.date_of_birth = date_of_birth;
+        this.date_of_baptism = date_of_baptism;
+        this.place_of_baptism = place_of_baptism;
+        this.purpose = purpose;
+        this.date_of_death = date_of_death;
+        this.age = age;
+        this.index_no = index_no;
     }
 
     public static void main(String[] args) {
 
         String num = "num";
-        String day = "2nd";
-        String month = "March";
-        String year = "2013";
-        String priest = "priest";
-        String asst_priest = "paroch";
-        String series_of = "series of";
-        String path = "path";
-        String name = "names";
-        String address = "address";
-        String scheduled_date = "sched_date";
-        String priests = "y";
-        String cause_of_death = "cause_of";
-        String date_died = "date died";
-        String buried_at = "buried at";
-        String book_no = "4A";
-        String page_no = "1";
-        SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, address, scheduled_date, priests, cause_of_death, date_died, buried_at, book_no, page_no);
-        
+        String day = "16th";
+        String month = "April";
+        String year = "16";
+        String priest = "Rev. Fr. Msgr Julius Heruela";
+        String asst_priest = "Rev. Fr. Msgr Julius Heruela";
+        String series_of = "2016-2017";
+        String path = "";
+        String name = "Juan Dela Cruz";
+        String father = "Juan Dela Cruz Jr.";
+        String mother = "Juan Dela Cruz Jr.";
+        String date_of_confirmation = "04/16/2016";
+        String book_no = "100";
+        String page_no = "299";
+        String confirmed_by = "Rev. Fr. Msgr Julius Heruela";
+        String sponsor_name = "Sponsor1, Sponsor 2, Sponsor 3";
+        String place_of_birth = "Bacong, Negros Oriental, Philippines";
+        String date_of_birth = "04/16/2016";
+        String date_of_baptism = "04/16/2016";
+        String place_of_baptism = "Bacong, Negros Oriental, Philippines";
+        String purpose = "Land";
+        String date_of_death = "04/16/2016";
+        String age = "29 years old";
+        String index_no = "400";
+
+        SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no);
+       
         JRViewer viewer = SRpt_funeral.get_viewer(rpt);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,7 +106,7 @@ public class SRpt_funeral {
 
     public static JasperReport compileJasper() {
         try {
-            String jrxml = "rpt_funeral.jrxml";
+            String jrxml = "rpt_funeral_bacong.jrxml";
             InputStream is = SRpt_funeral.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
             return jasper;

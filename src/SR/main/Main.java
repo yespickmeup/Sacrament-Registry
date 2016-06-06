@@ -133,6 +133,9 @@ public class Main {
             System.setProperty("cashier_print", prop.getProperty("cashier_print", "false"));
 
             System.setProperty("print_baptism", prop.getProperty("print_baptism", "default"));
+            System.setProperty("print_confirmation", prop.getProperty("print_confirmation", "default"));
+            System.setProperty("print_death", prop.getProperty("print_death", "default"));
+            System.setProperty("print_marriage", prop.getProperty("print_marriage", "default"));
 
             Lg.$.severe(System.getProperty("receipt_printer"));
 

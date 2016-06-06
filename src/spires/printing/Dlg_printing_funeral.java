@@ -1816,7 +1816,7 @@ public class Dlg_printing_funeral extends javax.swing.JDialog {
        
         SRpt_confirmation rpt = new SRpt_confirmation(num, day, month, year, jTextField3.getText(), asst_priest, series_of, path, name, to.remarks, ""
                 , burial_date, book_no, page_no, tf_priest.getText(), sponsor_name, place_of_birth, date_of_birth, img_path
-                , date_of_birth, place_of_birth, purpose,date_of_death);
+                , date_of_birth, place_of_birth, purpose,date_of_death,"","","","");
 
         String jrxml = "rpt_funeral2.jrxml";
         certificate_funeral(rpt, jrxml);

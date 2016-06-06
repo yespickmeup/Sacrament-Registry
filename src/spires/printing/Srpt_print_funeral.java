@@ -56,11 +56,15 @@ public class Srpt_print_funeral {
         String id;
         String remarks;
         String date_of_death;
+        String age;
+        String father;
+        String mother;
         public field() {
         }
 
         public field(String index_no, String book_no, String page_no, String date_of_burial, String price, String fname, String mi
-                , String lname, String residence, String informant, String id, String remarks,String date_of_death) {
+                , String lname, String residence, String informant, String id, String remarks
+                ,String date_of_death,String age,String father,String mother) {
             this.index_no = index_no;
             this.book_no = book_no;
             this.page_no = page_no;
@@ -74,8 +78,35 @@ public class Srpt_print_funeral {
             this.id = id;
             this.remarks = remarks;
             this.date_of_death=date_of_death;
+            this.age=age;
+            this.father=father;
+            this.mother=mother;
         }
 
+        public String getFather() {
+            return father;
+        }
+
+        public void setFather(String father) {
+            this.father = father;
+        }
+
+        public String getMother() {
+            return mother;
+        }
+
+        public void setMother(String mother) {
+            this.mother = mother;
+        }
+        
+        public String getAge() {
+            return age;
+        }
+
+        public void setAge(String age) {
+            this.age = age;
+        }
+        
         public String getIndex_no() {
             return index_no;
         }
@@ -234,6 +265,9 @@ public class Srpt_print_funeral {
                     + ",user_name"
                     + ",remarks"
                     + ",date_of_burial2"
+                    + ",age"
+                    + ",father"
+                    + ",mother"
                     + " from encoding_funeral2 "
                     + " " + where;
 
@@ -258,8 +292,11 @@ public class Srpt_print_funeral {
                 String user_name = rs.getString(13);
                 String remarks=rs.getString(14);
                 String date_of_death=rs.getString(15);
+                String age=rs.getString(16);
+                String father=rs.getString(17);
+                String mother=rs.getString(18);
                 Srpt_print_funeral.field to = new field(index_no, book_no, page_no, date_of_burial, priest
-                        , fname, mi, lname, residence, informant, "" + id,remarks,date_of_death);
+                        , fname, mi, lname, residence, informant, "" + id,remarks,date_of_death,age,father,mother);
 
                 datas.add(to);
             }

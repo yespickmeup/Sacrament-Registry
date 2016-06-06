@@ -41,11 +41,13 @@ public class SRpt_confirmation {
     public final String place_of_baptism;
     public final String purpose;
     public final String date_of_death;
-    public SRpt_confirmation(String num, String day, String month, String year, String priest
-            , String asst_priest, String series_of, String path, String name, String father
-            , String mother, String date_of_confirmation, String book_no, String page_no
-            , String confirmed_by, String sponsor_name, String place_of_birth
-            , String date_of_birth,String img_path,String date_of_baptism,String place_of_baptism,String purpose,String date_of_death) {
+    public final String address_of_parents;
+    public final String place_of_confirmation;
+    public final String registry_no;
+    public final String index_no;
+
+    public SRpt_confirmation(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String father, String mother, String date_of_confirmation, String book_no, String page_no, String confirmed_by, String sponsor_name, String place_of_birth, String date_of_birth, String img_path, String date_of_baptism, String place_of_baptism, String purpose, String date_of_death, String address_of_parents, String place_of_confirmation, String registry_no, String index_no
+    ) {
         this.num = num;
         this.day = day;
         this.month = month;
@@ -64,40 +66,46 @@ public class SRpt_confirmation {
         this.sponsor_name = sponsor_name;
         this.place_of_birth = place_of_birth;
         this.date_of_birth = date_of_birth;
-        this.img_path=img_path;
-        this.date_of_baptism=date_of_baptism;
-        this.place_of_baptism=place_of_baptism;
-        this.purpose=purpose;
-        this.date_of_death=date_of_death;
+        this.img_path = img_path;
+        this.date_of_baptism = date_of_baptism;
+        this.place_of_baptism = place_of_baptism;
+        this.purpose = purpose;
+        this.date_of_death = date_of_death;
+        this.address_of_parents = address_of_parents;
+        this.place_of_confirmation = place_of_confirmation;
+        this.registry_no = registry_no;
+        this.index_no = index_no;
     }
 
     public static void main(String[] args) {
-        String num = "num";
-        String day = "2nd";
-        String month = "March";
-        String year = "2013";
-        String priest = "priest";
-        String asst_priest = "parochial var";
-        String series_of = "2013-2014";
-        String path = "path";
-        String name = "Ronald Pascua";
-        String father = "father";
-        String mother = "mother";
-        String date_of_confirmation = "date of conf";
-        String book_no = "2A";
-        String page_no = "1";
-        String confirmed_by = "conf by";
-        String sponsor_name = "sponsor1,sponsor2,sponsro3";
-        String place_of_birth = "place of b";
-        String date_of_birth = "date f b";
-          String img_path="C:\\Users\\Maytopacka\\";
-          String date_of_baptism="";
-          String place_of_baptism="";
-          String date_of_death="";
-        SRpt_confirmation rpt = new SRpt_confirmation(num, day, month, year, priest, asst_priest, series_of
-                , path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by
-                , sponsor_name, place_of_birth, date_of_birth,img_path,date_of_baptism,place_of_baptism,"",date_of_death);
-      
+        String num = "1";
+        String day = "8th";
+        String month = "April";
+        String year = "2016";
+        String priest = "Rev. Fr. Msgr. Julius Heruela Perpetua";
+        String asst_priest = "";
+        String series_of = "2016";
+        String path = "";
+        String name = "Juan Dela Cruz Jr.";
+        String father = "Juan Dela Cruz Sr.";
+        String mother = "Juanita Cruz";
+        String date_of_confirmation = "March 8,2016";
+        String book_no = "1A";
+        String page_no = "10";
+        String confirmed_by = "Rev. Fr. Msgr. Julius Heruela Perpetua";
+        String sponsor_name = "Sponsor 1, Rev. Fr. Msgr. Julius Heruela Perpetua,Rev. Fr. Msgr. Julius Heruela Perpetua,Rev. Fr. Msgr. Julius Heruela Perpetua";
+        String place_of_birth = "Lower Bagacay, Dumaguete City Negros Oriental";
+        String date_of_birth = "April 1, 1991";
+        String img_path = "";
+        String date_of_baptism = "April 1, 1991";
+        String place_of_baptism = "Lower Bagacay, Dumaguete City Negros Oriental";
+        String purpose = "For Marriage";
+        String date_of_death = "April 1,2991";
+        String address_of_parents = "Lower Bagacay, Dumaguete City Negros Oriental";;
+        String place_of_confirmation = "Lower Bagacay, Dumaguete City Negros Oriental";;
+        String registry_no = "";
+        String index_no = "1000";
+        SRpt_confirmation rpt = new SRpt_confirmation(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, date_of_death, address_of_parents, place_of_confirmation, registry_no, index_no);
         JRViewer viewer = SRpt_confirmation.get_viewer(rpt);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
 
@@ -106,7 +114,7 @@ public class SRpt_confirmation {
 
     public static JasperReport compileJasper() {
         try {
-            String jrxml = "rpt_confirmation.jrxml";
+            String jrxml = "rpt_funeral_bacong.jrxml";
             InputStream is = SRpt_confirmation.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
             return jasper;

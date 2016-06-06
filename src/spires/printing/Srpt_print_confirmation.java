@@ -61,12 +61,14 @@ public class Srpt_print_confirmation {
         String id;
         String remarks;
         String place_of_baptism;
+        String address_of_parents;
+        String place_of_confirmation;
+        String registry_no = "";
+
         public field() {
         }
 
-        public field(String ref_no, String fname, String mname, String lname, String mother, String father, String book_no, String page_no, String index_no
-                , String sponsors, String baptism_date, String confirmation_date, String priest, String place_of_birth, String date_of_birth, String id
-                , String remarks,String place_of_baptism) {
+        public field(String ref_no, String fname, String mname, String lname, String mother, String father, String book_no, String page_no, String index_no, String sponsors, String baptism_date, String confirmation_date, String priest, String place_of_birth, String date_of_birth, String id, String remarks, String place_of_baptism, String address_of_parents, String place_of_confirmation, String registry_no) {
             this.ref_no = ref_no;
             this.fname = fname;
             this.mname = mname;
@@ -84,7 +86,34 @@ public class Srpt_print_confirmation {
             this.date_of_birth = date_of_birth;
             this.id = id;
             this.remarks = remarks;
-            this.place_of_baptism=place_of_baptism;
+            this.place_of_baptism = place_of_baptism;
+            this.address_of_parents = address_of_parents;
+            this.place_of_confirmation = place_of_confirmation;
+            this.registry_no = registry_no;
+        }
+
+        public String getRegistry_no() {
+            return registry_no;
+        }
+
+        public void setRegistry_no(String registry_no) {
+            this.registry_no = registry_no;
+        }
+
+        public String getAddress_of_parents() {
+            return address_of_parents;
+        }
+
+        public void setAddress_of_parents(String address_of_parents) {
+            this.address_of_parents = address_of_parents;
+        }
+
+        public String getPlace_of_confirmation() {
+            return place_of_confirmation;
+        }
+
+        public void setPlace_of_confirmation(String place_of_confirmation) {
+            this.place_of_confirmation = place_of_confirmation;
         }
 
         public String getPlace_of_baptism() {
@@ -95,7 +124,6 @@ public class Srpt_print_confirmation {
             this.place_of_baptism = place_of_baptism;
         }
 
-        
         public String getRemarks() {
             return remarks;
         }
@@ -294,6 +322,9 @@ public class Srpt_print_confirmation {
                     + ",bapt_date"
                     + ",bapt_place"
                     + ",status"
+                    + ",address_of_parents"
+                    + ",place_of_confirmation"
+                    + ",registry_no"
                     + " from encoding_confirmation "
                     + " " + where;
 
@@ -323,10 +354,21 @@ public class Srpt_print_confirmation {
                 String bapt_date = DateType.convert_sf_to_slash(rs.getString(21));
                 String bapt_place = rs.getString(22);
                 int status = rs.getInt(23);
-                
-                Srpt_print_confirmation.field to = new field(ref_no, fname, mi, lname, mother, father
-                        , book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest
-                        , bapt_place, bapt_date, "" + id,remarks,bapt_place);
+                String address_of_parents = rs.getString(24);
+                String place_of_confirmation = rs.getString(25);
+                String registry_no = rs.getString(26);
+
+                String mname = mi;
+                String baptism_date = bapt_date;
+                String confirmation_date = conf_date;
+                String place_of_birth = b_place;
+                String date_of_birth = b_day;
+                String place_of_baptism = bapt_place;
+                Srpt_print_confirmation.field to = new field(ref_no, fname
+                        , mname, lname, mother, father, book_no
+                        , ""+page_no, ""+index_no, sponsors, baptism_date
+                        , confirmation_date, priest, place_of_birth, date_of_birth, "" + id
+                        , remarks, place_of_baptism, address_of_parents, place_of_confirmation, registry_no);
                 datas.add(to);
             }
             return datas;

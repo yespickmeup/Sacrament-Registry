@@ -41,7 +41,7 @@ import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import spires.officials.Officials;
 
-import spires.users.Res;
+import spires.util.Alert;
 import spires.util.Dlg_confirm_action;
 import spires.util.TableRenderer;
 import spires.util.TableRenderer2;
@@ -218,39 +218,43 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButton3 = new Button.Info();
-        jLabel1 = new Label.Separator();
         jLabel12 = new javax.swing.JLabel();
-        tf_lname = new javax.swing.JTextField();
+        tf_lname = new Field.Input();
         jLabel13 = new javax.swing.JLabel();
-        tf_father = new javax.swing.JTextField();
+        tf_father = new Field.Input();
         jLabel10 = new javax.swing.JLabel();
-        tf_fname = new javax.swing.JTextField();
+        tf_fname = new Field.Input();
         jLabel11 = new javax.swing.JLabel();
-        tf_mi = new javax.swing.JTextField();
+        tf_mi = new Field.Input();
         jLabel9 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tf_remarks = new javax.swing.JTextArea();
-        jLabel29 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        tf_page_no = new javax.swing.JTextField();
+        tf_page_no = new Field.Input();
         jLabel21 = new javax.swing.JLabel();
-        tf_place_of_baptism = new javax.swing.JTextField();
-        tf_index_no = new javax.swing.JTextField();
+        tf_place_of_baptism = new Field.Combo();
+        tf_index_no = new Field.Input();
         jLabel17 = new javax.swing.JLabel();
         dp_confirmation = new com.toedter.calendar.JDateChooser();
         jLabel14 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        tf_book_no = new javax.swing.JTextField();
+        tf_book_no = new Field.Input();
         dp_baptism = new com.toedter.calendar.JDateChooser();
         jLabel20 = new javax.swing.JLabel();
-        tf_mother = new javax.swing.JTextField();
+        tf_mother = new Field.Input();
         jLabel18 = new javax.swing.JLabel();
-        tf_priest = new javax.swing.JTextField();
+        tf_priest = new Field.Combo();
         jScrollPane1 = new javax.swing.JScrollPane();
         tf_sponsors = new javax.swing.JTextArea();
         jButton5 = new Button.Default();
         jButton2 = new Button.Success();
+        jLabel26 = new javax.swing.JLabel();
+        tf_address_of_parents = new Field.Combo();
+        jLabel27 = new javax.swing.JLabel();
+        dp_bdate = new com.toedter.calendar.JDateChooser();
+        jLabel28 = new javax.swing.JLabel();
+        tf_place_of_confirmation = new Field.Combo();
+        jLabel29 = new javax.swing.JLabel();
+        tf_place_of_birth = new Field.Input();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_confirmation_records = new javax.swing.JTable();
@@ -287,8 +291,6 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
             }
         });
 
-        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel12.setText("Father:");
@@ -316,16 +318,6 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel9.setText("First Name:");
-
-        tf_remarks.setColumns(20);
-        tf_remarks.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        tf_remarks.setLineWrap(true);
-        tf_remarks.setRows(5);
-        jScrollPane3.setViewportView(tf_remarks);
-
-        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel29.setText("Remarks:");
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -367,7 +359,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel20.setText("Page No:");
+        jLabel20.setText("Page No.:");
 
         tf_mother.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_mother.addActionListener(new java.awt.event.ActionListener() {
@@ -411,6 +403,31 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
             }
         });
 
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("Address of Parents:");
+
+        tf_address_of_parents.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel27.setText("Birth Date:");
+
+        dp_bdate.setDate(new Date());
+        dp_bdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel28.setText("Place of Confirmation:");
+
+        tf_place_of_confirmation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        jLabel29.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel29.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel29.setText("Place of Birth:");
+
+        tf_place_of_birth.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -418,69 +435,63 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_place_of_baptism)
+                    .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(226, 226, 226))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel29)
-                        .addGap(272, 272, 272))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_mother)
-                                    .addComponent(tf_lname)
-                                    .addComponent(tf_mi)
-                                    .addComponent(tf_fname)
-                                    .addComponent(tf_father)
-                                    .addComponent(dp_baptism, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(dp_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(tf_place_of_baptism, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tf_priest, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
-                                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tf_book_no, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)
-                                    .addComponent(tf_index_no))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel20)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tf_page_no)))
-                        .addGap(25, 25, 25))
+                            .addComponent(jLabel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(dp_bdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tf_mother)
+                            .addComponent(tf_lname)
+                            .addComponent(tf_mi)
+                            .addComponent(tf_fname)
+                            .addComponent(tf_father)
+                            .addComponent(dp_baptism, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(dp_confirmation, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)))
+                    .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(tf_place_of_confirmation, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(tf_address_of_parents)
+                    .addComponent(tf_priest)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
+                    .addComponent(tf_place_of_birth)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_book_no))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_index_no, javax.swing.GroupLayout.DEFAULT_SIZE, 70, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel20)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_page_no, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)))
+                .addGap(10, 10, 10))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -502,6 +513,10 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                     .addComponent(tf_mother, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(dp_bdate, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(dp_baptism, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
@@ -509,22 +524,30 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                     .addComponent(dp_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
+                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(tf_place_of_birth, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(tf_place_of_baptism, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(tf_place_of_confirmation, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(tf_address_of_parents, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
                 .addComponent(tf_priest, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_book_no, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -534,15 +557,13 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(tf_index_no, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(1, 1, 1)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7))
+                .addContainerGap())
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
@@ -826,6 +847,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         is_add = 1;
         jPanel3.setVisible(true);
+        tf_fname.grabFocus();
         clear();
     }//GEN-LAST:event_jButton4ActionPerformed
 
@@ -860,6 +882,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private com.toedter.calendar.JDateChooser dp_baptism;
+    private com.toedter.calendar.JDateChooser dp_bdate;
     private com.toedter.calendar.JDateChooser dp_confirmation;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -869,7 +892,6 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     private javax.swing.JCheckBox jCheckBox7;
     private javax.swing.JCheckBox jCheckBox8;
     private javax.swing.JCheckBox jCheckBox9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -885,6 +907,9 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -899,12 +924,12 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTable tbl_confirmation_records;
+    private javax.swing.JTextField tf_address_of_parents;
     private javax.swing.JTextField tf_book_no;
     private javax.swing.JTextField tf_father;
     private javax.swing.JTextField tf_fname;
@@ -914,8 +939,9 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     private javax.swing.JTextField tf_mother;
     private javax.swing.JTextField tf_page_no;
     private javax.swing.JTextField tf_place_of_baptism;
+    private javax.swing.JTextField tf_place_of_birth;
+    private javax.swing.JTextField tf_place_of_confirmation;
     private javax.swing.JTextField tf_priest;
-    private javax.swing.JTextArea tf_remarks;
     private javax.swing.JTextArea tf_sponsors;
     // End of variables declaration//GEN-END:variables
 
@@ -939,7 +965,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1087,31 +1113,30 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
 
         int id = 0;
         String ref_no = "";
-        String date_added = "";
-        String user_name = Res.getUser_id();
         String fname = tf_fname.getText();
-        String mi = tf_mi.getText();
+        String mname = tf_mi.getText();
         String lname = tf_lname.getText();
-        String b_place = tf_place_of_baptism.getText();
-        String address = "";
-        String father = tf_father.getText();
         String mother = tf_mother.getText();
-        String b_day = "";
-        String conf_date = spires.util.DateType.sf.format(dp_confirmation.getDate());
-        String gender = "";
+        String father = tf_father.getText();
         String book_no = tf_book_no.getText();
-        int page_no = FitIn.toInt(tf_page_no.getText());
-        int index_no = FitIn.toInt(tf_index_no.getText());
-        String priest = tf_priest.getText();
+        String page_no = tf_page_no.getText();
+        String index_no = tf_index_no.getText();
         String sponsors = tf_sponsors.getText();
-        final String remarks = tf_remarks.getText();
-        String bapt_date = spires.util.DateType.sf.format(dp_baptism.getDate());
-        String bapt_place = tf_place_of_baptism.getText();
-        int status = 0;
-        String remark = tf_remarks.getText();
+        String baptism_date = DateType.sf.format(dp_baptism.getDate());
+        String confirmation_date = DateType.sf.format(dp_confirmation.getDate());
+        String priest = tf_priest.getText();
+        String place_of_birth = tf_place_of_birth.getText();
+        String date_of_birth = DateType.sf.format(dp_bdate.getDate());
+
+        String remarks = "";
         String place_of_baptism = tf_place_of_baptism.getText();
-        final Srpt_print_confirmation.field to = new Srpt_print_confirmation.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, bapt_date, "" + id, remarks, place_of_baptism);
+        String address_of_parents = tf_address_of_parents.getText();
+        String place_of_confirmation = tf_place_of_confirmation.getText();
+        String registry_no = "";
+        final Srpt_print_confirmation.field to = new Srpt_print_confirmation.field(
+                ref_no, fname, mname, lname, mother, father, book_no, page_no, index_no, sponsors, baptism_date, confirmation_date, priest, place_of_birth, date_of_birth, "" + id, remarks, place_of_baptism, address_of_parents, place_of_confirmation, registry_no);
         Confirmation_records.add_encoding_confirmation2(to);
+        Alert.set(1, "");
         clear();
         System.out.println("Record  Added!");
         data_cols();
@@ -1126,11 +1151,12 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         tf_place_of_baptism.setText("");
         tf_priest.setText("");
         tf_sponsors.setText("");
-        tf_remarks.setText("");
+
         tf_book_no.setText("");
         tf_page_no.setText("");
         tf_index_no.setText("");
-
+        tf_place_of_birth.setText("");
+        tf_address_of_parents.setText("");
     }
 
     private void update_confirmation_records() {
@@ -1141,32 +1167,31 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         }
         Srpt_print_confirmation.field to = (Srpt_print_confirmation.field) tbl_confirmation_records_ALM.get(row);
         int id = FitIn.toInt(to.getId());
-        String ref_no = "";
-        String date_added = "";
-        String user_name = Res.getUser_id();
+        String ref_no = to.getRef_no();
         String fname = tf_fname.getText();
-        String mi = tf_mi.getText();
+        String mname = tf_mi.getText();
         String lname = tf_lname.getText();
-        String b_place = tf_place_of_baptism.getText();
-        String address = "";
-        String father = tf_father.getText();
         String mother = tf_mother.getText();
-        String b_day = "";
-        String conf_date = spires.util.DateType.sf.format(dp_confirmation.getDate());
-        String gender = "";
+        String father = tf_father.getText();
         String book_no = tf_book_no.getText();
-        int page_no = FitIn.toInt(tf_page_no.getText());
-        int index_no = FitIn.toInt(tf_index_no.getText());
-        String priest = tf_priest.getText();
+        String page_no = tf_page_no.getText();
+        String index_no = tf_index_no.getText();
         String sponsors = tf_sponsors.getText();
-        final String remarks = tf_remarks.getText();
-        String bapt_date = spires.util.DateType.sf.format(dp_baptism.getDate());
-        String bapt_place = tf_place_of_baptism.getText();
-        int status = 0;
-        String remark = tf_remarks.getText();
+        String baptism_date = DateType.sf.format(dp_baptism.getDate());
+        String confirmation_date = DateType.sf.format(dp_confirmation.getDate());
+        String priest = tf_priest.getText();
+        String place_of_birth = tf_place_of_birth.getText();
+        String date_of_birth = DateType.sf.format(dp_bdate.getDate());
+
+        String remarks = "";
         String place_of_baptism = tf_place_of_baptism.getText();
-        final Srpt_print_confirmation.field to1 = new Srpt_print_confirmation.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, bapt_date, "" + id, remarks, place_of_baptism);
+        String address_of_parents = tf_address_of_parents.getText();
+        String place_of_confirmation = tf_place_of_confirmation.getText();
+        String registry_no = "";
+        final Srpt_print_confirmation.field to1 = new Srpt_print_confirmation.field(
+                ref_no, fname, mname, lname, mother, father, book_no, page_no, index_no, sponsors, baptism_date, confirmation_date, priest, place_of_birth, date_of_birth, "" + id, remarks, place_of_baptism, address_of_parents, place_of_confirmation, registry_no);
         Confirmation_records.edit_encoding_confirmation2(to1);
+        Alert.set(2, "");
         clear();
         System.out.println("Record  Updated!");
         data_cols();
@@ -1188,20 +1213,29 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         tf_father.setText(to.getFather());
         tf_mother.setText(to.getMother());
         try {
-            Date bbaptism = DateType.slash.parse(to.getBaptism_date());
-            Date bconfirmation = DateType.slash.parse(to.getConfirmation_date());
+            Date baptism_date = DateType.slash.parse(to.getBaptism_date());
+            Date confirmation_date = DateType.slash.parse(to.getConfirmation_date());
+            Date birth_date = DateType.slash.parse(to.getDate_of_birth());
+            dp_bdate.setDate(birth_date);
+            dp_baptism.setDate(baptism_date);
+            dp_confirmation.setDate(confirmation_date);
         } catch (ParseException ex) {
             Logger.getLogger(Dlg_confirmation_records.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         tf_priest.setText(to.getPriest());
         tf_sponsors.setText(to.getSponsors());
-        tf_remarks.setText(to.getRemarks());
+
         tf_book_no.setText(to.getBook_no());
         tf_page_no.setText(to.getPage_no());
         tf_index_no.setText(to.getIndex_no());
         tf_place_of_baptism.setText(to.getPlace_of_baptism());
+
+        tf_place_of_birth.setText(to.getPlace_of_birth());
+        tf_place_of_confirmation.setText(to.getPlace_of_confirmation());
+        tf_address_of_parents.setText(to.getAddress_of_parents());
         jPanel3.setVisible(true);
+        tf_fname.grabFocus();
         is_add = 0;
         if (col == 8) {
             delete_confirmation_records();
@@ -1246,7 +1280,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 String day = spires.util.DateType.nth(spires.util.DateType.d.format(new Date()));
                 String month = spires.util.DateType.m.format(new Date());
                 String year = spires.util.DateType.y.format(new Date());
-
+                year = year.substring(2, year.length());
                 String priest = jTextField3.getText();
                 String asst_priest = jTextField5.getText();
                 int add2 = FitIn.toInt(spires.util.DateType.y.format(new Date())) + 1;
@@ -1256,33 +1290,44 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 String name = tf_fname.getText() + " " + tf_mi.getText() + " " + tf_lname.getText();
                 String father = tf_father.getText();
                 String mother = tf_mother.getText();
-                Date d2 = dp_baptism.getDate();
+                Date d2 = dp_bdate.getDate();
                 Date d3 = dp_confirmation.getDate();
                 Date d4 = new Date();
-
+                
                 String date_of_confirmation = spires.util.DateType.month_date.format(d3);
 
                 String book_no = "" + tf_book_no.getText();
                 String page_no = "" + tf_page_no.getText();
                 String confirmed_by = tf_priest.getText();
                 String sponsor_name = tf_sponsors.getText();
-                String place_of_birth = tf_place_of_baptism.getText();
+                String place_of_birth = tf_place_of_birth.getText();
                 String date_of_birth = spires.util.DateType.month_date.format(d2);
                 String img_path = System.getProperty("img_path", "C:\\Users\\Ronald\\");
                 String purpose = "Purpose: " + jTextField4.getText();
                 if (jTextField4.getText().isEmpty()) {
                     purpose = "";
                 }
-                SRpt_confirmation rpt = new SRpt_confirmation(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, priest, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_birth, place_of_birth, purpose, "");
+                String date_of_baptism = DateType.sf.format(dp_baptism.getDate());
+                String place_of_baptism = tf_place_of_baptism.getText();
+                String address_of_parents = tf_address_of_parents.getText();
+                String place_of_confirmation = tf_place_of_confirmation.getText();
+                String registry_no = "";
+                String index_no = tf_index_no.getText();
+                SRpt_confirmation rpt = new SRpt_confirmation(
+                        num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, priest, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, "", address_of_parents, place_of_confirmation, registry_no, index_no);
+                String print = System.getProperty("print_confirmation", "default");
                 String jrxml = "rpt_confirmation.jrxml";
+                if (print.equalsIgnoreCase("Bacong")) {
+                    jrxml = "rpt_confirmation_bacong.jrxml";
+                }
                 try {
                     InputStream is = SRpt_confirmation.class.getResourceAsStream(jrxml);
                     JasperReport jasperReport;
                     jasperReport = JasperCompileManager.compileReport(is);
                     jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
                             setParameter(rpt), JasperUtil.emptyDatasource());
-                    JasperPrintManager.printReport(jasperPrint, false);
-
+//                    JasperPrintManager.printReport(jasperPrint, false);
+                    JasperPrintManager.printPage(jasperPrint, 0, false);
                 } catch (JRException ex) {
                     Logger.getLogger(Dlg_confirmation_records.class.getName()).log(Level.SEVERE, null, ex);
                 }

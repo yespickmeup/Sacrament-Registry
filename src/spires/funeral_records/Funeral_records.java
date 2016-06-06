@@ -43,6 +43,9 @@ public class Funeral_records {
                     + ",user_name"
                     + ",remarks"
                     + ",date_of_burial2"
+                    + ",age"
+                    + ",father"
+                    + ",mother"
                     + ")values("
                     + ":index_no"
                     + ",:book_no"
@@ -58,6 +61,9 @@ public class Funeral_records {
                     + ",:user_name"
                     + ",:remarks"
                     + ",:date_of_burial2"
+                    + ",:age"
+                    + ",:father"
+                    + ",:mother"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -75,6 +81,9 @@ public class Funeral_records {
                     .setString("user_name", Res.getUser_name())
                     .setString("remarks", to_encoding_funeral2.getRemarks())
                     .setString("date_of_burial2", to_encoding_funeral2.getDate_of_death())
+                    .setString("age", to_encoding_funeral2.getAge())
+                    .setString("father", to_encoding_funeral2.getFather())
+                    .setString("mother", to_encoding_funeral2.getMother())
                     .ok();
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
@@ -104,6 +113,9 @@ public class Funeral_records {
                     + ",user_name= :user_name "
                     + ",remarks= :remarks "
                     + ",date_of_burial2= :date_of_burial2 "
+                    + ",age= :age"
+                    + ",father= :father"
+                    + ",mother= :mother"
                     + " where id='" + to_encoding_funeral2.getId() + "' "
                     + " ";
 
@@ -122,6 +134,9 @@ public class Funeral_records {
                     .setString("user_name", Res.getUser_name())
                     .setString("remarks", to_encoding_funeral2.getRemarks())
                     .setString("date_of_burial2", to_encoding_funeral2.getDate_of_death())
+                    .setString("age", to_encoding_funeral2.getAge())
+                    .setString("father", to_encoding_funeral2.getFather())
+                    .setString("mother", to_encoding_funeral2.getMother())
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);

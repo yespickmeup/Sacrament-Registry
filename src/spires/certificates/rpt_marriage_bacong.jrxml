@@ -65,21 +65,14 @@ where p.g_ref_no= $P{g_ref_no} and p.b_ref_no=$P{b_ref_no}]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10" isBold="true"/>
 				</textElement>
-				<text><![CDATA[ST. CATHERINE OF ALEXANDRIA PARISH]]></text>
+				<text><![CDATA[ST. AUGUSTINE OF HIPPO PARISH]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="c398d8e6-f33d-44e5-a5d3-9ef936a39b1e" x="118" y="59" width="285" height="14"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Tahoma" size="10"/>
 				</textElement>
-				<text><![CDATA[CATHEDRAL , DUMAGUETE CITY]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="7f729db8-deaa-4bd2-85b6-61b467c1dee5" x="118" y="73" width="285" height="14"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="Tahoma" size="10"/>
-				</textElement>
-				<text><![CDATA[TEL. NO. 255-4649 / 422- 7765]]></text>
+				<text><![CDATA[Bacong, Negros Oriental]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="685e6333-6dea-4138-b7f5-ea61a4e8a812" x="118" y="166" width="285" height="14"/>

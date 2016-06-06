@@ -1401,7 +1401,7 @@ public class Dlg_printing_confirmation extends javax.swing.JDialog {
         }
         SRpt_confirmation rpt = new SRpt_confirmation(num, day, month, year, jTextField3.getText(), asst_priest, series_of, path, name, father
                 , mother, date_of_confirmation, book_no, page_no, tf_priest.getText(), sponsor_name, place_of_birth, date_of_birth
-                , img_path, date_of_birth, place_of_birth, purpose,"");
+                , img_path, date_of_birth, place_of_birth, purpose,"","","","","");
         String jrxml = "rpt_confirmation.jrxml";
         certificate_confirmation(rpt, jrxml);
     }
@@ -1546,7 +1546,7 @@ public class Dlg_printing_confirmation extends javax.swing.JDialog {
         int status = 0;
         jProgressBar2.setString("Updating Record...");
         jProgressBar2.setIndeterminate(true);
-        final Srpt_print_confirmation.field to = new Srpt_print_confirmation.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, bapt_date, "" + id, remarks,"");
+        final Srpt_print_confirmation.field to = new Srpt_print_confirmation.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, bapt_date, "" + id, remarks,"","","","");
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -1561,7 +1561,7 @@ public class Dlg_printing_confirmation extends javax.swing.JDialog {
                     jButton3.setEnabled(false);
                     jButton1.setEnabled(true);
                     jButton4.setEnabled(true);
-                    final Srpt_print_confirmation.field to2 = new Srpt_print_confirmation.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no, "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest, to.place_of_birth, DateType.slash.format(bapt), "" + to.id, remarks,"");
+                    final Srpt_print_confirmation.field to2 = new Srpt_print_confirmation.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no, "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest, to.place_of_birth, DateType.slash.format(bapt), "" + to.id, remarks,"","","","");
                     set_certificate(to2);
                 } catch (ParseException ex) {
                     Logger.getLogger(Dlg_printing_confirmation.class.getName()).log(Level.SEVERE, null, ex);
@@ -1600,7 +1600,7 @@ public class Dlg_printing_confirmation extends javax.swing.JDialog {
         String remark = tf_remarks.getText();
         jProgressBar2.setString("Updating Record...");
         jProgressBar2.setIndeterminate(true);
-        final Srpt_print_confirmation.field to = new Srpt_print_confirmation.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, bapt_date, "" + id, remarks,"");
+        final Srpt_print_confirmation.field to = new Srpt_print_confirmation.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, bapt_date, "" + id, remarks,"","","","");
 
         Thread t = new Thread(new Runnable() {
             @Override
@@ -1613,7 +1613,7 @@ public class Dlg_printing_confirmation extends javax.swing.JDialog {
                     jButton3.setEnabled(false);
                     jButton1.setEnabled(true);
                     jButton4.setEnabled(true);
-                    final Srpt_print_confirmation.field to2 = new Srpt_print_confirmation.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no, "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest, to.place_of_birth, DateType.slash.format(bapt), "" + to.id, remarks,"");
+                    final Srpt_print_confirmation.field to2 = new Srpt_print_confirmation.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no, "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest, to.place_of_birth, DateType.slash.format(bapt), "" + to.id, remarks,"","","","");
                     set_certificate(to2);
                     jProgressBar2.setString("Finished...");
                     jProgressBar2.setIndeterminate(false);
