@@ -23,14 +23,16 @@ public class DateType {
     public static SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd");
     public static SimpleDateFormat sf2 = new SimpleDateFormat("MMM d yyyy");
     public static SimpleDateFormat datetime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    public static SimpleDateFormat datetime2 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss aa");
     public static SimpleDateFormat time = new SimpleDateFormat("HH:mm:ss aa");
     public static SimpleDateFormat time2 = new SimpleDateFormat("HH:mm aa");
+    public static SimpleDateFormat time3 = new SimpleDateFormat("hh:mm aa");
     public static SimpleDateFormat sf1 = new SimpleDateFormat("EEE, MMM dd,yyyy");
     public static SimpleDateFormat d = new SimpleDateFormat("dd");
     public static SimpleDateFormat m = new SimpleDateFormat("MMMMMMMMMMM");
     public static SimpleDateFormat m1 = new SimpleDateFormat("MM");
     public static SimpleDateFormat y = new SimpleDateFormat("yyyy");
-    public static SimpleDateFormat liquid = new SimpleDateFormat("EEEEEEEEEEE dd MMMMMMMMMMM yyyy");
+    public static SimpleDateFormat liquid = new SimpleDateFormat("(EEEEEEEEEEE) dd, MMMMMMMMMMM yyyy");
     public static SimpleDateFormat day = new SimpleDateFormat("EEEEEEEEEEE");
     public static SimpleDateFormat day_1 = new SimpleDateFormat("EEEEEEEEEEE dd");
     public static SimpleDateFormat month_year = new SimpleDateFormat("MMMMMMMMMMM yyyy");
@@ -45,6 +47,9 @@ public class DateType {
     public static SimpleDateFormat contract3 = new SimpleDateFormat("MMMMMMMMMMM                 yyyy");
     public static SimpleDateFormat contract4 = new SimpleDateFormat("dd                  MMMMMMMMMMM       yyyy");
     public static SimpleDateFormat contract5 = new SimpleDateFormat("              MMMMMMMMMMM,   yyyy");
+    public static SimpleDateFormat datetime_hour = new SimpleDateFormat("hh");
+    public static SimpleDateFormat datetime_minute = new SimpleDateFormat("mm");
+    public static SimpleDateFormat datetime_stamp = new SimpleDateFormat("aa");
 
     public static void main(String[] args) {
         System.out.println(nth("08"));
@@ -338,6 +343,74 @@ public class DateType {
         return date;
     }
 
+    public static String convert_slash_datetime(String datetime) {
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.slash.format(d);
+
+        return date;
+    }
+
+    public static String convert_slash_datetime2(String datetime) {
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.sf.format(new Date());
+        }
+        try {
+            d = DateType.sf.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.slash.format(d);
+
+        return date;
+    }
+
+    public static String convert_slash_datetime3(String datetime) {
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.time3.format(d);
+
+        return date;
+    }
+
+     public static String convert_mon_datetime3(String datetime) {
+        String date = "";
+        Date d = new Date();
+        if (datetime.isEmpty()) {
+            datetime = DateType.datetime.format(new Date());
+        }
+        try {
+            d = DateType.datetime.parse(datetime);
+        } catch (ParseException ex) {
+            Logger.getLogger(DateType.class.getName()).
+                    log(Level.SEVERE, null, ex);
+        }
+        date = DateType.liquid.format(d);
+      
+        return date;
+    }
+     
     public static List<String> days() {
         List<String> days = new ArrayList();
         for (int i = 1; i < 32; i++) {
@@ -395,5 +468,54 @@ public class DateType {
         int y2 = FitIn.toInt(DateType.y.format(end));
         int total = y2 - y1;
         return total;
+    }
+
+    public static String now() {
+        Date d = new Date();
+        String s = DateType.datetime.format(d);
+        return s;
+    }
+
+    public static List<String> hours() {
+        List<String> hours = new ArrayList();
+        hours.add("01");
+        hours.add("02");
+        hours.add("03");
+        hours.add("04");
+        hours.add("05");
+        hours.add("06");
+        hours.add("07");
+        hours.add("08");
+        hours.add("09");
+        hours.add("10");
+        hours.add("11");
+        hours.add("12");
+        return hours;
+    }
+
+    public static List<String> minutes() {
+        List<String> hours = new ArrayList();
+        hours.add("00");
+        hours.add("01");
+        hours.add("02");
+        hours.add("03");
+        hours.add("04");
+        hours.add("05");
+        hours.add("06");
+        hours.add("07");
+        hours.add("08");
+        hours.add("09");
+        hours.add("10");
+        for (int i = 11; i < 60; i++) {
+            hours.add("" + i);
+        }
+        return hours;
+    }
+
+    public static List<String> stamp() {
+        List<String> hours = new ArrayList();
+        hours.add("AM");
+        hours.add("PM");
+        return hours;
     }
 }

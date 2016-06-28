@@ -18,9 +18,23 @@ id int auto_increment primary key
 ,status int
 ,official varchar(255)
 ,official_id varchar(255)
-,schedule_time datetime
+,schedule_time_from datetime
+,schedule_time_to datetime
 ,schedule_type varchar(255)
 ,schedule_address varchar(255)
 ,parishioner varchar(255)
 ,parishioner_contact_no varchar(255)
+);
+
+alter table my_parishioners add address varchar(255);
+
+drop table if exists official_schedule_types;
+create table official_schedule_types(
+id int auto_increment primary key
+,created_at datetime
+,updated_at datetime
+,created_by varchar(255)
+,updated_by varchar(255)
+,status int
+,schedule_type varchar(255)
 );

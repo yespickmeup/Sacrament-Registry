@@ -32,13 +32,14 @@ public class Official_schedules {
         public final int status;
         public final String official;
         public final String official_id;
-        public final String schedule_time;
+        public final String schedule_time_from;
+        public final String schedule_time_to;
         public final String schedule_type;
         public final String schedule_address;
         public final String parishioner;
         public final String parishioner_contact_no;
 
-        public to_official_schedules(int id, String created_at, String updated_at, String created_by, String updated_by, int status, String official, String official_id, String schedule_time, String schedule_type, String schedule_address, String parishioner, String parishioner_contact_no) {
+        public to_official_schedules(int id, String created_at, String updated_at, String created_by, String updated_by, int status, String official, String official_id, String schedule_time_from, String schedule_time_to, String schedule_type, String schedule_address, String parishioner, String parishioner_contact_no) {
             this.id = id;
             this.created_at = created_at;
             this.updated_at = updated_at;
@@ -47,7 +48,8 @@ public class Official_schedules {
             this.status = status;
             this.official = official;
             this.official_id = official_id;
-            this.schedule_time = schedule_time;
+            this.schedule_time_from = schedule_time_from;
+            this.schedule_time_to = schedule_time_to;
             this.schedule_type = schedule_type;
             this.schedule_address = schedule_address;
             this.parishioner = parishioner;
@@ -66,7 +68,8 @@ public class Official_schedules {
                     + ",status"
                     + ",official"
                     + ",official_id"
-                    + ",schedule_time"
+                    + ",schedule_time_from"
+                    + ",schedule_time_to"
                     + ",schedule_type"
                     + ",schedule_address"
                     + ",parishioner"
@@ -79,7 +82,8 @@ public class Official_schedules {
                     + ",:status"
                     + ",:official"
                     + ",:official_id"
-                    + ",:schedule_time"
+                    + ",:schedule_time_from"
+                    + ",:schedule_time_to"
                     + ",:schedule_type"
                     + ",:schedule_address"
                     + ",:parishioner"
@@ -94,7 +98,8 @@ public class Official_schedules {
                     .setNumber("status", to_official_schedules.status)
                     .setString("official", to_official_schedules.official)
                     .setString("official_id", to_official_schedules.official_id)
-                    .setString("schedule_time", to_official_schedules.schedule_time)
+                    .setString("schedule_time_from", to_official_schedules.schedule_time_from)
+                    .setString("schedule_time_to", to_official_schedules.schedule_time_to)
                     .setString("schedule_type", to_official_schedules.schedule_type)
                     .setString("schedule_address", to_official_schedules.schedule_address)
                     .setString("parishioner", to_official_schedules.parishioner)
@@ -122,7 +127,8 @@ public class Official_schedules {
                     + ",status= :status "
                     + ",official= :official "
                     + ",official_id= :official_id "
-                    + ",schedule_time= :schedule_time "
+                    + ",schedule_time_from= :schedule_time_from "
+                    + ",schedule_time_to= :schedule_time_to "
                     + ",schedule_type= :schedule_type "
                     + ",schedule_address= :schedule_address "
                     + ",parishioner= :parishioner "
@@ -138,7 +144,8 @@ public class Official_schedules {
                     .setNumber("status", to_official_schedules.status)
                     .setString("official", to_official_schedules.official)
                     .setString("official_id", to_official_schedules.official_id)
-                    .setString("schedule_time", to_official_schedules.schedule_time)
+                    .setString("schedule_time_from", to_official_schedules.schedule_time_from)
+                    .setString("schedule_time_to", to_official_schedules.schedule_time_to)
                     .setString("schedule_type", to_official_schedules.schedule_type)
                     .setString("schedule_address", to_official_schedules.schedule_address)
                     .setString("parishioner", to_official_schedules.parishioner)
@@ -186,7 +193,8 @@ public class Official_schedules {
                     + ",status"
                     + ",official"
                     + ",official_id"
-                    + ",schedule_time"
+                    + ",schedule_time_from"
+                    + ",schedule_time_to"
                     + ",schedule_type"
                     + ",schedule_address"
                     + ",parishioner"
@@ -205,13 +213,14 @@ public class Official_schedules {
                 int status = rs.getInt(6);
                 String official = rs.getString(7);
                 String official_id = rs.getString(8);
-                String schedule_time = rs.getString(9);
-                String schedule_type = rs.getString(10);
-                String schedule_address = rs.getString(11);
-                String parishioner = rs.getString(12);
-                String parishioner_contact_no = rs.getString(13);
+                String schedule_time_from = rs.getString(9);
+                String schedule_time_to = rs.getString(10);
+                String schedule_type = rs.getString(11);
+                String schedule_address = rs.getString(12);
+                String parishioner = rs.getString(13);
+                String parishioner_contact_no = rs.getString(14);
 
-                to_official_schedules to = new to_official_schedules(id, created_at, updated_at, created_by, updated_by, status, official, official_id, schedule_time, schedule_type, schedule_address, parishioner, parishioner_contact_no);
+                to_official_schedules to = new to_official_schedules(id, created_at, updated_at, created_by, updated_by, status, official, official_id, schedule_time_from, schedule_time_to, schedule_type, schedule_address, parishioner, parishioner_contact_no);
                 datas.add(to);
             }
             return datas;

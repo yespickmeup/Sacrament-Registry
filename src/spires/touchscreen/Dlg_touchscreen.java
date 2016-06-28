@@ -10,7 +10,7 @@ import spires.cashiering.S1_cashiering;
 import spires.cashiering.S1_cashiering.to_cashiering;
 import spires.cashiering.S2_cashiering;
 import spires.disbursements.Dlg_disbursements;
-import spires.my_parishioners.S1_my_parishioners;
+import spires.my_parishioners.My_parishioners;
 
 import spires.receipts.S1_receipts;
 import spires.reports.Dlg_cashiering_reports;
@@ -1619,7 +1619,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
         nd.setVisible(true);
     }
 
-    List<S1_my_parishioners.to_my_parishioners> parishioner_list = new ArrayList();
+    List<My_parishioners.to_my_parishioners> parishioner_list = new ArrayList();
     int my_add_parishioner = 0;
 
     private void init_manager() {
@@ -1627,7 +1627,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
         parishioner_list.clear();
         String where = " where parishioner like '%" + search + "%' "
                 + "   order by parishioner asc";
-        parishioner_list = S1_my_parishioners.ret_data(where);
+        parishioner_list = My_parishioners.ret_data(where);
         if (parishioner_list.isEmpty()) {
             tf_contact.grabFocus();
             my_add_parishioner = 1;
@@ -1635,14 +1635,14 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
         } else {
             my_add_parishioner = 0;
             if (parishioner_list.size() == 1) {
-                S1_my_parishioners.to_my_parishioners t = parishioner_list.get(0);
+                My_parishioners.to_my_parishioners t = parishioner_list.get(0);
                 tf_name.setText(t.parishioner);
                 tf_contact.setText(t.contact_no);
                 tf_contact.grabFocus();
             } else {
                 Object[][] obj = new Object[parishioner_list.size()][2];
                 int i = 0;
-                for (S1_my_parishioners.to_my_parishioners to : parishioner_list) {
+                for (My_parishioners.to_my_parishioners to : parishioner_list) {
                     obj[i][0] = " " + to.parishioner;
                     obj[i][1] = " " + to.contact_no;
                     i++;
@@ -1656,7 +1656,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
                 tr.setCallback(new TableRenderer3.Callback() {
                     @Override
                     public void ok(TableRenderer3.OutputData data) {
-                        S1_my_parishioners.to_my_parishioners to = parishioner_list.get(data.selected_row);
+                        My_parishioners.to_my_parishioners to = parishioner_list.get(data.selected_row);
                         tf_name.setText(to.parishioner);
                         tf_contact.setText(to.contact_no);
                         tf_contact.grabFocus();
@@ -1671,9 +1671,8 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
     private void add_parishioner() {
 
         if (my_add_parishioner == 1) {
-            S1_my_parishioners.to_my_parishioners to1
-                    = new S1_my_parishioners.to_my_parishioners(0, tf_name.getText(), tf_contact.getText());
-            S1_my_parishioners.add_my_parishioners(to1);
+            My_parishioners.to_my_parishioners to1 = new My_parishioners.to_my_parishioners(0, tf_name.getText(), tf_contact.getText(),"");
+            My_parishioners.add_my_parishioners(to1);
         }
 
         payment();
