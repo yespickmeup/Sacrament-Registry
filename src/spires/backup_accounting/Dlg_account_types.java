@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.accounting;
+package spires.backup_accounting;
 
-import spires.accounting.S1_account_disbursement_details.to_account_disbursement_details;
-import spires.accounting.S1_account_disbursements.to_account_disbursements;
-import spires.accounting.S1_account_numbers.to_account_numbers;
-import spires.accounting.S1_account_revenues.to_account_revenues;
+import spires.backup_accounting.S1_account_disbursement_details.to_account_disbursement_details;
+import spires.backup_accounting.S1_account_disbursements.to_account_disbursements;
+import spires.backup_accounting.S1_account_numbers.to_account_numbers;
+import spires.backup_accounting.S1_account_revenues.to_account_revenues;
 import spires.cashiering.Dlg_cashiering;
 import spires.util.Alert;
 import spires.util.Focus_Fire;

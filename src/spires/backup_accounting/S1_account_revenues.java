@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.accounting;
+package spires.backup_accounting;
 
 import spires.util.MyConnection;
 import java.sql.Connection;
@@ -20,45 +20,40 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  *
  * @author Ronald
  */
-public class S1_account_numbers {
+public class S1_account_revenues {
 
-    public static class to_account_numbers {
+    public static class to_account_revenues {
 
         public final int id;
-        public final String description;
-        public final String account_no;
+        public final String revenue;
         public final int status;
 
-        public to_account_numbers(int id, String description, String account_no, int status) {
+        public to_account_revenues(int id, String revenue, int status) {
             this.id = id;
-            this.description = description;
-            this.account_no = account_no;
+            this.revenue = revenue;
             this.status = status;
         }
     }
 
-    public static void add_account_numbers(to_account_numbers to_account_numbers) {
+    public static void add_account_revenues(to_account_revenues to_account_revenues) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "insert into account_numbers("
-                    + "description"
-                    + ",account_no"
+            String s0 = "insert into account_revenues("
+                    + "revenue"
                     + ",status"
                     + ")values("
-                    + ":description"
-                    + ",:account_no"
+                    + ":revenue"
                     + ",:status"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("description", to_account_numbers.description)
-                    .setString("account_no", to_account_numbers.account_no)
-                    .setNumber("status", to_account_numbers.status)
+                    .setString("revenue", to_account_revenues.revenue)
+                    .setNumber("status", to_account_revenues.status)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_account_numbers.class, "Successfully Added");
+            Lg.s(S1_account_revenues.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -66,26 +61,24 @@ public class S1_account_numbers {
         }
     }
 
-    public static void edit_account_numbers(to_account_numbers to_account_numbers) {
+    public static void edit_account_revenues(to_account_revenues to_account_revenues) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "update account_numbers set "
-                    + "description= :description"
-                    + ",account_no= :account_no"
+            String s0 = "update account_revenues set "
+                    + "revenue= :revenue"
                     + ",status= :status"
                     + " where "
-                    + " id ='" + to_account_numbers.id + "' "
+                    + " id ='" + to_account_revenues.id + "' "
                     + " ";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("description", to_account_numbers.description)
-                    .setString("account_no", to_account_numbers.account_no)
-                    .setNumber("status", to_account_numbers.status)
+                    .setString("revenue", to_account_revenues.revenue)
+                    .setNumber("status", to_account_revenues.status)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_account_numbers.class, "Successfully Updated");
+            Lg.s(S1_account_revenues.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -93,16 +86,16 @@ public class S1_account_numbers {
         }
     }
 
-    public static void delete_account_numbers(to_account_numbers to_account_numbers) {
+    public static void delete_account_revenues(to_account_revenues to_account_revenues) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from account_numbers where "
-                    + " id ='" + to_account_numbers.id + "' "
+            String s0 = "delete from account_revenues where "
+                    + " id ='" + to_account_revenues.id + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_account_numbers.class, "Successfully Deleted");
+            Lg.s(S1_account_revenues.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -110,28 +103,26 @@ public class S1_account_numbers {
         }
     }
 
-    public static List<to_account_numbers> ret_data(String where) {
-        List<to_account_numbers> datas = new ArrayList();
+    public static List<to_account_revenues> ret_data(String where) {
+        List<to_account_revenues> datas = new ArrayList();
 
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
                     + "id"
-                    + ",description"
-                    + ",account_no"
+                    + ",revenue"
                     + ",status"
-                    + " from account_numbers  "
+                    + " from account_revenues  "
                     + " " + where;
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String description = rs.getString(2);
-                String account_no = rs.getString(3);
-                int status = rs.getInt(4);
+                String revenue = rs.getString(2);
+                int status = rs.getInt(3);
 
-                to_account_numbers to = new to_account_numbers(id, description, account_no, status);
+                to_account_revenues to = new to_account_revenues(id, revenue, status);
                 datas.add(to);
             }
             return datas;

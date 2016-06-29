@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.accounting;
+package spires.backup_accounting;
 
 import spires.util.MyConnection;
 import java.sql.Connection;
@@ -20,40 +20,35 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  *
  * @author Ronald
  */
-public class S1_account_revenues {
+public class S1_account_payees {
 
-    public static class to_account_revenues {
+    public static class to_account_payees {
 
         public final int id;
-        public final String revenue;
-        public final int status;
+        public final String payee;
 
-        public to_account_revenues(int id, String revenue, int status) {
+        public to_account_payees(int id, String payee) {
             this.id = id;
-            this.revenue = revenue;
-            this.status = status;
+            this.payee = payee;
         }
     }
 
-    public static void add_account_revenues(to_account_revenues to_account_revenues) {
+    public static void add_account_payees(to_account_payees to_account_payees) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "insert into account_revenues("
-                    + "revenue"
-                    + ",status"
+            String s0 = "insert into account_payees("
+                    + "payee"
                     + ")values("
-                    + ":revenue"
-                    + ",:status"
+                    + ":payee"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("revenue", to_account_revenues.revenue)
-                    .setNumber("status", to_account_revenues.status)
+                    .setString("payee", to_account_payees.payee)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_account_revenues.class, "Successfully Added");
+            Lg.s(S1_account_payees.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -61,24 +56,22 @@ public class S1_account_revenues {
         }
     }
 
-    public static void edit_account_revenues(to_account_revenues to_account_revenues) {
+    public static void edit_account_payees(to_account_payees to_account_payees) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "update account_revenues set "
-                    + "revenue= :revenue"
-                    + ",status= :status"
+            String s0 = "update account_payees set "
+                    + "payee= :payee"
                     + " where "
-                    + " id ='" + to_account_revenues.id + "' "
+                    + " id ='" + to_account_payees.id + "' "
                     + " ";
 
             s0 = SqlStringUtil.parse(s0)
-                    .setString("revenue", to_account_revenues.revenue)
-                    .setNumber("status", to_account_revenues.status)
+                    .setString("payee", to_account_payees.payee)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_account_revenues.class, "Successfully Updated");
+            Lg.s(S1_account_payees.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -86,16 +79,16 @@ public class S1_account_revenues {
         }
     }
 
-    public static void delete_account_revenues(to_account_revenues to_account_revenues) {
+    public static void delete_account_payees(to_account_payees to_account_payees) {
         try {
             Connection conn = MyConnection.connect();
-            String s0 = "delete from account_revenues where "
-                    + " id ='" + to_account_revenues.id + "' "
+            String s0 = "delete from account_payees where "
+                    + " id ='" + to_account_payees.id + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_account_revenues.class, "Successfully Deleted");
+            Lg.s(S1_account_payees.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -103,26 +96,24 @@ public class S1_account_revenues {
         }
     }
 
-    public static List<to_account_revenues> ret_data(String where) {
-        List<to_account_revenues> datas = new ArrayList();
+    public static List<to_account_payees> ret_data(String where) {
+        List<to_account_payees> datas = new ArrayList();
 
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select "
                     + "id"
-                    + ",revenue"
-                    + ",status"
-                    + " from account_revenues  "
+                    + ",payee"
+                    + " from account_payees  "
                     + " " + where;
 
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(s0);
             while (rs.next()) {
                 int id = rs.getInt(1);
-                String revenue = rs.getString(2);
-                int status = rs.getInt(3);
+                String payee = rs.getString(2);
 
-                to_account_revenues to = new to_account_revenues(id, revenue, status);
+                to_account_payees to = new to_account_payees(id, payee);
                 datas.add(to);
             }
             return datas;

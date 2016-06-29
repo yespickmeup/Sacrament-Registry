@@ -4,7 +4,7 @@
  */
 package spires.cash_drawer;
 
-import spires.accounting.S1_account_disbursement_details;
+import spires.backup_accounting.S1_account_disbursement_details;
 import spires.disbursements.S1_disbursements;
 import spires.disbursements.S1_disbursements.to_cash_drawer_expenses;
 import spires.expenses.S1_expenses;

@@ -5,7 +5,7 @@
  */
 package spires.disbursements;
 
-import spires.accounting.S1_account_disburses;
+import spires.backup_accounting.S1_account_disburses;
 import spires.util.MyConnection;
 import spires.util.MyDate;
 import java.sql.Connection;

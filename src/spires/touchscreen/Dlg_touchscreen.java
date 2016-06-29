@@ -1326,7 +1326,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             select_type();
         }
     }
-
+    
     private void data_cols2() {
         String where = " where is_active='" + "1" + "' order by account asc";
         loadData_cashiering(S1_cashiering.ret_data2(where));

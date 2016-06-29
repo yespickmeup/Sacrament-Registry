@@ -4,8 +4,8 @@
  */
 package spires.disbursements;
 
-import spires.accounting.S1_account_disbursement_details;
-import spires.accounting.S1_account_numbers;
+import spires.backup_accounting.S1_account_disbursement_details;
+import spires.backup_accounting.S1_account_numbers;
 
 import spires.util.Alert;
 import spires.util.DateType;

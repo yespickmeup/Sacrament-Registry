@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.accounting;
+package spires.backup_accounting;
 
 import spires.receipts.S1_receipts.to_receipts;
 import spires.util.MyConnection;

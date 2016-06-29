@@ -5,8 +5,8 @@
  */
 package spires.pnl;
 
-import spires.accounting.Dlg_account_types;
-import spires.accounting.Dlg_accounting_transactions;
+import spires.backup_accounting.Dlg_account_types;
+import spires.backup_accounting.Dlg_accounting_transactions;
 import spires.cashiering.Dlg_cashiering;
 import spires.officials.Dlg_officials;
 import spires.churches.Dlg_churches;

@@ -4,7 +4,7 @@
  */
 package spires.cashiering;
 
-import spires.accounting.S1_account_numbers;
+import spires.backup_accounting.S1_account_numbers;
 import spires.cashiering.S1_cashiering_types.to_cashiering_types;
 import spires.util.Alert;
 import spires.util.Focus_Fire;
