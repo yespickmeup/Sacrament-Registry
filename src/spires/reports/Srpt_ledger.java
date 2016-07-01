@@ -5,7 +5,7 @@
  */
 package spires.reports;
 
-import spires.receipts.S1_receipts;
+import spires.receipts.Receipts;
 import spires.util.MyConnection;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -97,9 +97,9 @@ public class Srpt_ledger {
     public static void main(String[] args) {
         String where = "";
         List<Srpt_ledger.field> fields = new ArrayList();
-        List<S1_receipts.to_receipts> receipts = Srpt_ledger.ret_receipts(where);
+        List<Receipts.to_receipts> receipts = Srpt_ledger.ret_receipts(where);
         double tot = 0;
-        for (S1_receipts.to_receipts to : receipts) {
+        for (Receipts.to_receipts to : receipts) {
             if (to.account_type.isEmpty()) {
                 Srpt_ledger.field t = new field(to.or_no, to.or_date, to.account_name, (to.cash + to.check_amount));
                 fields.add(t);
@@ -144,8 +144,8 @@ public class Srpt_ledger {
         }
     }
 
-    public static List<S1_receipts.to_receipts> ret_receipts(String where) {
-        List<S1_receipts.to_receipts> datas = new ArrayList();
+    public static List<Receipts.to_receipts> ret_receipts(String where) {
+        List<Receipts.to_receipts> datas = new ArrayList();
 
         try {
             Connection conn = MyConnection.connect();
@@ -175,6 +175,8 @@ public class Srpt_ledger {
                     + ",particular_id"
                     + ",particular_account"
                     + ",particular_account_id"
+                    + ",check_bank"
+                    + ",is_fixed"
                     + " from receipts  "
                     + " " + where;
 
@@ -206,10 +208,10 @@ public class Srpt_ledger {
                 String particular_id=rs.getString(23);
                 String particular_account=rs.getString(24);
                 String particular_account_id=rs.getString(25);
-                S1_receipts.to_receipts to = new S1_receipts.to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id
+                Receipts.to_receipts to = new Receipts.to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id
                         , amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no
                         , account_name, account_id, account_type, account_type_id, status,particular,particular_id,particular_account
-                        ,particular_account_id,true);
+                        ,particular_account_id,"",0);
                 datas.add(to);
             }
             return datas;

@@ -5,7 +5,7 @@
  */
 package spires.backup_accounting;
 
-import spires.receipts.S1_receipts.to_receipts;
+import spires.receipts.Receipts.to_receipts;
 import spires.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

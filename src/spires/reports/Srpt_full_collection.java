@@ -5,8 +5,8 @@
  */
 package spires.reports;
 
-import spires.cashiering.S1_cashiering;
-import spires.receipts.S1_receipts.to_receipts;
+import spires.cashiering.Cashiering;
+import spires.receipts.Receipts.to_receipts;
 import spires.util.MyConnection;
 import java.io.InputStream;
 import java.sql.Connection;
@@ -154,49 +154,49 @@ public class Srpt_full_collection {
         List<Srpt_full_collection.field> datas = new ArrayList();
 
         List<to_receipts> receipts = ret_receipts(where);
-        List<S1_cashiering.to_cashiering> cashier = types();
+        List<Cashiering.to_cashiering> cashier = types();
 
         double c = 0;
-        for (S1_cashiering.to_cashiering cash : cashier) {
-            if (cash.parent == 1) {
-                Srpt_full_collection.field parent = new field(cash.account, cash.account, FitIn.fmt_wc_0(cash.rate), cash.parent);
-                double parent_cash = 0;
-
-                for (to_receipts to : receipts) {
-                    if (to.particular_account_id.equals("" + cash.id)) {
-                        parent_cash += to.cash + to.check_amount;
-                    }
-                }
-                if (parent_cash != 0) {
-                    datas.add(parent);
-                    parent.setAmount(FitIn.fmt_wc_0(parent_cash));
-                }
-
-            } else {
-                Srpt_full_collection.field f = new field("  " + cash.account_name, "    " + cash.account_type, FitIn.fmt_wc_0(0), cash.parent);
-
-                double type_cash = 0;
-                for (to_receipts to : receipts) {
-                    if (to.particular_id.equals(cash.account_type_id)) {
-                        type_cash += to.cash + to.check_amount;
-                    }
-                }
-                if (type_cash != 0) {
-                    datas.add(f);
-                    f.setAmount(FitIn.fmt_wc_0(type_cash));
-                }
-
-                c += type_cash;
-
-            }
+        for (Cashiering.to_cashiering cash : cashier) {
+//            if (cash.parent == 1) {
+//                Srpt_full_collection.field parent = new field(cash.account, cash.account, FitIn.fmt_wc_0(cash.rate), cash.parent);
+//                double parent_cash = 0;
+//
+//                for (to_receipts to : receipts) {
+//                    if (to.particular_account_id.equals("" + cash.id)) {
+//                        parent_cash += to.cash + to.check_amount;
+//                    }
+//                }
+//                if (parent_cash != 0) {
+//                    datas.add(parent);
+//                    parent.setAmount(FitIn.fmt_wc_0(parent_cash));
+//                }
+//
+//            } else {
+//                Srpt_full_collection.field f = new field("  " + cash.account_name, "    " + cash.account_type, FitIn.fmt_wc_0(0), cash.parent);
+//
+//                double type_cash = 0;
+//                for (to_receipts to : receipts) {
+//                    if (to.particular_id.equals(cash.account_type_id)) {
+//                        type_cash += to.cash + to.check_amount;
+//                    }
+//                }
+//                if (type_cash != 0) {
+//                    datas.add(f);
+//                    f.setAmount(FitIn.fmt_wc_0(type_cash));
+//                }
+//
+//                c += type_cash;
+//
+//            }
 
         }
 
         return datas;
     }
 
-    public static List<S1_cashiering.to_cashiering> types() {
-        List<S1_cashiering.to_cashiering> datas = new ArrayList();
+    public static List<Cashiering.to_cashiering> types() {
+        List<Cashiering.to_cashiering> datas = new ArrayList();
 
         try {
             Connection conn = MyConnection.connect();
@@ -218,8 +218,8 @@ public class Srpt_full_collection {
                 int is_active = rs.getInt(4);
 
                 int size = 0;
-                S1_cashiering.to_cashiering to = new S1_cashiering.to_cashiering(id, account, rate, is_active, 1, 0, "", "", "", "", "", 0, "", "", "", "", "", "");
-                datas.add(to);
+//                Cashiering.to_cashiering to = new Cashiering.to_cashiering(id, account, rate, is_active, 1, 0, "", "", "", "", "", 0, "", "", "", "", "", "");
+//                datas.add(to);
 
                 String s2 = "select "
                         + "id"
@@ -241,11 +241,11 @@ public class Srpt_full_collection {
                     String cashiering_type = rs2.getString(4);
                     double rate2 = rs2.getDouble(5);
                     int is_active2 = rs2.getInt(6);
-                    S1_cashiering.to_cashiering to2 = new S1_cashiering.to_cashiering(id2, cashiering_type, rate2, is_active, 0, 0, "" + id, account, cashiering_type, "" + id2, "", 0, "", "", "", "", "", "");
-                    datas.add(to2);
+//                    Cashiering.to_cashiering to2 = new Cashiering.to_cashiering(id2, cashiering_type, rate2, is_active, 0, 0, "" + id, account, cashiering_type, "" + id2, "", 0, "", "", "", "", "", "");
+//                    datas.add(to2);
                     size++;
                 }
-                to.setSize(size);
+//                to.setSize(size);
             }
             return datas;
         } catch (SQLException e) {
@@ -317,7 +317,7 @@ public class Srpt_full_collection {
                 String particular_id = rs.getString(23);
                 String particular_account = rs.getString(24);
                 String particular_account_id = rs.getString(25);
-                to_receipts to = new to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular, particular_id, particular_account, particular_account_id, true);
+                to_receipts to = new to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular, particular_id, particular_account, particular_account_id,"",0);
                 datas.add(to);
             }
             return datas;

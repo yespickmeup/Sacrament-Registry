@@ -5,8 +5,8 @@
  */
 package spires.reports;
 
-import spires.receipts.S1_receipts;
-import spires.receipts.S1_receipts.to_receipts;
+import spires.receipts.Receipts;
+import spires.receipts.Receipts.to_receipts;
 import static spires.reports.Dlg_report.compileJasper;
 import spires.touchscreen.Dlg_update_date;
 import spires.touchscreen.Srpt_acknowledgement_receipt;
@@ -583,13 +583,13 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
 
         tbl_receipts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         tbl_receipts.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -890,9 +890,9 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
                 String where = " where Date(or_date) between '" + date_from + "' and '" + date_to + "' order by or_no asc";
 
                 List<Srpt_ledger.field> fields = new ArrayList();
-                List<S1_receipts.to_receipts> receipts = Srpt_ledger.ret_receipts(where);
+                List<Receipts.to_receipts> receipts = Srpt_ledger.ret_receipts(where);
                 double tot = 0;
-                for (S1_receipts.to_receipts to : receipts) {
+                for (Receipts.to_receipts to : receipts) {
                     if (to.account_type.isEmpty()) {
                         Srpt_ledger.field t = new Srpt_ledger.field(to.or_no, MyDate.yyyy_mm_dd_to_slash(to.or_date), to.particular, (to.cash + to.check_amount));
                         fields.add(t);
@@ -1082,7 +1082,7 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
                 case 6:
                     return "  Print";
                 case 7:
-                    return tt.selected;
+                    return tt.cash;
                 case 8:
                     return tt.cash;
                 case 9:
@@ -1125,7 +1125,7 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
         String date_from = MyDate.date_to_yyyy_mm_dd(jDateChooser9.getDate());
         String date_to = MyDate.date_to_yyyy_mm_dd(jDateChooser10.getDate());
         String where = " where Date(or_date) between '" + date_from + "' and '" + date_to + "' order by or_no asc";
-        loadData_receipts(S1_receipts.ret_data(where));
+        loadData_receipts(Receipts.ret_data(where));
     }
 
     private void select() {
@@ -1146,7 +1146,7 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_confirm.OutputData data) {
                     closeDialog.ok();
-                    S1_receipts.delete_receipts(to);
+                    Receipts.delete_receipts(to);
                     data_cols();
                     Alert.set(0, "Transaction Cancelled!");
                 }
@@ -1196,11 +1196,11 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
         }
         final to_receipts to = (to_receipts) tbl_receipts_ALM.get(tbl_receipts.convertRowIndexToModel(row));
 
-        if (to.selected == true) {
-            to.setSelected(false);
-        } else {
-            to.setSelected(true);
-        }
+//        if (to.selected == true) {
+//            to.setSelected(false);
+//        } else {
+//            to.setSelected(true);
+//        }
         tbl_receipts_M.fireTableDataChanged();
     }
 
@@ -1223,7 +1223,7 @@ public class Dlg_cashiering_reports extends javax.swing.JDialog {
             public void ok(CloseDialog closeDialog, Dlg_update_date.OutputData data) {
                 closeDialog.ok();
                 List<to_receipts> datas = tbl_receipts_ALM;
-                S1_receipts.edit_or_date(datas,data.date);
+                Receipts.edit_or_date(datas,data.date);
                 data_cols();
             }
         });

@@ -26,12 +26,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.CloseDialog;
-import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
-import mijzcx.synapse.desk.utils.ReceiptIncrementor;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -39,6 +38,7 @@ import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
 import spires.my_parishioners.My_parishioners;
 import spires.official_schedules.Official_schedules.to_official_schedules;
+import spires.officials.Dlg_officials;
 import spires.officials.Officials;
 import spires.users.Res;
 import spires.util.Alert;
@@ -578,8 +578,7 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -674,8 +673,8 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
                             .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jCheckBox2)))
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -772,13 +771,14 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
                             .addComponent(jTextField13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jDateChooser3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jCheckBox3)
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jDateChooser4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jDateChooser3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox3)
+                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jDateChooser4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(10, 10, 10))
         );
@@ -851,7 +851,7 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(19, 19, 19)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 833, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1)
                 .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
@@ -992,7 +992,6 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JCheckBox jCheckBox2;
@@ -1058,6 +1057,14 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
         minutes = DateType.minutes();
         stamp = DateType.stamp();
         official_schedule_types = Official_schedule_types.ret_data("");
+        
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                  jTextField1.grabFocus();
+            }
+        });
+     
     }
 
     public void do_pass() {
@@ -1091,8 +1098,58 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
 
             }
         });
-    }
+         jTextField1.addKeyListener(new KeyAdapter() {
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() == KeyEvent.VK_F5) {
+                  dlg_officials();
+                }
+
+            }
+        });
+          jTextField8.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() == KeyEvent.VK_F5) {
+                  dlg_officials();
+                }
+
+            }
+        });
+          jTextField13.addKeyListener(new KeyAdapter() {
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+                if (e.getKeyCode() == KeyEvent.VK_F5) {
+                  dlg_officials();
+                }
+
+            }
+        });
+    }
+    
+     private void dlg_officials() {
+        Window p = (Window) this;
+        Dlg_officials nd = Dlg_officials.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_officials.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_officials.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
+     
     private void dlg_official_schedule_types() {
         Window p = (Window) this;
         Dlg_official_schedule_types nd = Dlg_official_schedule_types.create(p, true);
@@ -1186,7 +1243,7 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
                 case 5:
                     return "/spires/img_functions/edit.png";
                 case 6:
-                    return "/spires/img_functions/remove11.png";
+                        return "/spires/img_functions/remove11.png";
                 case 7:
                     return tt.official_id;
                 case 8:
@@ -1396,6 +1453,8 @@ public class Dlg_official_schedules extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 My_parishioners.to_my_parishioners to = parishioner.get(data.selected_row);
                 jTextField4.setText("" + to.parishioner);
+                jTextField5.setText(to.address);
+                jTextField6.setText(to.contact_no);
             }
         });
     }

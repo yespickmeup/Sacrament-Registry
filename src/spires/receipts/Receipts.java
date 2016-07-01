@@ -21,7 +21,7 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  *
  * @author Ronald
  */
-public class S1_receipts {
+public class Receipts {
 
     public static class to_receipts {
 
@@ -33,11 +33,11 @@ public class S1_receipts {
         public final String user_name;
         public final String terminal_id;
         public final double amount_due;
-        public final double cash;
-        public final double check_amount;
-        public final String check_no;
-        public final String check_holder;
-        public final String message;
+        public double cash;
+        public double check_amount;
+        public String check_no;
+        public String check_holder;
+        public String message;
         public final String parishioner;
         public final String parishioner_id;
         public final String parioshioner_contact_no;
@@ -50,9 +50,10 @@ public class S1_receipts {
         public final String particular_id;
         public final String particular_account;
         public final String particular_account_id;
-        public boolean selected;
+        public final String check_bank;
+        public final int is_fixed;
 
-        public to_receipts(int id, String or_no, String or_date, String date_added, String or_time, String user_name, String terminal_id, double amount_due, double cash, double check_amount, String check_no, String check_holder, String message, String parishioner, String parishioner_id, String parioshioner_contact_no, String account_name, String account_id, String account_type, String account_type_id, String status, String particular, String particular_id, String particular_account, String particular_account_id, boolean selected) {
+        public to_receipts(int id, String or_no, String or_date, String date_added, String or_time, String user_name, String terminal_id, double amount_due, double cash, double check_amount, String check_no, String check_holder, String message, String parishioner, String parishioner_id, String parioshioner_contact_no, String account_name, String account_id, String account_type, String account_type_id, String status, String particular, String particular_id, String particular_account, String particular_account_id, String check_bank, int is_fixed) {
             this.id = id;
             this.or_no = or_no;
             this.or_date = or_date;
@@ -78,15 +79,49 @@ public class S1_receipts {
             this.particular_id = particular_id;
             this.particular_account = particular_account;
             this.particular_account_id = particular_account_id;
-            this.selected = selected;
+            this.check_bank = check_bank;
+            this.is_fixed = is_fixed;
+
         }
 
-        public boolean isSelected() {
-            return selected;
+        public double getCash() {
+            return cash;
         }
 
-        public void setSelected(boolean selected) {
-            this.selected = selected;
+        public void setCash(double cash) {
+            this.cash = cash;
+        }
+
+        public double getCheck_amount() {
+            return check_amount;
+        }
+
+        public void setCheck_amount(double check_amount) {
+            this.check_amount = check_amount;
+        }
+
+        public String getCheck_no() {
+            return check_no;
+        }
+
+        public void setCheck_no(String check_no) {
+            this.check_no = check_no;
+        }
+
+        public String getCheck_holder() {
+            return check_holder;
+        }
+
+        public void setCheck_holder(String check_holder) {
+            this.check_holder = check_holder;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
         }
 
     }
@@ -119,6 +154,8 @@ public class S1_receipts {
                     + ",particular_id"
                     + ",particular_account"
                     + ",particular_account_id"
+                    + ",check_bank"
+                    + ",is_fixed"
                     + ")values("
                     + ":or_no"
                     + ",:or_date"
@@ -144,6 +181,8 @@ public class S1_receipts {
                     + ",:particular_id"
                     + ",:particular_account"
                     + ",:particular_account_id"
+                    + ",:check_bank"
+                    + ",:is_fixed"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -171,11 +210,114 @@ public class S1_receipts {
                     .setString("particular_id", to_receipts.particular_id)
                     .setString("particular_account", to_receipts.particular_account)
                     .setString("particular_account_id", to_receipts.particular_account_id)
+                    .setString("check_bank", to_receipts.check_bank)
+                    .setNumber("is_fixed", to_receipts.is_fixed)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_receipts.class, "Successfully Added");
+            Lg.s(Receipts.class, "Successfully Added");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static void add_receipts(List<to_receipts> to_receipts1) {
+        try {
+            Connection conn = MyConnection.connect();
+            for (to_receipts to_receipts : to_receipts1) {
+                String s0 = "insert into receipts("
+                        + "or_no"
+                        + ",or_date"
+                        + ",date_added"
+                        + ",or_time"
+                        + ",user_name"
+                        + ",terminal_id"
+                        + ",amount_due"
+                        + ",cash"
+                        + ",check_amount"
+                        + ",check_no"
+                        + ",check_holder"
+                        + ",message"
+                        + ",parishioner"
+                        + ",parishioner_id"
+                        + ",parioshioner_contact_no"
+                        + ",account_name"
+                        + ",account_id"
+                        + ",account_type"
+                        + ",account_type_id"
+                        + ",status"
+                        + ",particular"
+                        + ",particular_id"
+                        + ",particular_account"
+                        + ",particular_account_id"
+                        + ",check_bank"
+                        + ",is_fixed"
+                        + ")values("
+                        + ":or_no"
+                        + ",:or_date"
+                        + ",:date_added"
+                        + ",:or_time"
+                        + ",:user_name"
+                        + ",:terminal_id"
+                        + ",:amount_due"
+                        + ",:cash"
+                        + ",:check_amount"
+                        + ",:check_no"
+                        + ",:check_holder"
+                        + ",:message"
+                        + ",:parishioner"
+                        + ",:parishioner_id"
+                        + ",:parioshioner_contact_no"
+                        + ",:account_name"
+                        + ",:account_id"
+                        + ",:account_type"
+                        + ",:account_type_id"
+                        + ",:status"
+                        + ",:particular"
+                        + ",:particular_id"
+                        + ",:particular_account"
+                        + ",:particular_account_id"
+                        + ",:check_bank"
+                        + ",:is_fixed"
+                        + ")";
+
+                s0 = SqlStringUtil.parse(s0)
+                        .setString("or_no", to_receipts.or_no)
+                        .setString("or_date", to_receipts.or_date)
+                        .setString("date_added", to_receipts.date_added)
+                        .setString("or_time", to_receipts.or_time)
+                        .setString("user_name", to_receipts.user_name)
+                        .setString("terminal_id", to_receipts.terminal_id)
+                        .setNumber("amount_due", to_receipts.amount_due)
+                        .setNumber("cash", to_receipts.cash)
+                        .setNumber("check_amount", to_receipts.check_amount)
+                        .setString("check_no", to_receipts.check_no)
+                        .setString("check_holder", to_receipts.check_holder)
+                        .setString("message", to_receipts.message)
+                        .setString("parishioner", to_receipts.parishioner)
+                        .setString("parishioner_id", to_receipts.parishioner_id)
+                        .setString("parioshioner_contact_no", to_receipts.parioshioner_contact_no)
+                        .setString("account_name", to_receipts.account_name)
+                        .setString("account_id", to_receipts.account_id)
+                        .setString("account_type", to_receipts.account_type)
+                        .setString("account_type_id", to_receipts.account_type_id)
+                        .setString("status", to_receipts.status)
+                        .setString("particular", to_receipts.particular)
+                        .setString("particular_id", to_receipts.particular_id)
+                        .setString("particular_account", to_receipts.particular_account)
+                        .setString("particular_account_id", to_receipts.particular_account_id)
+                        .setString("check_bank", to_receipts.check_bank)
+                        .setNumber("is_fixed", to_receipts.is_fixed)
+                        .ok();
+
+                PreparedStatement stmt = conn.prepareStatement(s0);
+                stmt.execute();
+            }
+
+            Lg.s(Receipts.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -211,6 +353,8 @@ public class S1_receipts {
                     + ",particular_id= :particular_id"
                     + ",particular_account= :particular_account"
                     + ",particular_account_id= :particular_account_id"
+                    + ",check_bank= :check_bank"
+                    + ",is_fixed= :is_fixed"
                     + " where "
                     + " id ='" + to_receipts.id + "' "
                     + " ";
@@ -240,11 +384,13 @@ public class S1_receipts {
                     .setString("particular_id", to_receipts.particular_id)
                     .setString("particular_account", to_receipts.particular_account)
                     .setString("particular_account_id", to_receipts.particular_account_id)
+                    .setString("check_bank", to_receipts.check_bank)
+                    .setNumber("is_fixed", to_receipts.is_fixed)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_receipts.class, "Successfully Updated");
+            Lg.s(Receipts.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -256,21 +402,21 @@ public class S1_receipts {
         try {
             Connection conn = MyConnection.connect();
             for (to_receipts to_receipts : to_receipts1) {
-                if (to_receipts.selected == true) {
-                    String s0 = "update receipts set "
-                            + "or_date= :or_date"
-                            + " where "
-                            + " id ='" + to_receipts.id + "' "
-                            + " ";
+//                if (to_receipts.selected == true) {
+                String s0 = "update receipts set "
+                        + "or_date= :or_date"
+                        + " where "
+                        + " id ='" + to_receipts.id + "' "
+                        + " ";
 
-                    s0 = SqlStringUtil.parse(s0)
-                            .setString("or_date", date)
-                            .ok();
+                s0 = SqlStringUtil.parse(s0)
+                        .setString("or_date", date)
+                        .ok();
 
-                    PreparedStatement stmt = conn.prepareStatement(s0);
-                    stmt.execute();
-                    Lg.s(S1_receipts.class, "Successfully Updated");
-                }
+                PreparedStatement stmt = conn.prepareStatement(s0);
+                stmt.execute();
+                Lg.s(Receipts.class, "Successfully Updated");
+//                }
 
             }
 
@@ -290,7 +436,7 @@ public class S1_receipts {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_receipts.class, "Successfully Deleted");
+            Lg.s(Receipts.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -329,6 +475,8 @@ public class S1_receipts {
                     + ",particular_id"
                     + ",particular_account"
                     + ",particular_account_id"
+                    + ",check_bank"
+                    + ",is_fixed"
                     + " from receipts  "
                     + " " + where;
 
@@ -360,7 +508,86 @@ public class S1_receipts {
                 String particular_id = rs.getString(23);
                 String particular_account = rs.getString(24);
                 String particular_account_id = rs.getString(25);
-                to_receipts to = new to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular, particular_id, particular_account, particular_account_id, true);
+                String check_bank = rs.getString(26);
+                int is_fixed = rs.getInt(27);
+                to_receipts to = new to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular, particular_id, particular_account, particular_account_id, check_bank, is_fixed);
+                datas.add(to);
+            }
+            return datas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static List<to_receipts> ret_data2(String where) {
+        List<to_receipts> datas = new ArrayList();
+
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + "id"
+                    + ",or_no"
+                    + ",or_date"
+                    + ",date_added"
+                    + ",or_time"
+                    + ",user_name"
+                    + ",terminal_id"
+                    + ",IF(is_fixed = 1,SUM(amount_due),SUM(cash+check_amount)) as amount_due"
+                    + ",cash"
+                    + ",check_amount"
+                    + ",check_no"
+                    + ",check_holder"
+                    + ",message"
+                    + ",parishioner"
+                    + ",parishioner_id"
+                    + ",parioshioner_contact_no"
+                    + ",account_name"
+                    + ",account_id"
+                    + ",account_type"
+                    + ",account_type_id"
+                    + ",status"
+                    + ",particular"
+                    + ",particular_id"
+                    + ",particular_account"
+                    + ",particular_account_id"
+                    + ",check_bank"
+                    + ",is_fixed"
+                    + " from receipts  "
+                    + " " + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String or_no = rs.getString(2);
+                String or_date = rs.getString(3);
+                String date_added = rs.getString(4);
+                String or_time = rs.getString(5);
+                String user_name = rs.getString(6);
+                String terminal_id = rs.getString(7);
+                double amount_due = rs.getDouble(8);
+                double cash = rs.getDouble(9);
+                double check_amount = rs.getDouble(10);
+                String check_no = rs.getString(11);
+                String check_holder = rs.getString(12);
+                String message = rs.getString(13);
+                String parishioner = rs.getString(14);
+                String parishioner_id = rs.getString(15);
+                String parioshioner_contact_no = rs.getString(16);
+                String account_name = rs.getString(17);
+                String account_id = rs.getString(18);
+                String account_type = rs.getString(19);
+                String account_type_id = rs.getString(20);
+                String status = rs.getString(21);
+                String particular = rs.getString(22);
+                String particular_id = rs.getString(23);
+                String particular_account = rs.getString(24);
+                String particular_account_id = rs.getString(25);
+                String check_bank = rs.getString(26);
+                int is_fixed = rs.getInt(27);
+                to_receipts to = new to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular, particular_id, particular_account, particular_account_id, check_bank, is_fixed);
                 datas.add(to);
             }
             return datas;
@@ -372,7 +599,7 @@ public class S1_receipts {
     }
 
     public static String increment_id() {
-        String id = "SCA000000000000";
+        String id = "0000000000";
         try {
             Connection conn = MyConnection.connect();
             String s0 = "select max(id) from receipts";
@@ -389,7 +616,7 @@ public class S1_receipts {
                 }
             }
             if (id == null) {
-                id = "SCA000000000000";
+                id = "0000000000";
                 id = ReceiptIncrementor.increment(id);
             }
             return id;

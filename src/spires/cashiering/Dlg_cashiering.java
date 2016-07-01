@@ -6,7 +6,7 @@ package spires.cashiering;
 
 import spires.backup_accounting.S1_account_numbers;
 import spires.backup_accounting.S1_account_revenues;
-import spires.cashiering.S1_cashiering.to_cashiering;
+import spires.cashiering.Cashiering.to_cashiering;
 import spires.util.Alert;
 import spires.util.Focus_Fire;
 import spires.util.MyBorder;
@@ -780,7 +780,7 @@ public class Dlg_cashiering extends javax.swing.JDialog {
 
     private void data_cols() {
         String search = tf_search.getText();
-        loadData_cashiering(S1_cashiering.ret_data(search));
+//        loadData_cashiering(Cashiering.ret_data(search));
     }
 
     private void add_cashiering() {
@@ -807,8 +807,8 @@ public class Dlg_cashiering extends javax.swing.JDialog {
 
         String accounting_account_type = jTextField1.getText();
         String accounting_account_type_id = jTextField2.getText();
-        to_cashiering to = new to_cashiering(id, account, rate, is_active, 1, 0, "", "", "", "", fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
-        S1_cashiering.add_cashiering(to);
+//        to_cashiering to = new to_cashiering(id, account, rate, is_active, 1, 0, "", "", "", "", fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
+//        Cashiering.add_cashiering(to);
         data_cols();
         clear_cashiering();
         Alert.set(1, "");
@@ -875,9 +875,9 @@ public class Dlg_cashiering extends javax.swing.JDialog {
 
         String accounting_account_type = jTextField1.getText();
         String accounting_account_type_id = jTextField2.getText();
-        to_cashiering to1 = new to_cashiering(id, account, rate, is_active, 1, 0, "", "", "", "", fix_rate, incremental
-                , accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
-        S1_cashiering.edit_cashiering(to1);
+//        to_cashiering to1 = new to_cashiering(id, account, rate, is_active, 1, 0, "", "", "", "", fix_rate, incremental
+//                , accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
+//        Cashiering.edit_cashiering(to1);
         data_cols();
         clear_cashiering();
         Alert.set(2, "");
@@ -895,7 +895,7 @@ public class Dlg_cashiering extends javax.swing.JDialog {
             return;
         }
         to_cashiering to = (to_cashiering) tbl_cashiering_ALM.get(tbl_cashiering.convertRowIndexToModel(row));
-        S1_cashiering.delete_cashiering(to);
+//        Cashiering.delete_cashiering(to);
         data_cols();
         clear_cashiering();
         Alert.set(3, "");

@@ -7,11 +7,10 @@ package spires.pnl;
 
 import spires.backup_accounting.Dlg_account_types;
 import spires.backup_accounting.Dlg_accounting_transactions;
-import spires.cashiering.Dlg_cashiering;
 import spires.officials.Dlg_officials;
 import spires.churches.Dlg_churches;
 import spires.book_archives.Dlg_book_archives;
-import spires.touchscreen.Dlg_touchscreen;
+import spires.touchscreen.Dlg_touchscreen1;
 
 import java.awt.CardLayout;
 import java.awt.Frame;
@@ -24,6 +23,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
+import spires.accounting.Dlg_front_desk;
 import spires.baptismal_records.Dlg_baptismal_books_encoded;
 import spires.baptismal_records.Dlg_baptismal_records;
 import spires.cash_drawer.Dlg_cashin;
@@ -32,6 +32,7 @@ import spires.confirmation_records.Dlg_confirmation_records;
 import spires.funeral_records.Dlg_funeral_records;
 import spires.marriage_contracts.Dlg_marriage_contract;
 import spires.marriage_records.Dlg_marriage_records;
+import spires.official_schedules.Dlg_official_schedules;
 import spires.users.Dlg_users;
 import spires.users.Res;
 import spires.users.S1_user_previleges;
@@ -42,7 +43,6 @@ import spires.util.Hover;
 import spires.util.MyDate;
 import spires.util.MyFrame;
 
-import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 
 /**
@@ -71,7 +71,15 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         pnl_holder = new javax.swing.JPanel();
         pnl_login = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel49 = new javax.swing.JLabel();
+        jLabel50 = new javax.swing.JLabel();
         tf_fname = new Field.Input();
+        jLabel51 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         jLabel40 = new javax.swing.JLabel();
@@ -80,9 +88,6 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel46 = new javax.swing.JLabel();
         jLabel47 = new javax.swing.JLabel();
         jLabel48 = new javax.swing.JLabel();
-        jLabel49 = new javax.swing.JLabel();
-        jLabel50 = new javax.swing.JLabel();
-        jLabel51 = new javax.swing.JLabel();
         pnl_menu = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -155,6 +160,10 @@ public class Dashboard extends javax.swing.JFrame {
         jButton36 = new javax.swing.JButton();
         jLabel39 = new javax.swing.JLabel();
         pnl_reports = new javax.swing.JPanel();
+        jButton37 = new javax.swing.JButton();
+        jLabel53 = new javax.swing.JLabel();
+        jButton42 = new javax.swing.JButton();
+        jLabel54 = new javax.swing.JLabel();
         pnl_settings = new javax.swing.JPanel();
         jButton13 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
@@ -189,12 +198,89 @@ public class Dashboard extends javax.swing.JFrame {
 
         pnl_login.setOpaque(false);
 
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 317, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel4.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 283, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jPanel11.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel11.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 133, Short.MAX_VALUE)
+        );
+
+        jPanel12.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel12.setOpaque(false);
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 144, Short.MAX_VALUE)
+        );
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setOpaque(false);
+
+        jLabel49.setBackground(new java.awt.Color(16, 88, 197));
+        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel49.setText("Bacong, Negros Oriental");
+
+        jLabel50.setBackground(new java.awt.Color(16, 88, 197));
+        jLabel50.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel50.setText("Crafted with love by: Msgr. Julius Perpetua,Nhoy Flores");
+
         tf_fname.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tf_fname.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_fnameActionPerformed(evt);
             }
         });
+
+        jLabel51.setBackground(new java.awt.Color(16, 88, 197));
+        jLabel51.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
+        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel51.setText(",Ronald Pascua and sexy friends");
 
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
@@ -237,59 +323,41 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel48.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel48.setText("St. Augustine of Hippo Church");
 
-        jLabel49.setBackground(new java.awt.Color(16, 88, 197));
-        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel49.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel49.setText("Bacong, Negros Oriental");
-
-        jLabel50.setBackground(new java.awt.Color(16, 88, 197));
-        jLabel50.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel50.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel50.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel50.setText("Crafted with love by: Msgr. Julius Perpetua,Nhoy Flores");
-
-        jLabel51.setBackground(new java.awt.Color(16, 88, 197));
-        jLabel51.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
-        jLabel51.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel51.setText(",Ronald Pascua and sexy friends");
-
-        javax.swing.GroupLayout pnl_loginLayout = new javax.swing.GroupLayout(pnl_login);
-        pnl_login.setLayout(pnl_loginLayout);
-        pnl_loginLayout.setHorizontalGroup(
-            pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_loginLayout.createSequentialGroup()
-                .addGap(300, 300, 300)
-                .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_loginLayout.createSequentialGroup()
-                        .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel40, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(tf_fname, javax.swing.GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE)
-                            .addComponent(jPasswordField1)))
-                    .addGroup(pnl_loginLayout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tf_fname)
+                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel46)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jLabel45, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(338, Short.MAX_VALUE))
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnl_loginLayout.setVerticalGroup(
-            pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_loginLayout.createSequentialGroup()
-                .addGap(120, 120, 120)
-                .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel46)
-                    .addGroup(pnl_loginLayout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel47)
                         .addGap(1, 1, 1)
                         .addComponent(jLabel48)
@@ -299,22 +367,48 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(jLabel50, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
                         .addComponent(jLabel51, javax.swing.GroupLayout.PREFERRED_SIZE, 9, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(30, 30, 30)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel13)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel45)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_loginLayout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(1, 1, 1)
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnl_loginLayout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(tf_fname, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, 0)
                         .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(13, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout pnl_loginLayout = new javax.swing.GroupLayout(pnl_login);
+        pnl_login.setLayout(pnl_loginLayout);
+        pnl_loginLayout.setHorizontalGroup(
+            pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_loginLayout.createSequentialGroup()
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addGroup(pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, 0)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnl_loginLayout.setVerticalGroup(
+            pnl_loginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnl_loginLayout.createSequentialGroup()
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(jPanel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnl_holder.add(pnl_login, "card9");
@@ -444,7 +538,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel41.setBackground(new java.awt.Color(255, 255, 255));
         jLabel41.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel41.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel41.setText("Reports");
+        jLabel41.setText("Schedules");
         jLabel41.setOpaque(true);
 
         jButton39.setBackground(new java.awt.Color(255, 255, 255));
@@ -470,7 +564,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_menuLayout.setHorizontalGroup(
             pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_menuLayout.createSequentialGroup()
-                .addContainerGap(196, Short.MAX_VALUE)
+                .addContainerGap(197, Short.MAX_VALUE)
                 .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnl_menuLayout.createSequentialGroup()
                         .addGroup(pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,7 +597,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addComponent(jButton38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton39, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel42, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(197, Short.MAX_VALUE))
+                .addContainerGap(198, Short.MAX_VALUE))
         );
         pnl_menuLayout.setVerticalGroup(
             pnl_menuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -630,7 +724,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_baptismLayout.setHorizontalGroup(
             pnl_baptismLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_baptismLayout.createSequentialGroup()
-                .addContainerGap(273, Short.MAX_VALUE)
+                .addContainerGap(274, Short.MAX_VALUE)
                 .addGroup(pnl_baptismLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -646,7 +740,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(pnl_baptismLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(392, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         pnl_baptismLayout.setVerticalGroup(
             pnl_baptismLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -754,7 +848,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_funeralLayout.setHorizontalGroup(
             pnl_funeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_funeralLayout.createSequentialGroup()
-                .addContainerGap(274, Short.MAX_VALUE)
+                .addContainerGap(275, Short.MAX_VALUE)
                 .addGroup(pnl_funeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -770,7 +864,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(pnl_funeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(391, Short.MAX_VALUE))
+                .addContainerGap(392, Short.MAX_VALUE))
         );
         pnl_funeralLayout.setVerticalGroup(
             pnl_funeralLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -878,7 +972,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_marriageLayout.setHorizontalGroup(
             pnl_marriageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_marriageLayout.createSequentialGroup()
-                .addContainerGap(272, Short.MAX_VALUE)
+                .addContainerGap(273, Short.MAX_VALUE)
                 .addGroup(pnl_marriageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -894,7 +988,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(pnl_marriageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton20, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addContainerGap(394, Short.MAX_VALUE))
         );
         pnl_marriageLayout.setVerticalGroup(
             pnl_marriageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1002,7 +1096,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_confirmationLayout.setHorizontalGroup(
             pnl_confirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_confirmationLayout.createSequentialGroup()
-                .addContainerGap(269, Short.MAX_VALUE)
+                .addContainerGap(270, Short.MAX_VALUE)
                 .addGroup(pnl_confirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton26, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1018,7 +1112,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(pnl_confirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(396, Short.MAX_VALUE))
+                .addContainerGap(397, Short.MAX_VALUE))
         );
         pnl_confirmationLayout.setVerticalGroup(
             pnl_confirmationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1126,7 +1220,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_marriage_contractLayout.setHorizontalGroup(
             pnl_marriage_contractLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_marriage_contractLayout.createSequentialGroup()
-                .addContainerGap(265, Short.MAX_VALUE)
+                .addContainerGap(266, Short.MAX_VALUE)
                 .addGroup(pnl_marriage_contractLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton31, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1142,7 +1236,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(pnl_marriage_contractLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton30, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(400, Short.MAX_VALUE))
+                .addContainerGap(401, Short.MAX_VALUE))
         );
         pnl_marriage_contractLayout.setVerticalGroup(
             pnl_marriage_contractLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1212,7 +1306,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel37.setBackground(new java.awt.Color(255, 255, 255));
         jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel37.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel37.setText("Cashiering");
+        jLabel37.setText("Collections");
         jLabel37.setOpaque(true);
 
         jButton35.setBackground(new java.awt.Color(255, 255, 255));
@@ -1250,7 +1344,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_accountingLayout.setHorizontalGroup(
             pnl_accountingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_accountingLayout.createSequentialGroup()
-                .addContainerGap(261, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addGroup(pnl_accountingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton35, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel37, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1266,7 +1360,7 @@ public class Dashboard extends javax.swing.JFrame {
                 .addGroup(pnl_accountingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton34, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel36, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(397, Short.MAX_VALUE))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
         pnl_accountingLayout.setVerticalGroup(
             pnl_accountingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1297,15 +1391,67 @@ public class Dashboard extends javax.swing.JFrame {
 
         pnl_reports.setOpaque(false);
 
+        jButton37.setBackground(new java.awt.Color(255, 255, 255));
+        jButton37.setIcon(new javax.swing.ImageIcon(getClass().getResource("/spires/img_dashboard/administration1.png"))); // NOI18N
+        jButton37.setBorderPainted(false);
+        jButton37.setContentAreaFilled(false);
+        jButton37.setFocusable(false);
+        jButton37.setOpaque(true);
+        jButton37.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton37ActionPerformed(evt);
+            }
+        });
+
+        jLabel53.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel53.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel53.setText("Officials");
+        jLabel53.setOpaque(true);
+
+        jButton42.setBackground(new java.awt.Color(255, 255, 255));
+        jButton42.setIcon(new javax.swing.ImageIcon(getClass().getResource("/spires/img_dashboard/direction102.png"))); // NOI18N
+        jButton42.setBorderPainted(false);
+        jButton42.setContentAreaFilled(false);
+        jButton42.setFocusable(false);
+        jButton42.setOpaque(true);
+        jButton42.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton42ActionPerformed(evt);
+            }
+        });
+
+        jLabel54.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel54.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel54.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel54.setText("Back");
+        jLabel54.setOpaque(true);
+
         javax.swing.GroupLayout pnl_reportsLayout = new javax.swing.GroupLayout(pnl_reports);
         pnl_reports.setLayout(pnl_reportsLayout);
         pnl_reportsLayout.setHorizontalGroup(
             pnl_reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 976, Short.MAX_VALUE)
+            .addGroup(pnl_reportsLayout.createSequentialGroup()
+                .addGap(240, 240, 240)
+                .addGroup(pnl_reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel54, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(661, Short.MAX_VALUE))
         );
         pnl_reportsLayout.setVerticalGroup(
             pnl_reportsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGroup(pnl_reportsLayout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(jButton37, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel53)
+                .addGap(1, 1, 1)
+                .addComponent(jButton42, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel54)
+                .addContainerGap(245, Short.MAX_VALUE))
         );
 
         pnl_holder.add(pnl_reports, "card10");
@@ -1443,7 +1589,7 @@ public class Dashboard extends javax.swing.JFrame {
         pnl_settingsLayout.setHorizontalGroup(
             pnl_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_settingsLayout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
+                .addContainerGap(237, Short.MAX_VALUE)
                 .addGroup(pnl_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1471,7 +1617,7 @@ public class Dashboard extends javax.swing.JFrame {
                         .addGroup(pnl_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton41, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel44, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(273, Short.MAX_VALUE))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         pnl_settingsLayout.setVerticalGroup(
             pnl_settingsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1877,6 +2023,15 @@ public class Dashboard extends javax.swing.JFrame {
         settings_users();
     }//GEN-LAST:event_jButton41ActionPerformed
 
+    private void jButton37ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton37ActionPerformed
+        switch_menu(true);
+        report_official_schedules();
+    }//GEN-LAST:event_jButton37ActionPerformed
+
+    private void jButton42ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton42ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton42ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1928,11 +2083,13 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JButton jButton34;
     private javax.swing.JButton jButton35;
     private javax.swing.JButton jButton36;
+    private javax.swing.JButton jButton37;
     private javax.swing.JButton jButton38;
     private javax.swing.JButton jButton39;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton40;
     private javax.swing.JButton jButton41;
+    private javax.swing.JButton jButton42;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -1987,12 +2144,19 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
     private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
@@ -2020,7 +2184,7 @@ public class Dashboard extends javax.swing.JFrame {
         jDesktopPane3.setVisible(false);
         tf_fname.grabFocus();
         String name = System.getProperty("business_name", "Sacrament Registry");
-        
+
     }
 
     CardLayout layout = new CardLayout();
@@ -2083,6 +2247,9 @@ public class Dashboard extends javax.swing.JFrame {
 
         JButton[] btns_settings = {jButton28, jButton13, jButton18, jButton32, jButton40, jButton41, jButton23};
         Hover.set(btns_settings);
+
+        JButton[] btns_reports = {jButton37, jButton42};
+        Hover.set(btns_reports);
 
     }
 
@@ -2157,12 +2324,14 @@ public class Dashboard extends javax.swing.JFrame {
             @Override
             public void reports(CloseDialog closeDialog, Dlg_menu.OutputData data) {
                 closeDialog.ok();
+                switch_menu(false);
                 layout.show(pnl_holder, "9");
             }
 
             @Override
             public void settings(CloseDialog closeDialog, Dlg_menu.OutputData data) {
                 closeDialog.ok();
+                switch_menu(false);
                 layout.show(pnl_holder, "10");
             }
 
@@ -2264,8 +2433,8 @@ public class Dashboard extends javax.swing.JFrame {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            Dlg_touchscreen dtc = new Dlg_touchscreen();
-                            MyFrame.set(dtc.getSurface(), jDesktopPane3, "Cashiering");
+                            Dlg_front_desk dtc = new Dlg_front_desk();
+                            MyFrame.set(dtc.getSurface(), jDesktopPane3, "Collections");
                         }
                     });
                 }
@@ -2276,8 +2445,8 @@ public class Dashboard extends javax.swing.JFrame {
             SwingUtilities.invokeLater(new Runnable() {
                 @Override
                 public void run() {
-                    Dlg_touchscreen dtc = new Dlg_touchscreen();
-                    MyFrame.set(dtc.getSurface(), jDesktopPane3, "Cashiering");
+                    Dlg_front_desk dtc = new Dlg_front_desk();
+                    MyFrame.set(dtc.getSurface(), jDesktopPane3, "Collections");
                 }
             });
         }
@@ -2329,7 +2498,7 @@ public class Dashboard extends javax.swing.JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Dlg_cashiering dtc = new Dlg_cashiering();
+                Dlg_front_desk dtc = new Dlg_front_desk();
                 MyFrame.set2(dtc.getSurface(), jDesktopPane3, "Cashiering", dtc.getWidth(), dtc.getHeight());
             }
         });
@@ -2371,6 +2540,16 @@ public class Dashboard extends javax.swing.JFrame {
             public void run() {
                 Dlg_baptismal_books_encoded dtc = new Dlg_baptismal_books_encoded();
                 MyFrame.set2(dtc.getSurface(), jDesktopPane3, "Baptismal Records[Books]", dtc.getWidth(), dtc.getHeight());
+            }
+        });
+    }
+
+    private void report_official_schedules() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_official_schedules dtc = new Dlg_official_schedules();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Official Schedules");
             }
         });
     }

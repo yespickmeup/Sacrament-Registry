@@ -6,13 +6,13 @@
 package spires.touchscreen;
 
 import spires.cashiering.Dlg_cashiering;
-import spires.cashiering.S1_cashiering;
-import spires.cashiering.S1_cashiering.to_cashiering;
+import spires.cashiering.Cashiering;
+import spires.cashiering.Cashiering.to_cashiering;
 import spires.cashiering.S2_cashiering;
 import spires.disbursements.Dlg_disbursements;
 import spires.my_parishioners.My_parishioners;
 
-import spires.receipts.S1_receipts;
+import spires.receipts.Receipts;
 import spires.reports.Dlg_cashiering_reports;
 
 import spires.util.Alert;
@@ -72,7 +72,7 @@ import spires.users.S1_user_previleges;
  *
  * @author Ronald
  */
-public class Dlg_touchscreen extends javax.swing.JDialog {
+public class Dlg_touchscreen1 extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_touchscreen
@@ -98,33 +98,33 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_touchscreen(java.awt.Frame parent, boolean modal) {
+    private Dlg_touchscreen1(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_touchscreen(java.awt.Dialog parent, boolean modal) {
+    private Dlg_touchscreen1(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_touchscreen() {
+    public Dlg_touchscreen1() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_touchscreen myRef;
+    private Dlg_touchscreen1 myRef;
 
-    private void setThisRef(Dlg_touchscreen myRef) {
+    private void setThisRef(Dlg_touchscreen1 myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_touchscreen> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_touchscreen1> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -132,7 +132,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_touchscreen create(java.awt.Window parent, boolean modal) {
+    public static Dlg_touchscreen1 create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -142,14 +142,14 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_touchscreen create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_touchscreen1 create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_touchscreen dialog = dialogContainer.get(parent);
+            Dlg_touchscreen1 dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_touchscreen((java.awt.Frame) parent, false);
+                dialog = new Dlg_touchscreen1((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -163,10 +163,10 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_touchscreen dialog = dialogContainer.get(parent);
+            Dlg_touchscreen1 dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_touchscreen((java.awt.Dialog) parent, false);
+                dialog = new Dlg_touchscreen1((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -193,7 +193,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_touchscreen dialog = Dlg_touchscreen.create(new javax.swing.JFrame(), true);
+        Dlg_touchscreen1 dialog = Dlg_touchscreen1.create(new javax.swing.JFrame(), true);
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().
                 getWidth());
@@ -1084,7 +1084,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
     }
 
     private void init_or() {
-        tf_or_no.setText(S1_receipts.increment_id());
+        tf_or_no.setText(Receipts.increment_id());
     }
 
     private void border() {
@@ -1283,31 +1283,31 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             to_cashiering tt = (to_cashiering) getRow(row);
             switch (col) {
                 case 0:
-                    if (tt.parent == 1) {
-                        return "          " + tt.account;
-                    } else {
-                        return "               " + tt.account;
-                    }
+//                    if (tt.parent == 1) {
+//                        return "          " + tt.account;
+//                    } else {
+//                        return "               " + tt.account;
+//                    }
                 case 1:
-                    if (tt.parent == 1) {
-                        if (tt.size == 0) {
-                            if (tt.fix_rate.equals("1")) {
-                                return FitIn.fmt_wc_0(tt.rate) + "  ";
-                            } else {
-                                return "";
-                            }
-
-                        } else {
-                            return "";
-                        }
-
-                    } else {
-                        if (tt.fix_rate.equals("1")) {
-                            return FitIn.fmt_wc_0(tt.rate) + "  ";
-                        } else {
-                            return "";
-                        }
-                    }
+//                    if (tt.parent == 1) {
+//                        if (tt.size == 0) {
+//                            if (tt.fix_rate.equals("1")) {
+//                                return FitIn.fmt_wc_0(tt.rate) + "  ";
+//                            } else {
+//                                return "";
+//                            }
+//
+//                        } else {
+//                            return "";
+//                        }
+//
+//                    } else {
+//                        if (tt.fix_rate.equals("1")) {
+//                            return FitIn.fmt_wc_0(tt.rate) + "  ";
+//                        } else {
+//                            return "";
+//                        }
+//                    }
 
                 case 2:
 
@@ -1319,87 +1319,87 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
     }
 
     private void data_cols() {
-        String where = " where is_active='" + "1" + "' order by account asc";
-        loadData_cashiering(S1_cashiering.ret_data2(where));
-        if (!tbl_cashiering_ALM.isEmpty()) {
-            tbl_cashiering.setRowSelectionInterval(0, 0);
-            select_type();
-        }
+//        String where = " where is_active='" + "1" + "' order by account asc";
+//        loadData_cashiering(Cashiering.ret_data2(where));
+//        if (!tbl_cashiering_ALM.isEmpty()) {
+//            tbl_cashiering.setRowSelectionInterval(0, 0);
+//            select_type();
+//        }
     }
     
     private void data_cols2() {
-        String where = " where is_active='" + "1" + "' order by account asc";
-        loadData_cashiering(S1_cashiering.ret_data2(where));
+//        String where = " where is_active='" + "1" + "' order by account asc";
+//        loadData_cashiering(Cashiering.ret_data2(where));
 
     }
 
     private void select_type() {
-        int row = tbl_cashiering.getSelectedRow();
-        if (row < 0) {
-            return;
-        }
-        final to_cashiering to = (to_cashiering) tbl_cashiering_ALM.get(row);
-        if (to.parent == 1) {
-            String where = "";
-
-            loadData_cashiering(S1_cashiering.ret_data("" + to.id));
-            List<to_cashiering> datas = tbl_cashiering_ALM;
-            int r = 0;
-            for (to_cashiering t : datas) {
-                if (to.account.equals(t.account)) {
-                    tbl_cashiering.setRowSelectionInterval(r, r);
-                    break;
-                }
-                r++;
-            }
-            dis(false);
-            jLabel7.setText("");
-        } else {
-            dis(true);
-            jLabel7.setText(to.account_name + " - " + to.account);
-            tf_or_no.grabFocus();
-
-            Window p = (Window) this;
-            Dlg_touchscreen_cash nd = Dlg_touchscreen_cash.create(p, true);
-            nd.setTitle("");
-            nd.do_pass(to.account_name + " - " + to.account);
-            nd.setCallback(new Dlg_touchscreen_cash.Callback() {
-
-                @Override
-                public void ok(CloseDialog closeDialog, Dlg_touchscreen_cash.OutputData data) {
-                    closeDialog.ok();
-                    int id = to.id;
-                    String account = to.account;
-                    double rate = to.rate;
-                    int is_active = to.is_active;
-                    int parent = to.parent;
-                    int size = to.size;
-                    String account_id = to.account_id;
-                    String account_name = to.account_name;
-                    String account_type = to.account_type;
-                    String account_type_id = to.account_type_id;
-                    String fix_rate = to.fix_rate;
-                    int incremental = to.incremental;
-                    String accounting_group_id = to.accounting_group_id;
-                    String accounting_group_name = to.accounting_group_name;
-                    String accounting_account_id = to.accounting_account_id;
-                    String accounting_account_name = to.accounting_account_name;
-                    String accounting_account_type = to.accounting_account_type;
-                    String accounting_account_type_id = to.accounting_account_type_id;
-                    double cash = data.cash;
-                    double check = data.check;
-                    String check_no = data.check_no;
-                    String bank = data.bank;
-                    S2_cashiering.to_cashiering to2 = new S2_cashiering.to_cashiering(id, account, rate, is_active, parent, size, account_id, account_name, account_type, account_type_id, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id, cash, check, check_no, bank);
-                    tbl_cashiering_ALM2.add(to2);
-                    tbl_cashiering_M2.fireTableDataChanged();
-                    compute();
-                }
-            });
-            nd.setLocationRelativeTo(this);
-            nd.setVisible(true);
-
-        }
+//        int row = tbl_cashiering.getSelectedRow();
+//        if (row < 0) {
+//            return;
+//        }
+//        final to_cashiering to = (to_cashiering) tbl_cashiering_ALM.get(row);
+//        if (to.parent == 1) {
+//            String where = "";
+//
+//            loadData_cashiering(Cashiering.ret_data("" + to.id));
+//            List<to_cashiering> datas = tbl_cashiering_ALM;
+//            int r = 0;
+//            for (to_cashiering t : datas) {
+//                if (to.account.equals(t.account)) {
+//                    tbl_cashiering.setRowSelectionInterval(r, r);
+//                    break;
+//                }
+//                r++;
+//            }
+//            dis(false);
+//            jLabel7.setText("");
+//        } else {
+//            dis(true);
+//            jLabel7.setText(to.account_name + " - " + to.account);
+//            tf_or_no.grabFocus();
+//
+//            Window p = (Window) this;
+//            Dlg_touchscreen_cash nd = Dlg_touchscreen_cash.create(p, true);
+//            nd.setTitle("");
+//            nd.do_pass(to.account_name + " - " + to.account);
+//            nd.setCallback(new Dlg_touchscreen_cash.Callback() {
+//
+//                @Override
+//                public void ok(CloseDialog closeDialog, Dlg_touchscreen_cash.OutputData data) {
+//                    closeDialog.ok();
+//                    int id = to.id;
+//                    String account = to.account;
+//                    double rate = to.rate;
+//                    int is_active = to.is_active;
+//                    int parent = to.parent;
+//                    int size = to.size;
+//                    String account_id = to.account_id;
+//                    String account_name = to.account_name;
+//                    String account_type = to.account_type;
+//                    String account_type_id = to.account_type_id;
+//                    String fix_rate = to.fix_rate;
+//                    int incremental = to.incremental;
+//                    String accounting_group_id = to.accounting_group_id;
+//                    String accounting_group_name = to.accounting_group_name;
+//                    String accounting_account_id = to.accounting_account_id;
+//                    String accounting_account_name = to.accounting_account_name;
+//                    String accounting_account_type = to.accounting_account_type;
+//                    String accounting_account_type_id = to.accounting_account_type_id;
+//                    double cash = data.cash;
+//                    double check = data.check;
+//                    String check_no = data.check_no;
+//                    String bank = data.bank;
+//                    S2_cashiering.to_cashiering to2 = new S2_cashiering.to_cashiering(id, account, rate, is_active, parent, size, account_id, account_name, account_type, account_type_id, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id, cash, check, check_no, bank);
+//                    tbl_cashiering_ALM2.add(to2);
+//                    tbl_cashiering_M2.fireTableDataChanged();
+//                    compute();
+//                }
+//            });
+//            nd.setLocationRelativeTo(this);
+//            nd.setVisible(true);
+//
+//        }
     }
 
     private void dis(boolean stmt) {
@@ -1418,10 +1418,10 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             return;
         }
         final to_cashiering to = (to_cashiering) tbl_cashiering_ALM.get(row);
-        if (to.parent == 1 && to.size > 0) {
-            Alert.set(0, "Please!..Choose Account");
-            return;
-        }
+//        if (to.parent == 1 && to.size > 0) {
+//            Alert.set(0, "Please!..Choose Account");
+//            return;
+//        }
         if (tbl_cashiering_ALM2.isEmpty()) {
             Alert.set(0, "Please add Transaction!");
             return;
@@ -1462,8 +1462,8 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             String particular_account = to2.account_name;
             String particular_account_id = to2.account_id;
             trans = trans + " " + to2.account_type + ",";
-            S1_receipts.to_receipts receipt = new S1_receipts.to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular1, particular_id, particular_account, particular_account_id, true);
-            S1_receipts.add_receipts(receipt);
+            Receipts.to_receipts receipt = new Receipts.to_receipts(id, or_no, or_date, date_added, or_time, user_name, terminal_id, amount_due, cash, check_amount, check_no, check_holder, message, parishioner, parishioner_id, parioshioner_contact_no, account_name, account_id, account_type, account_type_id, status, particular1, particular_id, particular_account, particular_account_id,"",0);
+            Receipts.add_receipts(receipt);
         }
         String label = "Change";
         String set = FitIn.fmt_wc_0(total);
@@ -1530,7 +1530,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
                     closeDialog.ok();
                     JasperPrintManager.printReport(jasperPrint, false);
                 } catch (JRException ex) {
-                    Logger.getLogger(Dlg_touchscreen.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Dlg_touchscreen1.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
 
@@ -1786,7 +1786,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             d = DateUtils1.add_day(d, 1);
             tf_date.setText(DateType.month_date.format(d));
         } catch (ParseException ex) {
-            Logger.getLogger(Dlg_touchscreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Dlg_touchscreen1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -1797,7 +1797,7 @@ public class Dlg_touchscreen extends javax.swing.JDialog {
             d = DateUtils1.add_day(d, -1);
             tf_date.setText(DateType.month_date.format(d));
         } catch (ParseException ex) {
-            Logger.getLogger(Dlg_touchscreen.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Dlg_touchscreen1.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -5,7 +5,7 @@
 package spires.cashiering;
 
 import spires.backup_accounting.S1_account_numbers;
-import spires.cashiering.S1_cashiering_types.to_cashiering_types;
+import spires.cashiering.Cashiering_types.to_cashiering_types;
 import spires.util.Alert;
 import spires.util.Focus_Fire;
 import spires.util.TableRenderer;
@@ -698,17 +698,17 @@ public class Dlg_cashiering_types extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    List<S1_cashiering.to_cashiering> cashiering_list = new ArrayList();
+    List<Cashiering.to_cashiering> cashiering_list = new ArrayList();
 
     private void init_printing_assembly(final JTextField tf1, final JTextField tf2) {
         String search = tf1.getText();
         cashiering_list.clear();
         String where = " where account like '%" + tf1.getText() + "%'";
-        cashiering_list = S1_cashiering.ret_data(where);
+//        cashiering_list = Cashiering.ret_data(where);
 
         Object[][] obj = new Object[cashiering_list.size()][2];
         int i = 0;
-        for (S1_cashiering.to_cashiering to : cashiering_list) {
+        for (Cashiering.to_cashiering to : cashiering_list) {
             obj[i][0] = to.id;
             obj[i][1] = to.account;
             i++;
@@ -722,7 +722,7 @@ public class Dlg_cashiering_types extends javax.swing.JDialog {
         tr.setCallback(new TableRenderer.Callback() {
             @Override
             public void ok(TableRenderer.OutputData data) {
-                S1_cashiering.to_cashiering to = cashiering_list.get(data.selected_row);
+                Cashiering.to_cashiering to = cashiering_list.get(data.selected_row);
                 tf1.setText("" + to.account);
                 tf2.setText("" + to.id);
 
@@ -827,7 +827,7 @@ public class Dlg_cashiering_types extends javax.swing.JDialog {
 
     private void data_cols() {
         String where = "where account_id ='" + tf_account_id.getText() + "'";
-        loadData_cashiering_types(S1_cashiering_types.ret_data(where));
+        loadData_cashiering_types(Cashiering_types.ret_data(where));
     }
 
     private void add_cashiering_types() {
@@ -856,7 +856,7 @@ public class Dlg_cashiering_types extends javax.swing.JDialog {
         String accounting_account_type = jTextField1.getText();
         String accounting_account_type_id = jTextField2.getText();
         to_cashiering_types to = new to_cashiering_types(id, account_id, account, cashiering_type, rate, is_active, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
-        S1_cashiering_types.add_cashiering_types(to);
+        Cashiering_types.add_cashiering_types(to);
         data_cols();
         clear_cashiering_types();
         Alert.set(1, "");
@@ -922,7 +922,7 @@ public class Dlg_cashiering_types extends javax.swing.JDialog {
         String accounting_account_type = jTextField1.getText();
         String accounting_account_type_id = jTextField2.getText();
         to_cashiering_types to1 = new to_cashiering_types(id, account_id, account, cashiering_type, rate, is_active, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
-        S1_cashiering_types.edit_cashiering_types(to1);
+        Cashiering_types.edit_cashiering_types(to1);
         data_cols();
         clear_cashiering_types();
         Alert.set(2, "");
@@ -941,7 +941,7 @@ public class Dlg_cashiering_types extends javax.swing.JDialog {
             return;
         }
         to_cashiering_types to = (to_cashiering_types) tbl_cashiering_types_ALM.get(tbl_cashiering_types.convertRowIndexToModel(row));
-        S1_cashiering_types.delete_cashiering_types(to);
+        Cashiering_types.delete_cashiering_types(to);
         data_cols();
         clear_cashiering_types();
         Alert.set(3, "");

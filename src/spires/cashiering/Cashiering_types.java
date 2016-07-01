@@ -20,7 +20,7 @@ import mijzcx.synapse.desk.utils.SqlStringUtil;
  *
  * @author Ronald
  */
-public class S1_cashiering_types {
+public class Cashiering_types {
 
     public static class to_cashiering_types {
 
@@ -108,7 +108,7 @@ public class S1_cashiering_types {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_cashiering_types.class, "Successfully Added");
+            Lg.s(Cashiering_types.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
@@ -155,7 +155,7 @@ public class S1_cashiering_types {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_cashiering_types.class, "Successfully Updated");
+            Lg.s(Cashiering_types.class, "Successfully Updated");
 
            
 
@@ -175,7 +175,7 @@ public class S1_cashiering_types {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
-            Lg.s(S1_cashiering_types.class, "Successfully Deleted");
+            Lg.s(Cashiering_types.class, "Successfully Deleted");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

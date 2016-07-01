@@ -5,8 +5,8 @@
  */
 package spires.reports;
 
-import spires.cashiering.S1_cashiering;
-import spires.receipts.S1_receipts.to_receipts;
+import spires.cashiering.Cashiering;
+import spires.receipts.Receipts.to_receipts;
 import spires.util.MyConnection;
 import java.io.InputStream;
 import java.sql.Connection;
