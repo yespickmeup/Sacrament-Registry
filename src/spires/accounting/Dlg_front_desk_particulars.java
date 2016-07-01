@@ -5,13 +5,14 @@
  */
 package spires.accounting;
 
+import spires.templates.*;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import javax.swing.JLabel;
@@ -19,15 +20,17 @@ import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
+import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
-import spires.account_numbers.Account_numbers;
-import spires.account_numbers.Dlg_account_numbers;
 import spires.account_revenues.Account_revenues;
-import spires.account_revenues.Dlg_account_revenues;
 import spires.cashiering.Cashiering;
+import spires.cashiering.Cashiering_types;
+import spires.official_schedules.Official_schedule_types;
+import spires.official_schedules.Official_schedule_types.to_official_schedule_types;
 import spires.util.Alert;
+import spires.util.Dlg_confirm_action;
 import spires.util.TableRenderer;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -37,7 +40,7 @@ import synsoftech.util.ImageRenderer1;
  *
  * @author Guinness
  */
-public class Dlg_front_desk_classifications extends javax.swing.JDialog {
+public class Dlg_front_desk_particulars extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_template1
@@ -63,33 +66,33 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_front_desk_classifications(java.awt.Frame parent, boolean modal) {
+    private Dlg_front_desk_particulars(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_front_desk_classifications(java.awt.Dialog parent, boolean modal) {
+    private Dlg_front_desk_particulars(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_front_desk_classifications() {
+    public Dlg_front_desk_particulars() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_front_desk_classifications myRef;
+    private Dlg_front_desk_particulars myRef;
 
-    private void setThisRef(Dlg_front_desk_classifications myRef) {
+    private void setThisRef(Dlg_front_desk_particulars myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_front_desk_classifications> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_front_desk_particulars> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -97,7 +100,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_front_desk_classifications create(java.awt.Window parent, boolean modal) {
+    public static Dlg_front_desk_particulars create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -107,14 +110,14 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_front_desk_classifications create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_front_desk_particulars create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_front_desk_classifications dialog = dialogContainer.get(parent);
+            Dlg_front_desk_particulars dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_front_desk_classifications((java.awt.Frame) parent, false);
+                dialog = new Dlg_front_desk_particulars((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -128,10 +131,10 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_front_desk_classifications dialog = dialogContainer.get(parent);
+            Dlg_front_desk_particulars dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_front_desk_classifications((java.awt.Dialog) parent, false);
+                dialog = new Dlg_front_desk_particulars((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -158,7 +161,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_front_desk_classifications dialog = Dlg_front_desk_classifications.create(new javax.swing.JFrame(), true);
+        Dlg_front_desk_particulars dialog = Dlg_front_desk_particulars.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -200,7 +203,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new Field.Input();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new Field.Combo();
+        jTextField2 = new Field.Input();
         jButton2 = new Button.Default();
         jButton1 = new Button.Success();
         jLabel13 = new javax.swing.JLabel();
@@ -213,10 +216,15 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jProgressBar1 = new javax.swing.JProgressBar();
+        jCheckBox3 = new javax.swing.JCheckBox();
         jLabel3 = new javax.swing.JLabel();
         jTextField3 = new Field.Combo();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new Field.Combo();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField5 = new Field.Combo();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField6 = new Field.Combo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -224,7 +232,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Classification:");
+        jLabel1.setText("Particular:");
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -239,7 +247,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Category:");
+        jLabel2.setText("Rate:");
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -268,7 +276,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         });
 
         jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel13.setText("Classification:");
+        jLabel13.setText("Particular:");
 
         jCheckBox1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jCheckBox1.setText("All");
@@ -310,10 +318,14 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         jProgressBar1.setString("");
         jProgressBar1.setStringPainted(true);
 
+        jCheckBox3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jCheckBox3.setText("Fixed?");
+
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Account No.:");
+        jLabel3.setText("Classification:");
 
         jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField3.setFocusable(false);
         jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTextField3MouseClicked(evt);
@@ -326,7 +338,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("Group:");
+        jLabel4.setText("Category:");
 
         jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTextField4.setFocusable(false);
@@ -341,29 +353,58 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Account No.:");
+
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField5.setFocusable(false);
+        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField5MouseClicked(evt);
+            }
+        });
+        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField5ActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Group:");
+
+        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jTextField6.setFocusable(false);
+        jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextField6MouseClicked(evt);
+            }
+        });
+        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField6ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField2))
+                                .addComponent(jTextField2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jCheckBox3))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 617, Short.MAX_VALUE))
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(4, 4, 4)
@@ -381,13 +422,26 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField4)))))
+                                .addComponent(jTextField4))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 501, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField5))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jTextField6))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
@@ -400,8 +454,9 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jCheckBox3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -409,11 +464,19 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(5, 5, 5)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
+                .addGap(5, 5, 5)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,7 +484,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
                     .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jCheckBox1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -456,11 +519,11 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
-        init_category();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2MouseClicked
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        init_category();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -480,20 +543,36 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
     }//GEN-LAST:event_tbl_official_schedule_typesMouseClicked
 
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
-        init_account_no();
+
     }//GEN-LAST:event_jTextField3MouseClicked
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        init_account_no();
+
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField4MouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MouseClicked
+
+    }//GEN-LAST:event_jTextField5MouseClicked
+
+    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+
+    }//GEN-LAST:event_jTextField5ActionPerformed
+
+    private void jTextField6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6MouseClicked
+
+    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -504,11 +583,14 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -519,19 +601,39 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField8;
     private javax.swing.JTable tbl_official_schedule_types;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
         init_tbl_official_schedule_types(tbl_official_schedule_types);
-        Field.Combo group = (Field.Combo) jTextField4;
+        Field.Combo group = (Field.Combo) jTextField6;
         group.setId("1");
         group.setText("Revenue");
     }
 
-    public void do_pass() {
+    public void do_pass(Cashiering.to_cashiering to) {
 
+        Field.Combo classification = (Field.Combo) jTextField3;
+        Field.Combo category = (Field.Combo) jTextField4;
+        Field.Combo account_no = (Field.Combo) jTextField5;
+        Field.Combo group = (Field.Combo) jTextField6;
+
+        classification.setText(to.account);
+        classification.setId("" + to.id);
+
+        category.setText(to.accounting_account_type);
+        category.setId(to.accounting_account_type_id);
+
+        account_no.setText(to.accounting_account_name);
+        account_no.setId(to.accounting_account_id);
+
+        group.setText(to.accounting_group_name);
+        group.setId(to.accounting_group_id);
+
+        ret_official_schedule_types();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -549,62 +651,6 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
                 disposed();
             }
         });
-        jTextField3.addKeyListener(new KeyAdapter() {
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-                if (e.getKeyCode() == KeyEvent.VK_F5) {
-                    dlg_account_numbers();
-                }
-
-            }
-        });
-        jTextField2.addKeyListener(new KeyAdapter() {
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-                if (e.getKeyCode() == KeyEvent.VK_F5) {
-                    dlg_category();
-                }
-
-            }
-        });
-    }
-
-    private void dlg_category() {
-        Window p = (Window) this;
-        Dlg_account_revenues nd = Dlg_account_revenues.create(p, true);
-        nd.setTitle("");
-
-        nd.setCallback(new Dlg_account_revenues.Callback() {
-
-            @Override
-            public void ok(CloseDialog closeDialog, Dlg_account_revenues.OutputData data) {
-                closeDialog.ok();
-
-            }
-        });
-        nd.setLocationRelativeTo(this);
-        nd.setVisible(true);
-    }
-
-    private void dlg_account_numbers() {
-        Window p = (Window) this;
-        Dlg_account_numbers nd = Dlg_account_numbers.create(p, true);
-        nd.setTitle("");
-
-        nd.setCallback(new Dlg_account_numbers.Callback() {
-
-            @Override
-            public void ok(CloseDialog closeDialog, Dlg_account_numbers.OutputData data) {
-                closeDialog.ok();
-
-            }
-        });
-        nd.setLocationRelativeTo(this);
-        nd.setVisible(true);
     }
     // </editor-fold>
 
@@ -618,7 +664,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         tbl_official_schedule_types.setModel(tbl_official_schedule_types_M);
         tbl_official_schedule_types.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_official_schedule_types.setRowHeight(25);
-        int[] tbl_widths_official_schedule_types = {100, 150, 150, 150, 30, 30, 0};
+        int[] tbl_widths_official_schedule_types = {100, 100, 70, 100, 30, 30, 0};
         for (int i = 0, n = tbl_widths_official_schedule_types.length; i < n; i++) {
             if (i == 0) {
                 continue;
@@ -633,9 +679,10 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
         tbl_official_schedule_types.setFont(new java.awt.Font("Arial", 0, 12));
         tbl_official_schedule_types.getColumnModel().getColumn(4).setCellRenderer(new ImageRenderer1());
         tbl_official_schedule_types.getColumnModel().getColumn(5).setCellRenderer(new ImageRenderer1());
+        TableWidthUtilities.setColumnRightRenderer(tbl_official_schedule_types, 3);
     }
 
-    public static void loadData_official_schedule_types(List<Cashiering.to_cashiering> acc) {
+    public static void loadData_official_schedule_types(List<Cashiering_types.to_cashiering_types> acc) {
         tbl_official_schedule_types_ALM.clear();
         tbl_official_schedule_types_ALM.addAll(acc);
     }
@@ -643,7 +690,7 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
     public static class Tblofficial_schedule_typesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Classification", "Category", "Account No", "Group", "", "", "schedule_type"
+            "Particular", "Classification", "Fixed", "Rate", "", "", "schedule_type"
         };
 
         public Tblofficial_schedule_typesModel(ListModel listmodel) {
@@ -668,44 +715,41 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
 
         @Override
         public Object getValueAt(int row, int col) {
-            Cashiering.to_cashiering tt = (Cashiering.to_cashiering) getRow(row);
+            Cashiering_types.to_cashiering_types tt = (Cashiering_types.to_cashiering_types) getRow(row);
             switch (col) {
                 case 0:
-                    return " " + tt.account;
+                    return " " + tt.cashiering_type;
                 case 1:
-                    return " " + tt.accounting_account_type;
+                    return " " + tt.account;
                 case 2:
-                    return " " + tt.accounting_account_name;
+                    if (tt.fix_rate.equals("1")) {
+                        return " Yes";
+                    } else {
+                        return " No";
+                    }
                 case 3:
-                    return " " + tt.accounting_group_name;
+                    return FitIn.fmt_wc_0(tt.rate) + " ";
                 case 4:
                     return "/spires/img_functions/edit.png";
                 case 5:
                     return "/spires/img_functions/remove11.png";
                 default:
-                    return "/spires/img_functions/remove11.png";
+                    return tt.account;
             }
         }
     }
 
     private void ret_official_schedule_types() {
-        String where = " order by account asc";
-        List<Cashiering.to_cashiering> datas = Cashiering.ret_data(where);
+        Field.Combo classification = (Field.Combo) jTextField3;
+        String where = " where account_id='" + classification.getId() + "' order by cashiering_type asc ";
+        List<Cashiering_types.to_cashiering_types> datas = Cashiering_types.ret_data(where);
         loadData_official_schedule_types(datas);
         jLabel8.setText("" + datas.size());
     }
 
     private void clear_official_schedule_types() {
         jTextField1.setText("");
-        Field.Combo category = (Field.Combo) jTextField2;
-        category.setText("");
-        category.setId("");
-        Field.Combo account_no = (Field.Combo) jTextField3;
-        account_no.setText("");
-        account_no.setId("");
-        Field.Combo group = (Field.Combo) jTextField4;
-        group.setId("1");
-        group.setText("Revenue");
+        jTextField2.setText("");
 
         tbl_official_schedule_types.clearSelection();
         jTextField1.grabFocus();
@@ -713,16 +757,22 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
 
     private void save_official_schedule_types() {
         int row = tbl_official_schedule_types.getSelectedRow();
-        Field.Combo category = (Field.Combo) jTextField2;
-        Field.Combo account_no = (Field.Combo) jTextField3;
-        Field.Combo group = (Field.Combo) jTextField4;
+        Field.Combo classification = (Field.Combo) jTextField3;
+        Field.Combo category = (Field.Combo) jTextField4;
+        Field.Combo account_no = (Field.Combo) jTextField5;
+        Field.Combo group = (Field.Combo) jTextField6;
         if (row < 0) {
 
             int id = 0;
-            String account = jTextField1.getText();
-            double rate = 0;
+            String account_id = classification.getId();
+            String account = classification.getText();
+            String cashiering_type = jTextField1.getText();
+            double rate = FitIn.toDouble(jTextField2.getText());
             int is_active = 1;
             String fix_rate = "0";
+            if (jCheckBox3.isSelected()) {
+                fix_rate = "1";
+            }
             int incremental = 0;
             String accounting_group_id = group.getId();
             String accounting_group_name = group.getText();
@@ -730,36 +780,34 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             String accounting_account_name = account_no.getText();
             String accounting_account_type = category.getText();
             String accounting_account_type_id = category.getId();
-
-            if (accounting_account_name.isEmpty()) {
-                Alert.set(0, "Select Account No.!");
+            if (account.isEmpty()) {
+                Alert.set(0, "Select Classification!");
                 jTextField3.grabFocus();
                 return;
             }
-
-            if (accounting_account_type.isEmpty()) {
-                Alert.set(0, "Select category!");
-                jTextField2.grabFocus();
-                return;
-            }
-
-            if (jTextField1.getText().isEmpty()) {
-                Alert.set(0, "Input Classification!");
+            if (cashiering_type.isEmpty()) {
+                Alert.set(0, "Input Particular!");
                 jTextField1.grabFocus();
                 return;
             }
 
-            Cashiering.to_cashiering cashier = new Cashiering.to_cashiering(id, account, rate, is_active, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
-            Cashiering.add_data(cashier);
-            Alert.set(1, "");
+            Cashiering_types.to_cashiering_types particular = new Cashiering_types.to_cashiering_types(id, account_id, account, cashiering_type, rate, is_active, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
+            Cashiering_types.add_cashiering_types(particular);
             ret_official_schedule_types();
+            Alert.set(1, account);
+
         } else {
-            Cashiering.to_cashiering to = (Cashiering.to_cashiering) tbl_official_schedule_types_ALM.get(row);
+            Cashiering_types.to_cashiering_types to = (Cashiering_types.to_cashiering_types) tbl_official_schedule_types_ALM.get(row);
             int id = to.id;
-            String account = jTextField1.getText();
-            double rate = 0;
+            String account_id = classification.getId();
+            String account = classification.getText();
+            String cashiering_type = jTextField1.getText();
+            double rate = FitIn.toDouble(jTextField2.getText());
             int is_active = 1;
             String fix_rate = "0";
+            if (jCheckBox3.isSelected()) {
+                fix_rate = "1";
+            }
             int incremental = 0;
             String accounting_group_id = group.getId();
             String accounting_group_name = group.getText();
@@ -767,29 +815,21 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             String accounting_account_name = account_no.getText();
             String accounting_account_type = category.getText();
             String accounting_account_type_id = category.getId();
-
-            if (accounting_account_name.isEmpty()) {
-                Alert.set(0, "Select Account No.!");
+            if (account.isEmpty()) {
+                Alert.set(0, "Select Classification!");
                 jTextField3.grabFocus();
                 return;
             }
-
-            if (accounting_account_type.isEmpty()) {
-                Alert.set(0, "Select category!");
-                jTextField2.grabFocus();
-                return;
-            }
-
-            if (jTextField1.getText().isEmpty()) {
-                Alert.set(0, "Input Classification!");
+            if (cashiering_type.isEmpty()) {
+                Alert.set(0, "Input Particular!");
                 jTextField1.grabFocus();
                 return;
             }
 
-            Cashiering.to_cashiering cashier = new Cashiering.to_cashiering(id, account, rate, is_active, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
-            Cashiering.update_data(cashier);
-            Alert.set(2, "");
+            Cashiering_types.to_cashiering_types particular = new Cashiering_types.to_cashiering_types(id, account_id, account, cashiering_type, rate, is_active, fix_rate, incremental, accounting_group_id, accounting_group_name, accounting_account_id, accounting_account_name, accounting_account_type, accounting_account_type_id);
+            Cashiering_types.edit_cashiering_types(particular);
             ret_official_schedule_types();
+            Alert.set(2, account);
 
         }
         clear_official_schedule_types();
@@ -801,90 +841,58 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             return;
         }
         int col = tbl_official_schedule_types.getSelectedColumn();
-        Cashiering.to_cashiering to = (Cashiering.to_cashiering) tbl_official_schedule_types_ALM.get(row);
         if (col == 4) {
-            Field.Combo category = (Field.Combo) jTextField2;
-            Field.Combo account_no = (Field.Combo) jTextField3;
-            Field.Combo group = (Field.Combo) jTextField4;
-            jTextField1.setText(to.account);
-            category.setText(to.accounting_account_type);
-            category.setId(to.accounting_account_type_id);
-            account_no.setText(to.accounting_account_name);
-            account_no.setId(to.accounting_account_id);
-            group.setText(to.accounting_group_name);
-            group.setId(to.accounting_group_id);
-        } else if (col == 5) {
-            Alert.set(0, "Disabled!");
-        } else {
-            Window p = (Window) this;
-            Dlg_front_desk_particulars nd = Dlg_front_desk_particulars.create(p, true);
-            nd.setTitle("");
-            nd.do_pass(to);
-            nd.setCallback(new Dlg_front_desk_particulars.Callback() {
-
-                @Override
-                public void ok(CloseDialog closeDialog, Dlg_front_desk_particulars.OutputData data) {
-                    closeDialog.ok();
-
-                }
-            });
-            nd.setLocationRelativeTo(this);
-            nd.setVisible(true);
-        }
-//          
-    }
-
-    private void init_account_no() {
-        String where = " order by account_no asc ";
-        final List<Account_numbers.to_account_numbers> account_nos = Account_numbers.ret_data(where);
-
-        Object[][] obj = new Object[account_nos.size()][1];
-        int i = 0;
-        for (Account_numbers.to_account_numbers to : account_nos) {
-            obj[i][0] = " " + to.account_no;
-            i++;
-        }
-        JLabel[] labels = {};
-        int[] tbl_widths_customers = {jTextField3.getWidth()};
-        String[] col_names = {""};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.setPopup(jTextField3, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
-            @Override
-            public void ok(TableRenderer.OutputData data) {
-                Account_numbers.to_account_numbers to = account_nos.get(data.selected_row);
-                Field.Combo account_no = (Field.Combo) jTextField3;
-                account_no.setText(to.account_no);
-                account_no.setId("" + to.id);
+            Cashiering_types.to_cashiering_types to = (Cashiering_types.to_cashiering_types) tbl_official_schedule_types_ALM.get(row);
+            jTextField1.setText(to.cashiering_type);
+            jTextField2.setText(FitIn.fmt_wc_0(to.rate));
+            if (to.fix_rate.equals("1")) {
+                jCheckBox3.setSelected(true);
+            } else {
+                jCheckBox3.setSelected(false);
             }
-        });
-    }
-
-    private void init_category() {
-        String where = " order by revenue asc ";
-        final List<Account_revenues.to_account_revenues> account_nos = Account_revenues.ret_data(where);
-
-        Object[][] obj = new Object[account_nos.size()][1];
-        int i = 0;
-        for (Account_revenues.to_account_revenues to : account_nos) {
-            obj[i][0] = " " + to.revenue;
-            i++;
         }
-        JLabel[] labels = {};
-        int[] tbl_widths_customers = {jTextField3.getWidth()};
-        String[] col_names = {""};
-        TableRenderer tr = new TableRenderer();
-        TableRenderer.setPopup(jTextField3, obj, labels, tbl_widths_customers, col_names);
-        tr.setCallback(new TableRenderer.Callback() {
-            @Override
-            public void ok(TableRenderer.OutputData data) {
-                Account_revenues.to_account_revenues to = account_nos.get(data.selected_row);
-                Field.Combo category = (Field.Combo) jTextField2;
-                category.setText(to.revenue);
-                category.setId("" + to.id);
-            }
-        });
+        if (col == 5) {
+            Alert.set(0, "Disabled");
+        }
     }
 //</editor-fold> 
 
+    private void init_classification() {
+        String where = " order by account asc ";
+        final List<Cashiering.to_cashiering> account_nos = Cashiering.ret_data(where);
+
+        Object[][] obj = new Object[account_nos.size()][1];
+        int i = 0;
+        for (Cashiering.to_cashiering to : account_nos) {
+            obj[i][0] = " " + to.account;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {jTextField3.getWidth()};
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(jTextField3, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Cashiering.to_cashiering to = account_nos.get(data.selected_row);
+                Field.Combo classification = (Field.Combo) jTextField3;
+                classification.setText(to.account);
+                classification.setId("" + to.id);
+
+                Field.Combo category = (Field.Combo) jTextField4;
+                category.setText(to.accounting_account_type);
+                category.setId(to.accounting_account_type_id);
+
+                Field.Combo account_no = (Field.Combo) jTextField5;
+                account_no.setText(to.accounting_account_name);
+                account_no.setId(to.accounting_account_id);
+
+                Field.Combo group = (Field.Combo) jTextField6;
+                group.setText(to.accounting_group_name);
+                group.setId(to.accounting_group_id);
+
+            }
+        });
+    }
 }

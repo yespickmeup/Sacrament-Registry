@@ -265,6 +265,11 @@ public class Dlg_front_desk extends javax.swing.JDialog {
 
             }
         ));
+        tbl_cashiering.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_cashieringMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_cashiering);
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -592,13 +597,14 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                             .addComponent(jCheckBox2))
                         .addGap(1, 1, 1)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jCheckBox4))
-                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jCheckBox4)))
+                            .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -612,12 +618,13 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 419, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
-                        .addComponent(jLabel16)))
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)))
                 .addGap(21, 21, 21))
         );
 
@@ -704,6 +711,10 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         ret_receipts();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void tbl_cashieringMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cashieringMouseClicked
+        select_classification();
+    }//GEN-LAST:event_tbl_cashieringMouseClicked
 
     /**
      * @param args the command line arguments
@@ -808,6 +819,11 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                     e.consume();
 
                 }
+                if (e.getKeyCode() == KeyEvent.VK_F5) {
+                    dlg_classifications();
+                    e.consume();
+
+                }
             }
 
         });
@@ -824,6 +840,11 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                 }
                 if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
                     settle_receipt();
+                    e.consume();
+
+                }
+                if (e.getKeyCode() == KeyEvent.VK_F5) {
+                    dlg_classifications();
                     e.consume();
 
                 }
@@ -852,6 +873,23 @@ public class Dlg_front_desk extends javax.swing.JDialog {
             }
 
         });
+    }
+
+    private void dlg_classifications() {
+        Window p = (Window) this;
+        Dlg_front_desk_classifications nd = Dlg_front_desk_classifications.create(p, true);
+        nd.setTitle("");
+
+        nd.setCallback(new Dlg_front_desk_classifications.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_front_desk_classifications.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
     }
     // </editor-fold>
 
@@ -1439,4 +1477,33 @@ public class Dlg_front_desk extends javax.swing.JDialog {
         jLabel16.setText(FitIn.fmt_wc_0(amount));
     }
 //</editor-fold> 
+
+    private void select_classification() {
+        int row = tbl_cashiering.getSelectedRow();
+        if (row < 0) {
+            return;
+        }
+        to_cashiering to = (to_cashiering) tbl_cashiering_ALM.get(row);
+        int col = tbl_cashiering.getSelectedColumn();
+        if (col == 1) {
+            Window p = (Window) this;
+            Dlg_front_desk_classifications nd = Dlg_front_desk_classifications.create(p, true);
+            nd.setTitle("");
+
+            nd.setCallback(new Dlg_front_desk_classifications.Callback() {
+
+                @Override
+                public void ok(CloseDialog closeDialog, Dlg_front_desk_classifications.OutputData data) {
+                    closeDialog.ok();
+
+                }
+            });
+            nd.setLocationRelativeTo(this);
+            nd.setVisible(true);
+        }
+        if (col == 0) {
+            dlg_cashiering_types();
+        }
+
+    }
 }

@@ -140,6 +140,31 @@ public class Cashiering {
 
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
+
+            String s2 = "update cashiering_types set "
+                    + " account= :account "
+                    + ",accounting_group_id= :accounting_group_id "
+                    + ",accounting_group_name= :accounting_group_name "
+                    + ",accounting_account_id= :accounting_account_id "
+                    + ",accounting_account_name= :accounting_account_name "
+                    + ",accounting_account_type= :accounting_account_type "
+                    + ",accounting_account_type_id= :accounting_account_type_id "
+                    + " where account_id='" + to_cashiering.id + "' "
+                    + " ";
+
+            s2 = SqlStringUtil.parse(s2)
+                    .setString("account", to_cashiering.account)
+                    .setString("accounting_group_id", to_cashiering.accounting_group_id)
+                    .setString("accounting_group_name", to_cashiering.accounting_group_name)
+                    .setString("accounting_account_id", to_cashiering.accounting_account_id)
+                    .setString("accounting_account_name", to_cashiering.accounting_account_name)
+                    .setString("accounting_account_type", to_cashiering.accounting_account_type)
+                    .setString("accounting_account_type_id", to_cashiering.accounting_account_type_id)
+                    .ok();
+
+            PreparedStatement stmt2 = conn.prepareStatement(s2);
+            stmt2.execute();
+
             Lg.s(Cashiering.class, "Successfully Updated");
         } catch (SQLException e) {
             throw new RuntimeException(e);
