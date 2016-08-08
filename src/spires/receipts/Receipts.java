@@ -478,7 +478,7 @@ public class Receipts {
         try {
             Connection conn = MyConnection.connect();
             String s0 = "delete from receipts where "
-                    + " or_no ='" + to_receipts.or_no + "' "
+                    + " id ='" + to_receipts.id + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);
