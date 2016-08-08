@@ -61,8 +61,9 @@ public class Dlg_front_desk_cashiering_types extends javax.swing.JDialog {
         public final String check_bank;
         public final String check_holder;
         public final String remarks;
-
-        public OutputData(to_cashiering_types cashiering_type, double cash, double check_amount, String check_no, String check_bank,String check_holder, String remarks) {
+        public final String or_date;
+        public final String or_time;
+        public OutputData(to_cashiering_types cashiering_type, double cash, double check_amount, String check_no, String check_bank,String check_holder, String remarks,String or_date,String or_time) {
             this.cashiering_type = cashiering_type;
             this.cash = cash;
             this.check_amount = check_amount;
@@ -70,6 +71,8 @@ public class Dlg_front_desk_cashiering_types extends javax.swing.JDialog {
             this.check_bank = check_bank;
             this.check_holder=check_holder;
             this.remarks = remarks;
+            this.or_date=or_date;
+            this.or_time=or_time;
         }
 
     }
@@ -230,6 +233,11 @@ public class Dlg_front_desk_cashiering_types extends javax.swing.JDialog {
 
             }
         ));
+        tbl_cashiering_types.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbl_cashiering_typesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbl_cashiering_types);
 
         jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -273,6 +281,10 @@ public class Dlg_front_desk_cashiering_types extends javax.swing.JDialog {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         ret_cashiering_types(account_id);
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void tbl_cashiering_typesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_cashiering_typesMouseClicked
+        tender();
+    }//GEN-LAST:event_tbl_cashiering_typesMouseClicked
 
     /**
      * @param args the command line arguments
@@ -467,16 +479,18 @@ public class Dlg_front_desk_cashiering_types extends javax.swing.JDialog {
                 String check_bank = data.check_bank;
                 String check_holder=data.check_holder;
                 String remarks = data.remarks;
-                ok1(to, cash, check_amount, check_no, check_bank,check_holder, remarks);
+                String or_date=data.or_date;
+                String or_time=data.or_time;
+                ok1(to, cash, check_amount, check_no, check_bank,check_holder, remarks,or_date,or_time);
             }
         });
         nd.setLocationRelativeTo(this);
         nd.setVisible(true);
     }
 
-    private void ok1(to_cashiering_types to, double cash, double check_amount, String check_no, String check_bank,String check_holder, String remarks) {
+    private void ok1(to_cashiering_types to, double cash, double check_amount, String check_no, String check_bank,String check_holder, String remarks,String or_date,String or_time) {
         if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData(to, cash, check_amount, check_no, check_bank,check_holder, remarks));
+            callback.ok(new CloseDialog(this), new OutputData(to, cash, check_amount, check_no, check_bank,check_holder, remarks,or_date,or_time));
         }
     }
 //</editor-fold> 

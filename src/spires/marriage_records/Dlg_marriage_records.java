@@ -938,6 +938,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
             @Override
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    e.consume();
                     select_marriage_records();
                 }
             }

@@ -813,9 +813,11 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             account_no.setId(to.accounting_account_id);
             group.setText(to.accounting_group_name);
             group.setId(to.accounting_group_id);
-        } else if (col == 5) {
+        }
+        if (col == 5) {
             Alert.set(0, "Disabled!");
-        } else {
+        }
+        if (col < 4) {
             Window p = (Window) this;
             Dlg_front_desk_particulars nd = Dlg_front_desk_particulars.create(p, true);
             nd.setTitle("");
@@ -871,10 +873,10 @@ public class Dlg_front_desk_classifications extends javax.swing.JDialog {
             i++;
         }
         JLabel[] labels = {};
-        int[] tbl_widths_customers = {jTextField3.getWidth()};
+        int[] tbl_widths_customers = {jTextField2.getWidth()};
         String[] col_names = {""};
         TableRenderer tr = new TableRenderer();
-        TableRenderer.setPopup(jTextField3, obj, labels, tbl_widths_customers, col_names);
+        TableRenderer.setPopup(jTextField2, obj, labels, tbl_widths_customers, col_names);
         tr.setCallback(new TableRenderer.Callback() {
             @Override
             public void ok(TableRenderer.OutputData data) {

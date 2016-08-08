@@ -8,9 +8,12 @@ package spires.accounting;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import mijzcx.synapse.desk.utils.CloseDialog;
@@ -21,6 +24,7 @@ import spires.banks.Banks;
 import spires.cashiering.Cashiering_types;
 import spires.receipts.Receipts;
 import spires.util.Alert;
+import spires.util.DateType;
 import spires.util.TableRenderer;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -58,14 +62,19 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         public final String check_bank;
         public final String check_holder;
         public final String remarks;
+        public final String or_date;
+        public final String or_time;
 
-        public OutputData(double cash, double check_amount, String check_no, String check_bank, String check_holder, String remarks) {
+        public OutputData(double cash, double check_amount, String check_no, String check_bank, String check_holder, String remarks, String or_date, String or_time) {
             this.cash = cash;
             this.check_amount = check_amount;
             this.check_no = check_no;
             this.check_bank = check_bank;
             this.check_holder = check_holder;
             this.remarks = remarks;
+            this.or_date = or_date;
+            this.or_time = or_time;
+
         }
 
     }
@@ -225,6 +234,10 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         tf_check_holder = new Field.Combo();
+        jLabel9 = new javax.swing.JLabel();
+        tf_check_holder1 = new Field.Combo();
+        jLabel10 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -330,6 +343,27 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
             }
         });
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Time:");
+
+        tf_check_holder1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_check_holder1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tf_check_holder1MouseClicked(evt);
+            }
+        });
+        tf_check_holder1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_check_holder1ActionPerformed(evt);
+            }
+        });
+
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel10.setText("Date:");
+
+        jDateChooser1.setDate(new Date());
+        jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -351,8 +385,10 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(1, 1, 1)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField4)
                             .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -360,8 +396,10 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
                             .addComponent(jTextField1)
                             .addComponent(jTextField6)
                             .addComponent(jTextField5)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                            .addComponent(tf_check_holder))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                            .addComponent(tf_check_holder)
+                            .addComponent(tf_check_holder1)
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(25, 25, 25))
         );
         jPanel1Layout.setVerticalGroup(
@@ -395,6 +433,14 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_check_holder, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(5, 5, 5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tf_check_holder1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(1, 1, 1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -403,7 +449,7 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(25, 25, 25))
+                .addGap(28, 28, 28))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -414,7 +460,7 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -460,6 +506,14 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         init_banks();
     }//GEN-LAST:event_jTextField4MouseClicked
 
+    private void tf_check_holder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_check_holder1ActionPerformed
+       init_time() ;
+    }//GEN-LAST:event_tf_check_holder1ActionPerformed
+
+    private void tf_check_holder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_check_holder1MouseClicked
+        init_time() ;
+    }//GEN-LAST:event_tf_check_holder1MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -467,7 +521,9 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -475,6 +531,7 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -485,6 +542,7 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField tf_check_holder;
+    private javax.swing.JTextField tf_check_holder1;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
@@ -498,6 +556,7 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
             jTextField6.setText("No");
         }
         jTextField1.setText(FitIn.fmt_wc_0(to.rate));
+
     }
 
     private void init_banks() {
@@ -539,6 +598,15 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         jTextField4.setText(receipt.check_bank);
         tf_check_holder.setText(receipt.check_holder);
         jTextArea1.setText(receipt.message);
+
+        try {
+            Date or_date = DateType.sf.parse(receipt.or_date);
+            jDateChooser1.setDate(or_date);
+            tf_check_holder1.setText(receipt.or_time);
+        } catch (ParseException ex) {
+            Logger.getLogger(Dlg_front_desk_tender.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -574,7 +642,7 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
             @Override
             public void keyPressed(KeyEvent e) {
 
-                if (e.getKeyCode() == KeyEvent.VK_CONTROL) {
+                if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
                     ok();
                 }
 
@@ -593,6 +661,8 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         String check_holder = tf_check_holder.getText();
         String remarks = jTextArea1.getText();
         double total = cash + check_amount;
+        String or_date = DateType.sf.format(jDateChooser1.getDate());
+        String or_time = tf_check_holder1.getText();
         if (jTextField6.getText().equals("Yes")) {
             if (total > rate || total < rate) {
                 Alert.set(0, "Fixed Rate!");
@@ -607,7 +677,38 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         }
         if (callback
                 != null) {
-            callback.ok(new CloseDialog(this), new OutputData(cash, check_amount, check_no, check_bank, check_holder, remarks));
+            callback.ok(new CloseDialog(this), new OutputData(cash, check_amount, check_no, check_bank, check_holder, remarks, or_date, or_time));
         }
+    }
+
+    private void init_time() {
+        String search = jTextField4.getText();
+
+        final List<String> time = new ArrayList();
+        time.add("6:00 AM");
+        time.add("6:30 AM");
+        time.add("7:00 AM");
+        time.add("11:00 AM");
+        time.add("4:30 PM");
+        Object[][] obj = new Object[time.size()][1];
+        int i = 0;
+        for (String s : time) {
+            obj[i][0] = " " + s;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf_check_holder1.getWidth()};
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf_check_holder1, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                String to = time.get(data.selected_row);
+                tf_check_holder1.setText(to);
+                jTextArea1.grabFocus();
+            }
+        });
+
     }
 }

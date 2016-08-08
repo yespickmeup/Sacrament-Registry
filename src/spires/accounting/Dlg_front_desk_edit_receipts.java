@@ -8,20 +8,17 @@ package spires.accounting;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JLabel;
-import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.CloseDialog;
-import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
-import spires.banks.Banks;
 import spires.my_parishioners.Dlg_my_parishioner;
 import spires.my_parishioners.My_parishioners;
-import spires.official_schedules.Official_schedule_types;
 import spires.receipts.Receipts;
 import spires.util.Alert;
 import spires.util.DateType;
@@ -31,12 +28,12 @@ import synsoftech.fields.Field;
 
 /**
  *
- * @author Guinness
+ * @author Maytopacka
  */
-public class Dlg_front_desk_settle extends javax.swing.JDialog {
+public class Dlg_front_desk_edit_receipts extends javax.swing.JDialog {
 
     /**
-     * Creates new form Dlg_front_desk_settle
+     * Creates new form Dlg_front_desk_edit_receipts
      */
     //<editor-fold defaultstate="collapsed" desc=" callback ">
     private Callback callback;
@@ -76,33 +73,33 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_front_desk_settle(java.awt.Frame parent, boolean modal) {
+    private Dlg_front_desk_edit_receipts(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_front_desk_settle(java.awt.Dialog parent, boolean modal) {
+    private Dlg_front_desk_edit_receipts(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_front_desk_settle() {
+    public Dlg_front_desk_edit_receipts() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_front_desk_settle myRef;
+    private Dlg_front_desk_edit_receipts myRef;
 
-    private void setThisRef(Dlg_front_desk_settle myRef) {
+    private void setThisRef(Dlg_front_desk_edit_receipts myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_front_desk_settle> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_front_desk_edit_receipts> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -110,7 +107,7 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_front_desk_settle create(java.awt.Window parent, boolean modal) {
+    public static Dlg_front_desk_edit_receipts create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -120,14 +117,14 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_front_desk_settle create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_front_desk_edit_receipts create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_front_desk_settle dialog = dialogContainer.get(parent);
+            Dlg_front_desk_edit_receipts dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_front_desk_settle((java.awt.Frame) parent, false);
+                dialog = new Dlg_front_desk_edit_receipts((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -141,10 +138,10 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_front_desk_settle dialog = dialogContainer.get(parent);
+            Dlg_front_desk_edit_receipts dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_front_desk_settle((java.awt.Dialog) parent, false);
+                dialog = new Dlg_front_desk_edit_receipts((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -171,7 +168,7 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_front_desk_settle dialog = Dlg_front_desk_settle.create(new javax.swing.JFrame(), true);
+        Dlg_front_desk_edit_receipts dialog = Dlg_front_desk_edit_receipts.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -212,22 +209,16 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jTextField2 = new Field.Input();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel3 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel4 = new javax.swing.JLabel();
         jTextField4 = new Field.Combo();
-        jTextField5 = new Field.Input();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jTextField6 = new Field.Input();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField7 = new Field.Input();
-        jLabel8 = new javax.swing.JLabel();
-        jTextField8 = new Field.Input();
-        jButton1 = new Button.Success();
-        jButton2 = new Button.Default();
+        jTextField5 = new Field.Input();
         jLabel9 = new javax.swing.JLabel();
         jTextField9 = new Field.Input();
+        jButton2 = new Button.Default();
+        jButton1 = new Button.Success();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -239,11 +230,11 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
 
         jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jDateChooser1.setDate(new Date());
-        jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Date:");
+
+        jDateChooser1.setDate(new Date());
+        jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Name:");
@@ -260,46 +251,15 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
             }
         });
 
-        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Contact #:");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Amount Due:");
+        jTextField5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextField6.setText("0.00");
-        jTextField6.setFocusable(false);
+        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel9.setText("Address:");
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Tender:");
-
-        jTextField7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextField7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField7ActionPerformed(evt);
-            }
-        });
-        jTextField7.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField7KeyReleased(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Change:");
-
-        jTextField8.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jTextField8.setText("0.00");
-        jTextField8.setFocusable(false);
-
-        jButton1.setText("OK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jTextField9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jButton2.setText("Cancel");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -308,10 +268,12 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
             }
         });
 
-        jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel9.setText("Address:");
-
-        jTextField9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setText("OK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -325,20 +287,8 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
+                        .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField8))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField7))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField6))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -346,7 +296,7 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE))
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -359,12 +309,12 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextField9)))))
-                .addGap(23, 23, 23))
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
+                .addGap(53, 53, 53)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField2)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -384,23 +334,11 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField9)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField6)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField7)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField8)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -417,29 +355,21 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
+        init_parishioner();
+    }//GEN-LAST:event_jTextField4MouseClicked
+
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         init_parishioner();
     }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jTextField7KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField7KeyReleased
-        count_change();
-    }//GEN-LAST:event_jTextField7KeyReleased
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ok();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
-        ok();
-    }//GEN-LAST:event_jTextField7ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         disposed();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
-        init_parishioner();
-    }//GEN-LAST:event_jTextField4MouseClicked
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        ok();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -453,33 +383,29 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
         init_key();
-        init_or();
     }
 
-    public void do_pass(double amount_due) {
-        jTextField6.setText(FitIn.fmt_wc_0(amount_due));
-        jTextField7.setText(FitIn.fmt_wc_0(amount_due));
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                jTextField4.grabFocus();
-            }
-        });
+    public void do_pass(Receipts.to_receipts to) {
+        jTextField2.setText(to.or_no);
+        Date d;
+        try {
+            d = DateType.sf.parse(to.or_date);
+            jDateChooser1.setDate(d);
+        } catch (ParseException ex) {
+            Logger.getLogger(Dlg_front_desk_edit_receipts.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jTextField4.setText(to.parishioner);
+        jTextField5.setText(to.parioshioner_contact_no);
+        jTextField2.grabFocus();
     }
 
     // <editor-fold defaultstate="collapsed" desc="Key">
@@ -498,42 +424,8 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
             }
         });
     }
-
     // </editor-fold>
-    private void init_or() {
-        jTextField2.setText(Receipts.increment_id());
-    }
 
-    private void count_change() {
-        double due = FitIn.toDouble(jTextField6.getText());
-        double tender = FitIn.toDouble(jTextField7.getText());
-        double change = tender - due;
-        jTextField8.setText(FitIn.fmt_wc_0(change));
-
-    }
-
-    private void ok() {
-        Field.Combo par = (Field.Combo) jTextField4;
-
-        double due = FitIn.toDouble(jTextField6.getText());
-        double tender = FitIn.toDouble(jTextField7.getText());
-        double change = tender - due;
-        if (change < 0) {
-            Alert.set(0, "Enter Amount");
-            return;
-        }
-        String or_no = jTextField2.getText();
-        String or_date = DateType.sf.format(jDateChooser1.getDate());
-        String parishioner = par.getText();
-        String parishioner_id = par.getId();
-        String parishioner_contact_no = jTextField5.getText();
-        String parishioner_address = jTextField9.getText();
-        if (callback != null) {
-            callback.ok(new CloseDialog(this), new OutputData(or_no, or_date, parishioner, parishioner_id, parishioner_contact_no, parishioner_address));
-        }
-        
-    }
-   
     private void init_parishioner() {
         String search = jTextField4.getText();
 
@@ -545,7 +437,7 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
             jTextField4.setText("" + to.parishioner);
             jTextField5.setText(to.contact_no);
             jTextField9.setText(to.address);
-            jTextField7.grabFocus();
+
         }
         if (parishioner.isEmpty()) {
             Window p = (Window) this;
@@ -561,7 +453,7 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
                     jTextField4.setText("" + data.to.parishioner);
                     jTextField5.setText(data.to.contact_no);
                     jTextField9.setText(data.to.address);
-                    jTextField7.grabFocus();
+
                 }
             });
             nd.setLocationRelativeTo(this);
@@ -586,11 +478,28 @@ public class Dlg_front_desk_settle extends javax.swing.JDialog {
                     jTextField4.setText("" + to.parishioner);
                     jTextField5.setText(to.contact_no);
                     jTextField9.setText(to.address);
-                    jTextField7.grabFocus();
+
                 }
             });
         }
 
     }
 
+    private void ok() {
+        String or_no = jTextField2.getText();
+        if (or_no.isEmpty()) {
+            Alert.set(0, "Empty Field");
+            jTextField2.grabFocus();
+            return;
+        }
+
+        String or_date = DateType.sf.format(jDateChooser1.getDate());
+        String parishioner = jTextField4.getText();
+        String parishioner_id = "";
+        String parishioner_contact_no = jTextField5.getText();
+        String parishioner_address = jTextField9.getText();
+        if (callback != null) {
+            callback.ok(new CloseDialog(this), new OutputData(or_no, or_date, parishioner, parishioner_id, parishioner_contact_no, parishioner_address));
+        }
+    }
 }

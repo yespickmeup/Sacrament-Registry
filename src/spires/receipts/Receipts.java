@@ -27,9 +27,9 @@ public class Receipts {
 
         public final int id;
         public final String or_no;
-        public final String or_date;
+        public String or_date;
         public final String date_added;
-        public final String or_time;
+        public String or_time;
         public final String user_name;
         public final String terminal_id;
         public final double amount_due;
@@ -82,6 +82,22 @@ public class Receipts {
             this.check_bank = check_bank;
             this.is_fixed = is_fixed;
 
+        }
+
+        public String getOr_date() {
+            return or_date;
+        }
+
+        public void setOr_date(String or_date) {
+            this.or_date = or_date;
+        }
+
+        public String getOr_time() {
+            return or_time;
+        }
+
+        public void setOr_time(String or_time) {
+            this.or_time = or_time;
         }
 
         public double getCash() {
@@ -427,11 +443,42 @@ public class Receipts {
         }
     }
 
+    public static void edit_receipt_details(String id, String new_or, String or_date, String parishioner, String parishioner_id, String parishioner_contact_no, String parishioner_address) {
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "update receipts set "
+                    + " or_no= :or_no"
+                    + ",or_date= :or_date"
+                    + ",parishioner= :parishioner"
+                    + ",parishioner_id= :parishioner_id"
+                    + ",parioshioner_contact_no= :parioshioner_contact_no"
+                    + " where "
+                    + " id ='" + id + "' "
+                    + " ";
+
+            s0 = SqlStringUtil.parse(s0)
+                    .setString("or_no", new_or)
+                    .setString("or_date", or_date)
+                    .setString("parishioner", parishioner)
+                    .setString("parishioner_id", parishioner_contact_no)
+                    .setString("parioshioner_contact_no", parishioner_address)
+                    .ok();
+
+            PreparedStatement stmt = conn.prepareStatement(s0);
+            stmt.execute();
+            Lg.s(Receipts.class, "Successfully Updated");
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
     public static void delete_receipts(to_receipts to_receipts) {
         try {
             Connection conn = MyConnection.connect();
             String s0 = "delete from receipts where "
-                    + " id ='" + to_receipts.id + "' "
+                    + " or_no ='" + to_receipts.or_no + "' "
                     + " ";
 
             PreparedStatement stmt = conn.prepareStatement(s0);

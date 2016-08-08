@@ -1128,7 +1128,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         String fname = tf_fname.getText();
         String mi = tf_mi.getText();
         String lname = tf_lname.getText();
-        String b_place = tf_place_of_baptism.getText();
+        String b_place = tf_place_of_birth.getText();
         String address = "";
         String father = tf_father.getText();
         String mother = tf_mother.getText();
@@ -1146,7 +1146,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         int status = 0;
         String place_of_baptism = tf_place_of_baptism.getText();
         String parish_priest = tf_priest1.getText();
-        final Srpt_print_baptism.field to = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, b_day, "" + id, remarks, place_of_baptism, parish_priest);
+        final Srpt_print_baptism.field to = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, b_place, b_day, "" + id, remarks, place_of_baptism, parish_priest);
 
         S1_encoding_baptism.add_parishioners_1(to);
 
@@ -1196,7 +1196,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         }
 
         tf_place_of_birth.setText(to.getPlace_of_birth());
-//        tf_place_of_baptism.setText(to.getPlace_of_baptism());
+        tf_place_of_baptism.setText(to.getPlace_of_baptism());
         tf_priest.setText(to.getPriest());
 
         tf_priest1.setText(to.getParish_priest());
@@ -1226,7 +1226,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         String fname = tf_fname.getText();
         String mi = tf_mi.getText();
         String lname = tf_lname.getText();
-        String b_place = tf_place_of_baptism.getText();
+        String b_place = tf_place_of_birth.getText();
         String address = "";
         String father = tf_father.getText();
         String mother = tf_mother.getText();
@@ -1244,7 +1244,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         int status = 0;
         String place_of_baptism = tf_place_of_baptism.getText();
         String parish_priest = tf_priest1.getText();
-        final Srpt_print_baptism.field to1 = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, bapt_place, b_day, "" + id, remarks, place_of_baptism, parish_priest);
+        final Srpt_print_baptism.field to1 = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, b_place, b_day, "" + id, remarks, place_of_baptism, parish_priest);
         S1_encoding_baptism.update_data(to1);
         clear();
         System.out.println("Record  Updated!");
