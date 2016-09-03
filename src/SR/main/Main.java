@@ -62,7 +62,7 @@ public class Main {
             String userHome = System.getProperty("user.home");
             System.out.println(userHome);
             conf = (conf == null
-                    ? "sacrament_registry.conf"
+                    ? "spires.conf"
                     : conf);
             System.out.println(conf);
             File file = new File(userHome + "/" + conf);
