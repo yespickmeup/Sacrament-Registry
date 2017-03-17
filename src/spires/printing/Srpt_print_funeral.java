@@ -59,12 +59,13 @@ public class Srpt_print_funeral {
         String age;
         String father;
         String mother;
+        String parents;
         public field() {
         }
 
         public field(String index_no, String book_no, String page_no, String date_of_burial, String price, String fname, String mi
                 , String lname, String residence, String informant, String id, String remarks
-                ,String date_of_death,String age,String father,String mother) {
+                ,String date_of_death,String age,String father,String mother,String parents) {
             this.index_no = index_no;
             this.book_no = book_no;
             this.page_no = page_no;
@@ -81,6 +82,15 @@ public class Srpt_print_funeral {
             this.age=age;
             this.father=father;
             this.mother=mother;
+            this.parents=parents;
+        }
+
+        public String getParents() {
+            return parents;
+        }
+
+        public void setParents(String parents) {
+            this.parents = parents;
         }
 
         public String getFather() {
@@ -268,6 +278,7 @@ public class Srpt_print_funeral {
                     + ",age"
                     + ",father"
                     + ",mother"
+                    + ",parents"              
                     + " from encoding_funeral2 "
                     + " " + where;
 
@@ -295,8 +306,9 @@ public class Srpt_print_funeral {
                 String age=rs.getString(16);
                 String father=rs.getString(17);
                 String mother=rs.getString(18);
+                String parents = rs.getString(19);
                 Srpt_print_funeral.field to = new field(index_no, book_no, page_no, date_of_burial, priest
-                        , fname, mi, lname, residence, informant, "" + id,remarks,date_of_death,age,father,mother);
+                        , fname, mi, lname, residence, informant, "" + id,remarks,date_of_death,age,father,mother,parents);
 
                 datas.add(to);
             }

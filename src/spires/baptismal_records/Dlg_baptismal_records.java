@@ -953,10 +953,11 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
+        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
         init_tbl_baptismal_records(tbl_baptismal_records);
-        String address=System.getProperty("address", "Negros Oriental");
+        String address = System.getProperty("address", "Negros Oriental");
         tf_place_of_baptism.setText(address);
     }
 
@@ -973,7 +974,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -1109,7 +1110,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
                 }
                 jLabel6.setText("" + datas.size());
 
-                jPanel3.setVisible(false);
+//                jPanel3.setVisible(false);
                 jTextField2.setEnabled(true);
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
@@ -1246,7 +1247,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         String parish_priest = tf_priest1.getText();
         final Srpt_print_baptism.field to1 = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, b_place, b_day, "" + id, remarks, place_of_baptism, parish_priest);
         S1_encoding_baptism.update_data(to1);
-        clear();
+
         System.out.println("Record  Updated!");
         data_cols();
     }
@@ -1276,65 +1277,77 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
     }
 
     private void print_certificate() {
-        jProgressBar1.setString("Loading...Please wait...");
-        jProgressBar1.setIndeterminate(true);
-        Thread t = new Thread(new Runnable() {
+        String num = "";
+        String day = DateType.month_date.format(new Date());
+        String month = spires.util.DateType.m.format(new Date());
+        String year = spires.util.DateType.y.format(new Date());
+        String priest = jTextField3.getText();
+        String asst_priest = jTextField5.getText();
+        int add2 = FitIn.toInt(spires.util.DateType.y.format(new Date())) + 1;
+        String series_of = spires.util.DateType.y.format(new Date()) + " - " + add2;
+        String path = "path";
+        String name = tf_fname.getText() + " " + tf_mi.getText() + " " + tf_lname.getText();
+        String father = tf_father.getText();
+        String mother = tf_mother.getText();
+        Date d2 = dp_baptism.getDate();
+        Date d4 = dp_bday.getDate();
+        String date_of_confirmation = spires.util.DateType.month_date.format(d2);
+        String book_no = "" + tf_book_no.getText();
+        String page_no = "" + tf_page_no.getText();
+        String confirmed_by = tf_index_no.getText();
+        String sponsor_name = tf_sponsors.getText();
+        String place_of_birth = tf_place_of_birth.getText();
+        String date_of_birth = spires.util.DateType.month_date.format(d4);
+        String img_path = System.getProperty("img_path", "C:\\Users\\Guiness\\");
+        String purpose = "";
+        if (!jTextField4.getText().isEmpty()) {
+            purpose = "" + jTextField4.getText();
+        }
+        String place_of_baptism = tf_place_of_baptism.getText();
+        String parish_priest = tf_priest1.getText();
+        String jrxml = "rpt_baptism_new.jrxml";
+        String cert = System.getProperty("print_baptism", "Bacong");
 
-            @Override
-            public void run() {
-                String num = "";
-                String day = DateType.month_date.format(new Date());
-                String month = spires.util.DateType.m.format(new Date());
-                String year = spires.util.DateType.y.format(new Date());
-                String priest = jTextField3.getText();
-                String asst_priest = jTextField5.getText();
-                int add2 = FitIn.toInt(spires.util.DateType.y.format(new Date())) + 1;
-                String series_of = spires.util.DateType.y.format(new Date()) + " - " + add2;
-                String path = "path";
-                String name = tf_fname.getText() + " " + tf_mi.getText() + " " + tf_lname.getText();
-                String father = tf_father.getText();
-                String mother = tf_mother.getText();
-                Date d2 = dp_baptism.getDate();
-                Date d4 = dp_bday.getDate();
-                String date_of_confirmation = spires.util.DateType.month_date.format(d2);
-                String book_no = "" + tf_book_no.getText();
-                String page_no = "" + tf_page_no.getText();
-                String confirmed_by = tf_index_no.getText();
-                String sponsor_name = tf_sponsors.getText();
-                String place_of_birth = tf_place_of_birth.getText();
-                String date_of_birth = spires.util.DateType.month_date.format(d4);
-                String img_path = System.getProperty("img_path", "C:\\Users\\Guiness\\");
-                String purpose = "";
-                if (!jTextField4.getText().isEmpty()) {
-                    purpose = "" + jTextField4.getText();
-                }
-                String place_of_baptism = tf_place_of_baptism.getText();
-                String parish_priest = tf_priest1.getText();
-                SRpt_baptism rpt = new SRpt_baptism(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, place_of_birth, date_of_birth, date_of_confirmation, "", tf_priest.getText(), book_no, page_no, sponsor_name, tf_index_no.getText(), purpose, img_path, place_of_baptism, parish_priest);
-                try {
-                    String jrxml = "rpt_baptism_new.jrxml";
-                    String cert = System.getProperty("print_baptism", "Bacong");
-                    if (cert.equalsIgnoreCase("bacong")) {
-                        jrxml = "rpt_baptism_bacong.jrxml";
-                    }
-                    InputStream is = SRpt_baptism.class.getResourceAsStream(jrxml);
-                    JasperReport jasperReport;
-                    jasperReport = JasperCompileManager.compileReport(is);
-                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                            setParameter(rpt), JasperUtil.emptyDatasource());
-                    JasperPrintManager.printReport(jasperPrint, false);
+        if (cert.equalsIgnoreCase("bacong")) {
+            jrxml = "rpt_baptism_bacong.jrxml";
+        } else {
+            day = spires.util.DateType.nth(spires.util.DateType.d.format(new Date()));
+            purpose = "Purpose: " + purpose;
+        }
 
-                } catch (JRException ex) {
-                    Logger.getLogger(Dlg_baptismal_records.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                jProgressBar1.setString("Finished...");
-                jProgressBar1.setIndeterminate(false);
-            }
-        });
-        t.start();
+        SRpt_baptism rpt = new SRpt_baptism(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, place_of_birth, date_of_birth, date_of_confirmation, "", tf_priest.getText(), book_no, page_no, sponsor_name, tf_index_no.getText(), purpose, img_path, place_of_baptism, parish_priest);
+//                try {
+//
+//                    InputStream is = SRpt_baptism.class.getResourceAsStream(jrxml);
+//                    JasperReport jasperReport;
+//                    jasperReport = JasperCompileManager.compileReport(is);
+//                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
+//                            setParameter(rpt), JasperUtil.emptyDatasource());
+//                    JasperPrintManager.printReport(jasperPrint, false);
+//
+//                } catch (JRException ex) {
+//                    Logger.getLogger(Dlg_baptismal_records.class.getName()).log(Level.SEVERE, null, ex);
+//                }
+        preview_baptismal_records(rpt, jrxml);
 
     }
 
+    private void preview_baptismal_records(SRpt_baptism rpt, String jrxml) {
+        Window p = (Window) this;
+        Dlg_preview_baptismal_certificate nd = Dlg_preview_baptismal_certificate.create(p, true);
+        nd.setTitle("");
+        nd.do_pass(rpt, jrxml);
+        nd.setCallback(new Dlg_preview_baptismal_certificate.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_preview_baptismal_certificate.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
     JasperPrint jasperPrint = null;
 
     private void init_priest1() {
@@ -1358,7 +1371,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 Officials.to_officials to = officials.get(data.selected_row);
                 jTextField3.setText(to.name);
-                jTextField5.setText(to.designation);
+                jTextField5.setText(to.title);
             }
         });
     }
@@ -1414,6 +1427,6 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
                 jTextField2.grabFocus();
             }
         });
-
     }
+
 }

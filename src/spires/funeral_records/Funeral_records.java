@@ -46,6 +46,7 @@ public class Funeral_records {
                     + ",age"
                     + ",father"
                     + ",mother"
+                    + ",parents"
                     + ")values("
                     + ":index_no"
                     + ",:book_no"
@@ -64,6 +65,7 @@ public class Funeral_records {
                     + ",:age"
                     + ",:father"
                     + ",:mother"
+                    + ",:parents"
                     + ")";
 
             s0 = SqlStringUtil.parse(s0)
@@ -84,6 +86,7 @@ public class Funeral_records {
                     .setString("age", to_encoding_funeral2.getAge())
                     .setString("father", to_encoding_funeral2.getFather())
                     .setString("mother", to_encoding_funeral2.getMother())
+                    .setString("parents", to_encoding_funeral2.getParents())
                     .ok();
             PreparedStatement stmt = conn.prepareStatement(s0);
             stmt.execute();
@@ -116,6 +119,7 @@ public class Funeral_records {
                     + ",age= :age"
                     + ",father= :father"
                     + ",mother= :mother"
+                    + ",parents= :parents"
                     + " where id='" + to_encoding_funeral2.getId() + "' "
                     + " ";
 
@@ -137,6 +141,7 @@ public class Funeral_records {
                     .setString("age", to_encoding_funeral2.getAge())
                     .setString("father", to_encoding_funeral2.getFather())
                     .setString("mother", to_encoding_funeral2.getMother())
+                    .setString("parents", to_encoding_funeral2.getParents())
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);

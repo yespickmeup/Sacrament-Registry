@@ -1099,7 +1099,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                     tbl_confirmation_records.grabFocus();
                 }
                 jLabel6.setText("" + datas.size());
-                jPanel3.setVisible(false);
+
                 jTextField2.setEnabled(true);
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
@@ -1192,7 +1192,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 ref_no, fname, mname, lname, mother, father, book_no, page_no, index_no, sponsors, baptism_date, confirmation_date, priest, place_of_birth, date_of_birth, "" + id, remarks, place_of_baptism, address_of_parents, place_of_confirmation, registry_no);
         Confirmation_records.edit_encoding_confirmation2(to1);
         Alert.set(2, "");
-        clear();
+
         System.out.println("Record  Updated!");
         data_cols();
 
@@ -1293,7 +1293,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 Date d2 = dp_bdate.getDate();
                 Date d3 = dp_confirmation.getDate();
                 Date d4 = new Date();
-                
+
                 String date_of_confirmation = spires.util.DateType.month_date.format(d3);
 
                 String book_no = "" + tf_book_no.getText();
@@ -1307,19 +1307,22 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 if (jTextField4.getText().isEmpty()) {
                     purpose = "";
                 }
-                String date_of_baptism = DateType.sf.format(dp_baptism.getDate());
+                String date_of_baptism = DateType.month_date.format(dp_baptism.getDate());
                 String place_of_baptism = tf_place_of_baptism.getText();
                 String address_of_parents = tf_address_of_parents.getText();
                 String place_of_confirmation = tf_place_of_confirmation.getText();
                 String registry_no = "";
                 String index_no = tf_index_no.getText();
-                SRpt_confirmation rpt = new SRpt_confirmation(
-                        num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, priest, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, "", address_of_parents, place_of_confirmation, registry_no, index_no);
                 String print = System.getProperty("print_confirmation", "default");
                 String jrxml = "rpt_confirmation.jrxml";
                 if (print.equalsIgnoreCase("Bacong")) {
                     jrxml = "rpt_confirmation_bacong.jrxml";
+                } else {
+                    year = spires.util.DateType.y.format(new Date());
                 }
+                SRpt_confirmation rpt = new SRpt_confirmation(
+                        num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, priest, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, "", address_of_parents, place_of_confirmation, registry_no, index_no);
+
                 try {
                     InputStream is = SRpt_confirmation.class.getResourceAsStream(jrxml);
                     JasperReport jasperReport;
@@ -1337,6 +1340,9 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         });
         t.start();
 
+    }
+    private void preview_certificate(){
+        
     }
     JasperPrint jasperPrint = null;
 
@@ -1361,7 +1367,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 Officials.to_officials to = officials.get(data.selected_row);
                 jTextField3.setText(to.name);
-                jTextField5.setText(to.designation);
+                jTextField5.setText(to.title);
             }
         });
     }

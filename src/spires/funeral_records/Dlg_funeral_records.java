@@ -253,6 +253,9 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         tf_father = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         tf_mother = new javax.swing.JTextField();
+        jLabel26 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tf_parents = new javax.swing.JTextArea();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_funeral_records = new javax.swing.JTable();
@@ -418,6 +421,16 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
 
         tf_mother.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
+        jLabel26.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel26.setText("Parents:");
+
+        tf_parents.setColumns(20);
+        tf_parents.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tf_parents.setLineWrap(true);
+        tf_parents.setRows(5);
+        jScrollPane4.setViewportView(tf_parents);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -441,19 +454,23 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                                     .addComponent(tf_mi)
                                     .addComponent(tf_fname))))
                         .addGap(10, 10, 10))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tf_mother)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane3)
+                            .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tf_place_of_burial, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(216, 216, 216))
-                            .addComponent(tf_place_of_burial)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel23, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel20, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -465,9 +482,9 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                                 .addComponent(jLabel21, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(tf_page_no, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(tf_priest)
-                            .addComponent(jScrollPane1)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(tf_priest, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -480,17 +497,13 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(dp_date_of_death, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(db_burial_date, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                            .addComponent(jLabel18, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_age, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tf_mother)
+                                .addComponent(tf_age, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
@@ -541,11 +554,15 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                 .addGap(1, 1, 1)
                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -742,7 +759,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
+                .addComponent(jScrollPane2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -871,6 +888,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
@@ -886,6 +904,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -900,6 +919,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     private javax.swing.JTextField tf_mi;
     private javax.swing.JTextField tf_mother;
     private javax.swing.JTextField tf_page_no;
+    private javax.swing.JTextArea tf_parents;
     private javax.swing.JTextField tf_place_of_burial;
     private javax.swing.JTextField tf_priest;
     private javax.swing.JTextArea tf_remarks;
@@ -907,6 +927,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
+        System.setProperty("mydb","db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
         init_tbl_funeral_records(tbl_funeral_records);
@@ -1053,7 +1074,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                     tbl_funeral_records.grabFocus();
                 }
                 jLabel6.setText("" + datas.size());
-                jPanel3.setVisible(false);
+
                 jTextField2.setEnabled(true);
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
@@ -1084,7 +1105,8 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         String age = tf_age.getText();
         String father = tf_father.getText();
         String mother = tf_mother.getText();
-        Srpt_print_funeral.field to = new Srpt_print_funeral.field(index_no, book_no, page_no, date_of_burial, price, fname, mi, lname, residence, informant, id, remarks, date_of_death, age, father, mother);
+        String parents = tf_parents.getText();
+        Srpt_print_funeral.field to = new Srpt_print_funeral.field(index_no, book_no, page_no, date_of_burial, price, fname, mi, lname, residence, informant, id, remarks, date_of_death, age, father, mother, parents);
         Funeral_records.add_encoding_funeral2(to);
         clear();
         System.out.println("Record  Added!");
@@ -1100,6 +1122,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         tf_sponsors.setText("");
         tf_remarks.setText("");
         tf_book_no.setText("");
+        tf_parents.setText("");
         tf_page_no.setText("");
         tf_index_no.setText("");
         tf_age.setText("");
@@ -1143,6 +1166,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         tf_age.setText(to.getAge());
         tf_father.setText(to.getFather());
         tf_mother.setText(to.getMother());
+        tf_parents.setText(to.getParents());
         jPanel3.setVisible(true);
         is_add = 0;
         if (col == 8) {
@@ -1176,10 +1200,10 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         String age = tf_age.getText();
         String father = tf_father.getText();
         String mother = tf_mother.getText();
-        Srpt_print_funeral.field to1 = new Srpt_print_funeral.field(index_no, book_no, page_no, date_of_burial, price, fname, mi, lname, residence, informant, id, remarks, date_of_death, age, father, mother);
+        String parents = tf_parents.getText();
+        Srpt_print_funeral.field to1 = new Srpt_print_funeral.field(index_no, book_no, page_no, date_of_burial, price, fname, mi, lname, residence, informant, id, remarks, date_of_death, age, father, mother, parents);
         Funeral_records.update_data(to1);
 
-        clear();
         System.out.println("Record  Updated!");
         data_cols();
     }
@@ -1238,19 +1262,31 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                 String sponsor_name = tf_sponsors.getText();
                 String place_of_birth = "Bacong, Negros Oriental, Philippines";
                 String date_of_birth = "";
-                String date_of_baptism = DateType.slash.format(db_burial_date.getDate());
-                String place_of_baptism = "";
-                String purpose = jTextField4.getText();
-                String date_of_death = DateType.slash.format(dp_date_of_death.getDate());
+                String date_of_baptism = DateType.month_date.format(db_burial_date.getDate());
+                String place_of_baptism = tf_place_of_burial.getText();
+                String purpose = "Purpose: " + jTextField4.getText();
+                String date_of_death = " ";
+                if (jCheckBox5.isSelected()) {
+                    date_of_death = DateType.month_date.format(dp_date_of_death.getDate());
+                }
                 String age = tf_age.getText();
                 String index_no = tf_index_no.getText();
-                SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no);
 
                 String print = System.getProperty("print_death", "default");
                 String jrxml = "rpt_funeral2.jrxml";
                 if (print.equalsIgnoreCase("Bacong")) {
                     jrxml = "rpt_funeral_bacong.jrxml";
+                } else {
+                    confirmed_by = tf_priest.getText();
+                    priest = jTextField3.getText();
+                    asst_priest = jTextField5.getText();
+                    year = spires.util.DateType.y.format(new Date());
                 }
+                System.out.println("Print Bacong : "+print);
+                
+                String parents = tf_parents.getText();
+                SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no, parents);
+
                 try {
 
                     InputStream is = SRpt_funeral.class.getResourceAsStream(jrxml);
@@ -1294,7 +1330,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 Officials.to_officials to = officials.get(data.selected_row);
                 jTextField3.setText(to.name);
-                jTextField5.setText(to.designation);
+                jTextField5.setText(to.title);
             }
         });
     }

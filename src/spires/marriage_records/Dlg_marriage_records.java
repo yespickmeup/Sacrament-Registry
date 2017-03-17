@@ -1097,7 +1097,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
                     tbl_marriage_records.grabFocus();
                 }
                 jLabel6.setText("" + datas.size());
-                jPanel3.setVisible(false);
+             
                 jTextField2.setEnabled(true);
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
@@ -1225,7 +1225,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
         String remarks = tf_remarks.getText();
         Marriage_records.to_encoding_marriage to1 = new Marriage_records.to_encoding_marriage(id, index_no, book_no, page_no, date_of_marriage, priest, groom, groom_status, groom_father, groom_mother, groom_address, bride, bride_status, bride_father, bride_mother, bride_address, sponsors, remarks);
         Marriage_records.edit_encoding_marriage(to1);
-        clear();
+       
         System.out.println("Record  Updated!");
         data_cols();
 
@@ -1335,7 +1335,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
             public void ok(TableRenderer.OutputData data) {
                 Officials.to_officials to = officials.get(data.selected_row);
                 jTextField3.setText(to.name);
-                jTextField5.setText(to.designation);
+                jTextField5.setText(to.title);
             }
         });
     }

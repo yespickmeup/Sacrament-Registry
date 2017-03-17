@@ -88,7 +88,6 @@ public class Main {
             System.setProperty("pool_host", prop.getProperty("pool_host", "localhost"));
             System.setProperty("pool_user", prop.getProperty("pool_user", "root"));
             System.setProperty("pool_password", prop.getProperty("pool_password", "password"));
-            System.out.println(prop.getProperty("pool_host", "localhost"));
 
             System.setProperty("cashiering_for", prop.getProperty("cashiering_for", "coop"));
             System.setProperty("version", prop.getProperty("version", "retail"));
@@ -137,8 +136,10 @@ public class Main {
             System.setProperty("print_death", prop.getProperty("print_death", "default"));
             System.setProperty("print_marriage", prop.getProperty("print_marriage", "default"));
 
+            System.out.println(prop.getProperty("pool_host", "localhost"));
+            System.out.println("pool: " + System.getProperty("mydb", "db_bulletin"));
             Lg.$.severe(System.getProperty("receipt_printer"));
-
+            
             new Main().start();
         } catch (Exception ex) {
 //                    Lg.$.severe(ex.getMessage());

@@ -970,6 +970,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     private javax.swing.JTable tbl_receipts2;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
+        System.setProperty("pool_db","db_spires_bacong");
         init_key();
         init_tbl_cashiering(tbl_cashiering);
         init_tbl_receipts(tbl_receipts);
@@ -1735,8 +1736,9 @@ public class Dlg_front_desk extends javax.swing.JDialog {
             Srpt_account_titles.field field = new Srpt_account_titles.field(classification, category, particular);
             fields.add(field);
         }
-
-        Srpt_account_titles rpt = new Srpt_account_titles();
+        String name = System.getProperty("business_name", "");
+        String address = System.getProperty("address", "");
+        Srpt_account_titles rpt = new Srpt_account_titles(name, address);
         rpt.fields.addAll(fields);
         String jrxml = "rpt_account_titles.jrxml";
         report_account_titles(rpt, jrxml);
@@ -1800,8 +1802,9 @@ public class Dlg_front_desk extends javax.swing.JDialog {
             Srpt_mass_intention.field field = new Srpt_mass_intention.field(datetime, particular, parishioner, remarks);
             fields.add(field);
         }
-
-        Srpt_mass_intention rpt = new Srpt_mass_intention();
+        String name = System.getProperty("business_name", "");
+        String address = System.getProperty("address", "");
+        Srpt_mass_intention rpt = new Srpt_mass_intention(name, address);
         rpt.fields.addAll(fields);
         String jrxml = "rpt_mass_register.jrxml";
         report_mass_register(rpt, jrxml);
@@ -1867,7 +1870,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                 @Override
                 public void ok(CloseDialog closeDialog, Dlg_front_desk_edit_receipts.OutputData data) {
                     closeDialog.ok();
-                    String old_or =""+ to.id;
+                    String old_or = "" + to.id;
                     String new_or = data.or_no;
                     String or_date = data.or_date;
                     String parishioner = data.parishioner;

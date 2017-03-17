@@ -25,6 +25,7 @@
 	<parameter name="place_of_baptism" class="java.lang.String"/>
 	<parameter name="purpose" class="java.lang.String"/>
 	<parameter name="date_of_death" class="java.lang.String"/>
+	<parameter name="parents" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
@@ -278,14 +279,14 @@
 				<text><![CDATA[Death and Burial Certificate]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="dc5d4982-dd35-460a-8d04-de4ffc05df20" x="95" y="168" width="121" height="20"/>
+				<reportElement uuid="dc5d4982-dd35-460a-8d04-de4ffc05df20" x="95" y="197" width="121" height="20"/>
 				<textElement verticalAlignment="Bottom">
 					<font fontName="Tahoma" size="11"/>
 				</textElement>
 				<text><![CDATA[Residence:]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true">
-				<reportElement uuid="de891840-2047-4516-bb57-39873698f1b3" x="217" y="168" width="216" height="20"/>
+				<reportElement uuid="de891840-2047-4516-bb57-39873698f1b3" x="217" y="197" width="216" height="20"/>
 				<box>
 					<bottomPen lineWidth="0.0"/>
 				</box>
@@ -294,6 +295,24 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{father}]]></textFieldExpression>
 			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement uuid="a54572e0-7e6d-4df9-8c5c-9315ecf86b4c" x="217" y="179" width="216" height="18"/>
+				<box>
+					<topPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Top">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{parents}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="32130739-6f43-45a1-b869-405891cfaa6a" x="95" y="179" width="121" height="18"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Tahoma" size="11"/>
+				</textElement>
+				<text><![CDATA[Parents:]]></text>
+			</staticText>
 		</band>
 	</columnHeader>
 	<detail>

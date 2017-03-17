@@ -258,7 +258,7 @@ public class Dashboard extends javax.swing.JFrame {
         jPanel1.setOpaque(false);
 
         jLabel49.setBackground(new java.awt.Color(16, 88, 197));
-        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jLabel49.setForeground(new java.awt.Color(255, 255, 255));
         jLabel49.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel49.setText("Bacong, Negros Oriental");
@@ -2183,8 +2183,10 @@ public class Dashboard extends javax.swing.JFrame {
         hide_menus();
         jDesktopPane3.setVisible(false);
         tf_fname.grabFocus();
-        String name = System.getProperty("business_name", "Sacrament Registry");
-
+        String name = System.getProperty("business_name", "");
+        String address = System.getProperty("address", "");
+        jLabel48.setText(name);
+        jLabel49.setText(address);
     }
 
     CardLayout layout = new CardLayout();
@@ -2571,6 +2573,8 @@ public class Dashboard extends javax.swing.JFrame {
             Res.setUser_id("" + user.id);
             Res.setUser_name("" + user.user_name);
             Res.setUser_screename(user.user_code);
+            tf_fname.setText("");
+            jPasswordField1.setText("");
             set_privileges(user);
         }
     }

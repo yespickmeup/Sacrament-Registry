@@ -24,9 +24,14 @@ import spires.util.DateType;
 public class Srpt_mass_intention {
 
     public final List<Srpt_mass_intention.field> fields;
+    public final String business_name;
+    public final String address;
 
-    public Srpt_mass_intention() {
+    public Srpt_mass_intention(String business_name, String address) {
+        this.business_name = business_name;
+        this.address = address;
         this.fields = new ArrayList();
+
     }
 
     public static class field {
@@ -93,8 +98,9 @@ public class Srpt_mass_intention {
             Srpt_mass_intention.field field = new field(datetime, particular, parishioner, remarks);
             fields.add(field);
         }
-
-        Srpt_mass_intention rpt = new Srpt_mass_intention();
+        String name = System.getProperty("business_name", "");
+        String address = System.getProperty("address", "");
+        Srpt_mass_intention rpt = new Srpt_mass_intention(name, address);
         rpt.fields.addAll(fields);
         JRViewer viewer = Srpt_mass_intention.get_viewer(rpt);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);

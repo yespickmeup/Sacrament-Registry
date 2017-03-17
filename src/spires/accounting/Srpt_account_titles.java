@@ -24,8 +24,12 @@ import spires.certificates.SRpt_marriage;
 public class Srpt_account_titles {
 
     public final List<field> fields;
-
-    public Srpt_account_titles() {
+    public final String business_name;
+    public final String address;
+    
+    public Srpt_account_titles(String business_name,String address) {
+        this.business_name=business_name;
+        this.address=address;
         this.fields = new ArrayList();
     }
 
@@ -82,8 +86,9 @@ public class Srpt_account_titles {
             Srpt_account_titles.field field=new field(classification, category, particular);
             fields.add(field);
         }
-
-        Srpt_account_titles rpt = new Srpt_account_titles();
+          String name = System.getProperty("business_name", "");
+        String address = System.getProperty("address", "");
+        Srpt_account_titles rpt = new Srpt_account_titles(name,address);
         rpt.fields.addAll(fields);
         JRViewer viewer = Srpt_account_titles.get_viewer(rpt);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
