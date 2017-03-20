@@ -16,9 +16,7 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.InputStream;
 import java.text.ParseException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -31,16 +29,10 @@ import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
-import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JasperReport;
 import spires.officials.Officials;
 import spires.util.Dlg_confirm_action;
 import spires.util.TableRenderer;
@@ -953,7 +945,8 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
-        System.setProperty("mydb", "db_spires_bacong");
+//        System.setProperty("print_baptism", "bacong");
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
         init_tbl_baptismal_records(tbl_baptismal_records);
@@ -1306,8 +1299,7 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         String place_of_baptism = tf_place_of_baptism.getText();
         String parish_priest = tf_priest1.getText();
         String jrxml = "rpt_baptism_new.jrxml";
-        String cert = System.getProperty("print_baptism", "Bacong");
-
+        String cert = System.getProperty("print_baptism", "Default");
         if (cert.equalsIgnoreCase("bacong")) {
             jrxml = "rpt_baptism_bacong.jrxml";
         } else {

@@ -5,9 +5,7 @@
  */
 package spires.marriage_records;
 
-import spires.certificates.SRpt_baptism;
 import spires.certificates.SRpt_marriage;
-import spires.printing.S1_encoding_marriage;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -15,7 +13,6 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,17 +25,10 @@ import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
-import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JasperReport;
-import spires.baptismal_records.Dlg_baptismal_records;
 import spires.officials.Officials;
 import spires.util.Dlg_confirm_action;
 import spires.util.TableRenderer;
@@ -909,6 +899,8 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
+//        System.setProperty("print_marriage", "bacong");
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
         init_tbl_marriage_records(tbl_marriage_records);
@@ -1097,7 +1089,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
                     tbl_marriage_records.grabFocus();
                 }
                 jLabel6.setText("" + datas.size());
-             
+
                 jTextField2.setEnabled(true);
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
@@ -1225,7 +1217,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
         String remarks = tf_remarks.getText();
         Marriage_records.to_encoding_marriage to1 = new Marriage_records.to_encoding_marriage(id, index_no, book_no, page_no, date_of_marriage, priest, groom, groom_status, groom_father, groom_mother, groom_address, bride, bride_status, bride_father, bride_mother, bride_address, sponsors, remarks);
         Marriage_records.edit_encoding_marriage(to1);
-       
+
         System.out.println("Record  Updated!");
         data_cols();
 
@@ -1289,28 +1281,46 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
                 String date_added = "";
                 String sponsors = tf_sponsors.getText();
                 final SRpt_marriage rpt = new SRpt_marriage(day, month, year, priest, asst_priest, series_of, g_ref_no, b_ref_no, g_address, b_address, path, groom, groom_father, groom_mother, bride, bride_father, bride_mother, date_of_marriage, marr_time, solemnized_by, book_number, page_number, date_added, sponsors);
-
-                try {
-                    String print = System.getProperty("print_marriage", "default");
-                    String jrxml = "rpt_marriage.jrxml";
-                    if (print.equalsIgnoreCase("Bacong")) {
-                        jrxml = "rpt_marriage_bacong.jrxml";
-                    }
-                    InputStream is = SRpt_marriage.class.getResourceAsStream(jrxml);
-                    JasperReport jasperReport;
-                    jasperReport = JasperCompileManager.compileReport(is);
-                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                            setParameter(rpt), JasperUtil.emptyDatasource());
-                    JasperPrintManager.printReport(jasperPrint, false);
-
-                } catch (JRException ex) {
-                    Logger.getLogger(Dlg_baptismal_records.class.getName()).log(Level.SEVERE, null, ex);
+                String print = System.getProperty("print_marriage", "default");
+                String jrxml = "rpt_marriage.jrxml";
+                if (print.equalsIgnoreCase("Bacong")) {
+                    jrxml = "rpt_marriage_bacong.jrxml";
                 }
+                print_preview(rpt,jrxml);
+//                try {
+//
+//                    InputStream is = SRpt_marriage.class.getResourceAsStream(jrxml);
+//                    JasperReport jasperReport;
+//                    jasperReport = JasperCompileManager.compileReport(is);
+//                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
+//                            setParameter(rpt), JasperUtil.emptyDatasource());
+//                    JasperPrintManager.printReport(jasperPrint, false);
+//
+//                } catch (JRException ex) {
+//                    Logger.getLogger(Dlg_baptismal_records.class.getName()).log(Level.SEVERE, null, ex);
+//                }
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
             }
         });
         t.start();
+    }
+
+    private void print_preview(SRpt_marriage rpt, String jrxml) {
+        Window p = (Window) this;
+        Dlg_preview_marriage_certificate nd = Dlg_preview_marriage_certificate.create(p, true);
+        nd.setTitle("");
+        nd.do_pass(rpt, jrxml);
+        nd.setCallback(new Dlg_preview_marriage_certificate.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_preview_marriage_certificate.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
     }
     JasperPrint jasperPrint = null;
 

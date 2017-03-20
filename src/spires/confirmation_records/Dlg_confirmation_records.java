@@ -16,7 +16,6 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -29,16 +28,10 @@ import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
-import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JasperReport;
 import spires.officials.Officials;
 
 import spires.util.Alert;
@@ -946,6 +939,8 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
+//        System.setProperty("print_confirmation", "default");
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
         init_tbl_confirmation_records(tbl_confirmation_records);
@@ -1322,18 +1317,18 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 }
                 SRpt_confirmation rpt = new SRpt_confirmation(
                         num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, priest, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, "", address_of_parents, place_of_confirmation, registry_no, index_no);
-
-                try {
-                    InputStream is = SRpt_confirmation.class.getResourceAsStream(jrxml);
-                    JasperReport jasperReport;
-                    jasperReport = JasperCompileManager.compileReport(is);
-                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                            setParameter(rpt), JasperUtil.emptyDatasource());
-//                    JasperPrintManager.printReport(jasperPrint, false);
-                    JasperPrintManager.printPage(jasperPrint, 0, false);
-                } catch (JRException ex) {
-                    Logger.getLogger(Dlg_confirmation_records.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                preview_certificate(rpt, jrxml);
+//                try {
+//                    InputStream is = SRpt_confirmation.class.getResourceAsStream(jrxml);
+//                    JasperReport jasperReport;
+//                    jasperReport = JasperCompileManager.compileReport(is);
+//                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
+//                            setParameter(rpt), JasperUtil.emptyDatasource());
+////                    JasperPrintManager.printReport(jasperPrint, false);
+//                    JasperPrintManager.printPage(jasperPrint, 0, false);
+//                } catch (JRException ex) {
+//                    Logger.getLogger(Dlg_confirmation_records.class.getName()).log(Level.SEVERE, null, ex);
+//                }
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
             }
@@ -1341,8 +1336,22 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         t.start();
 
     }
-    private void preview_certificate(){
-        
+
+    private void preview_certificate(SRpt_confirmation rpt, String jrxml) {
+        Window p = (Window) this;
+        Dlg_preview_confirmation_certificate nd = Dlg_preview_confirmation_certificate.create(p, true);
+        nd.setTitle("");
+        nd.do_pass(rpt, jrxml);
+        nd.setCallback(new Dlg_preview_confirmation_certificate.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_preview_confirmation_certificate.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
     }
     JasperPrint jasperPrint = null;
 

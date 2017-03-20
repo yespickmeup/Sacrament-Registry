@@ -5,8 +5,6 @@
  */
 package spires.funeral_records;
 
-import spires.certificates.SRpt_baptism;
-import spires.certificates.SRpt_confirmation;
 import spires.printing.Srpt_print_funeral;
 import spires.purposes.S1_purposes;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
@@ -16,7 +14,6 @@ import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.InputStream;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
@@ -29,17 +26,10 @@ import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
-import mijzcx.synapse.desk.utils.JasperUtil;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperPrintManager;
-import net.sf.jasperreports.engine.JasperReport;
-import spires.baptismal_records.Dlg_baptismal_records;
 import spires.certificates.SRpt_funeral;
 import spires.officials.Officials;
 import spires.util.Dlg_confirm_action;
@@ -927,7 +917,8 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
-        System.setProperty("mydb","db_spires_bacong");
+//        System.setProperty("print_death", "bacong");
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
         init_tbl_funeral_records(tbl_funeral_records);
@@ -1276,29 +1267,30 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
                 String jrxml = "rpt_funeral2.jrxml";
                 if (print.equalsIgnoreCase("Bacong")) {
                     jrxml = "rpt_funeral_bacong.jrxml";
+                    purpose = "" + jTextField4.getText();
                 } else {
                     confirmed_by = tf_priest.getText();
                     priest = jTextField3.getText();
                     asst_priest = jTextField5.getText();
                     year = spires.util.DateType.y.format(new Date());
                 }
-                System.out.println("Print Bacong : "+print);
-                
+                System.out.println("Print Bacong : " + print);
+
                 String parents = tf_parents.getText();
                 SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no, parents);
-
-                try {
-
-                    InputStream is = SRpt_funeral.class.getResourceAsStream(jrxml);
-                    JasperReport jasperReport;
-                    jasperReport = JasperCompileManager.compileReport(is);
-                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-                            setParameter(rpt), JasperUtil.emptyDatasource());
-                    JasperPrintManager.printReport(jasperPrint, false);
-
-                } catch (JRException ex) {
-                    Logger.getLogger(Dlg_funeral_records.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                print_preview(rpt, jrxml);
+//                try {
+//
+//                    InputStream is = SRpt_funeral.class.getResourceAsStream(jrxml);
+//                    JasperReport jasperReport;
+//                    jasperReport = JasperCompileManager.compileReport(is);
+//                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
+//                            setParameter(rpt), JasperUtil.emptyDatasource());
+//                    JasperPrintManager.printReport(jasperPrint, false);
+//
+//                } catch (JRException ex) {
+//                    Logger.getLogger(Dlg_funeral_records.class.getName()).log(Level.SEVERE, null, ex);
+//                }
                 jProgressBar1.setString("Finished...");
                 jProgressBar1.setIndeterminate(false);
             }
@@ -1307,6 +1299,22 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
 
     }
 
+    private void print_preview(SRpt_funeral rpt, String jrxml) {
+        Window p = (Window) this;
+        Dlg_preview_death_certificate nd = Dlg_preview_death_certificate.create(p, true);
+        nd.setTitle("");
+        nd.do_pass(rpt, jrxml);
+        nd.setCallback(new Dlg_preview_death_certificate.Callback() {
+
+            @Override
+            public void ok(CloseDialog closeDialog, Dlg_preview_death_certificate.OutputData data) {
+                closeDialog.ok();
+
+            }
+        });
+        nd.setLocationRelativeTo(this);
+        nd.setVisible(true);
+    }
     JasperPrint jasperPrint = null;
 
     private void init_priest1() {

@@ -39,9 +39,6 @@ import spires.cashiering.Cashiering.to_cashiering;
 import spires.cashiering.Cashiering_types;
 import spires.receipts.Receipts;
 import spires.receipts.Receipts.to_receipts;
-import static spires.reports.Dlg_report.compileJasper;
-import spires.reports.SRpt_book_count;
-import spires.reports.SRpt_book_records;
 import spires.users.Res;
 import spires.util.Alert;
 import spires.util.DateType;
@@ -970,7 +967,8 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     private javax.swing.JTable tbl_receipts2;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
-        System.setProperty("pool_db","db_spires_bacong");
+        System.setProperty("print_marriage", "bacong");
+        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         init_tbl_cashiering(tbl_cashiering);
         init_tbl_receipts(tbl_receipts);
