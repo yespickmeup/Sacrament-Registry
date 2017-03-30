@@ -5,7 +5,6 @@
  */
 package spires.marriage_contracts;
 
-import spires.certificates.SRpt_marriage;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -28,7 +27,6 @@ import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperPrintManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
-import spires.baptismal_records.Dlg_baptismal_records;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 
@@ -521,7 +519,7 @@ public class Dlg_marriage_contract_print extends javax.swing.JDialog {
 
     public void do_pass(final List<Srpt_marriage_contract_front.field> fields1, final List<Srpt_marriage_contract_back.field> fields2) {
         holder1 = fields1;
-        System.out.println("Size: "+fields1.size());
+        System.out.println("Size: " + fields1.size());
         holder2 = fields2;
         String h_age = "";
         String w_age = "";
@@ -550,7 +548,7 @@ public class Dlg_marriage_contract_print extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -583,6 +581,10 @@ public class Dlg_marriage_contract_print extends javax.swing.JDialog {
                 Srpt_marriage_contract_front rpt = new Srpt_marriage_contract_front();
                 rpt.fields.addAll(fields1);
                 String jrxml = "rpt_marriage_contract_front.jrxml";
+                String print = System.getProperty("print_marriage", "default");
+                if (print.equalsIgnoreCase("Bacong")) {
+                    jrxml = "rpt_marriage_contract_front_bacong.jrxml";
+                }
                 report_summary(rpt, jrxml);
 
                 try {
