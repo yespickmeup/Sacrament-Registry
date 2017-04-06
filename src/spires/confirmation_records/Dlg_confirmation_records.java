@@ -1312,11 +1312,13 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
                 String jrxml = "rpt_confirmation.jrxml";
                 if (print.equalsIgnoreCase("Bacong")) {
                     jrxml = "rpt_confirmation_bacong.jrxml";
+                    purpose=jTextField4.getText();
+                    
                 } else {
                     year = spires.util.DateType.y.format(new Date());
                 }
                 SRpt_confirmation rpt = new SRpt_confirmation(
-                        num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, priest, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, "", address_of_parents, place_of_confirmation, registry_no, index_no);
+                        num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, img_path, date_of_baptism, place_of_baptism, purpose, "", address_of_parents, place_of_confirmation, registry_no, index_no);
                 preview_certificate(rpt, jrxml);
 //                try {
 //                    InputStream is = SRpt_confirmation.class.getResourceAsStream(jrxml);
