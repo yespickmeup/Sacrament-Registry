@@ -945,7 +945,8 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
-//        System.setProperty("print_baptism", "bacong");
+
+//        System.setProperty("print_baptism", "bacong")
 //        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         jPanel3.setVisible(false);
