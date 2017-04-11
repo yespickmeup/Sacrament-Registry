@@ -120,7 +120,7 @@ public class Bacong_encoded_baptism {
 
     public static void main(String[] args) {
 
-        String path = "C:\\Users\\Maytopacka\\Documents\\Spires\\Bacong\\2016\\Finalized\\Baptismal\\Book 35_ready.xls";
+        String path = "C:\\Users\\Maytopacka\\Documents\\Spires\\Bacong\\Baptism\\Book 10.xls";
         FileInputStream fis = null;
         final List sheetData = new ArrayList();
         try {
