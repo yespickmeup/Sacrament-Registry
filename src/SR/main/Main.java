@@ -19,7 +19,7 @@ import spires.util.Center;
 
 /**
  *
- * @author u2
+ * @author u2test
  */
 public class Main {
 
