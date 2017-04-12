@@ -120,7 +120,7 @@ public class Bacong_encoded_baptism {
 
     public static void main(String[] args) {
 
-        String path = "C:\\Users\\Maytopacka\\Documents\\Spires\\Bacong\\Baptism\\Book 10.xls";
+        String path = "C:\\Users\\Guinness\\Desktop\\St Augustine\\Sacrament\\Bapt\\book 36.xls";
         FileInputStream fis = null;
         final List sheetData = new ArrayList();
         try {
@@ -153,11 +153,11 @@ public class Bacong_encoded_baptism {
         }
 
         List<encoded> datas = showExcelData(sheetData, path);
-        System.out.println("Size: " + datas.size());
+//        System.out.println("Size: " + datas.size());
 
 
 //        add_parishioners_1(datas, "35");
-    }
+    }   
 
     public static class encoded {
 
@@ -281,15 +281,17 @@ public class Bacong_encoded_baptism {
                     if (minister.equalsIgnoreCase("n/a")) {
                         minister = "";
                     }
-                    System.out.println(page_no + " | " + index_no + " | " + date_of_baptism + " | " + date_of_birth + " | " + place_of_birth
-                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + sponsor + " | " + notes + " | " + parish_priest + " | " + minister);
+//                    System.out.println(page_no + " | " + index_no + " | " + date_of_baptism + " | " + date_of_birth + " | " + place_of_birth
+//                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + sponsor + " | " + notes + " | " + parish_priest + " | " + minister);
                   encoded coded=new encoded(page_no, index_no, date_of_baptism, date_of_birth, place_of_birth, fname, mi, lname, father, mother, sponsor, notes, parish_priest, minister);
                   datas.add(coded);
                 }
 
             }
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Encoded_Funeral.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error Opening File");
+            System.out.println(ex);
+            
         }
 
         return datas;

@@ -84,7 +84,7 @@ public class Bacong_encoded_confirmation {
 
     public static void main(String[] args) {
 
-        String path = "C:\\Users\\Maytopacka\\Documents\\Spires\\Bacong\\2016\\Finalized\\confirmation\\Book 3_ready.xls";
+        String path = "C:\\Users\\Guinness\\Desktop\\St Augustine\\Sacrament\\Confirmation\\book 3.xls";
         FileInputStream fis = null;
         final List sheetData = new ArrayList();
         try {
@@ -119,7 +119,7 @@ public class Bacong_encoded_confirmation {
         List<encoded> datas = showExcelData(sheetData, path);
         System.out.println("Size: " + datas.size());
 
-        add_parishioners_1(datas, "3");
+//        add_parishioners_1(datas, "3");
     }
 
     public static List<encoded> showExcelData(List sheetData, String path) {

@@ -31,7 +31,6 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.CellReference;
 import spires.encode.S1_encoding_baptism;
-import spires.users.Res;
 import spires.util.DateType;
 import spires.util.MyConnection;
 
@@ -89,7 +88,7 @@ public class Bacong_encoded_marriage {
 
     public static void main(String[] args) {
 
-        String path = "C:\\Users\\Maytopacka\\Documents\\Spires\\Bacong\\2016\\Finalized\\Marriage\\Book9_ready.xls";
+        String path = "C:\\Users\\Guinness\\Desktop\\St Augustine\\Sacrament\\Marriage\\Book 8.xls";
         FileInputStream fis = null;
         final List sheetData = new ArrayList();
         try {
@@ -124,7 +123,7 @@ public class Bacong_encoded_marriage {
         List<encoded> datas = showExcelData(sheetData, path);
         System.out.println("Size: " + datas.size());
 
-        add_parishioners_1(datas, "9");
+//        add_parishioners_1(datas, "9");
     }
 
     public static List<encoded> showExcelData(List sheetData, String path) {

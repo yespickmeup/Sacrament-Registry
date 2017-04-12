@@ -81,14 +81,14 @@ public class Bacong_encoded_funeral {
 
     public static void main(String[] args) {
 
-        String path = "C:\\Users\\Maytopacka\\Documents\\Spires\\Bacong\\2016\\Finalized\\death\\book14_ready.xls";
+        String path = "C:\\Users\\Guinness\\Desktop\\St Augustine\\Sacrament\\Death\\book14.xls";
         FileInputStream fis = null;
         final List sheetData = new ArrayList();
         try {
 
             fis = new FileInputStream(path);
             HSSFWorkbook workbook = new HSSFWorkbook(fis);
-            HSSFSheet sheet = workbook.getSheetAt(0);
+            HSSFSheet sheet = workbook.getSheetAt(0);   
             Iterator rows = sheet.rowIterator();
             while (rows.hasNext()) {
                 HSSFRow row = (HSSFRow) rows.next();
@@ -116,7 +116,7 @@ public class Bacong_encoded_funeral {
         List<encoded> datas = showExcelData(sheetData, path);
         System.out.println("Size: " + datas.size());
 
-        add_parishioners_1(datas, "13");
+//        add_parishioners_1(datas, "13");
     }
 
     public static List<encoded> showExcelData(List sheetData, String path) {
