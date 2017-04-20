@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.baptismal_records;
+package spires.marriage;
 
+import spires.baptismal_records.*;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -33,6 +34,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import spires.encode_bacong.Bacong_encoded_baptism;
+import spires.encode_bacong.Bacong_encoded_marriage;
 import spires.util.Alert;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -41,7 +43,7 @@ import synsoftech.fields.Field;
  *
  * @author Guinness
  */
-public class Dlg_baptismal_encoding extends javax.swing.JDialog {
+public class Dlg_marriage_encoding extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_baptismal_encoding
@@ -67,33 +69,33 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_baptismal_encoding(java.awt.Frame parent, boolean modal) {
+    private Dlg_marriage_encoding(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_baptismal_encoding(java.awt.Dialog parent, boolean modal) {
+    private Dlg_marriage_encoding(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_baptismal_encoding() {
+    public Dlg_marriage_encoding() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_baptismal_encoding myRef;
+    private Dlg_marriage_encoding myRef;
 
-    private void setThisRef(Dlg_baptismal_encoding myRef) {
+    private void setThisRef(Dlg_marriage_encoding myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_baptismal_encoding> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_marriage_encoding> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -101,7 +103,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_baptismal_encoding create(java.awt.Window parent, boolean modal) {
+    public static Dlg_marriage_encoding create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -111,14 +113,14 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_baptismal_encoding create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_marriage_encoding create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_baptismal_encoding dialog = dialogContainer.get(parent);
+            Dlg_marriage_encoding dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_encoding((java.awt.Frame) parent, false);
+                dialog = new Dlg_marriage_encoding((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -132,10 +134,10 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_baptismal_encoding dialog = dialogContainer.get(parent);
+            Dlg_marriage_encoding dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_encoding((java.awt.Dialog) parent, false);
+                dialog = new Dlg_marriage_encoding((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -162,7 +164,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_baptismal_encoding dialog = Dlg_baptismal_encoding.create(new javax.swing.JFrame(), true);
+        Dlg_marriage_encoding dialog = Dlg_marriage_encoding.create(new javax.swing.JFrame(), true);
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().
                 getWidth());
@@ -388,7 +390,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc=" baptismal "> 
+    //<editor-fold defaultstate="collapsed" desc=" marriage "> 
     public static ArrayListModel tbl_expenses_ALM;
     public static TblexpensesModel tbl_expenses_M;
 
@@ -413,7 +415,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         tbl_expenses.setFont(new java.awt.Font("Arial", 0, 12));
     }
 
-    public static void loadData_expenses(List<Bacong_encoded_baptism.encoded> acc) {
+    public static void loadData_expenses(List<Bacong_encoded_marriage.encoded> acc) {
         tbl_expenses_ALM.clear();
         tbl_expenses_ALM.addAll(acc);
     }
@@ -449,26 +451,26 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         public Object getValueAt(int row, int col) {
 //              "Page No", "Index No", "fname", "mi", "lname", "father", "mother", "date_of_baptism", "date_of_birth", "place_of_birth", "sponsor", "notes", "parish_priest", "minister"
 
-            Bacong_encoded_baptism.encoded tt = (Bacong_encoded_baptism.encoded) getRow(row);
+            Bacong_encoded_marriage.encoded tt = (Bacong_encoded_marriage.encoded) getRow(row);
             switch (col) {
                 case 0:
                     return " " + tt.page_no;
                 case 1:
                     return " " + tt.index_no;
                 case 2:
-                    return " " + tt.fname;
+                    return " " + tt.date_of_marriage;
                 case 3:
-                    return " " + tt.mi;
+                    return " " + tt.groom;
                 case 4:
-                    return " " + tt.lname;
+                    return " " + tt.groom_father;
                 case 5:
-                    return " " + tt.father;
+                    return " " + tt.groom_mother;
                 case 6:
-                    return " " + tt.mother;
+                    return " " + tt.bride;
                 case 7:
-                    return " " + tt.date_of_baptism;
+                    return " " + tt.bride_father;
                 case 8:
-                    return " " + tt.date_of_birth;
+                    return " " + tt.bride_mother;
                 case 9:
                     return " " + tt.place_of_birth;
                 case 10:

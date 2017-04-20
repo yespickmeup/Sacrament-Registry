@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.baptismal_records;
+package spires.funeral_records;
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
@@ -32,7 +32,7 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import spires.encode_bacong.Bacong_encoded_baptism;
+import spires.encode_bacong.Bacong_encoded_funeral;
 import spires.util.Alert;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -41,7 +41,7 @@ import synsoftech.fields.Field;
  *
  * @author Guinness
  */
-public class Dlg_baptismal_encoding extends javax.swing.JDialog {
+public class Dlg_funeral_encoding extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_baptismal_encoding
@@ -67,33 +67,33 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_baptismal_encoding(java.awt.Frame parent, boolean modal) {
+    private Dlg_funeral_encoding(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_baptismal_encoding(java.awt.Dialog parent, boolean modal) {
+    private Dlg_funeral_encoding(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_baptismal_encoding() {
+    public Dlg_funeral_encoding() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_baptismal_encoding myRef;
+    private Dlg_funeral_encoding myRef;
 
-    private void setThisRef(Dlg_baptismal_encoding myRef) {
+    private void setThisRef(Dlg_funeral_encoding myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_baptismal_encoding> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_funeral_encoding> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -101,7 +101,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_baptismal_encoding create(java.awt.Window parent, boolean modal) {
+    public static Dlg_funeral_encoding create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -111,14 +111,14 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_baptismal_encoding create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_funeral_encoding create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_baptismal_encoding dialog = dialogContainer.get(parent);
+            Dlg_funeral_encoding dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_encoding((java.awt.Frame) parent, false);
+                dialog = new Dlg_funeral_encoding((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -132,10 +132,10 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_baptismal_encoding dialog = dialogContainer.get(parent);
+            Dlg_funeral_encoding dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_encoding((java.awt.Dialog) parent, false);
+                dialog = new Dlg_funeral_encoding((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -162,7 +162,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_baptismal_encoding dialog = Dlg_baptismal_encoding.create(new javax.swing.JFrame(), true);
+        Dlg_funeral_encoding dialog = Dlg_funeral_encoding.create(new javax.swing.JFrame(), true);
         Toolkit tk = Toolkit.getDefaultToolkit();
         int xSize = ((int) tk.getScreenSize().
                 getWidth());
@@ -353,7 +353,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
     private javax.swing.JTable tbl_expenses;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
-//        System.setProperty("mydb", "db_spires_bacong");
+        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         init_tbl_expenses(tbl_expenses);
     }
@@ -388,7 +388,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
     }
     // </editor-fold>
 
-    //<editor-fold defaultstate="collapsed" desc=" baptismal "> 
+    //<editor-fold defaultstate="collapsed" desc=" funeral "> 
     public static ArrayListModel tbl_expenses_ALM;
     public static TblexpensesModel tbl_expenses_M;
 
@@ -413,7 +413,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         tbl_expenses.setFont(new java.awt.Font("Arial", 0, 12));
     }
 
-    public static void loadData_expenses(List<Bacong_encoded_baptism.encoded> acc) {
+    public static void loadData_expenses(List<Bacong_encoded_funeral.encoded> acc) {
         tbl_expenses_ALM.clear();
         tbl_expenses_ALM.addAll(acc);
     }
@@ -449,7 +449,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
         public Object getValueAt(int row, int col) {
 //              "Page No", "Index No", "fname", "mi", "lname", "father", "mother", "date_of_baptism", "date_of_birth", "place_of_birth", "sponsor", "notes", "parish_priest", "minister"
 
-            Bacong_encoded_baptism.encoded tt = (Bacong_encoded_baptism.encoded) getRow(row);
+            Bacong_encoded_funeral.encoded tt = (Bacong_encoded_funeral.encoded) getRow(row);
             switch (col) {
                 case 0:
                     return " " + tt.page_no;
@@ -466,19 +466,19 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
                 case 6:
                     return " " + tt.mother;
                 case 7:
-                    return " " + tt.date_of_baptism;
+                    return " " + tt.date_of_burial;
                 case 8:
-                    return " " + tt.date_of_birth;
+                    return " " + tt.date_of_burial2;
                 case 9:
-                    return " " + tt.place_of_birth;
+                    return " " + tt.residence;
                 case 10:
-                    return " " + tt.sponsor;
+                    return " " + tt.informant;
                 case 11:
-                    return " " + tt.notes;
+                    return " " + tt.remarks;
                 case 12:
-                    return " " + tt.parish_priest;
+                    return " " + tt.priest;
                 default:
-                    return " " + tt.minister;
+                    return " " + tt.priest;
             }
         }
     }
@@ -519,7 +519,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
             }
         }
 
-        List<Bacong_encoded_baptism.encoded> datas = Bacong_encoded_baptism.showExcelData(sheetData, path);
+        List< Bacong_encoded_funeral.encoded> datas = Bacong_encoded_funeral.showExcelData(sheetData, path);
         loadData_expenses(datas);
         jLabel3.setText("" + datas.size());
     }
@@ -537,19 +537,19 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
     }
 
     private void save_encoded() {
-        final List<Bacong_encoded_baptism.encoded> datas = tbl_expenses_ALM;
+        final List<Bacong_encoded_funeral.encoded> datas = tbl_expenses_ALM;
         if (datas.isEmpty()) {
             Alert.set(0, "Empty record!");
             return;
         }
         Window p = (Window) this;
-        Dlg_baptismal_confirm_on_save nd = Dlg_baptismal_confirm_on_save.create(p, true);
+        Dlg_funerall_confirm_on_save nd = Dlg_funerall_confirm_on_save.create(p, true);
         nd.setTitle("");
 
-        nd.setCallback(new Dlg_baptismal_confirm_on_save.Callback() {
+        nd.setCallback(new Dlg_funerall_confirm_on_save.Callback() {
 
             @Override
-            public void ok(CloseDialog closeDialog,final Dlg_baptismal_confirm_on_save.OutputData data) {
+            public void ok(CloseDialog closeDialog, final Dlg_funerall_confirm_on_save.OutputData data) {
                 closeDialog.ok();
                 jProgressBar1.setString("Loading...Please wait...");
                 jProgressBar1.setIndeterminate(true);
@@ -557,7 +557,7 @@ public class Dlg_baptismal_encoding extends javax.swing.JDialog {
 
                     @Override
                     public void run() {
-                        Bacong_encoded_baptism.add_parishioners_1(datas, data.book_no, data.delete_existing_record);
+                        Bacong_encoded_funeral.add_parishioners_1(datas, data.book_no, data.delete_existing_record);
                         tbl_expenses_ALM.clear();
                         Alert.set(1, "");
                         jTextField1.setText("");

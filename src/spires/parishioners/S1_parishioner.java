@@ -8,12 +8,13 @@ package spires.parishioners;
  *
  * @author i1
  */
-
 import spires.util.MyConnection;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import mijzcx.synapse.desk.utils.Lg;
 import mijzcx.synapse.desk.utils.ReceiptIncrementor;
@@ -658,7 +659,7 @@ public class S1_parishioner {
 
                 PreparedStatement stmt = conn.prepareStatement(s0);
                 stmt.execute();
-                Lg.s(S1_parishioner.class, "Successfully Added" + " " + to_parishioners_1.id + " : "+to_parishioners_1.date_of_baptism+ " = "+to_parishioners_1.b_date);
+                Lg.s(S1_parishioner.class, "Successfully Added" + " " + to_parishioners_1.id + " : " + to_parishioners_1.date_of_baptism + " = " + to_parishioners_1.b_date);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
@@ -721,7 +722,7 @@ public class S1_parishioner {
                     + ",m_minister= '" + to_parishioners_1.m_minister + "'"
                     + ",f_minister= '" + to_parishioners_1.f_minister + "'"
                     + ",b_date_added= '" + to_parishioners_1.b_date_added + "'"
-                    + ",c_date_added= '" +"1500-01-01"+ "'"
+                    + ",c_date_added= '" + "1500-01-01" + "'"
                     + ",marriage_id= '" + to_parishioners_1.marriage_id + "'"
                     + ",f_date_added= '" + to_parishioners_1.f_date_added + "'"
                     + ",partner_id= '" + to_parishioners_1.partner_id + "'"
@@ -794,4 +795,353 @@ public class S1_parishioner {
             MyConnection.close();
         }
     }
+
+    public static List<to_parishioners_1> ret_data(String where) {
+        List<to_parishioners_1> datas = new ArrayList();
+
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + "id"
+                    + ",ref_id"
+                    + ",fname"
+                    + ",mi"
+                    + ",lname"
+                    + ",date_of_baptism"
+                    + ",date_of_birth"
+                    + ",place_of_birth"
+                    + ",address1"
+                    + ",address2"
+                    + ",city"
+                    + ",states"
+                    + ",zip_code"
+                    + ",father"
+                    + ",mother"
+                    + ",is_baptized"
+                    + ",is_comm"
+                    + ",is_confirm"
+                    + ",is_married"
+                    + ",is_2nd_married"
+                    + ",is_prof_faith"
+                    + ",is_acceptance"
+                    + ",is_death"
+                    + ",date_added"
+                    + ",gender"
+                    + ",bapt_place"
+                    + ",b_date"
+                    + ",b_book_no"
+                    + ",b_page_no"
+                    + ",b_index_no"
+                    + ",c_date"
+                    + ",c_book_no"
+                    + ",c_page_no"
+                    + ",c_index_no"
+                    + ",m_date"
+                    + ",m_book_no"
+                    + ",m_page_no"
+                    + ",m_index_no"
+                    + ",f_date"
+                    + ",f_book_no"
+                    + ",f_page_no"
+                    + ",f_index_no"
+                    + ",b_sponsors"
+                    + ",c_sponsors"
+                    + ",m_sponsors"
+                    + ",f_sponsors"
+                    + ",b_minister"
+                    + ",c_minister"
+                    + ",m_minister"
+                    + ",f_minister"
+                    + ",b_date_added"
+                    + ",c_date_added"
+                    + ",marriage_id"
+                    + ",f_date_added"
+                    + ",partner_id"
+                    + ",partner_name"
+                    + ",partner_father"
+                    + ",partner_mother"
+                    + ",partner_address"
+                    + ",b_remarks"
+                    + ",c_remarks"
+                    + ",m_remarks"
+                    + ",f_remarks"
+                    + ",b_time"
+                    + ",c_time"
+                    + ",m_time"
+                    + ",f_time"
+                    + ",f_date_died"
+                    + ",f_place_buried"
+                    + ",f_cause_of_death"
+                    + ",f_wife_husband"
+                    + ",f_wife_husband_id"
+                    + ",partner_fname"
+                    + ",partner_mi"
+                    + ",partner_lname"
+                    + " from parishioners_1"
+                    + " " + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                int ref_id = rs.getInt(2);
+                String fname = rs.getString(3);
+                String mi = rs.getString(4);
+                String lname = rs.getString(5);
+                String date_of_baptism = rs.getString(6);
+                String date_of_birth = rs.getString(7);
+                String place_of_birth = rs.getString(8);
+                String address1 = rs.getString(9);
+                String address2 = rs.getString(10);
+                String city = rs.getString(11);
+                String states = rs.getString(12);
+                String zip_code = rs.getString(13);
+                String father = rs.getString(14);
+                String mother = rs.getString(15);
+                int is_baptized = rs.getInt(16);
+                int is_comm = rs.getInt(17);
+                int is_confirm = rs.getInt(18);
+                int is_married = rs.getInt(19);
+                int is_2nd_married = rs.getInt(20);
+                int is_prof_faith = rs.getInt(21);
+                int is_acceptance = rs.getInt(22);
+                int is_death = rs.getInt(23);
+                String date_added = rs.getString(24);
+                int gender = rs.getInt(25);
+                String bapt_place = rs.getString(26);
+                String b_date = rs.getString(27);
+                String b_book_no = rs.getString(28);
+                int b_page_no = rs.getInt(29);
+                int b_index_no = rs.getInt(30);
+                String c_date = rs.getString(31);
+                String c_book_no = rs.getString(32);
+                int c_page_no = rs.getInt(33);
+                int c_index_no = rs.getInt(34);
+                String m_date = rs.getString(35);
+                String m_book_no = rs.getString(36);
+                int m_page_no = rs.getInt(37);
+                int m_index_no = rs.getInt(38);
+                String f_date = rs.getString(39);
+                String f_book_no = rs.getString(40);
+                int f_page_no = rs.getInt(41);
+                int f_index_no = rs.getInt(42);
+                String b_sponsors = rs.getString(43);
+                String c_sponsors = rs.getString(44);
+                String m_sponsors = rs.getString(45);
+                String f_sponsors = rs.getString(46);
+                String b_minister = rs.getString(47);
+                String c_minister = rs.getString(48);
+                String m_minister = rs.getString(49);
+                String f_minister = rs.getString(50);
+                String b_date_added = rs.getString(51);
+                String c_date_added = rs.getString(52);
+                int marriage_id = rs.getInt(53);
+                String f_date_added = rs.getString(54);
+                String partner_id = rs.getString(55);
+                String partner_name = rs.getString(56);
+                String partner_father = rs.getString(57);
+                String partner_mother = rs.getString(58);
+                String partner_address = rs.getString(59);
+                String b_remarks = rs.getString(60);
+                String c_remarks = rs.getString(61);
+                String m_remarks = rs.getString(62);
+                String f_remarks = rs.getString(63);
+                String b_time = rs.getString(64);
+                String c_time = rs.getString(65);
+                String m_time = rs.getString(66);
+                String f_time = rs.getString(67);
+                String f_date_died = rs.getString(68);
+                String f_place_buried = rs.getString(69);
+                String f_cause_of_death = rs.getString(70);
+                String f_wife_husband = rs.getString(71);
+                String f_wife_husband_id = rs.getString(72);
+                String partner_fname = rs.getString(73);
+                String partner_mi = rs.getString(74);
+                String partner_lname = rs.getString(75);
+
+                to_parishioners_1 to = new to_parishioners_1(id, ref_id, fname, mi, lname, date_of_baptism, date_of_birth, place_of_birth, address1, address2, city, states, zip_code, father, mother, is_baptized, is_comm, is_confirm, is_married, is_2nd_married, is_prof_faith, is_acceptance, is_death, date_added, gender, bapt_place, b_date, b_book_no, b_page_no, b_index_no, c_date, c_book_no, c_page_no, c_index_no, m_date, m_book_no, m_page_no, m_index_no, f_date, f_book_no, f_page_no, f_index_no, b_sponsors, c_sponsors, m_sponsors, f_sponsors, b_minister, c_minister, m_minister, f_minister, b_date_added, c_date_added, marriage_id, f_date_added, partner_id, partner_name, partner_father, partner_mother, partner_address, b_remarks, c_remarks, m_remarks, f_remarks, b_time, c_time, m_time, f_time, f_date_died, f_place_buried, f_cause_of_death, f_wife_husband, f_wife_husband_id, partner_fname, partner_mi, partner_lname);
+                datas.add(to);
+            }
+            return datas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static List<to_parishioners_1> ret_books(String where) {
+        List<to_parishioners_1> datas = new ArrayList();
+
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + "count(id)"
+                    + ",ref_id"
+                    + ",fname"
+                    + ",mi"
+                    + ",lname"
+                    + ",date_of_baptism"
+                    + ",date_of_birth"
+                    + ",place_of_birth"
+                    + ",address1"
+                    + ",address2"
+                    + ",city"
+                    + ",states"
+                    + ",zip_code"
+                    + ",father"
+                    + ",mother"
+                    + ",is_baptized"
+                    + ",is_comm"
+                    + ",is_confirm"
+                    + ",is_married"
+                    + ",is_2nd_married"
+                    + ",is_prof_faith"
+                    + ",is_acceptance"
+                    + ",is_death"
+                    + ",date_added"
+                    + ",gender"
+                    + ",bapt_place"
+                    + ",b_date"
+                    + ",b_book_no"
+                    + ",b_page_no"
+                    + ",b_index_no"
+                    + ",c_date"
+                    + ",c_book_no"
+                    + ",c_page_no"
+                    + ",c_index_no"
+                    + ",m_date"
+                    + ",m_book_no"
+                    + ",m_page_no"
+                    + ",m_index_no"
+                    + ",f_date"
+                    + ",f_book_no"
+                    + ",f_page_no"
+                    + ",f_index_no"
+                    + ",b_sponsors"
+                    + ",c_sponsors"
+                    + ",m_sponsors"
+                    + ",f_sponsors"
+                    + ",b_minister"
+                    + ",c_minister"
+                    + ",m_minister"
+                    + ",f_minister"
+                    + ",b_date_added"
+                    + ",c_date_added"
+                    + ",marriage_id"
+                    + ",f_date_added"
+                    + ",partner_id"
+                    + ",partner_name"
+                    + ",partner_father"
+                    + ",partner_mother"
+                    + ",partner_address"
+                    + ",b_remarks"
+                    + ",c_remarks"
+                    + ",m_remarks"
+                    + ",f_remarks"
+                    + ",b_time"
+                    + ",c_time"
+                    + ",m_time"
+                    + ",f_time"
+                    + ",f_date_died"
+                    + ",f_place_buried"
+                    + ",f_cause_of_death"
+                    + ",f_wife_husband"
+                    + ",f_wife_husband_id"
+                    + ",partner_fname"
+                    + ",partner_mi"
+                    + ",partner_lname"
+                    + " from parishioners_1"
+                    + " " + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                int ref_id = rs.getInt(2);
+                String fname = rs.getString(3);
+                String mi = rs.getString(4);
+                String lname = rs.getString(5);
+                String date_of_baptism = rs.getString(6);
+                String date_of_birth = rs.getString(7);
+                String place_of_birth = rs.getString(8);
+                String address1 = rs.getString(9);
+                String address2 = rs.getString(10);
+                String city = rs.getString(11);
+                String states = rs.getString(12);
+                String zip_code = rs.getString(13);
+                String father = rs.getString(14);
+                String mother = rs.getString(15);
+                int is_baptized = rs.getInt(16);
+                int is_comm = rs.getInt(17);
+                int is_confirm = rs.getInt(18);
+                int is_married = rs.getInt(19);
+                int is_2nd_married = rs.getInt(20);
+                int is_prof_faith = rs.getInt(21);
+                int is_acceptance = rs.getInt(22);
+                int is_death = rs.getInt(23);
+                String date_added = rs.getString(24);
+                int gender = rs.getInt(25);
+                String bapt_place = rs.getString(26);
+                String b_date = rs.getString(27);
+                String b_book_no = rs.getString(28);
+                int b_page_no = rs.getInt(29);
+                int b_index_no = rs.getInt(30);
+                String c_date = rs.getString(31);
+                String c_book_no = rs.getString(32);
+                int c_page_no = rs.getInt(33);
+                int c_index_no = rs.getInt(34);
+                String m_date = rs.getString(35);
+                String m_book_no = rs.getString(36);
+                int m_page_no = rs.getInt(37);
+                int m_index_no = rs.getInt(38);
+                String f_date = rs.getString(39);
+                String f_book_no = rs.getString(40);
+                int f_page_no = rs.getInt(41);
+                int f_index_no = rs.getInt(42);
+                String b_sponsors = rs.getString(43);
+                String c_sponsors = rs.getString(44);
+                String m_sponsors = rs.getString(45);
+                String f_sponsors = rs.getString(46);
+                String b_minister = rs.getString(47);
+                String c_minister = rs.getString(48);
+                String m_minister = rs.getString(49);
+                String f_minister = rs.getString(50);
+                String b_date_added = rs.getString(51);
+                String c_date_added = rs.getString(52);
+                int marriage_id = rs.getInt(53);
+                String f_date_added = rs.getString(54);
+                String partner_id = rs.getString(55);
+                String partner_name = rs.getString(56);
+                String partner_father = rs.getString(57);
+                String partner_mother = rs.getString(58);
+                String partner_address = rs.getString(59);
+                String b_remarks = rs.getString(60);
+                String c_remarks = rs.getString(61);
+                String m_remarks = rs.getString(62);
+                String f_remarks = rs.getString(63);
+                String b_time = rs.getString(64);
+                String c_time = rs.getString(65);
+                String m_time = rs.getString(66);
+                String f_time = rs.getString(67);
+                String f_date_died = rs.getString(68);
+                String f_place_buried = rs.getString(69);
+                String f_cause_of_death = rs.getString(70);
+                String f_wife_husband = rs.getString(71);
+                String f_wife_husband_id = rs.getString(72);
+                String partner_fname = rs.getString(73);
+                String partner_mi = rs.getString(74);
+                String partner_lname = rs.getString(75);
+
+                to_parishioners_1 to = new to_parishioners_1(id, ref_id, fname, mi, lname, date_of_baptism, date_of_birth, place_of_birth, address1, address2, city, states, zip_code, father, mother, is_baptized, is_comm, is_confirm, is_married, is_2nd_married, is_prof_faith, is_acceptance, is_death, date_added, gender, bapt_place, b_date, b_book_no, b_page_no, b_index_no, c_date, c_book_no, c_page_no, c_index_no, m_date, m_book_no, m_page_no, m_index_no, f_date, f_book_no, f_page_no, f_index_no, b_sponsors, c_sponsors, m_sponsors, f_sponsors, b_minister, c_minister, m_minister, f_minister, b_date_added, c_date_added, marriage_id, f_date_added, partner_id, partner_name, partner_father, partner_mother, partner_address, b_remarks, c_remarks, m_remarks, f_remarks, b_time, c_time, m_time, f_time, f_date_died, f_place_buried, f_cause_of_death, f_wife_husband, f_wife_husband_id, partner_fname, partner_mi, partner_lname);
+                datas.add(to);
+            }
+            return datas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
 }

@@ -88,7 +88,7 @@ public class Bacong_encoded_funeral {
 
             fis = new FileInputStream(path);
             HSSFWorkbook workbook = new HSSFWorkbook(fis);
-            HSSFSheet sheet = workbook.getSheetAt(0);   
+            HSSFSheet sheet = workbook.getSheetAt(0);
             Iterator rows = sheet.rowIterator();
             while (rows.hasNext()) {
                 HSSFRow row = (HSSFRow) rows.next();
@@ -208,14 +208,14 @@ public class Bacong_encoded_funeral {
                     if (mother.equalsIgnoreCase("n/a")) {
                         mother = "";
                     }
-                     if (record[3].equalsIgnoreCase("n/a")||record[3].isEmpty()) {
+                    if (record[3].equalsIgnoreCase("n/a") || record[3].isEmpty()) {
                         record[3] = "2016-01-01";
                     }
-                      if (record[11].equalsIgnoreCase("n/a")||record[11].isEmpty()) {
+                    if (record[11].equalsIgnoreCase("n/a") || record[11].isEmpty()) {
                         record[11] = "2016-01-01";
                     }
-                    System.out.println(page_no + " | " + index_no + " | " + record[3] + " | " + record[11] + " | " + residence
-                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + informant + " | " + remarks + " | " + priest + " | " + "");
+//                    System.out.println(page_no + " | " + index_no + " | " + record[3] + " | " + record[11] + " | " + residence
+//                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + informant + " | " + remarks + " | " + priest + " | " + "");
 
                     encoded coded = new encoded(index_no, page_no, page_no, record[3], priest, fname, mi, lname, residence, informant, remarks, record[11], age, father, mother);
 
@@ -247,9 +247,20 @@ public class Bacong_encoded_funeral {
         return calendar.getTime();
     }
 
-    public static void add_parishioners_1(List<encoded> datas, String book_no) {
+    public static void add_parishioners_1(List<encoded> datas, String book_no, int delete_existing_record) {
         try {
             Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+
+            PreparedStatement stmt = conn.prepareStatement("");
+            
+             if (delete_existing_record == 1) {
+                String s1 = "delete from encoding_funeral2 where "
+                        + " book_no ='" + book_no + "' "
+                        + " ";
+                stmt.addBatch(s1);
+            }
+             
             for (encoded to_encoding_funeral2 : datas) {
                 String s0 = "insert into encoding_funeral2("
                         + "index_no"
@@ -308,11 +319,13 @@ public class Bacong_encoded_funeral {
                         .setString("father", to_encoding_funeral2.father)
                         .setString("mother", to_encoding_funeral2.mother)
                         .ok();
-                PreparedStatement stmt = conn.prepareStatement(s0);
-                stmt.execute();
-                Lg.s(S1_encoding_baptism.class, "Successfully Added");
-            }
 
+                stmt.addBatch(s0);
+
+            }
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(S1_encoding_baptism.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

@@ -5,12 +5,17 @@
 package spires.certificates;
 
 import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.JFrame;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.JasperUtil;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.swing.JRViewer;
+import spires.util.MyConnection;
 
 /**
  *
@@ -140,4 +145,27 @@ public class SRpt_confirmation {
                 JasperUtil.emptyDatasource());
 
     }
+    
+    public static int ret_count(String where) {
+        int count = 0;
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + " count(id)"
+                    + " from parishioners_1" + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                count = rs.getInt(1);
+
+            }
+            return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
 }

@@ -10,7 +10,6 @@ import spires.backup_accounting.Dlg_accounting_transactions;
 import spires.officials.Dlg_officials;
 import spires.churches.Dlg_churches;
 import spires.book_archives.Dlg_book_archives;
-import spires.touchscreen.Dlg_touchscreen1;
 
 import java.awt.CardLayout;
 import java.awt.Frame;
@@ -24,7 +23,8 @@ import javax.swing.SwingUtilities;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import spires.accounting.Dlg_front_desk;
-import spires.baptismal_records.Dlg_baptismal_books_encoded;
+import spires.baptismal_records.Dlg_baptismal_books;
+import spires.baptismal_records.Dlg_baptismal_encoding;
 import spires.baptismal_records.Dlg_baptismal_records;
 import spires.cash_drawer.Dlg_cashin;
 import spires.cash_drawer.S1_cash_drawer;
@@ -1874,6 +1874,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         switch_menu(true);
+        baptism_encoding();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -2370,6 +2371,16 @@ public class Dashboard extends javax.swing.JFrame {
         });
     }
 
+    private void baptism_encoding() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_baptismal_encoding dtc = new Dlg_baptismal_encoding();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Baptism - Encoding");
+            }
+        });
+    }
+
     private void search_confirmation() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -2540,7 +2551,7 @@ public class Dashboard extends javax.swing.JFrame {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                Dlg_baptismal_books_encoded dtc = new Dlg_baptismal_books_encoded();
+                Dlg_baptismal_books dtc = new Dlg_baptismal_books();
                 MyFrame.set2(dtc.getSurface(), jDesktopPane3, "Baptismal Records[Books]", dtc.getWidth(), dtc.getHeight());
             }
         });

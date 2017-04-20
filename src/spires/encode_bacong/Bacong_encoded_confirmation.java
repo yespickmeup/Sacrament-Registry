@@ -221,14 +221,14 @@ public class Bacong_encoded_confirmation {
                     if (minister.equalsIgnoreCase("n/a")) {
                         minister = "";
                     }
-                    if(record[8].equals("n/a")){
-                        record[8]="2016-07-01";
+                    if (record[8].equals("n/a")) {
+                        record[8] = "2016-07-01";
                     }
-                     if(record[10].equals("n/a")){
-                        record[10]="2016-07-01";
+                    if (record[10].equals("n/a")) {
+                        record[10] = "2016-07-01";
                     }
-                    System.out.println(page_no + " | " + index_no + " | " + record[2] + " | " + record[8] + " | " + record[10]
-                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + sponsor + " | " + notes + " | " + parish_priest + " | " + minister);
+//                    System.out.println(page_no + " | " + index_no + " | " + record[2] + " | " + record[8] + " | " + record[10]
+//                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + sponsor + " | " + notes + " | " + parish_priest + " | " + minister);
                     encoded coded = new encoded(page_no, index_no, record[2], fname, mi, lname, place_of_confirmation, place_of_birth, record[8], place_of_baptism, record[10], father, mother, sponsor, notes, parish_priest, minister);
 
                     datas.add(coded);
@@ -259,9 +259,19 @@ public class Bacong_encoded_confirmation {
         return calendar.getTime();
     }
 
-    public static void add_parishioners_1(List<encoded> datas, String book_no) {
+    public static void add_parishioners_1(List<encoded> datas, String book_no, int delete_existing_record) {
         try {
             Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+
+            PreparedStatement stmt = conn.prepareStatement("");
+            if (delete_existing_record == 1) {
+                String s1 = "delete from encoding_confirmation where "
+                        + " book_no ='" + book_no + "' "
+                        + " ";
+                stmt.addBatch(s1);
+            }
+
             for (encoded to_encoding_confirmation : datas) {
                 String s0 = "insert into encoding_confirmation("
                         + "ref_no"
@@ -344,11 +354,13 @@ public class Bacong_encoded_confirmation {
                         .setString("registry_no", "")
                         .setString("address_of_parents", "")
                         .ok();
-                PreparedStatement stmt = conn.prepareStatement(s0);
-                stmt.execute();
-                Lg.s(S1_encoding_baptism.class, "Successfully Added");
-            }
 
+                stmt.addBatch(s0);
+
+            }
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(S1_encoding_baptism.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

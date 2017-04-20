@@ -62,12 +62,13 @@ public class Srpt_print_baptism {
         String remarks;
         String place_of_baptism;
         String parish_priest;
+
         public field() {
         }
 
         public field(String ref_no, String fname, String mname, String lname, String mother, String father, String book_no,
                 String page_no, String index_no, String sponsors, String baptism_date, String confirmation_date, String priest,
-                String place_of_birth, String date_of_birth, String id, String remarks,String place_of_baptism,String parish_priest) {
+                String place_of_birth, String date_of_birth, String id, String remarks, String place_of_baptism, String parish_priest) {
             this.ref_no = ref_no;
             this.fname = fname;
             this.mname = mname;
@@ -85,8 +86,8 @@ public class Srpt_print_baptism {
             this.date_of_birth = date_of_birth;
             this.id = id;
             this.remarks = remarks;
-            this.place_of_baptism=place_of_baptism;
-            this.parish_priest=parish_priest;
+            this.place_of_baptism = place_of_baptism;
+            this.parish_priest = parish_priest;
         }
 
         public String getParish_priest() {
@@ -97,7 +98,6 @@ public class Srpt_print_baptism {
             this.parish_priest = parish_priest;
         }
 
-        
         public String getRemarks() {
             return remarks;
         }
@@ -242,7 +242,6 @@ public class Srpt_print_baptism {
             this.place_of_baptism = place_of_baptism;
         }
 
-        
     }
 
     public static void main(String[] args) {
@@ -330,14 +329,14 @@ public class Srpt_print_baptism {
                 String priest = rs.getString(19);
                 String sponsors = rs.getString(18);
                 String remarks = rs.getString(20);
-                String place_of_baptism=rs.getString(21);
+                String place_of_baptism = rs.getString(21);
                 String bapt_date = DateType.convert_sf_to_slash(rs.getString(6));
                 String bapt_place = rs.getString(14);
                 int status = 1;
-                String parish_priest=rs.getString(22);
-                Srpt_print_baptism.field to = new field(ref_no, fname, mi, lname, mother, father, book_no
-                        , "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, b_place
-                        , b_day, "" + id,remarks,place_of_baptism,parish_priest);
+                String parish_priest = rs.getString(22);
+                Srpt_print_baptism.field to = new field(ref_no, fname, mi, lname, mother, father, book_no,
+                        "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, b_place,
+                        b_day, "" + id, remarks, place_of_baptism, parish_priest);
                 datas.add(to);
             }
             return datas;
@@ -348,4 +347,96 @@ public class Srpt_print_baptism {
         }
     }
 
+    public static int ret_count(String where) {
+        int count = 0;
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + " count(id)"
+                    + " from parishioners_1" + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                count = rs.getInt(1);
+
+            }
+            return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    public static List<Srpt_print_baptism.field> ret_books(String where) {
+        List<Srpt_print_baptism.field> datas = new ArrayList();
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + "count(id)"
+                    + ",b_book_no"
+                    + ",fname"
+                    + ",mi"
+                    + ",lname"
+                    + ",date_of_baptism"
+                    + ",date_of_birth"
+                    + ",place_of_birth"
+                    + ",address1"
+                    + ",father"
+                    + ",mother"
+                    + ",is_baptized"
+                    + ",gender"
+                    + ",bapt_place"
+                    + ",b_book_no"
+                    + ",b_page_no"
+                    + ",b_index_no"
+                    + ",b_sponsors"
+                    + ",b_minister"
+                    + ",b_remarks"
+                    + ",bapt_place"
+                    + ",b_time"
+                    + " from parishioners_1  "
+                    + " " + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                int id = rs.getInt(1);
+                String ref_no = rs.getString(2);
+                String date_added = "";
+                String user_name = "";
+                String fname = rs.getString(3);
+                String mi = rs.getString(4);
+                String lname = rs.getString(5);
+                String b_place = rs.getString(8);
+                String address = rs.getString(9);
+                String father = rs.getString(10);
+                String mother = rs.getString(11);
+                String b_day = DateType.convert_sf_to_slash(rs.getString(7));
+                String conf_date = DateType.convert_sf_to_slash(rs.getString(6));
+                String gender = rs.getString(13);
+                String book_no = rs.getString(15);
+                int page_no = rs.getInt(16);
+                int index_no = rs.getInt(17);
+                String priest = rs.getString(19);
+                String sponsors = rs.getString(18);
+                String remarks = rs.getString(20);
+                String place_of_baptism = rs.getString(21);
+                String bapt_date = DateType.convert_sf_to_slash(rs.getString(6));
+                String bapt_place = rs.getString(14);
+                int status = 1;
+                String parish_priest = rs.getString(22);
+                Srpt_print_baptism.field to = new field(ref_no, fname, mi, lname, mother, father, book_no,
+                        "" + page_no, "" + index_no, sponsors, bapt_date, conf_date, priest, b_place,
+                        b_day, "" + id, remarks, place_of_baptism, parish_priest);
+                datas.add(to);
+            }
+            return datas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
 }

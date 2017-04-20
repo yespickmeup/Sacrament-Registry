@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.baptismal_records;
+package spires.confirmation_records;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -12,7 +12,7 @@ import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
-import spires.printing.Srpt_print_baptism;
+import spires.printing.Srpt_print_confirmation;
 import spires.util.Alert;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -21,7 +21,7 @@ import synsoftech.fields.Field;
  *
  * @author Guinness
  */
-public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
+public class Dlg_confirmation_confirm_on_save extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_baptismal_confirm_on_save
@@ -56,33 +56,33 @@ public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_baptismal_confirm_on_save(java.awt.Frame parent, boolean modal) {
+    private Dlg_confirmation_confirm_on_save(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_baptismal_confirm_on_save(java.awt.Dialog parent, boolean modal) {
+    private Dlg_confirmation_confirm_on_save(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_baptismal_confirm_on_save() {
+    public Dlg_confirmation_confirm_on_save() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_baptismal_confirm_on_save myRef;
+    private Dlg_confirmation_confirm_on_save myRef;
 
-    private void setThisRef(Dlg_baptismal_confirm_on_save myRef) {
+    private void setThisRef(Dlg_confirmation_confirm_on_save myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_baptismal_confirm_on_save> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_confirmation_confirm_on_save> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -90,7 +90,7 @@ public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_baptismal_confirm_on_save create(java.awt.Window parent, boolean modal) {
+    public static Dlg_confirmation_confirm_on_save create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -100,14 +100,14 @@ public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_baptismal_confirm_on_save create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_confirmation_confirm_on_save create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_baptismal_confirm_on_save dialog = dialogContainer.get(parent);
+            Dlg_confirmation_confirm_on_save dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_confirm_on_save((java.awt.Frame) parent, false);
+                dialog = new Dlg_confirmation_confirm_on_save((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -121,10 +121,10 @@ public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_baptismal_confirm_on_save dialog = dialogContainer.get(parent);
+            Dlg_confirmation_confirm_on_save dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_confirm_on_save((java.awt.Dialog) parent, false);
+                dialog = new Dlg_confirmation_confirm_on_save((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -151,7 +151,7 @@ public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_baptismal_confirm_on_save dialog = Dlg_baptismal_confirm_on_save.create(new javax.swing.JFrame(), true);
+        Dlg_confirmation_confirm_on_save dialog = Dlg_confirmation_confirm_on_save.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -349,8 +349,8 @@ public class Dlg_baptismal_confirm_on_save extends javax.swing.JDialog {
 
             @Override
             public void run() {
-                String where = " where b_book_no='" + book_no + "' ";
-                int count = Srpt_print_baptism.ret_count(where);
+                String where = " where book_no='" + book_no + "' ";
+                int count = Srpt_print_confirmation.ret_count(where);
                 if (count > 0) {
                     jLabel2.setText("Book No Already exist with " + FitIn.fmt_wc(count) + " Records");
                     jCheckBox1.setEnabled(true);

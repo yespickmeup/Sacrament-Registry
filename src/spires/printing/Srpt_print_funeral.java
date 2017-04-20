@@ -60,12 +60,13 @@ public class Srpt_print_funeral {
         String father;
         String mother;
         String parents;
+
         public field() {
         }
 
-        public field(String index_no, String book_no, String page_no, String date_of_burial, String price, String fname, String mi
-                , String lname, String residence, String informant, String id, String remarks
-                ,String date_of_death,String age,String father,String mother,String parents) {
+        public field(String index_no, String book_no, String page_no, String date_of_burial, String price, String fname, String mi,
+                 String lname, String residence, String informant, String id, String remarks,
+                 String date_of_death, String age, String father, String mother, String parents) {
             this.index_no = index_no;
             this.book_no = book_no;
             this.page_no = page_no;
@@ -78,11 +79,11 @@ public class Srpt_print_funeral {
             this.informant = informant;
             this.id = id;
             this.remarks = remarks;
-            this.date_of_death=date_of_death;
-            this.age=age;
-            this.father=father;
-            this.mother=mother;
-            this.parents=parents;
+            this.date_of_death = date_of_death;
+            this.age = age;
+            this.father = father;
+            this.mother = mother;
+            this.parents = parents;
         }
 
         public String getParents() {
@@ -108,7 +109,7 @@ public class Srpt_print_funeral {
         public void setMother(String mother) {
             this.mother = mother;
         }
-        
+
         public String getAge() {
             return age;
         }
@@ -116,7 +117,7 @@ public class Srpt_print_funeral {
         public void setAge(String age) {
             this.age = age;
         }
-        
+
         public String getIndex_no() {
             return index_no;
         }
@@ -220,7 +221,7 @@ public class Srpt_print_funeral {
         public void setDate_of_death(String date_of_death) {
             this.date_of_death = date_of_death;
         }
-        
+
     }
 
     public static void main(String[] args) {
@@ -278,7 +279,7 @@ public class Srpt_print_funeral {
                     + ",age"
                     + ",father"
                     + ",mother"
-                    + ",parents"              
+                    + ",parents"
                     + " from encoding_funeral2 "
                     + " " + where;
 
@@ -301,14 +302,14 @@ public class Srpt_print_funeral {
                 String informant = rs.getString(11);
                 String date_added = rs.getString(12);
                 String user_name = rs.getString(13);
-                String remarks=rs.getString(14);
-                String date_of_death=rs.getString(15);
-                String age=rs.getString(16);
-                String father=rs.getString(17);
-                String mother=rs.getString(18);
+                String remarks = rs.getString(14);
+                String date_of_death = rs.getString(15);
+                String age = rs.getString(16);
+                String father = rs.getString(17);
+                String mother = rs.getString(18);
                 String parents = rs.getString(19);
-                Srpt_print_funeral.field to = new field(index_no, book_no, page_no, date_of_burial, priest
-                        , fname, mi, lname, residence, informant, "" + id,remarks,date_of_death,age,father,mother,parents);
+                Srpt_print_funeral.field to = new field(index_no, book_no, page_no, date_of_burial, priest,
+                         fname, mi, lname, residence, informant, "" + id, remarks, date_of_death, age, father, mother, parents);
 
                 datas.add(to);
             }
@@ -320,4 +321,25 @@ public class Srpt_print_funeral {
         }
     }
 
+    public static int ret_count(String where) {
+        int count = 0;
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + " count(id)"
+                    + " from encoding_funeral2" + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                count = rs.getInt(1);
+
+            }
+            return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
 }

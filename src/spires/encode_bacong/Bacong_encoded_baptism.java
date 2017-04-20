@@ -155,26 +155,25 @@ public class Bacong_encoded_baptism {
         List<encoded> datas = showExcelData(sheetData, path);
 //        System.out.println("Size: " + datas.size());
 
-
 //        add_parishioners_1(datas, "35");
-    }   
+    }
 
     public static class encoded {
 
-        public final String  page_no ;
-        public final String  index_no ;
-        public final String  date_of_baptism ;
-        public final String  date_of_birth ;
-        public final String  place_of_birth ;
-        public final String  fname ;
-        public final String  mi ;
-        public final String  lname ;
-        public final String  father ;
-        public final String  mother ;
-        public final String  sponsor ;
-        public final String  notes ;
-        public final String  parish_priest ;
-        public final String  minister ;
+        public final String page_no;
+        public final String index_no;
+        public final String date_of_baptism;
+        public final String date_of_birth;
+        public final String place_of_birth;
+        public final String fname;
+        public final String mi;
+        public final String lname;
+        public final String father;
+        public final String mother;
+        public final String sponsor;
+        public final String notes;
+        public final String parish_priest;
+        public final String minister;
 
         public encoded(String page_no, String index_no, String date_of_baptism, String date_of_birth, String place_of_birth, String fname, String mi, String lname, String father, String mother, String sponsor, String notes, String parish_priest, String minister) {
             this.page_no = page_no;
@@ -192,7 +191,7 @@ public class Bacong_encoded_baptism {
             this.parish_priest = parish_priest;
             this.minister = minister;
         }
-        
+
     }
 
     public static List<encoded> showExcelData(List sheetData, String path) {
@@ -283,15 +282,15 @@ public class Bacong_encoded_baptism {
                     }
 //                    System.out.println(page_no + " | " + index_no + " | " + date_of_baptism + " | " + date_of_birth + " | " + place_of_birth
 //                            + " | " + fname + " | " + mi + " | " + lname + " | " + father + " | " + mother + " | " + sponsor + " | " + notes + " | " + parish_priest + " | " + minister);
-                  encoded coded=new encoded(page_no, index_no, date_of_baptism, date_of_birth, place_of_birth, fname, mi, lname, father, mother, sponsor, notes, parish_priest, minister);
-                  datas.add(coded);
+                    encoded coded = new encoded(page_no, index_no, date_of_baptism, date_of_birth, place_of_birth, fname, mi, lname, father, mother, sponsor, notes, parish_priest, minister);
+                    datas.add(coded);
                 }
 
             }
         } catch (FileNotFoundException ex) {
             System.out.println("Error Opening File");
             System.out.println(ex);
-            
+
         }
 
         return datas;
@@ -314,9 +313,19 @@ public class Bacong_encoded_baptism {
         return calendar.getTime();
     }
 
-    public static void add_parishioners_1(List<encoded> datas, String book_no) {
+    public static void add_parishioners_1(List<encoded> datas, String book_no, int delete_existing_record) {
         try {
             Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+
+            PreparedStatement stmt = conn.prepareStatement("");
+
+            if (delete_existing_record == 1) {
+                String s1 = "delete from parishioners_1 where "
+                        + " b_book_no ='" + book_no + "' "
+                        + " ";
+                stmt.addBatch(s1);
+            }
             for (encoded to_parishioners_1 : datas) {
                 String s0 = "insert into parishioners_1("
                         + "fname"
@@ -382,11 +391,12 @@ public class Bacong_encoded_baptism {
                         .setString("b_time", to_parishioners_1.parish_priest)
                         .ok();
 
-                PreparedStatement stmt = conn.prepareStatement(s0);
-                stmt.execute();
-                Lg.s(S1_encoding_baptism.class, "Successfully Added");
-            }
+                stmt.addBatch(s0);
 
+            }
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(S1_encoding_baptism.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
