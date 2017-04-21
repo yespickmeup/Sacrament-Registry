@@ -181,8 +181,8 @@ public class Bacong_encoded_marriage {
                 String bride = record[11];
                 String bride_age = record[12];
                 String bride_status = record[13];
-                String bride_father = record[12];
-                String bride_mother = record[13];
+                String bride_father = record[14];
+                String bride_mother = record[15];
                 String bride_address = record[14];
                 String sponsors = record[15];
                 String remarks = record[16];

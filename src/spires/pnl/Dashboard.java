@@ -28,8 +28,13 @@ import spires.baptismal_records.Dlg_baptismal_encoding;
 import spires.baptismal_records.Dlg_baptismal_records;
 import spires.cash_drawer.Dlg_cashin;
 import spires.cash_drawer.S1_cash_drawer;
+import spires.confirmation_records.Dlg_confirmation_books;
+import spires.confirmation_records.Dlg_confirmation_encoding;
 import spires.confirmation_records.Dlg_confirmation_records;
+import spires.funeral_records.Dlg_funeral_encoding;
 import spires.funeral_records.Dlg_funeral_records;
+import spires.funeral_records.Dlg_funerall_books;
+import spires.marriage.Dlg_marriage_encoding;
 import spires.marriage_contracts.Dlg_marriage_contract;
 import spires.marriage_records.Dlg_marriage_records;
 import spires.official_schedules.Dlg_official_schedules;
@@ -1887,11 +1892,13 @@ public class Dashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        // TODO add your handling code here:
+        switch_menu(true);
+        funeral_encoding();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+        switch_menu(true);
+        funeral_books();
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
@@ -1905,6 +1912,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
         switch_menu(true);
+        marriage_encoding();
     }//GEN-LAST:event_jButton17ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
@@ -1923,10 +1931,12 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         switch_menu(true);
+        confirmation_encoding();
     }//GEN-LAST:event_jButton22ActionPerformed
 
     private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
         switch_menu(true);
+        confirmation_books();
     }//GEN-LAST:event_jButton24ActionPerformed
 
     private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton25ActionPerformed
@@ -2401,12 +2411,52 @@ public class Dashboard extends javax.swing.JFrame {
         });
     }
 
+    private void funeral_encoding() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_funeral_encoding dtc = new Dlg_funeral_encoding();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Funeral");
+            }
+        });
+    }
+
+    private void marriage_encoding() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_marriage_encoding dtc = new Dlg_marriage_encoding();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Marriage Encoding");
+            }
+        });
+    }
+
+    private void funeral_books() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_funerall_books dtc = new Dlg_funerall_books();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Funeral");
+            }
+        });
+    }
+
     private void search_marriage() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
                 Dlg_marriage_records dtc = new Dlg_marriage_records();
                 MyFrame.set(dtc.getSurface(), jDesktopPane3, "Marriage");
+            }
+        });
+    }
+
+    private void confirmation_encoding() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_confirmation_encoding dtc = new Dlg_confirmation_encoding();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Confirmation-Encoding ");
             }
         });
     }
@@ -2553,6 +2603,16 @@ public class Dashboard extends javax.swing.JFrame {
             public void run() {
                 Dlg_baptismal_books dtc = new Dlg_baptismal_books();
                 MyFrame.set2(dtc.getSurface(), jDesktopPane3, "Baptismal Records[Books]", dtc.getWidth(), dtc.getHeight());
+            }
+        });
+    }
+
+    private void confirmation_books() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_confirmation_books dtc = new Dlg_confirmation_books();
+                MyFrame.set2(dtc.getSurface(), jDesktopPane3, "Confirmation Records[Books]", dtc.getWidth(), dtc.getHeight());
             }
         });
     }

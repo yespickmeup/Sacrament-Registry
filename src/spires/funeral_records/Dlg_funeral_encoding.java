@@ -353,7 +353,7 @@ public class Dlg_funeral_encoding extends javax.swing.JDialog {
     private javax.swing.JTable tbl_expenses;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
-        System.setProperty("mydb", "db_spires_bacong");
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         init_tbl_expenses(tbl_expenses);
     }

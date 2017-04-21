@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package spires.baptismal_records;
+package spires.confirmation_records;
 
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
@@ -20,7 +20,6 @@ import mijzcx.synapse.desk.utils.FitIn;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
-import spires.parishioners.S1_parishioner;
 import synsoftech.fields.Button;
 import synsoftech.util.ImageRenderer1;
 
@@ -28,7 +27,7 @@ import synsoftech.util.ImageRenderer1;
  *
  * @author Guinness
  */
-public class Dlg_baptismal_books extends javax.swing.JDialog {
+public class Dlg_confirmation_books extends javax.swing.JDialog {
 
     /**
      * Creates new form Dlg_baptismal_books
@@ -54,33 +53,33 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
 //</editor-fold>
 
     //<editor-fold defaultstate="collapsed" desc=" Constructors ">
-    private Dlg_baptismal_books(java.awt.Frame parent, boolean modal) {
+    private Dlg_confirmation_books(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    private Dlg_baptismal_books(java.awt.Dialog parent, boolean modal) {
+    private Dlg_confirmation_books(java.awt.Dialog parent, boolean modal) {
         super(parent, modal);
         setUndecorated(true);
         initComponents();
         myInit();
     }
 
-    public Dlg_baptismal_books() {
+    public Dlg_confirmation_books() {
         super();
         setUndecorated(true);
         initComponents();
         myInit();
 
     }
-    private Dlg_baptismal_books myRef;
+    private Dlg_confirmation_books myRef;
 
-    private void setThisRef(Dlg_baptismal_books myRef) {
+    private void setThisRef(Dlg_confirmation_books myRef) {
         this.myRef = myRef;
     }
-    private static java.util.Map<Object, Dlg_baptismal_books> dialogContainer = new java.util.HashMap();
+    private static java.util.Map<Object, Dlg_confirmation_books> dialogContainer = new java.util.HashMap();
 
     public static void clearUpFirst(java.awt.Window parent) {
         if (dialogContainer.containsKey(parent)) {
@@ -88,7 +87,7 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
         }
     }
 
-    public static Dlg_baptismal_books create(java.awt.Window parent, boolean modal) {
+    public static Dlg_confirmation_books create(java.awt.Window parent, boolean modal) {
 
         if (modal) {
             return create(parent, ModalityType.APPLICATION_MODAL);
@@ -98,14 +97,14 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
 
     }
 
-    public static Dlg_baptismal_books create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
+    public static Dlg_confirmation_books create(java.awt.Window parent, java.awt.Dialog.ModalityType modalType) {
 
         if (parent instanceof java.awt.Frame) {
 
-            Dlg_baptismal_books dialog = dialogContainer.get(parent);
+            Dlg_confirmation_books dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_books((java.awt.Frame) parent, false);
+                dialog = new Dlg_confirmation_books((java.awt.Frame) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -119,10 +118,10 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
         }
 
         if (parent instanceof java.awt.Dialog) {
-            Dlg_baptismal_books dialog = dialogContainer.get(parent);
+            Dlg_confirmation_books dialog = dialogContainer.get(parent);
 
             if (dialog == null) {
-                dialog = new Dlg_baptismal_books((java.awt.Dialog) parent, false);
+                dialog = new Dlg_confirmation_books((java.awt.Dialog) parent, false);
                 dialog.setModalityType(modalType);
                 dialogContainer.put(parent, dialog);
                 java.util.logging.Logger.getAnonymousLogger().log(Level.INFO, "instances: {0}", dialogContainer.size());
@@ -149,7 +148,7 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
             throw new RuntimeException(e);
         }
 
-        Dlg_baptismal_books dialog = Dlg_baptismal_books.create(new javax.swing.JFrame(), true);
+        Dlg_confirmation_books dialog = Dlg_confirmation_books.create(new javax.swing.JFrame(), true);
         dialog.setVisible(true);
 
     }
@@ -447,7 +446,7 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
 //        tbl_official_schedule_types.getColumnModel().getColumn(2).setCellRenderer(new ImageRenderer1());
     }
 
-    public static void loadData_official_schedule_types(List<S1_parishioner.to_parishioners_1> acc) {
+    public static void loadData_official_schedule_types(List<Encoding_confirmation.to_encoding_confirmation> acc) {
         tbl_official_schedule_types_ALM.clear();
         tbl_official_schedule_types_ALM.addAll(acc);
     }
@@ -480,10 +479,10 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
 
         @Override
         public Object getValueAt(int row, int col) {
-            S1_parishioner.to_parishioners_1 tt = (S1_parishioner.to_parishioners_1) getRow(row);
+            Encoding_confirmation.to_encoding_confirmation tt = (Encoding_confirmation.to_encoding_confirmation) getRow(row);
             switch (col) {
                 case 0:
-                    return " Book # " + tt.b_book_no;
+                    return " Book # " + tt.book_no;
                 case 1:
                     return " " + FitIn.fmt_wc(tt.id);
                 case 2:
@@ -501,12 +500,12 @@ public class Dlg_baptismal_books extends javax.swing.JDialog {
     }
 
     private void ret_data() {
-        String where = " group by b_book_no order by b_book_no asc ";
-        List<S1_parishioner.to_parishioners_1> datas = S1_parishioner.ret_books(where);
+        String where = " group by book_no order by book_no asc ";
+        List<Encoding_confirmation.to_encoding_confirmation> datas = Encoding_confirmation.ret_books(where);
         loadData_official_schedule_types(datas);
         int count=datas.size();
         int rows=0;
-        for(S1_parishioner.to_parishioners_1 to:datas){
+        for(Encoding_confirmation.to_encoding_confirmation to:datas){
             rows+=to.id;
         }
         jLabel2.setText(FitIn.fmt_wc(count));

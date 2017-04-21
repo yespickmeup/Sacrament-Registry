@@ -5,7 +5,6 @@
  */
 package spires.marriage;
 
-import spires.baptismal_records.*;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
@@ -33,7 +32,6 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import spires.encode_bacong.Bacong_encoded_baptism;
 import spires.encode_bacong.Bacong_encoded_marriage;
 import spires.util.Alert;
 import synsoftech.fields.Button;
@@ -355,7 +353,7 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
     private javax.swing.JTable tbl_expenses;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
-        System.setProperty("mydb", "db_spires_bacong");
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         init_tbl_expenses(tbl_expenses);
     }
