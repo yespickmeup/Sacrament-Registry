@@ -236,8 +236,8 @@ public class Bacong_encoded_marriage {
                         remarks = "";
                     }
 
-                    System.out.println(page_no + " | " + index_no + " | " + date_of_marriage + " | " + groom + " | " + bride
-                    );
+//                    System.out.println(page_no + " | " + index_no + " | " + date_of_marriage + " | " + groom + " | " + bride
+//                    );
 
                     encoded coded = new encoded(index_no, page_no, page_no, date_of_marriage, priest, groom, groom_age, groom_status, groom_father, groom_mother, groom_address, bride, bride_age, bride_status, bride_father, bride_mother, bride_address, sponsors, remarks);
 
@@ -269,9 +269,12 @@ public class Bacong_encoded_marriage {
         return calendar.getTime();
     }
 
-    public static void add_parishioners_1(List<encoded> datas, String book_no) {
+    public static void add_parishioners_1(List<encoded> datas, String book_no, int delete_existing_record) {
         try {
             Connection conn = MyConnection.connect();
+            conn.setAutoCommit(false);
+            PreparedStatement stmt = conn.prepareStatement("");
+
             for (encoded to_encoding_marriage : datas) {
                 String s0 = "insert into encoding_marriage("
                         + "index_no"
@@ -313,7 +316,7 @@ public class Bacong_encoded_marriage {
 
                 s0 = SqlStringUtil.parse(s0)
                         .setString("index_no", to_encoding_marriage.index_no)
-                        .setString("book_no",book_no)
+                        .setString("book_no", book_no)
                         .setString("page_no", to_encoding_marriage.page_no)
                         .setString("date_of_marriage", to_encoding_marriage.date_of_marriage)
                         .setString("priest", to_encoding_marriage.priest)
@@ -330,11 +333,14 @@ public class Bacong_encoded_marriage {
                         .setString("sponsors", to_encoding_marriage.sponsors)
                         .setString("remarks", to_encoding_marriage.remarks)
                         .ok();
-                PreparedStatement stmt = conn.prepareStatement(s0);
-                stmt.execute();
-                Lg.s(S1_encoding_baptism.class, "Successfully Added");
+
+                stmt.addBatch(s0);
+
             }
 
+            stmt.executeBatch();
+            conn.commit();
+            Lg.s(S1_encoding_baptism.class, "Successfully Added");
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {

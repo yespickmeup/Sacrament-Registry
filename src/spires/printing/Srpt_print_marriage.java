@@ -212,4 +212,27 @@ public class Srpt_print_marriage {
         }
     }
 
+    public static int ret_count(String where) {
+        int count = 0;
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + " count(id)"
+                    + " from encoding_marriage" + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                count = rs.getInt(1);
+
+            }
+            return count;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
+
+    
 }

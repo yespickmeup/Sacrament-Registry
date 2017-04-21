@@ -355,7 +355,7 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
     private javax.swing.JTable tbl_expenses;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
-//        System.setProperty("mydb", "db_spires_bacong");
+        System.setProperty("mydb", "db_spires_bacong");
         init_key();
         init_tbl_expenses(tbl_expenses);
     }
@@ -423,7 +423,7 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
     public static class TblexpensesModel extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Page No", "Index No", "First Name", "MI", "Last Name", "Father", "Mother", "Baptism", "Birth", "Place of Birth", "Sponsors", "Notes", "Parish Priest", "Minister"
+            "Page No", "Index", "Marriage", "Groom", "Groom Father", "Groom Mother", "Age ", "Status", "Bride", "Bride Father", "Bride Mother", "Age", "Status", "Prist"
 
         };
 
@@ -466,21 +466,21 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
                 case 5:
                     return " " + tt.groom_mother;
                 case 6:
-                    return " " + tt.bride;
+                    return " " + tt.groom_age;
                 case 7:
-                    return " " + tt.bride_father;
+                    return " " + tt.groom_status;
                 case 8:
-                    return " " + tt.bride_mother;
+                    return " " + tt.bride;
                 case 9:
-                    return " " + tt.place_of_birth;
+                    return " " + tt.bride_father;
                 case 10:
-                    return " " + tt.sponsor;
+                    return " " + tt.bride_mother;
                 case 11:
-                    return " " + tt.notes;
+                    return " " + tt.bride_age;
                 case 12:
-                    return " " + tt.parish_priest;
+                    return " " + tt.bride_status;
                 default:
-                    return " " + tt.minister;
+                    return " " + tt.priest;
             }
         }
     }
@@ -521,7 +521,7 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
             }
         }
 
-        List<Bacong_encoded_baptism.encoded> datas = Bacong_encoded_baptism.showExcelData(sheetData, path);
+        List< Bacong_encoded_marriage.encoded> datas = Bacong_encoded_marriage.showExcelData(sheetData, path);
         loadData_expenses(datas);
         jLabel3.setText("" + datas.size());
     }
@@ -539,19 +539,19 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
     }
 
     private void save_encoded() {
-        final List<Bacong_encoded_baptism.encoded> datas = tbl_expenses_ALM;
+        final List<Bacong_encoded_marriage.encoded> datas = tbl_expenses_ALM;
         if (datas.isEmpty()) {
             Alert.set(0, "Empty record!");
             return;
         }
         Window p = (Window) this;
-        Dlg_baptismal_confirm_on_save nd = Dlg_baptismal_confirm_on_save.create(p, true);
+        Dlg_marriage_confirm_on_save nd = Dlg_marriage_confirm_on_save.create(p, true);
         nd.setTitle("");
 
-        nd.setCallback(new Dlg_baptismal_confirm_on_save.Callback() {
+        nd.setCallback(new Dlg_marriage_confirm_on_save.Callback() {
 
             @Override
-            public void ok(CloseDialog closeDialog,final Dlg_baptismal_confirm_on_save.OutputData data) {
+            public void ok(CloseDialog closeDialog, final Dlg_marriage_confirm_on_save.OutputData data) {
                 closeDialog.ok();
                 jProgressBar1.setString("Loading...Please wait...");
                 jProgressBar1.setIndeterminate(true);
@@ -559,7 +559,7 @@ public class Dlg_marriage_encoding extends javax.swing.JDialog {
 
                     @Override
                     public void run() {
-                        Bacong_encoded_baptism.add_parishioners_1(datas, data.book_no, data.delete_existing_record);
+                        Bacong_encoded_marriage.add_parishioners_1(datas, data.book_no, data.delete_existing_record);
                         tbl_expenses_ALM.clear();
                         Alert.set(1, "");
                         jTextField1.setText("");
