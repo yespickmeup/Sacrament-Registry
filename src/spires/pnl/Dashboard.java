@@ -1917,6 +1917,7 @@ public class Dashboard extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         switch_menu(true);
+        marriage_books();
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
@@ -2430,7 +2431,15 @@ public class Dashboard extends javax.swing.JFrame {
             }
         });
     }
-
+     private void marriage_books() {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Dlg_funerall_books dtc = new Dlg_funerall_books();
+                MyFrame.set(dtc.getSurface(), jDesktopPane3, "Funeral");
+            }
+        });
+    }
     private void funeral_books() {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
