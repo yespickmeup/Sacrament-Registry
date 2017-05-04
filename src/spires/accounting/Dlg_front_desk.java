@@ -1579,7 +1579,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     public static class TblreceiptsModel2 extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Transaction No", "Date", "Name", "Amount Due", "Classification", "Particular", "Status", "", "", "", "check_no", "check_holder", "message", "parishioner", "parishioner_id", "parioshioner_contact_no", "account_name", "account_id", "account_type", "account_type_id", "status", "particular", "particular_id", "particular_account", "particular_account_id", "check_bank", "is_fixed"
+            "Transaction No", "Date", "Name", "Particular", "Classification", "Amount Due", "Status", "", "", "", "check_no", "check_holder", "message", "parishioner", "parishioner_id", "parioshioner_contact_no", "account_name", "account_id", "account_type", "account_type_id", "status", "particular", "particular_id", "particular_account", "particular_account_id", "check_bank", "is_fixed"
         };
 
         public TblreceiptsModel2(ListModel listmodel) {

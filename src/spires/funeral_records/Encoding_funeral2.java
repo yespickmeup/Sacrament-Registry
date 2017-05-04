@@ -337,4 +337,33 @@ public class Encoding_funeral2 {
             MyConnection.close();
         }
     }
+
+    public static List<to_encoding_funeral2> ret_books_marriage(String where) {
+        List<to_encoding_funeral2> datas = new ArrayList();
+
+        try {
+            Connection conn = MyConnection.connect();
+            String s0 = "select "
+                    + "count(id)"
+                    + ",book_no"
+                    + " from encoding_marriage"
+                    + " " + where;
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(s0);
+            while (rs.next()) {
+                int id = rs.getInt(1);
+
+                String book_no = rs.getString(2);
+
+                to_encoding_funeral2 to = new to_encoding_funeral2(id, "", book_no, "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "");
+                datas.add(to);
+            }
+            return datas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            MyConnection.close();
+        }
+    }
 }
