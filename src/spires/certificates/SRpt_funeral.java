@@ -43,7 +43,8 @@ public class SRpt_funeral {
     public final String age;
     public final String index_no;
     public final String parents;
-    public SRpt_funeral(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String father, String mother, String date_of_confirmation, String book_no, String page_no, String confirmed_by, String sponsor_name, String place_of_birth, String date_of_birth, String date_of_baptism, String place_of_baptism, String purpose, String date_of_death, String age, String index_no,String parents) {
+    public final String rector;
+    public SRpt_funeral(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String father, String mother, String date_of_confirmation, String book_no, String page_no, String confirmed_by, String sponsor_name, String place_of_birth, String date_of_birth, String date_of_baptism, String place_of_baptism, String purpose, String date_of_death, String age, String index_no,String parents,String rector) {
         this.num = num;
         this.day = day;
         this.month = month;
@@ -69,6 +70,7 @@ public class SRpt_funeral {
         this.age = age;
         this.index_no = index_no;
         this.parents=parents;
+        this.rector=rector;
     }
 
     public static void main(String[] args) {
@@ -98,7 +100,7 @@ public class SRpt_funeral {
         String age = "29 years old";
         String index_no = "400";
 
-        SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no,"");
+        SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no,"","");
        
         JRViewer viewer = SRpt_funeral.get_viewer(rpt);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);

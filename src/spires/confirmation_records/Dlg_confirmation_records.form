@@ -92,14 +92,24 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="dp_bdate" max="32767" attributes="0"/>
                                   <Component id="tf_mother" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tf_lname" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tf_mi" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tf_fname" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tf_father" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dp_baptism" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="dp_confirmation" alignment="0" pref="260" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jCheckBox1" min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox2" min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Component id="jCheckBox3" min="-2" pref="29" max="-2" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="dp_confirmation" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="dp_baptism" alignment="1" max="32767" attributes="0"/>
+                                          <Component id="dp_bdate" alignment="1" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                           <Component id="jLabel26" alignment="0" max="32767" attributes="0"/>
@@ -166,16 +176,21 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel27" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="dp_bdate" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jCheckBox1" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel14" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="dp_baptism" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel14" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="dp_baptism" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="jCheckBox2" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="dp_confirmation" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jLabel16" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jCheckBox3" min="-2" pref="24" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
                       <Component id="jLabel29" min="-2" pref="25" max="-2" attributes="0"/>
@@ -615,6 +630,36 @@
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Field.Input()"/>
               </AuxValues>
             </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Tahoma" size="14" style="0"/>
+                </Property>
+                <Property name="selected" type="boolean" value="true"/>
+                <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="horizontalTextPosition" type="int" value="0"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="jPanel4">
@@ -642,7 +687,7 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel23" max="32767" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                               <Component id="jButton4" min="-2" pref="94" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -715,7 +760,7 @@
                           <Component id="jLabel23" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="524" max="32767" attributes="0"/>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">

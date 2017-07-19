@@ -19,8 +19,10 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingUtilities;
@@ -40,9 +42,11 @@ import spires.cashiering.Cashiering_types;
 import spires.receipts.Receipts;
 import spires.receipts.Receipts.to_receipts;
 import spires.users.Res;
+import spires.users.Users;
 import spires.util.Alert;
 import spires.util.DateType;
 import spires.util.Dlg_confirm_action;
+import spires.util.TableRenderer;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
 import synsoftech.util.ImageRenderer1;
@@ -862,27 +866,27 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MouseClicked
-
+        init_cashier(jTextField2);
     }//GEN-LAST:event_jTextField2MouseClicked
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-
+        init_cashier(jTextField2);
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MouseClicked
-        // TODO add your handling code here:
+        init_classification(jTextField3);
     }//GEN-LAST:event_jTextField3MouseClicked
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
+        init_classification(jTextField3);
     }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void jTextField4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MouseClicked
-        // TODO add your handling code here:
+        init_particulars(jTextField4);
     }//GEN-LAST:event_jTextField4MouseClicked
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
-        // TODO add your handling code here:
+        init_particulars(jTextField4);
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -975,6 +979,8 @@ public class Dlg_front_desk extends javax.swing.JDialog {
         init_tbl_receipts2(tbl_receipts2);
         ret_cashiering();
 
+        user_list = Users.ret_data(" order by user_code asc ");
+        classifications = Cashiering.ret_data(" order by account asc ");
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
@@ -1552,7 +1558,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
         tbl_receipts2.setModel(tbl_receipts_M2);
         tbl_receipts2.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tbl_receipts2.setRowHeight(25);
-        int[] tbl_widths_receipts = {150, 80, 100, 150, 150, 80, 60, 30, 30, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+        int[] tbl_widths_receipts = {80, 80, 100, 100, 100, 100, 80, 60, 30, 30, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
         for (int i = 0, n = tbl_widths_receipts.length; i < n; i++) {
             if (i == 2) {
                 continue;
@@ -1565,10 +1571,10 @@ public class Dlg_front_desk extends javax.swing.JDialog {
         tbl_receipts2.getTableHeader().setFont(new java.awt.Font("Arial", 0, 12));
         tbl_receipts2.setRowHeight(25);
         tbl_receipts2.setFont(new java.awt.Font("Arial", 0, 12));
-        tbl_receipts2.getColumnModel().getColumn(7).setCellRenderer(new ImageRenderer1());
         tbl_receipts2.getColumnModel().getColumn(8).setCellRenderer(new ImageRenderer1());
         tbl_receipts2.getColumnModel().getColumn(9).setCellRenderer(new ImageRenderer1());
-        TableWidthUtilities.setColumnRightRenderer(tbl_receipts2, 5);
+        tbl_receipts2.getColumnModel().getColumn(10).setCellRenderer(new ImageRenderer1());
+        TableWidthUtilities.setColumnRightRenderer(tbl_receipts2, 6);
     }
 
     public static void loadData_receipts2(List<to_receipts> acc) {
@@ -1579,7 +1585,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     public static class TblreceiptsModel2 extends AbstractTableAdapter {
 
         public static String[] COLUMNS = {
-            "Transaction No", "Date", "Name", "Particular", "Classification", "Amount Due", "Status", "", "", "", "check_no", "check_holder", "message", "parishioner", "parishioner_id", "parioshioner_contact_no", "account_name", "account_id", "account_type", "account_type_id", "status", "particular", "particular_id", "particular_account", "particular_account_id", "check_bank", "is_fixed"
+            "Trans No", "Date", "Name", "Remarks", "Particular", "Classification", "Amount Due", "Status", "", "", "", "check_holder", "message", "parishioner", "parishioner_id", "parioshioner_contact_no", "account_name", "account_id", "account_type", "account_type_id", "status", "particular", "particular_id", "particular_account", "particular_account_id", "check_bank", "is_fixed"
         };
 
         public TblreceiptsModel2(ListModel listmodel) {
@@ -1613,33 +1619,31 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                 case 2:
                     return " " + tt.parishioner;
                 case 3:
-                    return " " + tt.particular_account;
-
+                    return " " + tt.message;
                 case 4:
                     return " " + tt.particular;
-
                 case 5:
+                    return " " + tt.particular_account;
+
+                case 6:
 
                     if (tt.is_fixed == 1) {
                         return FitIn.fmt_wc_0(tt.amount_due) + " ";
                     } else {
                         return FitIn.fmt_wc_0(tt.cash + tt.check_amount) + " ";
                     }
-                case 6:
+                case 7:
                     if (tt.status.equals("1")) {
                         return " Counted";
                     } else {
                         return " Void";
                     }
-
-                case 7:
-                    return "/spires/img_functions/edit.png";
                 case 8:
-                    return "/spires/img_functions/printer22.png";
+                    return "/spires/img_functions/edit.png";
                 case 9:
-                    return "/spires/img_functions/remove11.png";
+                    return "/spires/img_functions/printer22.png";
                 case 10:
-                    return tt.check_no;
+                    return "/spires/img_functions/remove11.png";
                 case 11:
                     return tt.check_holder;
                 case 12:
@@ -1677,7 +1681,28 @@ public class Dlg_front_desk extends javax.swing.JDialog {
     }
 
     private void ret_receipts() {
-        String where = " ";
+        String where = " where or_time like '%" + "" + "%' ";
+        if (!jCheckBox1.isSelected()) {
+            Field.Combo user = (Field.Combo) jTextField2;
+            where = where + " and user_name ='" + user.getId() + "' ";
+        }
+        if (!jCheckBox4.isSelected()) {
+            String date_from = DateType.sf.format(jDateChooser1.getDate());
+            String date_to = DateType.sf.format(jDateChooser2.getDate());
+            where = where + " and Date(or_date) between '" + date_from + "' and '" + date_to + "' ";
+        }
+        if (!jCheckBox2.isSelected()) {
+            Field.Combo classification = (Field.Combo) jTextField3;
+
+            where = where + " and particular_account_id='" + classification.getId() + "' ";
+
+        }
+        if (!jCheckBox3.isSelected()) {
+            Field.Combo particular = (Field.Combo) jTextField4;
+
+            where = where + " and particular_id='" + particular.getId() + "' ";
+
+        }
         List<to_receipts> datas = Receipts.ret_data(where);
         loadData_receipts2(datas);
         double amount = 0;
@@ -1691,8 +1716,8 @@ public class Dlg_front_desk extends javax.swing.JDialog {
         jLabel3.setText("" + datas.size());
         jLabel16.setText(FitIn.fmt_wc_0(amount));
     }
-//</editor-fold> 
 
+//</editor-fold> 
     private void select_classification() {
         int row = tbl_cashiering.getSelectedRow();
         if (row < 0) {
@@ -1858,7 +1883,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
         }
         final to_receipts to = (to_receipts) tbl_receipts_ALM2.get(row);
         int col = tbl_receipts2.getSelectedColumn();
-        if (col == 7) {
+        if (col == 8) {
             Window p = (Window) this;
             Dlg_front_desk_edit_receipts nd = Dlg_front_desk_edit_receipts.create(p, true);
             nd.setTitle("");
@@ -1875,7 +1900,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
                     String parishioner_id = data.parishioner_id;
                     String parishioner_contact_no = data.parishioner_contact_no;
                     String parishioner_address = data.parishioner_address;
-                    Receipts.edit_receipt_details(old_or, new_or, or_date, parishioner, parishioner_id, parishioner_contact_no, parishioner_address);
+                    Receipts.edit_receipt_details(old_or, new_or, or_date, parishioner, parishioner_id, parishioner_contact_no, parishioner_address, data.or_time, data.message);
                     Alert.set(2, "");
                     ret_receipts();
                 }
@@ -1883,7 +1908,7 @@ public class Dlg_front_desk extends javax.swing.JDialog {
             nd.setLocationRelativeTo(this);
             nd.setVisible(true);
         }
-        if (col == 9) {
+        if (col == 10) {
             Window p = (Window) this;
             Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
             nd.setTitle("");
@@ -1904,4 +1929,90 @@ public class Dlg_front_desk extends javax.swing.JDialog {
 
     }
     //</editor-fold>
+
+    List<Users.to_users> user_list = new ArrayList();
+
+    private void init_cashier(final JTextField tf) {
+
+        Object[][] obj = new Object[user_list.size()][1];
+        int i = 0;
+        for (Users.to_users to : user_list) {
+            obj[i][0] = " " + to.user_code;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo f = (Field.Combo) jTextField2;
+                Users.to_users to = (Users.to_users) user_list.get(data.selected_row);
+
+                f.setId("" + to.id);
+                f.setText(to.user_code);
+            }
+        });
+    }
+    List<to_cashiering> classifications = new ArrayList();
+
+    private void init_classification(final JTextField tf) {
+
+        Object[][] obj = new Object[classifications.size()][1];
+        int i = 0;
+        for (to_cashiering to : classifications) {
+            obj[i][0] = " " + to.account;
+            i++;
+        }
+        JLabel[] labels = {};
+        int[] tbl_widths_customers = {tf.getWidth()};
+
+        String[] col_names = {""};
+        TableRenderer tr = new TableRenderer();
+        TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+        tr.setCallback(new TableRenderer.Callback() {
+            @Override
+            public void ok(TableRenderer.OutputData data) {
+                Field.Combo f = (Field.Combo) tf;
+                to_cashiering to = (to_cashiering) classifications.get(data.selected_row);
+
+                f.setId("" + to.id);
+                f.setText(to.account);
+            }
+        });
+    }
+
+    private void init_particulars(final JTextField tf) {
+        Field.Combo classification = (Field.Combo) jTextField3;
+        if (!classification.getText().isEmpty()) {
+            final List<Cashiering_types.to_cashiering_types> particulars = Cashiering_types.ret_data(" where account_id='" + classification.getId() + "' order by cashiering_type asc ");
+            Object[][] obj = new Object[particulars.size()][1];
+            int i = 0;
+            for (Cashiering_types.to_cashiering_types to : particulars) {
+                obj[i][0] = " " + to.cashiering_type;
+                i++;
+            }
+            JLabel[] labels = {};
+            int[] tbl_widths_customers = {tf.getWidth()};
+
+            String[] col_names = {""};
+            TableRenderer tr = new TableRenderer();
+            TableRenderer.setPopup(tf, obj, labels, tbl_widths_customers, col_names);
+            tr.setCallback(new TableRenderer.Callback() {
+                @Override
+                public void ok(TableRenderer.OutputData data) {
+                    Field.Combo f = (Field.Combo) tf;
+                    Cashiering_types.to_cashiering_types to = (Cashiering_types.to_cashiering_types) particulars.get(data.selected_row);
+
+                    f.setId("" + to.id);
+                    f.setText(to.cashiering_type);
+                }
+            });
+        }
+
+    }
+
 }

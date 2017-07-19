@@ -519,7 +519,7 @@ public class Dlg_marriage_contract_print extends javax.swing.JDialog {
 
     public void do_pass(final List<Srpt_marriage_contract_front.field> fields1, final List<Srpt_marriage_contract_back.field> fields2) {
         holder1 = fields1;
-        System.out.println("Size: " + fields1.size());
+//        System.out.println("Size: " + fields1.size());
         holder2 = fields2;
         String h_age = "";
         String w_age = "";

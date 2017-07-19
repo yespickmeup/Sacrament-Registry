@@ -25,6 +25,7 @@ import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import spires.marriage_contracts.Marriage_contracts.to_marriage_contracts;
+import spires.test.Array;
 import spires.util.Alert;
 import spires.util.DateType;
 import spires.util.DateUtils1;
@@ -453,6 +454,7 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
     private javax.swing.JTable tbl_marriage_contracts;
     // End of variables declaration//GEN-END:variables
     private void myInit() {
+//        System.setProperty("mydb", "db_spires_bacong");
         init_key();
 
         init_tbl_marriage_contracts();
@@ -470,7 +472,7 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -788,14 +790,15 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
         String place_of_marriage = to.place_of_marriage;
         String date_of_marriage = DateType.convert_sf_to_contract(to.date_of_marriage);
         String time_of_marriage = to.time_of_marriage;
-        String[] certification_contracting_parties = to.certification_contracting_parties.split("%");
-        String certification_contracting_parties1 = certification_contracting_parties[0];
+
+        String[] certification_contracting_parties = Array.set(to.certification_contracting_parties, 2);
+        String certification_contracting_parties1 = n(certification_contracting_parties[0]);
         if (certification_contracting_parties1.equals("1")) {
             certification_contracting_parties1 = "/";
         } else {
             certification_contracting_parties1 = "";
         }
-        String certification_contracting_parties3 = certification_contracting_parties[1];
+        String certification_contracting_parties3 = n(certification_contracting_parties[1]);
         if (certification_contracting_parties3.equals("1")) {
             certification_contracting_parties3 = "/";
         } else {
@@ -815,45 +818,45 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
 //        } else {
 //            certification_contracting_parties2 = "";
 //        }
-        String[] certification_solemnizing_parties = to.certification_solemnizing_parties.split("%");
-        String certification_solemnizing_parties1 = certification_solemnizing_parties[0];
+        String[] certification_solemnizing_parties = Array.set(to.certification_solemnizing_parties, 10);
+        String certification_solemnizing_parties1 = n(certification_solemnizing_parties[0]);
         if (certification_solemnizing_parties1.equals("1")) {
             certification_solemnizing_parties1 = "/";
         } else {
             certification_solemnizing_parties1 = "";
         }
-        String certification_solemnizing_parties2 = certification_solemnizing_parties[1];
-        String certification_solemnizing_parties3 = DateType.convert_sf_to_slash(certification_solemnizing_parties[2]);
+        String certification_solemnizing_parties2 = n(certification_solemnizing_parties[1]);
+        String certification_solemnizing_parties3 = DateType.convert_sf_to_slash(n(certification_solemnizing_parties[2]));
         if (certification_solemnizing_parties1.isEmpty()) {
             certification_solemnizing_parties3 = "";
         }
-        String certification_solemnizing_parties4 = certification_solemnizing_parties[3];
-        String certification_solemnizing_parties5 = certification_solemnizing_parties[4];
+        String certification_solemnizing_parties4 = n(certification_solemnizing_parties[3]);
+        String certification_solemnizing_parties5 = n(certification_solemnizing_parties[4]);
         if (certification_solemnizing_parties5.equals("1")) {
             certification_solemnizing_parties5 = "/";
         } else {
             certification_solemnizing_parties5 = "";
         }
-        String certification_solemnizing_parties6 = certification_solemnizing_parties[5];
-        String certification_solemnizing_parties7 = certification_solemnizing_parties[6];
+        String certification_solemnizing_parties6 = n(certification_solemnizing_parties[5]);
+        String certification_solemnizing_parties7 = n(certification_solemnizing_parties[6]);
         if (certification_solemnizing_parties7.equals("1")) {
             certification_solemnizing_parties7 = "/";
         } else {
             certification_solemnizing_parties7 = "";
         }
-        String certification_solemnizing_parties8 = certification_solemnizing_parties[7];
+        String certification_solemnizing_parties8 = n(certification_solemnizing_parties[7]);
 
-        String certification_solemnizing_parties9 = certification_solemnizing_parties[8];
-        String certification_solemnizing_parties10 = certification_solemnizing_parties[9];
+        String certification_solemnizing_parties9 = n(certification_solemnizing_parties[8]);
+        String certification_solemnizing_parties10 = n(certification_solemnizing_parties[9]);
         String witnesses = to.witnesses;
-        String[] received_by = to.received_by.split("%");
-        String received_by1 = received_by[0];
-        String received_by2 = received_by[1];
-        String received_by3 = DateType.convert_sf_to_slash(received_by[2]);
-        String[] registered_by = to.registered_by.split("%");
+        String[] received_by = Array.set(to.received_by, 3);
+        String received_by1 = n(received_by[0]);
+        String received_by2 = n(received_by[1]);
+        String received_by3 = DateType.convert_sf_to_slash(n(received_by[2]));
+        String[] registered_by = Array.set(to.registered_by, 3);
         String registered_by1 = registered_by[0];
         String registered_by2 = registered_by[1];
-        String registered_by3 = DateType.convert_sf_to_slash(registered_by[2]);
+        String registered_by3 = DateType.convert_sf_to_slash(n(registered_by[2]));
         String remarks = to.remarks;
         String h_ref_no = to.h_ref_no;
         String h_fname = to.h_fname;
@@ -876,30 +879,30 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
         int w_age = 0;
 
         String h_bday = DateType.convert_sf_to_contract4(to.h_bday);
-        String[] h_place_of_birth = to.h_place_of_birth.split("%");
-        String h_place_of_birth1 = h_place_of_birth[0] + " " + h_place_of_birth[1] + " " + h_place_of_birth[2];
+        String[] h_place_of_birth = Array.set(to.h_place_of_birth, 3);
+        String h_place_of_birth1 = n(h_place_of_birth[0]) + " " + n(h_place_of_birth[1]) + " " + n(h_place_of_birth[2]);
         String h_place_of_birth2 = "" + DateUtils1.count_age(d1, new Date());
-        String h_place_of_birth3 = h_place_of_birth[2];
-        String[] h_citizenship = to.h_citizenship.split("%");
-        String h_citizenship1 = h_citizenship[0];
-        String h_citizenship2 = h_citizenship[1];
+        String h_place_of_birth3 = n(h_place_of_birth[2]);
+        String[] h_citizenship = Array.set(to.h_citizenship, 2);
+        String h_citizenship1 = n(h_citizenship[0]);
+        String h_citizenship2 = n(h_citizenship[1]);
         String h_residence = to.h_residence;
         String h_religion = to.h_religion;
         String h_civil_status = to.h_civil_status;
-        String[] h_father = to.h_father.split("%");
-        String h_father1 = h_father[0];
-        String h_father2 = h_father[1];
-        String h_father3 = h_father[2];
+        String[] h_father = Array.set(to.h_father, 3);
+        String h_father1 = n(h_father[0]);
+        String h_father2 = n(h_father[1]);
+        String h_father3 = n(h_father[2]);
         String h_father_citizenship = to.h_father_citizenship;
-        String[] h_mother = to.h_mother.split("%");
-        String h_mother1 = h_mother[0];
-        String h_mother2 = h_mother[1];
-        String h_mother3 = h_mother[2];
+        String[] h_mother = Array.set(to.h_mother, 3);
+        String h_mother1 = n(h_mother[0]);
+        String h_mother2 = n(h_mother[1]);
+        String h_mother3 = n(h_mother[2]);
         String h_mother_citizenship = to.h_mother_citizenship;
-        String[] h_consent_by = to.h_consent_by.split("%");
-        String h_consent_by1 = h_consent_by[0];
-        String h_consent_by2 = h_consent_by[1];
-        String h_consent_by3 = h_consent_by[2];
+        String[] h_consent_by = Array.set(to.h_consent_by, 3);
+        String h_consent_by1 = n(h_consent_by[0]);
+        String h_consent_by2 = n(h_consent_by[1]);
+        String h_consent_by3 = n(h_consent_by[2]);
         String h_consent_by_relation = to.h_consent_by_relation;
         String h_consent_by_residence = to.h_consent_by_residence;
         String w_ref_no = to.w_ref_no;
@@ -907,95 +910,95 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
         String w_mi = to.w_mi;
         String w_lname = to.w_lname;
         String w_bday = DateType.convert_sf_to_contract4(to.w_bday);
-        String[] w_place_of_birth = to.w_place_of_birth.split("%");
-        String w_place_of_birth1 = w_place_of_birth[0] + " " + w_place_of_birth[1] + " " + w_place_of_birth[2];
+        String[] w_place_of_birth = Array.set(to.w_place_of_birth, 3);
+        String w_place_of_birth1 = n(w_place_of_birth[0]) + " " + n(w_place_of_birth[1]) + " " + n(w_place_of_birth[2]);
         String w_place_of_birth2 = "" + DateUtils1.count_age(d2, new Date());
-        String w_place_of_birth3 = w_place_of_birth[2];
-        String[] w_citizenship = to.w_citizenship.split("%");
-        String w_citizenship1 = w_citizenship[0];
-        String w_citizenship2 = w_citizenship[1];
+        String w_place_of_birth3 = n(w_place_of_birth[2]);
+        String[] w_citizenship = Array.set(to.w_citizenship, 2);
+        String w_citizenship1 = n(w_citizenship[0]);
+        String w_citizenship2 = n(w_citizenship[1]);
         String w_residence = to.w_residence;
         String w_religion = to.w_religion;
         String w_civil_status = to.w_civil_status;
-        String[] w_father = to.w_father.split("%");
-        String w_father1 = w_father[0];
-        String w_father2 = w_father[1];
-        String w_father3 = w_father[2];
+        String[] w_father = Array.set(to.w_father, 3);
+        String w_father1 = n(w_father[0]);
+        String w_father2 = n(w_father[1]);
+        String w_father3 = n(w_father[2]);
         String w_father_citizenship = to.w_father_citizenship;
-        String[] w_mother = to.w_mother.split("%");
-        String w_mother1 = w_mother[0];
-        String w_mother2 = w_mother[1];
-        String w_mother3 = w_mother[2];
+        String[] w_mother = Array.set(to.w_mother, 3);
+        String w_mother1 = n(w_mother[0]);
+        String w_mother2 = n(w_mother[1]);
+        String w_mother3 = n(w_mother[2]);
         String w_mother_citizenship = to.w_mother_citizenship;
-        String[] w_consent_by = to.w_consent_by.split("%");
-        String w_consent_by1 = w_consent_by[0];
-        String w_consent_by2 = w_consent_by[1];
-        String w_consent_by3 = w_consent_by[2];
+        String[] w_consent_by = Array.set(to.w_consent_by, 3);
+        String w_consent_by1 = n(w_consent_by[0]);
+        String w_consent_by2 = n(w_consent_by[1]);
+        String w_consent_by3 = n(w_consent_by[2]);
         String w_consent_by_relation = to.w_consent_by_relation;
         String w_consent_by_residence = to.w_consent_by_residence;
-        String[] witness = to.witnesses.split("%");
-        String h_pob1 = h_place_of_birth[0];
-        String h_pob2 = h_place_of_birth[1];
-        String h_pob3 = h_place_of_birth[2];
-        String w_pob1 = w_place_of_birth[0];
-        String w_pob2 = w_place_of_birth[1];
-        String w_pob3 = w_place_of_birth[2];
+        String[] witness = Array.set(to.witnesses, 12);
+        String h_pob1 = n(h_place_of_birth[0]);
+        String h_pob2 = n(h_place_of_birth[1]);
+        String h_pob3 = n(h_place_of_birth[2]);
+        String w_pob1 = n(w_place_of_birth[0]);
+        String w_pob2 = n(w_place_of_birth[1]);
+        String w_pob3 = n(w_place_of_birth[2]);
         Srpt_marriage_contract_front.field field = new Srpt_marriage_contract_front.field(province, city, registry_no, place_of_marriage, date_of_marriage, time_of_marriage, certification_contracting_parties1, certification_contracting_parties2, certification_solemnizing_parties1, certification_solemnizing_parties2, certification_solemnizing_parties3, certification_solemnizing_parties4, certification_solemnizing_parties5, certification_solemnizing_parties6, certification_solemnizing_parties7, certification_solemnizing_parties8, certification_solemnizing_parties9, certification_solemnizing_parties10, witnesses, received_by1, received_by2, received_by3, registered_by1, registered_by2, registered_by3, remarks, h_ref_no, h_fname, h_mi, h_lname, h_bday, h_place_of_birth1, h_place_of_birth2, h_place_of_birth3, h_citizenship1, h_citizenship2, h_residence, h_religion, h_civil_status, h_father1, h_father2, h_father3, h_father_citizenship, h_mother1, h_mother2, h_mother3, h_mother_citizenship, h_consent_by1, h_consent_by2, h_consent_by3, h_consent_by_relation, h_consent_by_residence, w_ref_no, w_fname, w_mi, w_lname, w_bday, w_place_of_birth1, w_place_of_birth2, w_place_of_birth3, w_citizenship1, w_citizenship2, w_residence, w_religion, w_civil_status, w_father1, w_father2, w_father3, w_father_citizenship, w_mother1, w_mother2, w_mother3, w_mother_citizenship, w_consent_by1, w_consent_by2, w_consent_by3, w_consent_by_relation, w_consent_by_residence, witness[0], witness[1], witness[2], witness[3], certification_contracting_parties3, h_pob1, h_pob2, h_pob3, w_pob1, w_pob2, w_pob3);
         fields1.add(field);
 
         //----------------------------------------------------
         List<Srpt_marriage_contract_back.field> fields2 = new ArrayList();
-        String witnesses5 = witness[4].toUpperCase();
-        String witnesses6 = witness[5].toUpperCase();
-        String witnesses7 = witness[6].toUpperCase();
-        String witnesses8 = witness[7].toUpperCase();
-        String witnesses9 = witness[8].toUpperCase();
-        String witnesses10 = witness[9].toUpperCase();
-        String witnesses11 = witness[10].toUpperCase();
-        String witnesses12 = witness[11].toUpperCase();
+        String witnesses5 = n(witness[4].toUpperCase());
+        String witnesses6 = n(witness[5].toUpperCase());
+        String witnesses7 = n(witness[6].toUpperCase());
+        String witnesses8 = n(witness[7].toUpperCase());
+        String witnesses9 = n(witness[8].toUpperCase());
+        String witnesses10 = n(witness[9].toUpperCase());
+        String witnesses11 = n(witness[10].toUpperCase());
+        String witnesses12 = n(witness[11].toUpperCase());
         String solem_officer = to.solem_officer;
         String solem_of = to.solem_of;
         String solem_at = to.solem_at;
-        String[] solem_on = to.solem_one.split("%");
-        String solem_one1 = solem_on[0];
-        String solem_one2 = solem_on[1];
-        String[] solem_two = to.solem_two.split("%");
-        String solem_two1 = solem_two[0];
+        String[] solem_on = Array.set(to.solem_one, 2);
+        String solem_one1 = n(solem_on[0]);
+        String solem_one2 = n(solem_on[1]);
+        String[] solem_two = Array.set(to.solem_two, 7);
+        String solem_two1 = n(solem_two[0]);
         if (solem_two1.equals("1")) {
             solem_two1 = "/";
         } else {
             solem_two1 = "";
         }
-        String solem_two2 = solem_two[1];
+        String solem_two2 = n(solem_two[1]);
         if (solem_two2.equals("1")) {
             solem_two2 = "/";
         } else {
             solem_two2 = "";
         }
-        String solem_two3 = solem_two[2];
+        String solem_two3 = n(solem_two[2]);
 
         if (solem_two3.equals("1")) {
             solem_two3 = "/";
         } else {
             solem_two3 = "";
         }
-        String solem_two4 = solem_two[3];
-        String solem_two5 = solem_two[4];
-        String solem_two6 = solem_two[5];
+        String solem_two4 = n(solem_two[3]);
+        String solem_two5 = n(solem_two[4]);
+        String solem_two6 = n(solem_two[5]);
         if (solem_two6.equals("1")) {
             solem_two6 = "/";
         } else {
             solem_two6 = "";
         }
-        String solem_two7 = solem_two[6];
+        String solem_two7 = n(solem_two[6]);
         if (solem_two7.equals("1")) {
             solem_two7 = "/";
         } else {
             solem_two7 = "";
         }
-        String[] solem_administer = to.solem_administer.split("%");
-        String solem_administer1 = DateType.convert_sf_to_contract2(solem_administer[0]);
-        String solem_administer2 = solem_administer[1];
+        String[] solem_administer = Array.set(to.solem_administer, 2);
+        String solem_administer1 = DateType.convert_sf_to_contract2(n(solem_administer[0]));
+        String solem_administer2 = n(solem_administer[1]);
         String solem_administer3 = "";//DateType.convert_sf_to_contract2(solem_administer[2]);
         String solem_administer4 = "";//solem_administer[3];
         String solem_administer5 = "";//solem_administer[4];
@@ -1032,78 +1035,78 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
         //----------------------
         String affid_by = to.affid_by;
         String affid_address = to.affid_address;
-        String[] affid_one = to.affid_one.split("%");
-        String affid_one1 = affid_one[0];
+        String[] affid_one = Array.set(to.affid_one, 9);
+        String affid_one1 = n(affid_one[0]);
         if (affid_one1.equals("1")) {
             affid_one1 = "/";
         } else {
             affid_one1 = "";
         }
-        String affid_one2 = affid_one[1];
-        String affid_one3 = affid_one[2];
-        String affid_one4 = DateType.convert_sf_to_slash(affid_one[3]);
-        String affid_one5 = affid_one[4];
+        String affid_one2 = n(affid_one[1]);
+        String affid_one3 = n(affid_one[2]);
+        String affid_one4 = DateType.convert_sf_to_slash(n(affid_one[3]));
+        String affid_one5 = n(affid_one[4]);
         if (affid_one5.equals("1")) {
             affid_one5 = "/";
         } else {
             affid_one5 = "";
         }
-        String affid_one6 = affid_one[5];
-        String affid_one7 = affid_one[6];
-        String affid_one8 = affid_one[7];
-        String affid_one9 = DateType.convert_sf_to_slash(affid_one[8]);
-        String[] affid_two = to.affid_two.split("%");
-        String affid_two1 = affid_two[0];
-        String affid_two2 = affid_two[1];
+        String affid_one6 = n(affid_one[5]);
+        String affid_one7 = n(affid_one[6]);
+        String affid_one8 = n(affid_one[7]);
+        String affid_one9 = DateType.convert_sf_to_slash(n(affid_one[8]));
+        String[] affid_two = Array.set(to.affid_two, 5);
+        String affid_two1 = n(affid_two[0]);
+        String affid_two2 = n(affid_two[1]);
         if (affid_two2.equals("1")) {
             affid_two2 = "/";
         } else {
             affid_two2 = "";
         }
-        String affid_two3 = affid_two[2];
+        String affid_two3 = n(affid_two[2]);
         if (affid_two3.equals("1")) {
             affid_two3 = "/";
         } else {
             affid_two3 = "";
         }
-        String affid_two4 = affid_two[3];
+        String affid_two4 = n(affid_two[3]);
         if (affid_two4.equals("1")) {
             affid_two4 = "/";
         } else {
             affid_two4 = "";
         }
-        String affid_two5 = affid_two[4];
+        String affid_two5 = n(affid_two[4]);
         if (affid_two5.equals("1")) {
             affid_two5 = "/";
         } else {
             affid_two5 = "";
         }
-        String[] affid_three = to.affid_three.split("%");
-        String affid_three1 = affid_three[0];
+        String[] affid_three = Array.set(to.affid_three, 6);
+        String affid_three1 = n(affid_three[0]);
         if (affid_three1.equals("1")) {
             affid_three1 = "/";
         } else {
             affid_three1 = "";
         }
-        String affid_three2 = affid_three[1];
-        String affid_three3 = DateType.convert_sf_to_slash(affid_three[2]);
-        String affid_three4 = affid_three[3];
-        String affid_three5 = affid_three[4];
+        String affid_three2 = n(affid_three[1]);
+        String affid_three3 = DateType.convert_sf_to_slash(n(affid_three[2]));
+        String affid_three4 = n(affid_three[3]);
+        String affid_three5 = n(affid_three[4]);
         if (affid_three5.equals("1")) {
             affid_three5 = "/";
         } else {
             affid_three5 = "";
         }
-        String affid_three6 = affid_three[5];
-        String[] affid_four = to.affid_four.split("%");
-        String affid_four1 = affid_four[0];
-        String affid_four2 = affid_four[1];
-        String affid_four3 = affid_four[2];
-        String affid_four4 = affid_four[3];
+        String affid_three6 = n(affid_three[5]);
+        String[] affid_four = Array.set(to.affid_four, 4);
+        String affid_four1 = n(affid_four[0]);
+        String affid_four2 = n(affid_four[1]);
+        String affid_four3 = n(affid_four[2]);
+        String affid_four4 = n(affid_four[3]);
         String affid_five = to.affid_five;
-        String[] affid_administer = to.affid_administer.split("%");
-        String affid_administer1 = DateType.convert_sf_to_contract2(affid_administer[0]);
-        String affid_administer2 = affid_administer[1];
+        String[] affid_administer = Array.set(to.affid_administer, 2);
+        String affid_administer1 = DateType.convert_sf_to_contract2(n(affid_administer[0]));
+        String affid_administer2 = n(affid_administer[1]);
         String affid_administer3 = "";//DateType.convert_sf_to_contract2(affid_administer[2]);
         String affid_administer4 = "";//affid_administer[3];
         String affid_administer5 = "";//affid_administer[4];
@@ -1169,4 +1172,8 @@ public class Dlg_marriage_contract extends javax.swing.JDialog {
         nd.setVisible(true);
     }
 
+    private String n(String stmt) {
+        return stmt;
+
+    }
 }

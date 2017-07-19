@@ -443,7 +443,7 @@ public class Receipts {
         }
     }
 
-    public static void edit_receipt_details(String id, String new_or, String or_date, String parishioner, String parishioner_id, String parishioner_contact_no, String parishioner_address) {
+    public static void edit_receipt_details(String id, String new_or, String or_date, String parishioner, String parishioner_id, String parishioner_contact_no, String parishioner_address, String or_time, String message) {
         try {
             Connection conn = MyConnection.connect();
             String s0 = "update receipts set "
@@ -452,6 +452,8 @@ public class Receipts {
                     + ",parishioner= :parishioner"
                     + ",parishioner_id= :parishioner_id"
                     + ",parioshioner_contact_no= :parioshioner_contact_no"
+                    + ",or_time= :or_time"
+                    + ",message= :message"
                     + " where "
                     + " id ='" + id + "' "
                     + " ";
@@ -462,6 +464,8 @@ public class Receipts {
                     .setString("parishioner", parishioner)
                     .setString("parishioner_id", parishioner_contact_no)
                     .setString("parioshioner_contact_no", parishioner_address)
+                    .setString("or_time", or_time)
+                    .setString("message", message)
                     .ok();
 
             PreparedStatement stmt = conn.prepareStatement(s0);

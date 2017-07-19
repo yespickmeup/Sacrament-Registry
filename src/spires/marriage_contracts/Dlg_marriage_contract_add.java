@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import mijzcx.synapse.desk.utils.CloseDialog;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
+import spires.test.Array;
 import spires.util.Focus_Fire;
 import synsoftech.fields.Button;
 import synsoftech.util.DateType;
@@ -1158,7 +1159,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXLabel34.setLineWrap(true);
         jXPanel23.add(jXLabel34, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 120, 20));
 
-        jTextField17.setText("MALE");
+        jTextField17.setText("FEMALE");
         jTextField17.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jXPanel23.add(jTextField17, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 120, 20));
 
@@ -1851,7 +1852,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXLabel66.setText("                   (Office of the/House of/Barangay of/Church of/Mosque of)                                    (City/Municipality)                            (Province)          ");
         jXPanel51.add(jXLabel66, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 790, 20));
 
-        tf_place_of_marriage.setText("ST. CATHERING EOF ALEXANDRIA PARISH                  DUMAGUETE CITY            NEGROS ORIENTAL");
+        tf_place_of_marriage.setText("ST. CATHERINE OF ALEXANDRIA PARISH                  DUMAGUETE CITY            NEGROS ORIENTAL");
         tf_place_of_marriage.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         jXPanel51.add(tf_place_of_marriage, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 880, 20));
 
@@ -4000,33 +4001,293 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
             Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String[] h_place_of_birth = to.h_place_of_birth.split("%");
-        jTextField37.setText(h_place_of_birth[0]);
-        jTextField40.setText(h_place_of_birth[1]);
-        jTextField41.setText(h_place_of_birth[2]);
-        String[] h_citizenship = to.h_citizenship.split("%");
-        jTextField28.setText(h_citizenship[0]);
-        jTextField29.setText(h_citizenship[1]);
-        jTextField36.setText(to.h_residence);
-        jTextField42.setText(to.h_religion);
-        jTextField44.setText(to.h_civil_status);
-        String[] h_father = to.h_father.split("%");
-        jTextField45.setText(h_father[0]);
-        jTextField50.setText(h_father[1]);
-        jTextField51.setText(h_father[2]);
-        jTextField65.setText(to.h_father_citizenship);
-        String[] h_mother = to.h_mother.split("%");
-        jTextField59.setText(h_mother[0]);
-        jTextField60.setText(h_mother[1]);
-        jTextField61.setText(h_mother[2]);
-        jTextField76.setText(to.h_mother_citizenship);
-        String[] h_consent_by = to.h_consent_by.split("%");
-        jTextField62.setText(h_consent_by[0]);
-        jTextField64.setText(h_consent_by[1]);
-        jTextField69.setText(h_consent_by[2]);
-        jTextField67.setText(to.h_consent_by_relation);
-        jTextField72.setText(to.h_consent_by_residence);
-        //-------- wife --------
+        try {
+            String[] h_place_of_birth = Array.set(to.h_place_of_birth, 3);
+            jTextField37.setText(n(h_place_of_birth[0]));
+            jTextField40.setText(n(h_place_of_birth[1]));
+            jTextField41.setText(n(h_place_of_birth[2]));
+            String[] h_citizenship = Array.set(to.h_citizenship, 2);
+            jTextField28.setText(n(h_citizenship[0]));
+            jTextField29.setText(n(h_citizenship[1]));
+            jTextField36.setText(to.h_residence);
+            jTextField42.setText(to.h_religion);
+            jTextField44.setText(to.h_civil_status);
+            String[] h_father = Array.set(to.h_father, 3);
+            jTextField45.setText(n(h_father[0]));
+            jTextField50.setText(n(h_father[1]));
+            jTextField51.setText(n(h_father[2]));
+            jTextField65.setText(to.h_father_citizenship);
+            String[] h_mother = Array.set(to.h_mother, 3);
+            jTextField59.setText(n(h_mother[0]));
+            jTextField60.setText(n(h_mother[1]));
+            jTextField61.setText(n(h_mother[2]));
+            jTextField76.setText(to.h_mother_citizenship);
+            String[] h_consent_by = Array.set(to.h_consent_by, 3);
+
+            jTextField62.setText(n(h_consent_by[0]));
+            jTextField64.setText(n(h_consent_by[1]));
+            jTextField69.setText(n(h_consent_by[2]));
+            jTextField67.setText(to.h_consent_by_relation);
+            jTextField72.setText(to.h_consent_by_residence);
+            //-------- wife --------
+
+            String[] w_place_of_birth = Array.set(to.w_place_of_birth, 3);
+            jTextField14.setText(n(w_place_of_birth[0]));
+            jTextField15.setText(n(w_place_of_birth[1]));
+            jTextField16.setText(n(w_place_of_birth[2]));
+            String[] w_citizenship = Array.set(to.w_citizenship, 2);
+            jTextField17.setText(n(w_citizenship[0]));
+            jTextField23.setText(n(w_citizenship[1]));
+            jTextField22.setText(to.w_residence);
+            jTextField34.setText(to.w_religion);
+            jTextField30.setText(to.w_civil_status);
+            String[] w_father = Array.set(to.w_father, 3);
+            jTextField24.setText(n(w_father[0]));
+            jTextField25.setText(n(w_father[1]));
+            jTextField26.setText(n(w_father[2]));
+            jTextField46.setText(to.w_father_citizenship);
+            String[] w_mother = Array.set(to.w_mother, 3);
+            jTextField31.setText(n(w_mother[0]));
+            jTextField38.setText(n(w_mother[1]));
+            jTextField39.setText(n(w_mother[2]));
+            jTextField57.setText(to.w_mother_citizenship);
+            String[] w_consent_by = Array.set(to.w_consent_by, 3);
+            jTextField52.setText(n(w_consent_by[0]));
+            jTextField53.setText(n(w_consent_by[1]));
+            jTextField54.setText(n(w_consent_by[2]));
+            jTextField48.setText(to.w_consent_by_relation);
+            jTextField32.setText(to.w_consent_by_residence);
+            //------------------end--------------------
+
+            String[] cert1 = Array.set(to.certification_contracting_parties, 3);
+            if (cert1[0].equals("1")) {
+                cb_ccp2.setSelected(true);
+            } else {
+                cb_ccp1.setSelected(true);
+            }
+
+            String[] cert2 = Array.set(to.certification_solemnizing_parties, 10);
+            if (cert2[0].equals("1")) {
+                jCheckBox4.setSelected(true);
+            } else {
+                jCheckBox4.setSelected(false);
+            }
+            jTextField1.setText(n(cert2[1]));
+            try {
+                Date date = DateType.sf.parse(n(cert2[2]));
+                jDateChooser1.setDate(date);
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jTextField2.setText(n(cert2[3]));
+
+            if (cert2[4].equals("1")) {
+                jCheckBox5.setSelected(true);
+            } else {
+                jCheckBox5.setSelected(false);
+            }
+
+            jTextField3.setText(n(cert2[5]));
+
+            if (cert2[6].equals("1")) {
+                jCheckBox3.setSelected(true);
+            } else {
+                jCheckBox3.setSelected(false);
+            }
+
+            jTextField6.setText(n(cert2[7]));
+            jTextField27.setText(n(cert2[8]));
+            jTextField33.setText(n(cert2[9]));
+
+            String[] received_by = Array.set(to.received_by, 3);
+            jTextField63.setText(n(received_by[0]));
+            jTextField73.setText(n(received_by[1]));
+            try {
+                Date date = DateType.sf.parse(n(received_by[2]));
+                jDateChooser2.setDate(date);
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            String[] registered_by = Array.set(to.registered_by, 3);
+            jTextField78.setText(n(registered_by[0]));
+            jTextField80.setText(n(registered_by[1]));
+            try {
+                Date date = DateType.sf.parse(n(registered_by[2]));
+                jDateChooser3.setDate(date);
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            jTextArea1.setText(to.remarks);
+
+            jTextField7.setText(to.solem_officer);
+            jTextField4.setText(to.solem_of);
+            jTextField5.setText(to.solem_at);
+
+            String[] solem_one = Array.set(to.solem_one, 2);
+            jTextField8.setText(n(solem_one[0]));
+            jTextField9.setText(n(solem_one[1]));
+            String[] solem_two = Array.set(to.solem_two, 7);
+            if (solem_two[0].equals("1")) {
+                jCheckBox6.setSelected(true);
+            } else {
+                jCheckBox6.setSelected(false);
+            }
+            if (solem_two[1].equals("1")) {
+                jCheckBox7.setSelected(true);
+            } else {
+                jCheckBox7.setSelected(false);
+            }
+            if (solem_two[2].equals("1")) {
+                jCheckBox8.setSelected(true);
+            } else {
+                jCheckBox8.setSelected(false);
+            }
+            jTextField10.setText(n(solem_two[3]));
+            jTextField11.setText(n(solem_two[4]));
+            if (solem_two[5].equals("1")) {
+                jCheckBox9.setSelected(true);
+            } else {
+                jCheckBox9.setSelected(false);
+            }
+            if (solem_two[6].equals("1")) {
+                jCheckBox10.setSelected(true);
+            } else {
+                jCheckBox10.setSelected(false);
+            }
+            String[] solem_administer = Array.set(to.solem_administer, 10);
+
+            try {
+
+                Date d1 = DateType.sf.parse(n(solem_administer[0]));
+                jDateChooser7.setDate(d1);
+                jTextField12.setText(n(solem_administer[1]));
+                Date d2 = DateType.sf.parse(n(solem_administer[2]));
+                jDateChooser8.setDate(d2);
+                jTextField13.setText(n(solem_administer[3]));
+                jTextField18.setText(n(solem_administer[4]));
+                Date d3 = DateType.sf.parse(n(solem_administer[5]));
+                jDateChooser9.setDate(d3);
+
+                jTextField19.setText(n(solem_administer[6]));
+                jTextField20.setText(n(solem_administer[7]));
+                jTextField21.setText(n(solem_administer[8]));
+                jTextField43.setText(n(solem_administer[9]));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            jTextField55.setText(to.affid_by);
+            jTextField71.setText(to.affid_address);
+            String[] affid_one = Array.set(to.affid_one, 8);
+            if (affid_one[0].equals("1")) {
+                jCheckBox11.setSelected(true);
+            } else {
+                jCheckBox11.setSelected(false);
+            }
+            jTextField74.setText(n(affid_one[1]));
+            jTextField75.setText(n(affid_one[2]));
+            try {
+                Date d1 = DateType.sf.parse(n(affid_one[3]));
+                Date d2 = DateType.sf.parse(n(affid_one[8]));
+                jDateChooser10.setDate(d1);
+                if (affid_one[4].equals("1")) {
+                    jCheckBox12.setSelected(true);
+                } else {
+                    jCheckBox12.setSelected(false);
+                }
+                jTextField79.setText(n(affid_one[5]));
+                jTextField81.setText(n(affid_one[6]));
+                jTextField82.setText(n(affid_one[7]));
+                jDateChooser11.setDate(d2);
+
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            String[] affid_two = Array.set(to.affid_two, 5);
+            jTextField83.setText(n(affid_two[0]));
+            jCheckBox13.setSelected(true);
+            jCheckBox14.setSelected(true);
+            jCheckBox15.setSelected(true);
+            jCheckBox16.setSelected(true);
+            if (affid_two[1].equals("0")) {
+                jCheckBox13.setSelected(false);
+            }
+            if (affid_two[2].equals("0")) {
+                jCheckBox14.setSelected(false);
+            }
+            if (affid_two[3].equals("0")) {
+                jCheckBox15.setSelected(false);
+            }
+            if (affid_two[4].equals("0")) {
+                jCheckBox16.setSelected(false);
+            }
+            String[] affid_three = Array.set(to.affid_three, 5);
+            jCheckBox17.setSelected(true);
+            if (affid_three[0].equals("0")) {
+                jCheckBox17.setSelected(false);
+            }
+            jTextField84.setText(n(affid_three[1]));
+            try {
+                Date d = DateType.sf.parse(n(affid_three[2]));
+                jDateChooser12.setDate(d);
+                jTextField85.setText(n(affid_three[3]));
+                jCheckBox18.setSelected(true);
+                if (affid_three[4].equals("0")) {
+                    jCheckBox18.setSelected(false);
+                }
+                jTextField86.setText(n(affid_three[5]));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            String[] affid_four = Array.set(to.affid_four, 4);
+            jTextField87.setText(n(affid_four[0]));
+            jTextField88.setText(n(affid_four[1]));
+            jTextField89.setText(n(affid_four[2]));
+            jTextField90.setText(n(affid_four[3]));
+            jTextField92.setText(to.affid_five);
+
+            String[] affid_administer = Array.set(to.affid_administer, 10);
+            try {
+
+                Date d1 = DateType.sf.parse(n(affid_administer[0]));
+                jDateChooser13.setDate(d1);
+                jTextField70.setText(n(affid_administer[1]));
+                Date d2 = DateType.sf.parse(n(affid_administer[2]));
+                jDateChooser14.setDate(d2);
+                jTextField91.setText(n(affid_administer[3]));
+                jTextField93.setText(n(affid_administer[4]));
+                Date d3 = DateType.sf.parse(n(affid_administer[5]));
+                jDateChooser15.setDate(d3);
+
+                jTextField94.setText(n(affid_administer[6]));
+                jTextField95.setText(n(affid_administer[7]));
+                jTextField96.setText(n(affid_administer[8]));
+                jTextField97.setText(n(affid_administer[9]));
+
+            } catch (ParseException ex) {
+                Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            String[] witnesses = Array.set(to.witnesses, 12);
+            jTextField35.setText(n(witnesses[0]));
+            jTextField98.setText(n(witnesses[1]));
+            jTextField99.setText(n(witnesses[2]));
+            jTextField100.setText(n(witnesses[3]));
+            jTextField104.setText(n(witnesses[4]));
+            jTextField103.setText(n(witnesses[5]));
+            jTextField102.setText(n(witnesses[6]));
+            jTextField101.setText(n(witnesses[7]));
+            jTextField106.setText(n(witnesses[8]));
+            jTextField105.setText(n(witnesses[9]));
+            jTextField107.setText(n(witnesses[10]));
+            jTextField108.setText(n(witnesses[11]));
+        } catch (Exception e) {
+        }
 
         tf_w_fname.setText(to.w_fname);
         tf_w_mi.setText(to.w_mi);
@@ -4039,33 +4300,6 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
             Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        String[] w_place_of_birth = to.w_place_of_birth.split("%");
-        jTextField14.setText(w_place_of_birth[0]);
-        jTextField15.setText(w_place_of_birth[1]);
-        jTextField16.setText(w_place_of_birth[2]);
-        String[] w_citizenship = to.w_citizenship.split("%");
-        jTextField17.setText(w_citizenship[0]);
-        jTextField23.setText(w_citizenship[1]);
-        jTextField22.setText(to.w_residence);
-        jTextField34.setText(to.w_religion);
-        jTextField30.setText(to.w_civil_status);
-        String[] w_father = to.w_father.split("%");
-        jTextField24.setText(w_father[0]);
-        jTextField25.setText(w_father[1]);
-        jTextField26.setText(w_father[2]);
-        jTextField46.setText(to.w_father_citizenship);
-        String[] w_mother = to.w_mother.split("%");
-        jTextField31.setText(w_mother[0]);
-        jTextField38.setText(w_mother[1]);
-        jTextField39.setText(w_mother[2]);
-        jTextField57.setText(to.w_mother_citizenship);
-        String[] w_consent_by = to.w_consent_by.split("%");
-        jTextField52.setText(w_consent_by[0]);
-        jTextField53.setText(w_consent_by[1]);
-        jTextField54.setText(w_consent_by[2]);
-        jTextField48.setText(to.w_consent_by_relation);
-        jTextField32.setText(to.w_consent_by_residence);
-        //------------------end--------------------
         tf_place_of_marriage.setText(to.place_of_marriage);
         try {
             Date date_of_marriage = DateType.sf.parse(to.date_of_marriage);
@@ -4074,234 +4308,12 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
             Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
         }
         tf_time_of_marriage.setText(to.time_of_marriage);
-        String[] cert1 = to.certification_contracting_parties.split("%");
-        System.out.println("Cert: " + cert1[0]);
-        if (cert1[0].equals("1")) {
-            cb_ccp2.setSelected(true);
-        } else {
-            cb_ccp1.setSelected(true);
+
+        String print = System.getProperty("print_marriage_contract", "default");
+        if (print.equalsIgnoreCase("Bacong")) {
+            tf_place_of_marriage.setText(" SAINT AUGUSTINE OF HIPPO PARISH                  DUMAGUETE CITY            NEGROS ORIENTAL");
         }
 
-        String[] cert2 = to.certification_solemnizing_parties.split("%");
-        if (cert2[0].equals("1")) {
-            jCheckBox4.setSelected(true);
-        } else {
-            jCheckBox4.setSelected(false);
-        }
-        jTextField1.setText(cert2[1]);
-        try {
-            Date date = DateType.sf.parse(cert2[2]);
-            jDateChooser1.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jTextField2.setText(cert2[3]);
-
-        if (cert2[4].equals("1")) {
-            jCheckBox5.setSelected(true);
-        } else {
-            jCheckBox5.setSelected(false);
-        }
-
-        jTextField3.setText(cert2[5]);
-
-        if (cert2[6].equals("1")) {
-            jCheckBox3.setSelected(true);
-        } else {
-            jCheckBox3.setSelected(false);
-        }
-
-        jTextField6.setText(cert2[7]);
-        jTextField27.setText(cert2[8]);
-        jTextField33.setText(cert2[9]);
-
-        String[] received_by = to.received_by.split("%");
-        jTextField63.setText(received_by[0]);
-        jTextField73.setText(received_by[1]);
-        try {
-            Date date = DateType.sf.parse(received_by[2]);
-            jDateChooser2.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String[] registered_by = to.registered_by.split("%");
-        jTextField78.setText(registered_by[0]);
-        jTextField80.setText(registered_by[1]);
-        try {
-            Date date = DateType.sf.parse(registered_by[2]);
-            jDateChooser3.setDate(date);
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        jTextArea1.setText(to.remarks);
-
-        jTextField7.setText(to.solem_officer);
-        jTextField4.setText(to.solem_of);
-        jTextField5.setText(to.solem_at);
-
-        String[] solem_one = to.solem_one.split("%");
-        jTextField8.setText(solem_one[0]);
-        jTextField9.setText(solem_one[1]);
-        String[] solem_two = to.solem_two.split("%");
-        if (solem_two[0].equals("1")) {
-            jCheckBox6.setSelected(true);
-        } else {
-            jCheckBox6.setSelected(false);
-        }
-        if (solem_two[1].equals("1")) {
-            jCheckBox7.setSelected(true);
-        } else {
-            jCheckBox7.setSelected(false);
-        }
-        if (solem_two[2].equals("1")) {
-            jCheckBox8.setSelected(true);
-        } else {
-            jCheckBox8.setSelected(false);
-        }
-        jTextField10.setText(solem_two[3]);
-        jTextField11.setText(solem_two[4]);
-        if (solem_two[5].equals("1")) {
-            jCheckBox9.setSelected(true);
-        } else {
-            jCheckBox9.setSelected(false);
-        }
-        if (solem_two[6].equals("1")) {
-            jCheckBox10.setSelected(true);
-        } else {
-            jCheckBox10.setSelected(false);
-        }
-        String[] solem_administer = to.solem_administer.split("%");
-
-        try {
-
-            Date d1 = DateType.sf.parse(solem_administer[0]);
-            jDateChooser7.setDate(d1);
-            jTextField12.setText(solem_administer[1]);
-            Date d2 = DateType.sf.parse(solem_administer[2]);
-            jDateChooser8.setDate(d2);
-            jTextField13.setText(solem_administer[3]);
-            jTextField18.setText(solem_administer[4]);
-            Date d3 = DateType.sf.parse(solem_administer[5]);
-            jDateChooser9.setDate(d3);
-
-            jTextField19.setText(solem_administer[6]);
-            jTextField20.setText(solem_administer[7]);
-            jTextField21.setText(solem_administer[8]);
-            jTextField43.setText(solem_administer[9]);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        jTextField55.setText(to.affid_by);
-        jTextField71.setText(to.affid_address);
-        String[] affid_one = to.affid_one.split("%");
-        if (affid_one[0].equals("1")) {
-            jCheckBox11.setSelected(true);
-        } else {
-            jCheckBox11.setSelected(false);
-        }
-        jTextField74.setText(affid_one[1]);
-        jTextField75.setText(affid_one[2]);
-        try {
-            Date d1 = DateType.sf.parse(affid_one[3]);
-            Date d2 = DateType.sf.parse(affid_one[8]);
-            jDateChooser10.setDate(d1);
-            if (affid_one[4].equals("1")) {
-                jCheckBox12.setSelected(true);
-            } else {
-                jCheckBox12.setSelected(false);
-            }
-            jTextField79.setText(affid_one[5]);
-            jTextField81.setText(affid_one[6]);
-            jTextField82.setText(affid_one[7]);
-            jDateChooser11.setDate(d2);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String[] affid_two = to.affid_two.split("%");
-        jTextField83.setText(affid_two[0]);
-        jCheckBox13.setSelected(true);
-        jCheckBox14.setSelected(true);
-        jCheckBox15.setSelected(true);
-        jCheckBox16.setSelected(true);
-        if (affid_two[1].equals("0")) {
-            jCheckBox13.setSelected(false);
-        }
-        if (affid_two[2].equals("0")) {
-            jCheckBox14.setSelected(false);
-        }
-        if (affid_two[3].equals("0")) {
-            jCheckBox15.setSelected(false);
-        }
-        if (affid_two[4].equals("0")) {
-            jCheckBox16.setSelected(false);
-        }
-        String[] affid_three = to.affid_three.split("%");
-        jCheckBox17.setSelected(true);
-        if (affid_three[0].equals("0")) {
-            jCheckBox17.setSelected(false);
-        }
-        jTextField84.setText(affid_three[1]);
-        try {
-            Date d = DateType.sf.parse(affid_three[2]);
-            jDateChooser12.setDate(d);
-            jTextField85.setText(affid_three[3]);
-            jCheckBox18.setSelected(true);
-            if (affid_three[4].equals("0")) {
-                jCheckBox18.setSelected(false);
-            }
-            jTextField86.setText(affid_three[5]);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String[] affid_four = to.affid_four.split("%");
-        jTextField87.setText(affid_four[0]);
-        jTextField88.setText(affid_four[1]);
-        jTextField89.setText(affid_four[2]);
-        jTextField90.setText(affid_four[3]);
-        jTextField92.setText(to.affid_five);
-
-        String[] affid_administer = to.affid_administer.split("%");
-        try {
-
-            Date d1 = DateType.sf.parse(affid_administer[0]);
-            jDateChooser13.setDate(d1);
-            jTextField70.setText(affid_administer[1]);
-            Date d2 = DateType.sf.parse(affid_administer[2]);
-            jDateChooser14.setDate(d2);
-            jTextField91.setText(affid_administer[3]);
-            jTextField93.setText(affid_administer[4]);
-            Date d3 = DateType.sf.parse(affid_administer[5]);
-            jDateChooser15.setDate(d3);
-
-            jTextField94.setText(affid_administer[6]);
-            jTextField95.setText(affid_administer[7]);
-            jTextField96.setText(affid_administer[8]);
-            jTextField97.setText(affid_administer[9]);
-
-        } catch (ParseException ex) {
-            Logger.getLogger(Dlg_marriage_contract_add.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        String[] witnesses = to.witnesses.split("%");
-        jTextField35.setText(witnesses[0]);
-        jTextField98.setText(witnesses[1]);
-        jTextField99.setText(witnesses[2]);
-        jTextField100.setText(witnesses[3]);
-        jTextField104.setText(witnesses[4]);
-        jTextField103.setText(witnesses[5]);
-        jTextField102.setText(witnesses[6]);
-        jTextField101.setText(witnesses[7]);
-        jTextField106.setText(witnesses[8]);
-        jTextField105.setText(witnesses[9]);
-        jTextField107.setText(witnesses[10]);
-        jTextField108.setText(witnesses[11]);
     }
 
     private void focus() {
@@ -4317,7 +4329,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                              KeyEvent.VK_ESCAPE, new KeyAction() {
+                KeyEvent.VK_ESCAPE, new KeyAction() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -4393,68 +4405,68 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         System.out.println(certification_contracting_parties);
         String certification_solemnizing_parties = "";
         if (jCheckBox4.isSelected()) {
-            certification_solemnizing_parties = "1%" + jTextField1.getText() + "%" + DateType.sf.format(jDateChooser1.getDate()) + "%" + jTextField2.getText();
+            certification_solemnizing_parties = "1%" + e(jTextField1.getText()) + "%" + DateType.sf.format(jDateChooser1.getDate()) + "%" + e(jTextField2.getText());
         } else {
-            certification_solemnizing_parties = "0%" + jTextField1.getText() + "%" + DateType.sf.format(jDateChooser1.getDate()) + "%" + jTextField2.getText();
+            certification_solemnizing_parties = "0%" + e(jTextField1.getText()) + "%" + DateType.sf.format(jDateChooser1.getDate()) + "%" + e(jTextField2.getText());
         }
         if (jCheckBox5.isSelected()) {
-            certification_solemnizing_parties = certification_solemnizing_parties + "%1%" + jTextField3.getText();
+            certification_solemnizing_parties = certification_solemnizing_parties + "%1%" + e(jTextField3.getText());
         } else {
-            certification_solemnizing_parties = certification_solemnizing_parties + "%0%" + jTextField3.getText();
+            certification_solemnizing_parties = certification_solemnizing_parties + "%0%" + e(jTextField3.getText());
         }
         if (jCheckBox3.isSelected()) {
-            certification_solemnizing_parties = certification_solemnizing_parties + "%1%" + jTextField6.getText() + "%" + jTextField27.getText() + "%" + jTextField33.getText();
+            certification_solemnizing_parties = certification_solemnizing_parties + "%1%" + e(jTextField6.getText()) + "%" + e(jTextField27.getText()) + "%" + e(jTextField33.getText());
         } else {
-            certification_solemnizing_parties = certification_solemnizing_parties + "%0%" + jTextField6.getText() + "%" + jTextField27.getText() + "%" + jTextField33.getText();
+            certification_solemnizing_parties = certification_solemnizing_parties + "%0%" + e(jTextField6.getText()) + "%" + e(jTextField27.getText()) + "%" + e(jTextField33.getText());
         }
-        String witnesses = jTextField35.getText() + "%" + jTextField98.getText() + "%" + jTextField99.getText() + "%" + jTextField100.getText()
-                + "%" + jTextField104.getText() + "%" + jTextField103.getText() + "%" + jTextField102.getText()
-                + "%" + jTextField101.getText() + "%" + jTextField106.getText() + "%" + jTextField105.getText() + "%" + jTextField107.getText() + "%" + jTextField108.getText();
-        String received_by = jTextField63.getText() + "%" + jTextField73.getText() + "%" + DateType.sf.format(jDateChooser2.getDate());
-        String registered_by = jTextField78.getText() + "%" + jTextField80.getText() + "%" + DateType.sf.format(jDateChooser3.getDate());
-        String remarks = jTextArea1.getText();
+        String witnesses = e(jTextField35.getText()) + "%" + e(jTextField98.getText()) + "%" + e(jTextField99.getText()) + "%" + e(jTextField100.getText())
+                + "%" + e(jTextField104.getText()) + "%" + e(jTextField103.getText()) + "%" + e(jTextField102.getText())
+                + "%" + e(jTextField101.getText()) + "%" + e(jTextField106.getText()) + "%" + e(jTextField105.getText()) + "%" + e(jTextField107.getText()) + "%" + e(jTextField108.getText());
+        String received_by = e(jTextField63.getText()) + "%" + e(jTextField73.getText()) + "%" + DateType.sf.format(jDateChooser2.getDate());
+        String registered_by = e(jTextField78.getText()) + "%" + e(jTextField80.getText()) + "%" + DateType.sf.format(jDateChooser3.getDate());
+        String remarks = e(jTextArea1.getText());
         int status = 0;
         String date_added = DateType.datetime.format(new Date());
         String added_by = "";
         String h_ref_no = "";
-        String h_fname = tf_h_fname.getText();
-        String h_mi = tf_h_mi.getText();
-        String h_lname = tf_h_lname.getText();
+        String h_fname = e(tf_h_fname.getText());
+        String h_mi = e(tf_h_mi.getText());
+        String h_lname = e(tf_h_lname.getText());
         String h_bday = DateType.sf.format(jDateChooser4.getDate());
-        String h_place_of_birth = jTextField37.getText() + "%" + jTextField40.getText() + "%" + jTextField41.getText();
-        String h_citizenship = jTextField28.getText() + "%" + jTextField29.getText();
-        String h_residence = jTextField36.getText();
-        String h_religion = jTextField42.getText();
-        String h_civil_status = jTextField44.getText();
-        String h_father = jTextField45.getText() + "%" + jTextField50.getText() + "%" + jTextField51.getText();
-        String h_father_citizenship = jTextField65.getText();
-        String h_mother = jTextField59.getText() + "%" + jTextField60.getText() + "%" + jTextField61.getText();
-        String h_mother_citizenship = jTextField76.getText();
-        String h_consent_by = jTextField62.getText() + "%" + jTextField64.getText() + "%" + jTextField69.getText();
-        String h_consent_by_relation = jTextField67.getText();
-        String h_consent_by_residence = jTextField72.getText();
+        String h_place_of_birth = e(jTextField37.getText()) + "%" + e(jTextField40.getText()) + "%" + e(jTextField41.getText());
+        String h_citizenship = e(jTextField28.getText()) + "%" + e(jTextField29.getText());
+        String h_residence = e(jTextField36.getText());
+        String h_religion = e(jTextField42.getText());
+        String h_civil_status = e(jTextField44.getText());
+        String h_father = e(jTextField45.getText()) + "%" + e(jTextField50.getText()) + "%" + e(jTextField51.getText());
+        String h_father_citizenship = e(jTextField65.getText());
+        String h_mother = e(jTextField59.getText()) + "%" + e(jTextField60.getText()) + "%" + e(jTextField61.getText());
+        String h_mother_citizenship = e(jTextField76.getText());
+        String h_consent_by = e(jTextField62.getText()) + "%" + e(jTextField64.getText()) + "%" + e(jTextField69.getText());
+        String h_consent_by_relation = e(jTextField67.getText());
+        String h_consent_by_residence = e(jTextField72.getText());
         String w_ref_no = "";
-        String w_fname = tf_w_fname.getText();
-        String w_mi = tf_w_mi.getText();
-        String w_lname = tf_w_lname.getText();
+        String w_fname = e(tf_w_fname.getText());
+        String w_mi = e(tf_w_mi.getText());
+        String w_lname = e(tf_w_lname.getText());
         String w_bday = DateType.sf.format(jDateChooser5.getDate());
-        String w_place_of_birth = jTextField14.getText() + "%" + jTextField15.getText() + "%" + jTextField16.getText();
-        String w_citizenship = jTextField17.getText() + "%" + jTextField23.getText();
-        String w_residence = jTextField22.getText();
-        String w_religion = jTextField34.getText();
-        String w_civil_status = jTextField30.getText();
-        String w_father = jTextField24.getText() + "%" + jTextField25.getText() + "%" + jTextField26.getText();
-        String w_father_citizenship = jTextField46.getText();
-        String w_mother = jTextField31.getText() + "%" + jTextField38.getText() + "%" + jTextField39.getText();
-        String w_mother_citizenship = jTextField57.getText();
-        String w_consent_by = jTextField52.getText() + "%" + jTextField53.getText() + "%" + jTextField54.getText();
-        String w_consent_by_relation = jTextField48.getText();
-        String w_consent_by_residence = jTextField32.getText();
+        String w_place_of_birth = e(jTextField14.getText()) + "%" + e(jTextField15.getText()) + "%" + e(jTextField16.getText());
+        String w_citizenship = e(jTextField17.getText()) + "%" + e(jTextField23.getText());
+        String w_residence = e(jTextField22.getText());
+        String w_religion = e(jTextField34.getText());
+        String w_civil_status = e(jTextField30.getText());
+        String w_father = e(jTextField24.getText()) + "%" + e(jTextField25.getText()) + "%" + e(jTextField26.getText());
+        String w_father_citizenship = e(jTextField46.getText());
+        String w_mother = e(jTextField31.getText()) + "%" + e(jTextField38.getText()) + "%" + e(jTextField39.getText());
+        String w_mother_citizenship = e(jTextField57.getText());
+        String w_consent_by = e(jTextField52.getText()) + "%" + e(jTextField53.getText()) + "%" + e(jTextField54.getText());
+        String w_consent_by_relation = e(jTextField48.getText());
+        String w_consent_by_residence = e(jTextField32.getText());
 
-        String solem_officer = jTextField7.getText();
-        String solem_of = jTextField4.getText();
-        String solem_at = jTextField5.getText();
-        String solem_one = jTextField8.getText() + "%" + jTextField9.getText();
+        String solem_officer = e(jTextField7.getText());
+        String solem_of = e(jTextField4.getText());
+        String solem_at = e(jTextField5.getText());
+        String solem_one = e(jTextField8.getText()) + "%" + e(jTextField9.getText());
         String solem_two = "";
         if (jCheckBox6.isSelected()) {
             solem_two = "1";
@@ -4467,9 +4479,9 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
             solem_two = solem_two + "%" + "0";
         }
         if (jCheckBox8.isSelected()) {
-            solem_two = solem_two + "%" + "1" + "%" + jTextField10.getText() + "%" + jTextField11.getText();
+            solem_two = solem_two + "%" + "1" + "%" + e(jTextField10.getText()) + "%" + e(jTextField11.getText());
         } else {
-            solem_two = solem_two + "%" + "0" + "%" + jTextField10.getText() + "%" + jTextField11.getText();
+            solem_two = solem_two + "%" + "0" + "%" + e(jTextField10.getText()) + "%" + e(jTextField11.getText());
         }
         if (jCheckBox9.isSelected()) {
             solem_two = solem_two + "%" + "1";
@@ -4482,24 +4494,24 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
             solem_two = solem_two + "%" + "0";
         }
 
-        String solem_administer = DateType.sf.format(jDateChooser7.getDate()) + "%" + jTextField12.getText() + "%" + DateType.sf.format(jDateChooser8.getDate());
-        solem_administer = solem_administer + "%" + jTextField13.getText() + "%" + jTextField18.getText() + "%" + DateType.sf.format(jDateChooser9.getDate()) + "%" + jTextField19.getText();
-        solem_administer = solem_administer + "%" + jTextField20.getText() + "%" + jTextField21.getText() + "%" + jTextField43.getText();
-        String affid_by = jTextField55.getText();
-        String affid_address = jTextField71.getText();
+        String solem_administer = DateType.sf.format(jDateChooser7.getDate()) + "%" + e(jTextField12.getText()) + "%" + DateType.sf.format(jDateChooser8.getDate());
+        solem_administer = solem_administer + "%" + e(jTextField13.getText()) + "%" + e(jTextField18.getText()) + "%" + DateType.sf.format(jDateChooser9.getDate()) + "%" + e(jTextField19.getText());
+        solem_administer = solem_administer + "%" + e(jTextField20.getText()) + "%" + e(jTextField21.getText()) + "%" + e(jTextField43.getText());
+        String affid_by = e(jTextField55.getText());
+        String affid_address = e(jTextField71.getText());
         String affid_one = "";
         if (jCheckBox11.isSelected()) {
-            affid_one = "1" + "%" + jTextField74.getText() + "%" + jTextField75.getText() + "%" + DateType.sf.format(jDateChooser10.getDate());
+            affid_one = "1" + "%" + e(jTextField74.getText()) + "%" + e(jTextField75.getText()) + "%" + DateType.sf.format(jDateChooser10.getDate());
         } else {
-            affid_one = "0" + "%" + jTextField74.getText() + "%" + jTextField75.getText() + "%" + DateType.sf.format(jDateChooser10.getDate());
+            affid_one = "0" + "%" + e(jTextField74.getText()) + "%" + e(jTextField75.getText()) + "%" + DateType.sf.format(jDateChooser10.getDate());
         }
 
         if (jCheckBox12.isSelected()) {
-            affid_one = affid_one + "%" + "1" + "%" + jTextField79.getText() + "%" + jTextField81.getText() + "%" + jTextField82.getText() + "%" + DateType.sf.format(jDateChooser11.getDate());
+            affid_one = affid_one + "%" + "1" + "%" + e(jTextField79.getText()) + "%" + e(jTextField81.getText()) + "%" + e(jTextField82.getText()) + "%" + DateType.sf.format(jDateChooser11.getDate());
         } else {
-            affid_one = affid_one + "%" + "0" + "%" + jTextField79.getText() + "%" + jTextField81.getText() + "%" + jTextField82.getText() + "%" + DateType.sf.format(jDateChooser11.getDate());
+            affid_one = affid_one + "%" + "0" + "%" + e(jTextField79.getText()) + "%" + e(jTextField81.getText()) + "%" + e(jTextField82.getText()) + "%" + DateType.sf.format(jDateChooser11.getDate());
         }
-        String affid_two = jTextField83.getText();
+        String affid_two = e(jTextField83.getText());
         if (jCheckBox13.isSelected()) {
             affid_two = affid_two + "%" + "1";
         } else {
@@ -4524,26 +4536,39 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
 
         String affid_three = "";
         if (jCheckBox17.isSelected()) {
-            affid_three = "1" + "%" + jTextField84.getText() + "%" + DateType.sf.format(jDateChooser12.getDate()) + "%" + jTextField85.getText();
+            affid_three = "1" + "%" + e(jTextField84.getText()) + "%" + DateType.sf.format(jDateChooser12.getDate()) + "%" + e(jTextField85.getText());
         } else {
-            affid_three = "0" + "%" + jTextField84.getText() + "%" + DateType.sf.format(jDateChooser12.getDate()) + "%" + jTextField85.getText();
+            affid_three = "0" + "%" + e(jTextField84.getText()) + "%" + DateType.sf.format(jDateChooser12.getDate()) + "%" + e(jTextField85.getText());
         }
         if (jCheckBox18.isSelected()) {
-            affid_three = affid_three + "%" + "1" + "%" + jTextField86.getText();
+            affid_three = affid_three + "%" + "1" + "%" + e(jTextField86.getText());
         } else {
-            affid_three = affid_three + "%" + "0" + "%" + jTextField86.getText();
+            affid_three = affid_three + "%" + "0" + "%" + e(jTextField86.getText());
         }
 
-        String affid_four = jTextField87.getText() + "%" + jTextField88.getText() + "%" + jTextField89.getText() + "%" + jTextField90.getText();
-        String affid_five = jTextField92.getText();
-        String affid_administer = DateType.sf.format(jDateChooser13.getDate()) + "%" + jTextField70.getText() + "%" + DateType.sf.format(jDateChooser14.getDate());
-        affid_administer = affid_administer + "%" + jTextField91.getText() + "%" + jTextField93.getText() + "%" + DateType.sf.format(jDateChooser15.getDate()) + "%" + jTextField19.getText();
-        affid_administer = affid_administer + "%" + jTextField95.getText() + "%" + jTextField96.getText() + "%" + jTextField97.getText();
+        String affid_four = e(jTextField87.getText()) + "%" + e(jTextField88.getText()) + "%" + e(jTextField89.getText()) + "%" + e(jTextField90.getText());
+        String affid_five = e(jTextField92.getText());
+        String affid_administer = DateType.sf.format(jDateChooser13.getDate()) + "%" + e(jTextField70.getText()) + "%" + DateType.sf.format(jDateChooser14.getDate());
+        affid_administer = affid_administer + "%" + e(jTextField91.getText()) + "%" + e(jTextField93.getText()) + "%" + DateType.sf.format(jDateChooser15.getDate()) + "%" + e(jTextField19.getText());
+        affid_administer = affid_administer + "%" + e(jTextField95.getText()) + "%" + e(jTextField96.getText()) + "%" + e(jTextField97.getText());
 
         Marriage_contracts.to_marriage_contracts to = new Marriage_contracts.to_marriage_contracts(id, province, city, registry_no, place_of_marriage, date_of_marriage, time_of_marriage, certification_contracting_parties, certification_solemnizing_parties, witnesses, received_by, registered_by, remarks, status, date_added, added_by, h_ref_no, h_fname, h_mi, h_lname, h_bday, h_place_of_birth, h_citizenship, h_residence, h_religion, h_civil_status, h_father, h_father_citizenship, h_mother, h_mother_citizenship, h_consent_by, h_consent_by_relation, h_consent_by_residence, w_ref_no, w_fname, w_mi, w_lname, w_bday, w_place_of_birth, w_citizenship, w_residence, w_religion, w_civil_status, w_father, w_father_citizenship, w_mother, w_mother_citizenship, w_consent_by, w_consent_by_relation, w_consent_by_residence, solem_officer, solem_of, solem_at, solem_one, solem_two, solem_administer, affid_by, affid_address, affid_one, affid_two, affid_three, affid_four, affid_five, affid_administer);
 
         if (callback != null) {
             callback.ok(new CloseDialog(this), new OutputData(to));
         }
+    }
+
+    private String e(String stmt) {
+        if (stmt.isEmpty()) {
+            return " ";
+        } else {
+            return stmt;
+        }
+    }
+
+    private String n(String stmt) {
+        return stmt;
+
     }
 }

@@ -135,6 +135,7 @@ public class Main {
             System.setProperty("print_confirmation", prop.getProperty("print_confirmation", "default"));
             System.setProperty("print_death", prop.getProperty("print_death", "default"));
             System.setProperty("print_marriage", prop.getProperty("print_marriage", "default"));
+            System.setProperty("print_marriage_contract", prop.getProperty("print_marriage_contract", "default"));
 
             System.out.println(prop.getProperty("pool_host", "localhost"));
             System.out.println("pool: " + System.getProperty("mydb", "db_bulletin"));
