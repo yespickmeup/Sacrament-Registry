@@ -1259,12 +1259,12 @@ public class Dlg_printing_baptism extends javax.swing.JDialog {
         KeyMapping.mapKeyWIFW(getSurface(),
                               KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
     }
     // </editor-fold>
 
@@ -1524,9 +1524,15 @@ public class Dlg_printing_baptism extends javax.swing.JDialog {
         if (!jTextField4.getText().isEmpty()) {
             purpose = "Purpose: " + jTextField4.getText();
         }
-        SRpt_baptism rpt = new SRpt_baptism(num, day, month, year, jTextField3.getText(), asst_priest, series_of, path, name, father, mother
-                , place_of_birth, date_of_birth, date_of_confirmation, "", tf_priest.getText(), book_no, page_no, sponsor_name
-                , to.index_no, purpose, img_path,"","");
+        String name_of_church = "SAINT NICHOLAS OF TOLENTINO PARISH";
+        String church_address = "Dauin, Negros Oriental";
+        String notation = "FREE TO MARRY";
+        String book_series = "1995-2004";
+        String address_of_parents="";
+        SRpt_baptism rpt = new SRpt_baptism(num, day, month, year, jTextField3.getText(), asst_priest, series_of, path, name, father, mother,
+                 place_of_birth, date_of_birth, date_of_confirmation, "", tf_priest.getText(),
+                 book_no, page_no, sponsor_name,
+                 to.index_no, purpose, img_path, "", "", name_of_church, church_address, notation, book_series,address_of_parents);
 
         String jrxml = "rpt_baptism_new.jrxml";
         certificate_baptism(rpt, jrxml);
@@ -1673,8 +1679,8 @@ public class Dlg_printing_baptism extends javax.swing.JDialog {
 
         jProgressBar2.setString("Updating Record...");
         jProgressBar2.setIndeterminate(true);
-        final Srpt_print_baptism.field to = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no
-                , sponsors, bapt_date, conf_date, priest, bapt_place, b_day, "" + id, remarks,"","");
+        final Srpt_print_baptism.field to = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no,
+                 sponsors, bapt_date, conf_date, priest, bapt_place, b_day, "" + id, remarks, "", "");
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -1686,9 +1692,9 @@ public class Dlg_printing_baptism extends javax.swing.JDialog {
                     Date bapt = DateType.sf.parse(to.baptism_date);
                     Date conf = DateType.sf.parse(to.confirmation_date);
                     Date bday = DateType.sf.parse(to.date_of_birth);
-                    final Srpt_print_baptism.field to2 = new Srpt_print_baptism.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no
-                            , "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest
-                            , to.place_of_birth, DateType.slash.format(bday), "" + to.id, to.remarks,"","");
+                    final Srpt_print_baptism.field to2 = new Srpt_print_baptism.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no,
+                             "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest,
+                             to.place_of_birth, DateType.slash.format(bday), "" + to.id, to.remarks, "", "");
                     set_certificate(to2);
                 } catch (ParseException ex) {
                     Logger.getLogger(Dlg_printing_baptism.class.getName()).log(Level.SEVERE, null, ex);
@@ -1748,18 +1754,18 @@ public class Dlg_printing_baptism extends javax.swing.JDialog {
                     String bapt_date = DateType.sf.format(dp_baptism.getDate());
                     String bapt_place = tf_place_of_baptism.getText();
                     int status = 0;
-                    String place_of_baptism="";
-                    final Srpt_print_baptism.field to = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no
-                            , sponsors, bapt_date, conf_date, priest, bapt_place, b_day, "" + id, remarks,place_of_baptism,"");
+                    String place_of_baptism = "";
+                    final Srpt_print_baptism.field to = new Srpt_print_baptism.field(ref_no, fname, mi, lname, mother, father, book_no, "" + page_no, "" + index_no,
+                             sponsors, bapt_date, conf_date, priest, bapt_place, b_day, "" + id, remarks, place_of_baptism, "");
                     S1_encoding_baptism.add_parishioners_1(to);
 
                     Date bapt = DateType.sf.parse(to.baptism_date);
                     Date conf = DateType.sf.parse(to.confirmation_date);
                     Date bday = DateType.sf.parse(to.date_of_birth);
-                    final Srpt_print_baptism.field to2 = new Srpt_print_baptism.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no
-                            , "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest
-                            , to.place_of_birth, DateType.slash.format(bday), "" + to.id, to.remarks,place_of_baptism,"");
-                    
+                    final Srpt_print_baptism.field to2 = new Srpt_print_baptism.field(to.ref_no, to.fname, to.mname, to.lname, to.mother, to.father, to.book_no,
+                             "" + to.page_no, "" + to.index_no, to.sponsors, DateType.slash.format(bapt), DateType.slash.format(conf), to.priest,
+                             to.place_of_birth, DateType.slash.format(bday), "" + to.id, to.remarks, place_of_baptism, "");
+
                     set_certificate(to2);
                     Alert.set(1, "");
                     jProgressBar2.setString("Finished...");

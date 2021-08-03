@@ -137,6 +137,12 @@ public class Main {
             System.setProperty("print_marriage", prop.getProperty("print_marriage", "default"));
             System.setProperty("print_marriage_contract", prop.getProperty("print_marriage_contract", "default"));
 
+            System.setProperty("print_preview", prop.getProperty("print_preview", "false"));
+            System.setProperty("name_of_church", prop.getProperty("name_of_church", "SAINT NICHOLAS OF TOLENTINO PARISH"));
+            System.setProperty("church_address", prop.getProperty("church_address", "Dauin, Negros Oriental"));
+            
+            
+            
             System.out.println(prop.getProperty("pool_host", "localhost"));
             System.out.println("pool: " + System.getProperty("mydb", "db_bulletin"));
             Lg.$.severe(System.getProperty("receipt_printer"));

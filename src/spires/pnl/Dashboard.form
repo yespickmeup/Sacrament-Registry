@@ -360,7 +360,7 @@
                           <Color blue="ff" green="ff" red="ff" type="rgb"/>
                         </Property>
                         <Property name="horizontalAlignment" type="int" value="2"/>
-                        <Property name="text" type="java.lang.String" value=",Ronald Pascua and sexy friends"/>
+                        <Property name="text" type="java.lang.String" value="and Ronald Pascua."/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JPasswordField" name="jPasswordField1">

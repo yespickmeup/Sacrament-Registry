@@ -1,10 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package spires.certificates;
 
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import javax.swing.JFrame;
 import mijzcx.synapse.desk.utils.Application;
 import mijzcx.synapse.desk.utils.JasperUtil;
@@ -15,9 +19,9 @@ import net.sf.jasperreports.swing.JRViewer;
 
 /**
  *
- * @author i1
+ * @author User
  */
-public class SRpt_baptism {
+public class Srpt_baptismal_template {
 
     public final String num;
     public final String day;
@@ -43,18 +47,8 @@ public class SRpt_baptism {
     public final String img_path;
     public final String place_of_baptism;
     public final String parish_priest;
-    public final String name_of_church;
-    public final String church_address;
-    public final String notation;
-    public final String book_series;
-    public final String address_of_parents;
-    
-    public SRpt_baptism(String num, String day, String month, String year, String priest, String asst_priest, String series_of,
-            String path, String name, String father, String mother, String place_of_birth, String date_of_birth,
-            String date_of_baptism, String bapt_time, String baptized_by, String book_number, String page_number,
-            String sponsors, String index_no, String purpose, String img_path, String place_of_baptism,
-            String parish_priest, String name_of_church, String church_address, String notation
-            , String book_series,String address_of_parents) {
+
+    public Srpt_baptismal_template(String num, String day, String month, String year, String priest, String asst_priest, String series_of, String path, String name, String father, String mother, String place_of_birth, String date_of_birth, String date_of_baptism, String bapt_time, String baptized_by, String book_number, String page_number, String sponsors, String index_no, String purpose, String img_path, String place_of_baptism, String parish_priest) {
         this.num = num;
         this.day = day;
         this.month = month;
@@ -79,49 +73,37 @@ public class SRpt_baptism {
         this.img_path = img_path;
         this.place_of_baptism = place_of_baptism;
         this.parish_priest = parish_priest;
-        this.name_of_church = name_of_church;
-        this.church_address = church_address;
-        this.notation = notation;
-        this.book_series = book_series;
-        this.address_of_parents=address_of_parents;
     }
 
     public static void main(String[] args) {
-
-        String num = "1";
-        String day = "6th";
-        String month = "March,";
-        String year = "2021.";
-        day=day+ " ";
-        String priest = "FR. CARMELITO Q. LIMBAGA, JR.";
+        String num = "ref_id";
+        String day = "2nd";
+        String month = "March";
+        String year = "2013";
+        String priest = "priest";
         String asst_priest = "PAROCHIAL VARCH";
         String series_of = "2013-2014";
         String path = "";
-        String name = "MICHELLE BENSON FURTON";
-        String father = "Cirilo Q. Furton";
-        String mother = "Nove Benson";
-        String place_of_birth = "San Jose, Negros Oriental";
-        String date_of_birth = "November 3, 1999";
+        String name = "ROnald Pascua";
+        String father = "father";
+        String mother = "mother";
+        String place_of_birth = "bplace";
+        String date_of_birth = "Date of Birth";
         String date_of_baptism = "Date of Baptism";
         String bapt_time = "time";
-        String baptized_by = "Rev. Fr. Joseph Marlon A. Martinez";
+        String baptized_by = "bapt by";
         String book_number = "1A";
         String page_number = "2";
-        String sponsors = "Mateo Tano";
+        String sponsors = "sponsor1,sponsor2,sponsor3";
         String index_no = "1";
-        String img_path = "C:\\Users\\User\\spires\\";
+        String img_path = "C:\\\\Users\\\\User\\\\spires\\\\";
+        path = img_path;
         String place_of_baptism = "";
-        String parish_priest = "FR. CARMELITO Q. LIMBAGA, JR.";
-        String name_of_church = "SAINT NICHOLAS OF TOLENTINO PARISH";
-        String church_address = "Dauin, Negros Oriental";
-        String notation = "FREE TO MARRY";
-        String book_series = "1995-2004";
-        String address_of_parents="San Jose, Negros Oriental";
-        SRpt_baptism rpt = new SRpt_baptism(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother,
-                                            place_of_birth, date_of_birth, date_of_baptism, bapt_time, baptized_by, book_number,
-                                            page_number, sponsors, index_no, "", img_path,
-                 place_of_baptism, parish_priest, name_of_church, church_address, notation, book_series,address_of_parents);
-        String jrxml = "rpt_baptism_dauin.jrxml";
+        String parish_priest = "";
+        Srpt_baptismal_template rpt = new Srpt_baptismal_template(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother,
+                                                                  place_of_birth, date_of_birth, date_of_baptism, bapt_time, baptized_by, book_number,
+                                                                  page_number, sponsors, index_no, "", img_path, place_of_baptism, parish_priest);
+        String jrxml = "rpt_baptism_dauin_template.jrxml";
         JRViewer viewer = get_viewer(rpt, jrxml);
         JFrame f = Application.launchMainFrame3(viewer, "Sample", true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -130,7 +112,7 @@ public class SRpt_baptism {
     public static JasperReport compileJasper(String jrxml) {
         try {
 
-            InputStream is = SRpt_baptism.class.getResourceAsStream(jrxml);
+            InputStream is = Srpt_baptismal_template.class.getResourceAsStream(jrxml);
             JasperReport jasper = JasperCompileManager.compileReport(is);
 
             return jasper;
@@ -139,12 +121,11 @@ public class SRpt_baptism {
         }
     }
 
-    public static JRViewer get_viewer(SRpt_baptism to, String jrxml) {
+    public static JRViewer get_viewer(Srpt_baptismal_template to, String jrxml) {
 
         return JasperUtil.getJasperViewer(
                 compileJasper(jrxml),
                 JasperUtil.setParameter(to),
                 JasperUtil.emptyDatasource());
     }
-
 }

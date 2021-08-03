@@ -285,7 +285,7 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel51.setFont(new java.awt.Font("Tahoma", 0, 10)); // NOI18N
         jLabel51.setForeground(new java.awt.Color(255, 255, 255));
         jLabel51.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel51.setText(",Ronald Pascua and sexy friends");
+        jLabel51.setText("and Ronald Pascua.");
 
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
