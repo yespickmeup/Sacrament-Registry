@@ -507,11 +507,11 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField4MouseClicked
 
     private void tf_check_holder1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_check_holder1ActionPerformed
-       init_time() ;
+        init_time();
     }//GEN-LAST:event_tf_check_holder1ActionPerformed
 
     private void tf_check_holder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tf_check_holder1MouseClicked
-        init_time() ;
+        init_time();
     }//GEN-LAST:event_tf_check_holder1MouseClicked
 
     /**
@@ -616,14 +616,14 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
 
     private void init_key() {
         KeyMapping.mapKeyWIFW(getSurface(),
-                KeyEvent.VK_ESCAPE, new KeyAction() {
+                              KeyEvent.VK_ESCAPE, new KeyAction() {
 
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                          @Override
+                          public void actionPerformed(ActionEvent e) {
 //                btn_0.doClick();
-                disposed();
-            }
-        });
+                              disposed();
+                          }
+                      });
         JTextField[] tfs = {jTextField1, jTextField2, jTextField3, jTextField4, tf_check_holder};
         for (JTextField tf : tfs) {
             tf.addKeyListener(new KeyAdapter() {
@@ -688,8 +688,33 @@ public class Dlg_front_desk_tender extends javax.swing.JDialog {
         time.add("6:00 AM");
         time.add("6:30 AM");
         time.add("7:00 AM");
+        time.add("7:30 AM");
+        time.add("8:00 AM");
+        time.add("8:30 AM");
+        time.add("9:00 AM");
+        time.add("9:30 AM");
+        time.add("10:00 AM");
+        time.add("10:30 AM");
         time.add("11:00 AM");
+        time.add("11:30 AM");
+        time.add("12:00 PM");
+        time.add("12:30 PM");
+        time.add("1:00 PM");
+        time.add("1:30 PM");
+        time.add("2:00 PM");
+        time.add("2:30 PM");
+        time.add("3:00 PM");
+        time.add("3:30 PM");
+        time.add("4:00 PM");
         time.add("4:30 PM");
+        time.add("5:00 PM");
+        time.add("5:30 PM");
+        time.add("6:00 PM");
+        time.add("6:30 PM");
+        time.add("7:00 PM");
+        time.add("7:30 PM");
+        time.add("8:00 PM");
+        time.add("8:30 PM");
         Object[][] obj = new Object[time.size()][1];
         int i = 0;
         for (String s : time) {
