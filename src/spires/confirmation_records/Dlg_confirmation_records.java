@@ -334,6 +334,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         jLabel17.setText("Priest:");
 
         dp_confirmation.setDate(new Date());
+        dp_confirmation.setDateFormatString("MM d, yyyy");
         dp_confirmation.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -351,6 +352,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         tf_book_no.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         dp_baptism.setDate(new Date());
+        dp_baptism.setDateFormatString("MM d, yyyy");
         dp_baptism.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -410,6 +412,7 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         jLabel27.setText("Birth Date:");
 
         dp_bdate.setDate(new Date());
+        dp_bdate.setDateFormatString("MM d, yyyy");
         dp_bdate.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

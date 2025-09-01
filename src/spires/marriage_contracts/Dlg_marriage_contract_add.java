@@ -779,6 +779,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel7.add(jXLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
 
         jDateChooser5.setDate(new Date());
+        jDateChooser5.setDateFormatString("MM d, yyyy");
         jXPanel7.add(jDateChooser5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, -1));
 
         jXPanel8.setBackground(new java.awt.Color(204, 204, 204));
@@ -946,7 +947,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel15Layout.setVerticalGroup(
             jXPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jXPanel15Layout.createSequentialGroup()
-                .addComponent(jXLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 47, Short.MAX_VALUE)
+                .addComponent(jXLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(1, 1, 1))
         );
 
@@ -1144,6 +1145,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel22.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jDateChooser4.setDate(new Date());
+        jDateChooser4.setDateFormatString("MM d, yyyy");
         jXPanel22.add(jDateChooser4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 160, -1));
 
         jXLabel27.setText("Date:");
@@ -1887,6 +1889,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel55.add(jXLabel68, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 40, 20));
 
         jDateChooser6.setDate(new Date());
+        jDateChooser6.setDateFormatString("MM d, yyyy");
         jXPanel55.add(jDateChooser6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 140, -1));
 
         jXPanel54.setBackground(new java.awt.Color(255, 255, 255));
@@ -2010,6 +2013,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel62.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 20, 20));
 
         jDateChooser1.setDate(new Date());
+        jDateChooser1.setDateFormatString("MM d, yyyy");
         jXPanel62.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 10, 150, -1));
 
         jLabel2.setText("issued on");
@@ -2204,6 +2208,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel66.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
 
         jDateChooser2.setDate(new Date());
+        jDateChooser2.setDateFormatString("MM d, yyyy");
         jXPanel66.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 210, -1));
 
         jXPanel67.setBackground(new java.awt.Color(255, 255, 255));
@@ -2247,6 +2252,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
         jXPanel68.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, -1, 20));
 
         jDateChooser3.setDate(new Date());
+        jDateChooser3.setDateFormatString("MM d, yyyy");
         jXPanel68.add(jDateChooser3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 210, -1));
 
         jXPanel70.setBackground(new java.awt.Color(204, 204, 204));
@@ -2363,7 +2369,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
                 .addGap(0, 0, 0)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jXPanel66, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                        .addComponent(jXPanel66, javax.swing.GroupLayout.PREFERRED_SIZE, 76, Short.MAX_VALUE)
                         .addComponent(jXPanel65, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jXPanel68, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2558,7 +2564,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
                                 .addComponent(jTextField11))
                             .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jCheckBox7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 957, Short.MAX_VALUE))))
+                                .addComponent(jCheckBox6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 957, Short.MAX_VALUE))))
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
                         .addGroup(jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3452,7 +3458,7 @@ public class Dlg_marriage_contract_add extends javax.swing.JDialog {
                 .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jPanel24, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))

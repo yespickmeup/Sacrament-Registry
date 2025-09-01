@@ -322,6 +322,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         jLabel20.setText("Book No:");
 
         dp_date_of_death.setDate(new Date());
+        dp_date_of_death.setDateFormatString("MM d, yyyy");
         dp_date_of_death.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -347,6 +348,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         jLabel17.setText("Date of Death:");
 
         db_burial_date.setDate(new Date());
+        db_burial_date.setDateFormatString("MM d, yyyy");
         db_burial_date.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         tf_remarks.setColumns(20);

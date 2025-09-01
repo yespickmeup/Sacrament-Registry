@@ -297,6 +297,7 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
         jLabel21.setText("Sponsors:");
 
         dp_baptism.setDate(new Date());
+        dp_baptism.setDateFormatString("MM d, yyyy");
 
         jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel20.setText("Date of Marr:");
