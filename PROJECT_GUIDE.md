@@ -1,4 +1,4 @@
-# SPIRES project guide
+﻿# SPIRES project guide
 
 This guide is for a developer or AI assistant resuming work on SPIRES. The actual NetBeans project is `C:\Users\USER\Documents\Projects\Sacrament-Registry`; the separate `C:\Users\USER\Documents\ChatGPT\SPIRES` folder was an empty Git repository when this guide was written.
 
@@ -55,3 +55,11 @@ The repository may depend on NetBeans-managed libraries and plugins. The classpa
 - The dialogs compiled with the installed JDK 8 and JasperReports classpath. The JRXML filled as one A4 page in all three modes: completed preview (18 elements, one image), blank preprint (four elements, one image), and details overlay (14 elements, no image). Sample completed and blank preprint PDF renders were visually reviewed, including the priest-name centering. The records dialog was rendered at 1280 x 800 both with and without the record editor to check spacing and clipping. The full NetBeans Ant `jar` build succeeded using JDK 8. A physical printer alignment check remains to be done.
 - For confirmation certificates, reuse the same preview/ink-only pattern with its own preprinted artwork and parameter mapping. Confirm the paper size and which fields are already on the signed stock before adapting the report.
 - Before continuing implementation, inspect current Git status and establish a build baseline. Do not assume the graphics dialog is caused by SPIRES application code.
+
+## Confirmation certificate implementation (2026-09-19)
+
+- `Dlg_confirmation_records.java` now uses the same card-based front desk layout as baptismal records. The Priest and Designation inputs near search define the signing priest; Designation defaults to `Parish Priest` and can be changed. The record editor keeps the confirmation-specific baptism, confirmation, minister, sponsor, and registry fields.
+- The **Pre-print blank certificate...** action requires only the signing priest. It opens `Dlg_preview_confirmation_certificate.java` in blank mode. A selected record opens the completed A4 preview. The preview offers blank preprint, test details on blank paper, and details-only printing onto the signed form. The Jasper toolbar print/export controls are hidden; use the explicit buttons.
+- `rpt_confirmation_certificate_2025.jrxml` controls all three passes with `show_background`, `show_parishioner`, and `show_priest`. `confirmation_blank.png` is the static A4 confirmation artwork derived from the user-provided sample. Priest and designation are dynamically centered in the signature area. Church name and address use `name_of_church` and `church_address` properties, with Bacong defaults.
+- Alignment offsets in the confirmation preview are stored separately from baptism offsets under the current Windows user. Set the printer to A4 and 100% scaling for both passes, keep the same feed direction, and use **Test on blank paper...** before feeding signed stock. The artwork is a generated blank master at 1055 x 1491 pixels; replace it with a high-resolution parish original if one becomes available.
+- Verification: Ant `jar` build succeeded with `JAVA_HOME=C:\Program Files\Java\jdk1.8.0_101`. Jasper compiled and filled one A4 page in all three modes. Test output counts were completed: 18 text elements plus artwork; blank preprint: four text elements plus artwork; details only: 14 text elements and no artwork. The completed page was rendered and visually reviewed. Physical printer alignment and a live database UI run remain to be checked.

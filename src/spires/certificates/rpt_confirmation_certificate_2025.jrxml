@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="confirmation_certificate_2025" pageWidth="595" pageHeight="842" columnWidth="595" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="cc60198e-b51f-40d9-bf51-15a345021c60">
+  <parameter name="day" class="java.lang.String"/>
+  <parameter name="priest" class="java.lang.String"/>
+  <parameter name="asst_priest" class="java.lang.String"/>
+  <parameter name="name" class="java.lang.String"/>
+  <parameter name="father" class="java.lang.String"/>
+  <parameter name="mother" class="java.lang.String"/>
+  <parameter name="date_of_confirmation" class="java.lang.String"/>
+  <parameter name="book_no" class="java.lang.String"/>
+  <parameter name="page_no" class="java.lang.String"/>
+  <parameter name="confirmed_by" class="java.lang.String"/>
+  <parameter name="sponsor_name" class="java.lang.String"/>
+  <parameter name="date_of_baptism" class="java.lang.String"/>
+  <parameter name="place_of_baptism" class="java.lang.String"/>
+  <parameter name="purpose" class="java.lang.String"/>
+  <parameter name="address_of_parents" class="java.lang.String"/>
+  <parameter name="index_no" class="java.lang.String"/>
+  <parameter name="name_of_church" class="java.lang.String"/>
+  <parameter name="church_address" class="java.lang.String"/>
+  <parameter name="show_background" class="java.lang.Boolean"/>
+  <parameter name="background_image" class="java.io.InputStream"/>
+  <parameter name="show_parishioner" class="java.lang.Boolean"/>
+  <parameter name="show_priest" class="java.lang.Boolean"/>
+  <queryString><![CDATA[]]></queryString>
+  <columnHeader><band height="842" splitType="Stretch">
+    <image scaleImage="FillFrame" isUsingCache="false">
+      <reportElement uuid="1d79d7f7-287d-48c3-8f80-db8e24aad473" x="0" y="0" width="595" height="842">
+        <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_background})]]></printWhenExpression>
+      </reportElement>
+      <imageExpression><![CDATA[$P{background_image}]]></imageExpression>
+    </image>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="ea42b6fe-ae80-41f3-9152-30d54c189df2" x="260" y="258" width="260" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="true" pdfFontName="Times-Bold"/></textElement>
+        <textFieldExpression><![CDATA[$P{name}.toUpperCase()]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="6392f735-4804-4b83-a095-85932f9d15e3" x="232" y="273" width="270" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{date_of_baptism}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="da6cd4cd-0eb8-486f-a27a-f23e0229e6ba" x="234" y="287" width="285" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{place_of_baptism}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="6806dd0c-cc82-476d-ae8d-d26ee0f89ee2" x="232" y="301" width="300" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{father}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="8f44020e-2c77-4396-97bd-2d687a90d13b" x="278" y="315" width="238" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{mother}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="61d8e5e3-2f8e-46e3-a0ae-069086a5985d" x="248" y="329" width="260" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{address_of_parents}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="bf6590d2-c344-4236-9a31-da3bdcfc80ed" x="234" y="399" width="286" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_background})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{name_of_church}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="81679610-52e2-43ae-87b3-f837bc9010d4" x="236" y="414" width="290" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_background})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{church_address}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="1a814cf6-663b-4b44-b466-738d8b5b8a0f" x="263" y="442" width="250" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="true" pdfFontName="Times-Bold"/></textElement>
+        <textFieldExpression><![CDATA[$P{date_of_confirmation}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="449c3193-6970-4e24-a92b-b4cd7e5551b6" x="224" y="457" width="294" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{confirmed_by}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="08681741-bdb6-4799-80d0-8617f1c5e6cd" x="207" y="471" width="325" height="18">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{sponsor_name}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="cfddde3e-5d2c-47ed-a88f-8872e3c9cc8b" x="205" y="509" width="324" height="20">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="true" pdfFontName="Times-Bold"/></textElement>
+        <textFieldExpression><![CDATA[$P{purpose}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="7fa5ef9b-2897-4b53-b31f-1ec285a2ead9" x="206" y="548" width="325" height="20">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{day}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="5e40b676-a0e7-4e1a-bf49-21dd0f54c020" x="328" y="608" width="207" height="23">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_priest})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="Serif" size="11" isBold="true" pdfFontName="Times-Bold"/></textElement>
+        <textFieldExpression><![CDATA[$P{priest}.toUpperCase()]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="9ae0791b-3dc3-4b29-ae06-3ebecd47dd4c" x="328" y="623" width="207" height="19">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_priest})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="Serif" size="11" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{asst_priest}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="5f978d36-14f6-410f-9305-16dac1e645e1" x="198" y="661" width="125" height="17">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{book_no}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="538c7404-d40c-4c95-8b4e-a53ff0b627f1" x="198" y="675" width="125" height="17">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{page_no}]]></textFieldExpression>
+      </textField>
+      <textField isStretchWithOverflow="true">
+        <reportElement uuid="ce8e5812-e701-49a0-8f3a-376d032fd19e" x="198" y="689" width="125" height="17">
+          <printWhenExpression><![CDATA[Boolean.TRUE.equals($P{show_parishioner})]]></printWhenExpression>
+        </reportElement>
+        <textElement textAlignment="Left" verticalAlignment="Middle"><font fontName="Serif" size="12" isBold="false" pdfFontName="Times-Roman"/></textElement>
+        <textFieldExpression><![CDATA[$P{index_no}]]></textFieldExpression>
+      </textField>
+  </band></columnHeader>
+</jasperReport>
