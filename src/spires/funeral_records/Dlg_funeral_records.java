@@ -10,17 +10,34 @@ import spires.purposes.S1_purposes;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
@@ -824,7 +841,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jCheckBox5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox5ActionPerformed
-
+        updateAgeFromDates();
     }//GEN-LAST:event_jCheckBox5ActionPerformed
 
     private void tf_priestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_priestActionPerformed
@@ -932,12 +949,281 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
 
     private void myInit() {
-//        System.setProperty("print_death", "bacong");
-//        System.setProperty("mydb", "db_spires_bacong");
-        init_key();
         jPanel3.setVisible(false);
         init_tbl_funeral_records(tbl_funeral_records);
+        initFrontDeskActions();
+        init_key();
+    }
 
+    private JRadioButton jRadioButton1;
+    private JRadioButton jRadioButton2;
+    private JTextField burialVenueField;
+    private com.toedter.calendar.JDateChooser birthDateChooser;
+
+    private static final Color PAGE_COLOR = new Color(243, 246, 250);
+    private static final Color INK_COLOR = new Color(35, 49, 66);
+
+    private void initFrontDeskActions() {
+        jRadioButton1 = new JRadioButton("A4 certificate");
+        jRadioButton2 = new JRadioButton("Legacy");
+        ButtonGroup certificateGroup = new ButtonGroup();
+        certificateGroup.add(jRadioButton1);
+        certificateGroup.add(jRadioButton2);
+        jRadioButton1.setSelected(true);
+        burialVenueField = new JTextField("Saint Augustine of Hippo Parish & Bacong Catholic Cemetery");
+        birthDateChooser = new com.toedter.calendar.JDateChooser();
+        birthDateChooser.setDateFormatString("MMM d, yyyy");
+        birthDateChooser.setFont(dp_date_of_death.getFont());
+        birthDateChooser.setToolTipText("Used to calculate age on the date of death");
+        birthDateChooser.addPropertyChangeListener("date", new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent event) {
+                updateAgeFromDates();
+            }
+        });
+        dp_date_of_death.addPropertyChangeListener("date", new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent event) {
+                updateAgeFromDates();
+            }
+        });
+        tf_age.setToolTipText("Calculated from birth and death dates, or enter the documented age");
+        jButton3.setText("Preview certificate...");
+        jButton3.setToolTipText("Preview the selected record and choose how to print it");
+        jButton5.setText("Close details");
+        jTextField3.setToolTipText("Signing priest. Press Enter to choose an official.");
+        jTextField5.setToolTipText("Designation of the signing priest");
+        if (jTextField5.getText().trim().isEmpty()) {
+            jTextField5.setText("Parish Priest");
+        }
+        jTextField2.setToolTipText("Search records by the selected field, then press Enter");
+
+        JPanel page = new JPanel(new BorderLayout(0, 16));
+        page.setBackground(PAGE_COLOR);
+        page.setBorder(BorderFactory.createEmptyBorder(18, 20, 18, 20));
+
+        JPanel heading = new JPanel(new BorderLayout());
+        heading.setOpaque(false);
+        JLabel title = new JLabel("Funeral records");
+        title.setForeground(INK_COLOR);
+        title.setFont(title.getFont().deriveFont(Font.BOLD, 20f));
+        heading.add(title, BorderLayout.NORTH);
+        JLabel subtitle = new JLabel("Search a record, prepare the blank certificate, then print details after signing.");
+        subtitle.setForeground(new Color(90, 102, 116));
+        heading.add(subtitle, BorderLayout.SOUTH);
+        JButton close = new JButton("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                dispose();
+            }
+        });
+        heading.add(close, BorderLayout.EAST);
+        page.add(heading, BorderLayout.NORTH);
+
+        JPanel left = new JPanel(new BorderLayout(0, 14));
+        left.setOpaque(false);
+        left.add(buildSearchAndCertificateCard(), BorderLayout.NORTH);
+        left.add(buildRecordsCard(), BorderLayout.CENTER);
+
+        rebuildRecordEditor();
+        jPanel3.setPreferredSize(new Dimension(440, 600));
+        JPanel body = new JPanel(new BorderLayout(16, 0));
+        body.setOpaque(false);
+        body.add(left, BorderLayout.CENTER);
+        body.add(jPanel3, BorderLayout.EAST);
+        page.add(body, BorderLayout.CENTER);
+        setContentPane(page);
+    }
+
+    private JPanel buildSearchAndCertificateCard() {
+        JPanel card = card();
+        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+        card.add(sectionTitle("Find a funeral record"));
+        card.add(Box.createVerticalStrut(8));
+
+        JPanel filters = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 0));
+        filters.setOpaque(false);
+        filters.setAlignmentX(LEFT_ALIGNMENT);
+        filters.add(jLabel3);
+        filters.add(jCheckBox7);
+        filters.add(jCheckBox8);
+        card.add(filters);
+        card.add(Box.createVerticalStrut(8));
+        card.add(horizontalField(jLabel4, jTextField2));
+        card.add(Box.createVerticalStrut(14));
+        card.add(sectionTitle("Certificate preparation"));
+        card.add(Box.createVerticalStrut(8));
+
+        JPanel signatory = new JPanel(new GridLayout(1, 2, 12, 0));
+        signatory.setOpaque(false);
+        signatory.setAlignmentX(LEFT_ALIGNMENT);
+        signatory.add(fieldBlock("Signing priest", jTextField3));
+        signatory.add(fieldBlock("Designation", jTextField5));
+        card.add(signatory);
+        card.add(Box.createVerticalStrut(8));
+        card.add(fieldBlock("Purpose (for the completed certificate)", jTextField4));
+        card.add(Box.createVerticalStrut(8));
+        card.add(fieldBlock("Funeral and burial venue (for the completed certificate)", burialVenueField));
+        card.add(Box.createVerticalStrut(10));
+
+        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        actions.setOpaque(false);
+        actions.setAlignmentX(LEFT_ALIGNMENT);
+        JButton preprint = new JButton("Pre-print blank certificate...");
+        preprint.setToolTipText("Uses the signing priest above; no parishioner record is needed");
+        preprint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                preview_blank_certificate();
+            }
+        });
+        actions.add(preprint);
+        JLabel hint = new JLabel("  A4 form + priest and designation; record fields stay blank");
+        hint.setForeground(new Color(90, 102, 116));
+        actions.add(hint);
+        card.add(actions);
+        return card;
+    }
+
+    private JPanel buildRecordsCard() {
+        JPanel card = card();
+        card.setLayout(new BorderLayout(0, 10));
+        JPanel top = new JPanel(new BorderLayout());
+        top.setOpaque(false);
+        top.add(sectionTitle("Records"), BorderLayout.WEST);
+        top.add(jButton4, BorderLayout.EAST);
+        card.add(top, BorderLayout.NORTH);
+        card.add(jScrollPane2, BorderLayout.CENTER);
+
+        JPanel footer = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        footer.setOpaque(false);
+        footer.add(jLabel5);
+        footer.add(jLabel6);
+        footer.add(jProgressBar1);
+        card.add(footer, BorderLayout.SOUTH);
+        return card;
+    }
+
+    private void rebuildRecordEditor() {
+        JPanel fields = card();
+        fields.setLayout(new BoxLayout(fields, BoxLayout.Y_AXIS));
+        fields.add(sectionTitle("Selected record"));
+        fields.add(Box.createVerticalStrut(12));
+        fields.add(formRow(fieldBlock("First name", tf_fname), fieldBlock("Middle initial", tf_mi), fieldBlock("Last name", tf_lname)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Residence / address", tf_place_of_burial));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Birth date", birthDateChooser),
+                fieldBlock("Date of death", dp_date_of_death), fieldBlock("Age", tf_age)));
+        JPanel deathRecord = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        deathRecord.setOpaque(false);
+        deathRecord.setAlignmentX(LEFT_ALIGNMENT);
+        jCheckBox5.setText("Death date is recorded");
+        deathRecord.add(jCheckBox5);
+        fields.add(deathRecord);
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Funeral details"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Burial date", db_burial_date), fieldBlock("Minister", tf_priest)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Informant / sponsors", jScrollPane1));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Father", tf_father), fieldBlock("Mother", tf_mother)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Parents", jScrollPane4));
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Registry reference"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Book", tf_book_no), fieldBlock("Page", tf_page_no), fieldBlock("Entry", tf_index_no)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Remarks", jScrollPane3));
+        fields.add(Box.createVerticalStrut(8));
+
+        JPanel actions = card();
+        actions.setLayout(new BoxLayout(actions, BoxLayout.Y_AXIS));
+        actions.add(sectionTitle("Certificate layout"));
+        JPanel choices = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
+        choices.setOpaque(false);
+        choices.setAlignmentX(LEFT_ALIGNMENT);
+        choices.add(jRadioButton1);
+        choices.add(jRadioButton2);
+        actions.add(choices);
+        actions.add(Box.createVerticalStrut(8));
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        buttons.setOpaque(false);
+        buttons.setAlignmentX(LEFT_ALIGNMENT);
+        buttons.add(jButton3);
+        buttons.add(jButton2);
+        buttons.add(jButton5);
+        actions.add(buttons);
+
+        JScrollPane editorScroll = new JScrollPane(fields);
+        editorScroll.setBorder(BorderFactory.createEmptyBorder());
+        editorScroll.getVerticalScrollBar().setUnitIncrement(16);
+        jPanel3.removeAll();
+        jPanel3.setLayout(new BorderLayout());
+        jPanel3.setBackground(PAGE_COLOR);
+        jPanel3.add(editorScroll, BorderLayout.CENTER);
+        jPanel3.add(actions, BorderLayout.SOUTH);
+    }
+
+    private JPanel card() {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.WHITE);
+        panel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(221, 228, 235)),
+                BorderFactory.createEmptyBorder(14, 16, 14, 16)));
+        return panel;
+    }
+
+    private JLabel sectionTitle(String text) {
+        JLabel label = new JLabel(text);
+        label.setAlignmentX(LEFT_ALIGNMENT);
+        label.setForeground(INK_COLOR);
+        label.setFont(label.getFont().deriveFont(Font.BOLD, 14f));
+        return label;
+    }
+
+    private JPanel horizontalField(JLabel label, JComponent field) {
+        JPanel row = new JPanel(new BorderLayout(10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        row.add(label, BorderLayout.WEST);
+        row.add(field, BorderLayout.CENTER);
+        return row;
+    }
+
+    private JPanel fieldBlock(String title, JComponent field) {
+        JPanel block = new JPanel(new BorderLayout(0, 4));
+        block.setOpaque(false);
+        block.setAlignmentX(LEFT_ALIGNMENT);
+        JLabel label = new JLabel(title);
+        label.setForeground(new Color(81, 94, 109));
+        block.add(label, BorderLayout.NORTH);
+        block.add(field, BorderLayout.CENTER);
+        return block;
+    }
+
+    private JPanel formRow(JPanel... blocks) {
+        JPanel row = new JPanel(new GridLayout(1, blocks.length, 10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        for (JPanel block : blocks) {
+            row.add(block);
+        }
+        return row;
+    }
+
+    private void preview_blank_certificate() {
+        String priest = jTextField3.getText().trim();
+        if (priest.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Choose the signing priest in the Priest field first.",
+                    "Signing priest required", JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.requestFocusInWindow();
+            return;
+        }
+        Dlg_preview_death_certificate preview =
+                Dlg_preview_death_certificate.create(this, true);
+        preview.do_pass_preprint(priest, jTextField5.getText().trim());
+        preview.setLocationRelativeTo(this);
+        preview.setVisible(true);
     }
 
     int is_add = 1;
@@ -1090,7 +1376,55 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     }
 //</editor-fold> 
 
+    private void updateAgeFromDates() {
+        Date birth = birthDateChooser.getDate();
+        if (birth == null) {
+            return;
+        }
+        if (!jCheckBox5.isSelected() || dp_date_of_death.getDate() == null) {
+            tf_age.setText("");
+            return;
+        }
+        int age = ageAtDeath(birth, dp_date_of_death.getDate());
+        tf_age.setText(age >= 0 ? Integer.toString(age) : "");
+    }
+
+    static int ageAtDeath(Date birth, Date death) {
+        Calendar born = Calendar.getInstance();
+        born.setTime(birth);
+        Calendar died = Calendar.getInstance();
+        died.setTime(death);
+        int years = died.get(Calendar.YEAR) - born.get(Calendar.YEAR);
+        int birthMonth = born.get(Calendar.MONTH);
+        int deathMonth = died.get(Calendar.MONTH);
+        if (deathMonth < birthMonth || (deathMonth == birthMonth
+                && died.get(Calendar.DAY_OF_MONTH) < born.get(Calendar.DAY_OF_MONTH))) {
+            years--;
+        }
+        return years;
+    }
+
+    private boolean validateAgeDates() {
+        if (birthDateChooser.getDate() == null) {
+            return true;
+        }
+        if (!jCheckBox5.isSelected() || dp_date_of_death.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Select a recorded date of death to calculate age.",
+                    "Date of death required", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        if (ageAtDeath(birthDateChooser.getDate(), dp_date_of_death.getDate()) < 0) {
+            JOptionPane.showMessageDialog(this, "Birth date must be on or before the date of death.",
+                    "Check dates", JOptionPane.INFORMATION_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+
     private void add_funeral_records() {
+        if (!validateAgeDates()) {
+            return;
+        }
 
         String index_no = tf_index_no.getText();
         String book_no = tf_book_no.getText();
@@ -1120,6 +1454,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     }
 
     private void clear() {
+        birthDateChooser.setDate(null);
         tf_fname.setText("");
         tf_mi.setText("");
         tf_lname.setText("");
@@ -1142,6 +1477,7 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
         }
         int col = tbl_funeral_records.getSelectedColumn();
         Srpt_print_funeral.field to = (Srpt_print_funeral.field) tbl_funeral_records_ALM.get(row);
+        birthDateChooser.setDate(null);
 
         tf_fname.setText(to.getFname());
         tf_mi.setText(to.getMi());
@@ -1181,6 +1517,9 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     }
 
     private void update_funeral_records() {
+        if (!validateAgeDates()) {
+            return;
+        }
 
         int row = tbl_funeral_records.getSelectedRow();
         if (row < 0) {
@@ -1241,102 +1580,79 @@ public class Dlg_funeral_records extends javax.swing.JDialog {
     }
 
     private void set_certificate() {
-
-        jProgressBar1.setString("Loading...Please wait...");
-        jProgressBar1.setIndeterminate(true);
-        Thread t = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                String num = "num";
-                String day = spires.util.DateType.nth(spires.util.DateType.d.format(new Date()));
-                String month = DateType.m.format(new Date());
-                String year = spires.util.DateType.y.format(new Date());
-                year = year.substring(2, year.length());
-                String priest = tf_priest.getText();
-                String asst_priest = "";
-                int add2 = FitIn.toInt(spires.util.DateType.y.format(new Date())) + 1;
-                String series_of = spires.util.DateType.y.format(new Date()) + " - " + add2;
-                String path = System.getProperty("img_path", "C:\\Users\\Guiness\\");
-                String name = tf_fname.getText() + " " + tf_mi.getText() + " " + tf_lname.getText();
-                String father = tf_father.getText();
-                String mother = tf_mother.getText();
-                String date_of_confirmation = "";
-                String book_no = tf_book_no.getText();
-                String page_no = tf_page_no.getText();
-                String confirmed_by = jTextField3.getText();
-                String sponsor_name = tf_sponsors.getText();
-                String place_of_birth = "Bacong, Negros Oriental, Philippines";
-                String date_of_birth = "";
-                String date_of_baptism = DateType.month_date.format(db_burial_date.getDate());
-                String place_of_baptism = tf_place_of_burial.getText();
-                String purpose = "Purpose: " + jTextField4.getText();
-                String date_of_death = " ";
-                if (jCheckBox5.isSelected()) {
-                    date_of_death = DateType.month_date.format(dp_date_of_death.getDate());
-                }
-                String age = tf_age.getText();
-                String index_no = tf_index_no.getText();
-
-                String print = System.getProperty("print_death", "default");
-                String jrxml = "rpt_funeral2.jrxml";
-                if (print.equalsIgnoreCase("Bacong")) {
-                    jrxml = "rpt_funeral_bacong.jrxml";
-                    purpose = "" + jTextField4.getText();
-                    confirmed_by = jTextField3.getText();
-
-                    if (jCheckBox1.isSelected()) {
-                        father = tf_sponsors.getText();
-                    } else {
-                        father = father + "\n" + mother;
-                    }
+        if (!validateAgeDates()) {
+            return;
+        }
+        if (jRadioButton1.isSelected() && jTextField3.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this,
+                    "Choose the signing priest in Certificate preparation before previewing.",
+                    "Signing priest required", JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.requestFocusInWindow();
+            return;
+        }
+        if (tf_fname.getText().trim().isEmpty() || tf_lname.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Select a funeral record first.",
+                    "Record required", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if (db_burial_date.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Select a record with a burial date.",
+                    "Burial date required", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        Date today = new Date();
+        String month = spires.util.DateType.m.format(today);
+        String year = spires.util.DateType.y.format(today);
+        String day = spires.util.DateType.nth(spires.util.DateType.d.format(today))
+                + " Day of " + month + " " + year + ".";
+        String name = (tf_fname.getText() + " " + tf_mi.getText() + " "
+                + tf_lname.getText()).trim().replaceAll("\\s+", " ");
+        String dateOfDeath = jCheckBox5.isSelected() && dp_date_of_death.getDate() != null
+                ? spires.util.DateType.month_date.format(dp_date_of_death.getDate()) : "";
+        String burialDate = spires.util.DateType.month_date.format(db_burial_date.getDate());
+        String purpose = jTextField4.getText().trim();
+        String priest = jTextField3.getText().trim();
+        String designation = jTextField5.getText().trim();
+        String minister = tf_priest.getText().trim();
+        String father = tf_father.getText();
+        String mother = tf_mother.getText();
+        String residence = tf_place_of_burial.getText();
+        String venue = burialVenueField.getText().trim();
+        String jrxml = "rpt_burial_certificate_2025.jrxml";
+        if (jRadioButton2.isSelected()) {
+            day = spires.util.DateType.nth(spires.util.DateType.d.format(today));
+            jrxml = "rpt_funeral2.jrxml";
+            if (System.getProperty("print_death", "default").equalsIgnoreCase("Bacong")) {
+                jrxml = "rpt_funeral_bacong.jrxml";
+                year = year.substring(2);
+                minister = priest;
+                if (jCheckBox1.isSelected()) {
+                    father = tf_sponsors.getText();
                 } else {
-                    confirmed_by = tf_priest.getText();
-                    priest = jTextField3.getText();
-                    asst_priest = jTextField5.getText();
-                    year = spires.util.DateType.y.format(new Date());
+                    father = father + "\n" + mother;
                 }
-//                System.out.println("jrxml : " + jrxml);
-
-                String parents = tf_parents.getText();
-                String rector = jTextField3.getText();
-                SRpt_funeral rpt = new SRpt_funeral(num, day, month, year, priest, asst_priest, series_of, path, name, father, mother, date_of_confirmation, book_no, page_no, confirmed_by, sponsor_name, place_of_birth, date_of_birth, date_of_baptism, place_of_baptism, purpose, date_of_death, age, index_no, parents, rector);
-                print_preview(rpt, jrxml);
-//                try {
-//
-//                    InputStream is = SRpt_funeral.class.getResourceAsStream(jrxml);
-//                    JasperReport jasperReport;
-//                    jasperReport = JasperCompileManager.compileReport(is);
-//                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-//                            setParameter(rpt), JasperUtil.emptyDatasource());
-//                    JasperPrintManager.printReport(jasperPrint, false);
-//
-//                } catch (JRException ex) {
-//                    Logger.getLogger(Dlg_funeral_records.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-                jProgressBar1.setString("Finished...");
-                jProgressBar1.setIndeterminate(false);
+            } else if (!purpose.isEmpty()) {
+                purpose = "Purpose: " + purpose;
             }
-        });
-        t.start();
-
+            venue = residence;
+        }
+        int nextYear = FitIn.toInt(spires.util.DateType.y.format(today)) + 1;
+        String series = spires.util.DateType.y.format(today) + " - " + nextYear;
+        String imagePath = System.getProperty("img_path", "");
+        SRpt_funeral rpt = new SRpt_funeral(
+                "", day, month, year, priest, designation, series, imagePath,
+                name, father, mother, "", tf_book_no.getText(), tf_page_no.getText(),
+                minister, tf_sponsors.getText(), residence, "", burialDate, venue,
+                purpose, dateOfDeath, tf_age.getText(), tf_index_no.getText(),
+                tf_parents.getText(), priest);
+        print_preview(rpt, jrxml);
     }
 
     private void print_preview(SRpt_funeral rpt, String jrxml) {
-        Window p = (Window) this;
-        Dlg_preview_death_certificate nd = Dlg_preview_death_certificate.create(p, true);
-        nd.setTitle("");
-        nd.do_pass(rpt, jrxml);
-        nd.setCallback(new Dlg_preview_death_certificate.Callback() {
-
-            @Override
-            public void ok(CloseDialog closeDialog, Dlg_preview_death_certificate.OutputData data) {
-                closeDialog.ok();
-
-            }
-        });
-        nd.setLocationRelativeTo(this);
-        nd.setVisible(true);
+        Dlg_preview_death_certificate preview = Dlg_preview_death_certificate.create(this, true);
+        preview.do_pass(rpt, jrxml);
+        preview.setLocationRelativeTo(this);
+        preview.setVisible(true);
     }
     JasperPrint jasperPrint = null;
 
