@@ -11,7 +11,12 @@ import spires.printing.Srpt_print_baptism;
 import spires.purposes.S1_purposes;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
+import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
@@ -24,6 +29,14 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.BorderFactory;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
@@ -186,14 +199,14 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
     //<editor-fold defaultstate="collapsed" desc=" added ">
     @Override
     public void setVisible(boolean visible) {
-        super.setVisible(visible);
-        if (visible == true) {
+        if (visible) {
+            Dimension previousSize = getSize();
             getContentPane().removeAll();
             initComponents();
             myInit();
-            repaint();
+            setSize(previousSize);
         }
-
+        super.setVisible(visible);
     }
 
     public javax.swing.JPanel getSurface() {
@@ -1036,11 +1049,251 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         System.setProperty("print_baptism", "bacong");
         System.setProperty("mydb", "db_spires_bacong");
 
-        init_key();
         jPanel3.setVisible(false);
         init_tbl_baptismal_records(tbl_baptismal_records);
         String address = System.getProperty("address", "Negros Oriental");
         tf_place_of_baptism.setText(address);
+        initFrontDeskActions();
+        init_key();
+    }
+
+    private static final Color PAGE_COLOR = new Color(243, 246, 250);
+    private static final Color INK_COLOR = new Color(35, 49, 66);
+
+    private void initFrontDeskActions() {
+        jRadioButton1.setText("A4 certificate");
+        jRadioButton2.setText("Legacy");
+        jButton3.setText("Preview certificate...");
+        jButton3.setToolTipText("Preview the selected record and choose how to print it");
+        jButton4.setText("Close details");
+        jTextField3.setToolTipText("Signing priest. Press Enter to choose an official.");
+        jTextField5.setToolTipText("Designation of the signing priest");
+        jTextField2.setToolTipText("Search records by the selected field, then press Enter");
+
+        JPanel page = new JPanel(new BorderLayout(0, 16));
+        page.setBackground(PAGE_COLOR);
+        page.setBorder(BorderFactory.createEmptyBorder(18, 20, 18, 20));
+
+        JPanel heading = new JPanel(new BorderLayout());
+        heading.setOpaque(false);
+        JLabel title = new JLabel("Baptismal records");
+        title.setForeground(INK_COLOR);
+        title.setFont(title.getFont().deriveFont(Font.BOLD, 20f));
+        heading.add(title, BorderLayout.NORTH);
+        JLabel subtitle = new JLabel("Search a record, prepare the blank certificate, then print details after signing.");
+        subtitle.setForeground(new Color(90, 102, 116));
+        heading.add(subtitle, BorderLayout.SOUTH);
+        JButton close = new JButton("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                dispose();
+            }
+        });
+        heading.add(close, BorderLayout.EAST);
+        page.add(heading, BorderLayout.NORTH);
+
+        JPanel left = new JPanel(new BorderLayout(0, 14));
+        left.setOpaque(false);
+        left.add(buildSearchAndCertificateCard(), BorderLayout.NORTH);
+        left.add(buildRecordsCard(), BorderLayout.CENTER);
+
+        rebuildRecordEditor();
+        jPanel3.setPreferredSize(new Dimension(440, 600));
+        JPanel body = new JPanel(new BorderLayout(16, 0));
+        body.setOpaque(false);
+        body.add(left, BorderLayout.CENTER);
+        body.add(jPanel3, BorderLayout.EAST);
+        page.add(body, BorderLayout.CENTER);
+        setContentPane(page);
+    }
+
+    private JPanel buildSearchAndCertificateCard() {
+        JPanel card = card();
+        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+        card.add(sectionTitle("Find a baptismal record"));
+        card.add(Box.createVerticalStrut(8));
+
+        JPanel filters = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 0));
+        filters.setOpaque(false);
+        filters.setAlignmentX(LEFT_ALIGNMENT);
+        filters.add(jLabel3);
+        filters.add(jCheckBox7);
+        filters.add(jCheckBox8);
+        filters.add(jCheckBox9);
+        filters.add(jCheckBox10);
+        card.add(filters);
+        card.add(Box.createVerticalStrut(8));
+        card.add(horizontalField(jLabel4, jTextField2));
+        card.add(Box.createVerticalStrut(14));
+        card.add(sectionTitle("Certificate preparation"));
+        card.add(Box.createVerticalStrut(8));
+
+        JPanel signatory = new JPanel(new GridLayout(1, 2, 12, 0));
+        signatory.setOpaque(false);
+        signatory.setAlignmentX(LEFT_ALIGNMENT);
+        signatory.add(fieldBlock("Signing priest", jTextField3));
+        signatory.add(fieldBlock("Designation", jTextField5));
+        card.add(signatory);
+        card.add(Box.createVerticalStrut(8));
+        card.add(fieldBlock("Purpose (for the completed certificate)", jTextField4));
+        card.add(Box.createVerticalStrut(10));
+
+        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        actions.setOpaque(false);
+        actions.setAlignmentX(LEFT_ALIGNMENT);
+        JButton preprint = new JButton("Pre-print blank certificate...");
+        preprint.setToolTipText("Uses the signing priest above; no parishioner record is needed");
+        preprint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                preview_blank_certificate();
+            }
+        });
+        actions.add(preprint);
+        JLabel hint = new JLabel("  A4 form + priest name; parishioner fields stay blank");
+        hint.setForeground(new Color(90, 102, 116));
+        actions.add(hint);
+        card.add(actions);
+        return card;
+    }
+
+    private JPanel buildRecordsCard() {
+        JPanel card = card();
+        card.setLayout(new BorderLayout(0, 10));
+        JPanel top = new JPanel(new BorderLayout());
+        top.setOpaque(false);
+        top.add(sectionTitle("Records"), BorderLayout.WEST);
+        top.add(jButton1, BorderLayout.EAST);
+        card.add(top, BorderLayout.NORTH);
+        card.add(jScrollPane2, BorderLayout.CENTER);
+
+        JPanel footer = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        footer.setOpaque(false);
+        footer.add(jLabel5);
+        footer.add(jLabel6);
+        footer.add(jLabel22);
+        footer.add(jProgressBar1);
+        card.add(footer, BorderLayout.SOUTH);
+        return card;
+    }
+
+    private void rebuildRecordEditor() {
+        JPanel fields = card();
+        fields.setLayout(new BoxLayout(fields, BoxLayout.Y_AXIS));
+        fields.add(sectionTitle("Selected record"));
+        fields.add(Box.createVerticalStrut(12));
+        fields.add(formRow(fieldBlock("First name", tf_fname), fieldBlock("Middle initial", tf_mi), fieldBlock("Last name", tf_lname)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Birth date", dp_bday), fieldBlock("Place of birth", tf_place_of_birth)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Father", tf_father), fieldBlock("Mother", tf_mother)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Address of parents", tf_address_of_parents));
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Baptism details"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Baptism date", dp_baptism), fieldBlock("Place of baptism", tf_place_of_baptism)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Minister of baptism", tf_priest), fieldBlock("Priest recorded in book", tf_priest1)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Sponsors", jScrollPane1));
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Registry reference"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Book", tf_book_no), fieldBlock("Page", tf_page_no), fieldBlock("Entry", tf_index_no)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Series", tf_series));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Remarks", jScrollPane3));
+        fields.add(Box.createVerticalStrut(8));
+
+        JPanel actions = card();
+        actions.setLayout(new BoxLayout(actions, BoxLayout.Y_AXIS));
+        actions.add(sectionTitle("Certificate layout"));
+        JPanel choices = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
+        choices.setOpaque(false);
+        choices.setAlignmentX(LEFT_ALIGNMENT);
+        choices.add(jRadioButton1);
+        choices.add(jRadioButton2);
+        actions.add(choices);
+        actions.add(Box.createVerticalStrut(8));
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        buttons.setOpaque(false);
+        buttons.setAlignmentX(LEFT_ALIGNMENT);
+        buttons.add(jButton3);
+        buttons.add(jButton2);
+        buttons.add(jButton4);
+        actions.add(buttons);
+
+        JScrollPane editorScroll = new JScrollPane(fields);
+        editorScroll.setBorder(BorderFactory.createEmptyBorder());
+        editorScroll.getVerticalScrollBar().setUnitIncrement(16);
+        jPanel3.removeAll();
+        jPanel3.setLayout(new BorderLayout());
+        jPanel3.setBackground(PAGE_COLOR);
+        jPanel3.add(editorScroll, BorderLayout.CENTER);
+        jPanel3.add(actions, BorderLayout.SOUTH);
+    }
+
+    private JPanel card() {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.WHITE);
+        panel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(221, 228, 235)),
+                BorderFactory.createEmptyBorder(14, 16, 14, 16)));
+        return panel;
+    }
+
+    private JLabel sectionTitle(String text) {
+        JLabel label = new JLabel(text);
+        label.setAlignmentX(LEFT_ALIGNMENT);
+        label.setForeground(INK_COLOR);
+        label.setFont(label.getFont().deriveFont(Font.BOLD, 14f));
+        return label;
+    }
+
+    private JPanel horizontalField(JLabel label, JComponent field) {
+        JPanel row = new JPanel(new BorderLayout(10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        row.add(label, BorderLayout.WEST);
+        row.add(field, BorderLayout.CENTER);
+        return row;
+    }
+
+    private JPanel fieldBlock(String title, JComponent field) {
+        JPanel block = new JPanel(new BorderLayout(0, 4));
+        block.setOpaque(false);
+        block.setAlignmentX(LEFT_ALIGNMENT);
+        JLabel label = new JLabel(title);
+        label.setForeground(new Color(81, 94, 109));
+        block.add(label, BorderLayout.NORTH);
+        block.add(field, BorderLayout.CENTER);
+        return block;
+    }
+
+    private JPanel formRow(JPanel... blocks) {
+        JPanel row = new JPanel(new GridLayout(1, blocks.length, 10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        for (JPanel block : blocks) {
+            row.add(block);
+        }
+        return row;
+    }
+
+    private void preview_blank_certificate() {
+        String priest = jTextField3.getText().trim();
+        if (priest.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Choose the signing priest in the Priest field first.",
+                    "Signing priest required", JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.requestFocusInWindow();
+            return;
+        }
+        Dlg_preview_baptismal_certificate preview =
+                Dlg_preview_baptismal_certificate.create(this, true);
+        preview.do_pass_preprint(priest);
+        preview.setLocationRelativeTo(this);
+        preview.setVisible(true);
     }
 
     int is_add = 1;
@@ -1360,6 +1613,25 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
     }
 
     private void print_certificate() {
+        if (jRadioButton1.isSelected() && jTextField3.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this,
+                    "Choose the signing priest in Certificate preparation before previewing.",
+                    "Signing priest required", JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.requestFocusInWindow();
+            return;
+        }
+        if (dp_baptism.getDate() == null || dp_bday.getDate() == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Select a record with both birth and baptism dates before previewing.",
+                    "Certificate dates required", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if (tf_fname.getText().trim().length() == 0 || tf_lname.getText().trim().length() == 0) {
+            JOptionPane.showMessageDialog(this,
+                    "Select a parishioner record before previewing the certificate.",
+                    "Parishioner required", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
         String num = "";
         String day = DateUtils1.formatFormalDate(new Date()) +"."; //DateType.month_date.format(new Date());
         String month = spires.util.DateType.m.format(new Date());
@@ -1369,7 +1641,8 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         int add2 = FitIn.toInt(spires.util.DateType.y.format(new Date())) + 1;
         String series_of = spires.util.DateType.y.format(new Date()) + " - " + add2;
         String path = "path";
-        String name = tf_fname.getText() + " " + tf_mi.getText() + " " + tf_lname.getText();
+        String name = (tf_fname.getText() + " " + tf_mi.getText() + " "
+                + tf_lname.getText()).trim().replaceAll("\\s+", " ");
         String father = tf_father.getText();
         String mother = tf_mother.getText();
         Date d2 = dp_baptism.getDate();
@@ -1387,7 +1660,8 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
             purpose = "" + jTextField4.getText();
         }
         String place_of_baptism = tf_place_of_baptism.getText();
-        String parish_priest = tf_priest1.getText();
+        String parish_priest = jRadioButton1.isSelected()
+                ? jTextField3.getText().trim() : tf_priest1.getText();
         String jrxml = "rpt_baptism_new.jrxml";
         String cert = System.getProperty("print_baptism", "Default");
         if (cert.equalsIgnoreCase("bacong")) {
@@ -1407,8 +1681,12 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         } 
         path = img_path;
         
-        String name_of_church = System.getProperty("name_of_church", "SAINT NICHOLAS OF TOLENTINO PARISH");
-        String church_address = System.getProperty("church_address", "Dauin, Negros Oriental");
+        String name_of_church = System.getProperty("name_of_church",
+                jRadioButton1.isSelected() ? "Saint Augustine of Hippo Parish"
+                : "SAINT NICHOLAS OF TOLENTINO PARISH");
+        String church_address = System.getProperty("church_address",
+                jRadioButton1.isSelected() ? "West Poblacion, Bacong, Negros Oriental"
+                : "Dauin, Negros Oriental");
         String notation = jTextField4.getText();
         String book_series = tf_series.getText();
         String address_of_parents = tf_address_of_parents.getText();
