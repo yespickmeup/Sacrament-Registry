@@ -9,6 +9,11 @@ import spires.certificates.SRpt_marriage;
 import com.jgoodies.binding.adapter.AbstractTableAdapter;
 import com.jgoodies.binding.list.ArrayListModel;
 import java.awt.Dimension;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
@@ -21,6 +26,17 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JButton;
+import javax.swing.JTextField;
+import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JComponent;
+import javax.swing.JScrollPane;
+import javax.swing.BorderFactory;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
@@ -899,12 +915,239 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
     private javax.swing.JTextArea tf_sponsors;
     // End of variables declaration//GEN-END:variables
 
+    private JRadioButton a4Certificate;
+    private JRadioButton legacyCertificate;
+    private static final Color PAGE_COLOR = new Color(243, 246, 250);
+    private static final Color INK_COLOR = new Color(35, 49, 66);
+
     private void myInit() {
-//        System.setProperty("print_marriage", "bacong");
-//        System.setProperty("mydb", "db_spires_bacong");
-        init_key();
         jPanel3.setVisible(false);
         init_tbl_marriage_records(tbl_marriage_records);
+        initFrontDeskActions();
+        init_key();
+    }
+
+    private void initFrontDeskActions() {
+        a4Certificate = new JRadioButton("A4 certificate");
+        legacyCertificate = new JRadioButton("Legacy");
+        ButtonGroup layouts = new ButtonGroup();
+        layouts.add(a4Certificate);
+        layouts.add(legacyCertificate);
+        a4Certificate.setSelected(true);
+        jButton3.setText("Preview certificate...");
+        jButton3.setToolTipText("Preview the selected marriage record and choose how to print it");
+        jButton5.setText("Close details");
+        jTextField3.setToolTipText("Signing priest. Press Enter to choose an official.");
+        jTextField5.setToolTipText("Designation of the signing priest");
+        if (jTextField5.getText().trim().isEmpty()) {
+            jTextField5.setText("Parish Priest");
+        }
+        jTextField2.setToolTipText("Search records by the selected field, then press Enter");
+        jLabel4.setText("Search:");
+        jCheckBox1.setText("Groom");
+        jCheckBox3.setText("Groom's father");
+        jCheckBox4.setText("Groom's mother");
+        jCheckBox2.setText("Bride");
+        jCheckBox5.setText("Bride's father");
+        jCheckBox6.setText("Bride's mother");
+
+        JPanel page = new JPanel(new BorderLayout(0, 16));
+        page.setBackground(PAGE_COLOR);
+        page.setBorder(BorderFactory.createEmptyBorder(18, 20, 18, 20));
+        JPanel heading = new JPanel(new BorderLayout());
+        heading.setOpaque(false);
+        JLabel title = new JLabel("Marriage records");
+        title.setForeground(INK_COLOR);
+        title.setFont(title.getFont().deriveFont(Font.BOLD, 20f));
+        heading.add(title, BorderLayout.NORTH);
+        JLabel subtitle = new JLabel("Search a record, prepare the blank certificate, then print details after signing.");
+        subtitle.setForeground(new Color(90, 102, 116));
+        heading.add(subtitle, BorderLayout.SOUTH);
+        JButton close = new JButton("Close");
+        close.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) { dispose(); }
+        });
+        heading.add(close, BorderLayout.EAST);
+        page.add(heading, BorderLayout.NORTH);
+
+        JPanel left = new JPanel(new BorderLayout(0, 14));
+        left.setOpaque(false);
+        left.add(buildSearchAndCertificateCard(), BorderLayout.NORTH);
+        left.add(buildRecordsCard(), BorderLayout.CENTER);
+        rebuildRecordEditor();
+        jPanel3.setPreferredSize(new Dimension(500, 600));
+        JPanel body = new JPanel(new BorderLayout(16, 0));
+        body.setOpaque(false);
+        body.add(left, BorderLayout.CENTER);
+        body.add(jPanel3, BorderLayout.EAST);
+        page.add(body, BorderLayout.CENTER);
+        setContentPane(page);
+    }
+
+    private JPanel buildSearchAndCertificateCard() {
+        JPanel card = card();
+        card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
+        card.add(sectionTitle("Find a marriage record"));
+        card.add(Box.createVerticalStrut(8));
+        JPanel filters = new JPanel(new GridLayout(2, 3, 10, 4));
+        filters.setOpaque(false);
+        filters.setAlignmentX(LEFT_ALIGNMENT);
+        filters.add(jCheckBox1); filters.add(jCheckBox3); filters.add(jCheckBox4);
+        filters.add(jCheckBox2); filters.add(jCheckBox5); filters.add(jCheckBox6);
+        card.add(filters);
+        card.add(Box.createVerticalStrut(8));
+        card.add(horizontalField(jLabel4, jTextField2));
+        card.add(Box.createVerticalStrut(14));
+        card.add(sectionTitle("Certificate preparation"));
+        card.add(Box.createVerticalStrut(8));
+        JPanel signatory = new JPanel(new GridLayout(1, 2, 12, 0));
+        signatory.setOpaque(false);
+        signatory.setAlignmentX(LEFT_ALIGNMENT);
+        signatory.add(fieldBlock("Signing priest", jTextField3));
+        signatory.add(fieldBlock("Designation", jTextField5));
+        card.add(signatory);
+        card.add(Box.createVerticalStrut(10));
+        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        actions.setOpaque(false);
+        actions.setAlignmentX(LEFT_ALIGNMENT);
+        JButton preprint = new JButton("Pre-print blank certificate...");
+        preprint.setToolTipText("Uses the signing priest above; no marriage record is needed");
+        preprint.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) { preview_blank_certificate(); }
+        });
+        actions.add(preprint);
+        JLabel hint = new JLabel("  A4 form + priest and designation; couple fields stay blank");
+        hint.setForeground(new Color(90, 102, 116));
+        actions.add(hint);
+        card.add(actions);
+        return card;
+    }
+
+    private JPanel buildRecordsCard() {
+        JPanel card = card();
+        card.setLayout(new BorderLayout(0, 10));
+        JPanel top = new JPanel(new BorderLayout());
+        top.setOpaque(false);
+        top.add(sectionTitle("Records"), BorderLayout.WEST);
+        top.add(jButton4, BorderLayout.EAST);
+        card.add(top, BorderLayout.NORTH);
+        card.add(jScrollPane2, BorderLayout.CENTER);
+        JPanel footer = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        footer.setOpaque(false);
+        footer.add(jLabel5); footer.add(jLabel6); footer.add(jProgressBar1);
+        card.add(footer, BorderLayout.SOUTH);
+        return card;
+    }
+
+    private void rebuildRecordEditor() {
+        JPanel fields = card();
+        fields.setLayout(new BoxLayout(fields, BoxLayout.Y_AXIS));
+        fields.add(sectionTitle("Groom"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Full name", tf_groom), fieldBlock("Status", tf_groom_status)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Residence", jScrollPane1));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Father", tf_groom_father), fieldBlock("Mother's maiden name", tf_groom_mother)));
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Bride"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Full name", tf_bride), fieldBlock("Status", tf_bride_status)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Residence", jScrollPane3));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Father", tf_bride_father), fieldBlock("Mother's maiden name", tf_bride_mother)));
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Marriage details"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Date of marriage", dp_baptism), fieldBlock("Solemnizing priest", tf_priest)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Witnesses", jScrollPane4));
+        fields.add(Box.createVerticalStrut(16));
+        fields.add(sectionTitle("Registry reference"));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(formRow(fieldBlock("Book", tf_book_no), fieldBlock("Page", tf_page_no), fieldBlock("Entry", tf_index_no)));
+        fields.add(Box.createVerticalStrut(10));
+        fields.add(fieldBlock("Remarks", jScrollPane5));
+        fields.add(Box.createVerticalStrut(8));
+
+        JPanel actions = card();
+        actions.setLayout(new BoxLayout(actions, BoxLayout.Y_AXIS));
+        actions.add(sectionTitle("Certificate layout"));
+        JPanel choices = new JPanel(new FlowLayout(FlowLayout.LEFT, 10, 4));
+        choices.setOpaque(false);
+        choices.setAlignmentX(LEFT_ALIGNMENT);
+        choices.add(a4Certificate); choices.add(legacyCertificate);
+        actions.add(choices);
+        actions.add(Box.createVerticalStrut(8));
+        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        buttons.setOpaque(false);
+        buttons.setAlignmentX(LEFT_ALIGNMENT);
+        buttons.add(jButton3); buttons.add(jButton2); buttons.add(jButton5);
+        actions.add(buttons);
+        JScrollPane editorScroll = new JScrollPane(fields);
+        editorScroll.setBorder(BorderFactory.createEmptyBorder());
+        editorScroll.getVerticalScrollBar().setUnitIncrement(16);
+        jPanel3.removeAll();
+        jPanel3.setLayout(new BorderLayout());
+        jPanel3.setBackground(PAGE_COLOR);
+        jPanel3.add(editorScroll, BorderLayout.CENTER);
+        jPanel3.add(actions, BorderLayout.SOUTH);
+    }
+
+    private JPanel card() {
+        JPanel panel = new JPanel();
+        panel.setBackground(Color.WHITE);
+        panel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(221, 228, 235)),
+                BorderFactory.createEmptyBorder(14, 16, 14, 16)));
+        return panel;
+    }
+    private JLabel sectionTitle(String text) {
+        JLabel label = new JLabel(text);
+        label.setAlignmentX(LEFT_ALIGNMENT);
+        label.setForeground(INK_COLOR);
+        label.setFont(label.getFont().deriveFont(Font.BOLD, 14f));
+        return label;
+    }
+    private JPanel horizontalField(JLabel label, JComponent field) {
+        JPanel row = new JPanel(new BorderLayout(10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        row.add(label, BorderLayout.WEST);
+        row.add(field, BorderLayout.CENTER);
+        return row;
+    }
+    private JPanel fieldBlock(String title, JComponent field) {
+        JPanel block = new JPanel(new BorderLayout(0, 4));
+        block.setOpaque(false);
+        block.setAlignmentX(LEFT_ALIGNMENT);
+        JLabel label = new JLabel(title);
+        label.setForeground(new Color(81, 94, 109));
+        block.add(label, BorderLayout.NORTH);
+        block.add(field, BorderLayout.CENTER);
+        return block;
+    }
+    private JPanel formRow(JPanel... blocks) {
+        JPanel row = new JPanel(new GridLayout(1, blocks.length, 10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        for (JPanel block : blocks) { row.add(block); }
+        return row;
+    }
+
+    private void preview_blank_certificate() {
+        String priest = jTextField3.getText().trim();
+        if (priest.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Choose the signing priest first.",
+                    "Signing priest required", JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.requestFocusInWindow();
+            return;
+        }
+        Dlg_preview_marriage_certificate preview = Dlg_preview_marriage_certificate.create(this, true);
+        preview.do_pass_preprint(priest, jTextField5.getText().trim());
+        preview.setLocationRelativeTo(this);
+        preview.setVisible(true);
     }
 
     public void do_pass() {
@@ -1250,61 +1493,45 @@ public class Dlg_marriage_records extends javax.swing.JDialog {
     }
 
     private void set_certificate() {
-
-        jProgressBar1.setString("Loading...Please wait...");
-        jProgressBar1.setIndeterminate(true);
-        Thread t = new Thread(new Runnable() {
-
-            @Override
-            public void run() {
-                String day = spires.util.DateType.nth(spires.util.DateType.d.format(new Date()));
-                String month = spires.util.DateType.m.format(new Date());
-                String year = spires.util.DateType.y.format(new Date());
-                String priest = jTextField3.getText();
-                String asst_priest = jTextField5.getText();
-                String series_of = "";
-                String g_ref_no = "";
-                String b_ref_no = "";
-                String g_address = tf_groom_address.getText();
-                String b_address = tf_bride_address.getText();
-                String path = "";
-                String groom = tf_groom.getText();
-                String groom_father = tf_groom_father.getText();
-                String groom_mother = tf_groom_mother.getText();
-                String bride = tf_bride.getText();
-                String bride_father = tf_bride_father.getText();
-                String bride_mother = tf_bride_mother.getText();
-                String date_of_marriage = spires.util.DateType.convert_jan_1_2013_date_rep(spires.util.DateType.sf.format(dp_baptism.getDate()));
-                String marr_time = "";
-                String solemnized_by = tf_priest.getText();
-                String book_number = tf_book_no.getText();
-                String page_number = tf_page_no.getText();
-                String date_added = "";
-                String sponsors = tf_sponsors.getText();
-                final SRpt_marriage rpt = new SRpt_marriage(day, month, year, priest, asst_priest, series_of, g_ref_no, b_ref_no, g_address, b_address, path, groom, groom_father, groom_mother, bride, bride_father, bride_mother, date_of_marriage, marr_time, solemnized_by, book_number, page_number, date_added, sponsors);
-                String print = System.getProperty("print_marriage", "default");
-                String jrxml = "rpt_marriage.jrxml";
-                if (print.equalsIgnoreCase("Bacong")) {
-                    jrxml = "rpt_marriage_bacong.jrxml";
-                }
-                print_preview(rpt,jrxml);
-//                try {
-//
-//                    InputStream is = SRpt_marriage.class.getResourceAsStream(jrxml);
-//                    JasperReport jasperReport;
-//                    jasperReport = JasperCompileManager.compileReport(is);
-//                    jasperPrint = JasperFillManager.fillReport(jasperReport, JasperUtil.
-//                            setParameter(rpt), JasperUtil.emptyDatasource());
-//                    JasperPrintManager.printReport(jasperPrint, false);
-//
-//                } catch (JRException ex) {
-//                    Logger.getLogger(Dlg_baptismal_records.class.getName()).log(Level.SEVERE, null, ex);
-//                }
-                jProgressBar1.setString("Finished...");
-                jProgressBar1.setIndeterminate(false);
-            }
-        });
-        t.start();
+        if (a4Certificate.isSelected() && jTextField3.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Choose the signing priest before previewing.",
+                    "Signing priest required", JOptionPane.INFORMATION_MESSAGE);
+            jTextField3.requestFocusInWindow();
+            return;
+        }
+        if (tf_groom.getText().trim().isEmpty() || tf_bride.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Select a marriage record first.",
+                    "Record required", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        if (dp_baptism.getDate() == null) {
+            JOptionPane.showMessageDialog(this, "Select a record with a marriage date.",
+                    "Marriage date required", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+        Date today = new Date();
+        String day = spires.util.DateType.nth(spires.util.DateType.d.format(today));
+        String month = spires.util.DateType.m.format(today);
+        String year = spires.util.DateType.y.format(today);
+        String priest = jTextField3.getText().trim();
+        String designation = jTextField5.getText().trim();
+        String date = spires.util.DateType.month_date.format(dp_baptism.getDate());
+        String jrxml = "rpt_marriage_certificate_2025.jrxml";
+        String entry = tf_index_no.getText();
+        if (legacyCertificate.isSelected()) {
+            jrxml = System.getProperty("print_marriage", "default").equalsIgnoreCase("Bacong")
+                    ? "rpt_marriage_bacong.jrxml" : "rpt_marriage.jrxml";
+            date = spires.util.DateType.convert_jan_1_2013_date_rep(
+                    spires.util.DateType.sf.format(dp_baptism.getDate()));
+            entry = "";
+        }
+        SRpt_marriage rpt = new SRpt_marriage(day, month, year, priest, designation,
+                "", entry, "", tf_groom_address.getText(), tf_bride_address.getText(), "",
+                tf_groom.getText().trim(), tf_groom_father.getText(), tf_groom_mother.getText(),
+                tf_bride.getText().trim(), tf_bride_father.getText(), tf_bride_mother.getText(),
+                date, "", tf_priest.getText(), tf_book_no.getText(), tf_page_no.getText(),
+                "", tf_sponsors.getText());
+        print_preview(rpt, jrxml);
     }
 
     private void print_preview(SRpt_marriage rpt, String jrxml) {
