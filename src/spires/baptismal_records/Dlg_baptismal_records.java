@@ -48,6 +48,7 @@ import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import net.sf.jasperreports.engine.JasperPrint;
 import spires.book_archives.Book_archives;
+import spires.good_moral_records.Dlg_good_moral_records;
 import spires.officials.Officials;
 import spires.officials.Dlg_officials;
 import spires.util.DateUtils1;
@@ -1084,13 +1085,24 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         JLabel subtitle = new JLabel("Search a record, prepare the blank certificate, then print details after signing.");
         subtitle.setForeground(new Color(90, 102, 116));
         heading.add(subtitle, BorderLayout.SOUTH);
+        JPanel headerActions = new JPanel(new FlowLayout(FlowLayout.RIGHT, 8, 0));
+        headerActions.setOpaque(false);
+        JButton goodMoralRecords = new JButton("Good moral records...");
+        goodMoralRecords.setToolTipText("Add, update, print, or delete good moral character certificates");
+        goodMoralRecords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                openGoodMoralRecords();
+            }
+        });
+        headerActions.add(goodMoralRecords);
         JButton close = new JButton("Close");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 dispose();
             }
         });
-        heading.add(close, BorderLayout.EAST);
+        headerActions.add(close);
+        heading.add(headerActions, BorderLayout.EAST);
         page.add(heading, BorderLayout.NORTH);
 
         JPanel left = new JPanel(new BorderLayout(0, 14));
@@ -1176,6 +1188,13 @@ public class Dlg_baptismal_records extends javax.swing.JDialog {
         officials.setLocationRelativeTo(this);
         officials.setVisible(true);
         synchronizeSigningPriest(selectedPriest);
+    }
+
+    private void openGoodMoralRecords() {
+        Dlg_good_moral_records dialog = Dlg_good_moral_records.create(this, true);
+        dialog.do_pass();
+        dialog.setLocationRelativeTo(this);
+        dialog.setVisible(true);
     }
 
     private void synchronizeSigningPriest(String selectedPriest) {
