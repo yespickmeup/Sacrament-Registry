@@ -48,6 +48,7 @@ import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import net.sf.jasperreports.engine.JasperPrint;
 import spires.officials.Officials;
+import spires.officials.Dlg_officials;
 
 import spires.util.Alert;
 import spires.util.Dlg_confirm_action;
@@ -1079,7 +1080,18 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         JPanel signatory = new JPanel(new GridLayout(1, 2, 12, 0));
         signatory.setOpaque(false);
         signatory.setAlignmentX(LEFT_ALIGNMENT);
-        signatory.add(fieldBlock("Signing priest", jTextField3));
+        JPanel signingPriestInput = new JPanel(new BorderLayout(8, 0));
+        signingPriestInput.setOpaque(false);
+        signingPriestInput.add(jTextField3, BorderLayout.CENTER);
+        JButton officialsSettings = new JButton("Settings...");
+        officialsSettings.setToolTipText("Add, edit, or delete officials used by the priest picker");
+        officialsSettings.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                openOfficialsSettings();
+            }
+        });
+        signingPriestInput.add(officialsSettings, BorderLayout.EAST);
+        signatory.add(fieldBlock("Signing priest", signingPriestInput));
         signatory.add(fieldBlock("Designation", jTextField5));
         card.add(signatory);
         card.add(Box.createVerticalStrut(8));
@@ -1102,6 +1114,32 @@ public class Dlg_confirmation_records extends javax.swing.JDialog {
         actions.add(hint);
         card.add(actions);
         return card;
+    }
+
+    private void openOfficialsSettings() {
+        String selectedPriest = jTextField3.getText().trim();
+        Dlg_officials officials = Dlg_officials.create(this, true);
+        officials.setTitle("Officials");
+        officials.do_pass();
+        officials.setLocationRelativeTo(this);
+        officials.setVisible(true);
+        synchronizeSigningPriest(selectedPriest);
+    }
+
+    private void synchronizeSigningPriest(String selectedPriest) {
+        if (selectedPriest.length() == 0) {
+            return;
+        }
+        List<Officials.to_officials> officials = Officials.retData(" order by name asc");
+        for (Officials.to_officials official : officials) {
+            if (selectedPriest.equalsIgnoreCase(official.name.trim())) {
+                jTextField3.setText(official.name);
+                jTextField5.setText(official.title);
+                return;
+            }
+        }
+        jTextField3.setText("");
+        jTextField5.setText("");
     }
 
     private JPanel buildRecordsCard() {
