@@ -3,6 +3,7 @@ package spires.good_moral_records;
 import com.toedter.calendar.JDateChooser;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -33,6 +34,7 @@ import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
@@ -91,6 +93,7 @@ public class Dlg_good_moral_records extends JDialog {
     }
 
     private void initialize() {
+        initComponents();
         setTitle("Good moral character records");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         buildUi();
@@ -108,8 +111,72 @@ public class Dlg_good_moral_records extends JDialog {
         refreshRecords();
     }
 
+    public static void main(final String args[]) {
+        try {
+            javax.swing.UIManager.setLookAndFeel(
+                    javax.swing.UIManager.getSystemLookAndFeelClassName());
+        } catch (Exception ignored) {
+        }
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                final Dlg_good_moral_records dialog =
+                        new Dlg_good_moral_records((java.awt.Frame) null, false);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    public void windowClosed(java.awt.event.WindowEvent event) {
+                        System.exit(0);
+                    }
+                });
+                if (args == null || args.length == 0
+                        || !"--design-only".equalsIgnoreCase(args[0])) {
+                    dialog.do_pass();
+                }
+                dialog.setLocationRelativeTo(null);
+                dialog.setVisible(true);
+            }
+        });
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+        designSurface = new javax.swing.JPanel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Good moral character records");
+
+        designSurface.setBackground(new java.awt.Color(243, 246, 250));
+        designSurface.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 20, 18, 20));
+
+        javax.swing.GroupLayout designSurfaceLayout = new javax.swing.GroupLayout(designSurface);
+        designSurface.setLayout(designSurfaceLayout);
+        designSurfaceLayout.setHorizontalGroup(
+            designSurfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1180, Short.MAX_VALUE)
+        );
+        designSurfaceLayout.setVerticalGroup(
+            designSurfaceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 720, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(designSurface, javax.swing.GroupLayout.DEFAULT_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(designSurface, javax.swing.GroupLayout.DEFAULT_SIZE,
+                    javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
     private void buildUi() {
-        JPanel page = new JPanel(new BorderLayout(0, 16));
+        JPanel page = designSurface;
+        page.removeAll();
+        page.setLayout(new BorderLayout(0, 16));
         page.setBackground(PAGE_COLOR);
         page.setBorder(BorderFactory.createEmptyBorder(18, 20, 18, 20));
 
@@ -145,7 +212,6 @@ public class Dlg_good_moral_records extends JDialog {
         splitPane.setResizeWeight(1.0);
         splitPane.setDividerSize(14);
         page.add(splitPane, BorderLayout.CENTER);
-        setContentPane(page);
     }
 
     private JPanel buildSearchAndCertificateCard() {
@@ -225,6 +291,18 @@ public class Dlg_good_moral_records extends JDialog {
         recordsTable = new JTable(recordsModel);
         recordsTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         recordsTable.setRowHeight(25);
+        DefaultTableCellRenderer paddedCell = new DefaultTableCellRenderer() {
+            public Component getTableCellRendererComponent(JTable table, Object value,
+                    boolean selected, boolean focused, int row, int column) {
+                JComponent component = (JComponent) super.getTableCellRendererComponent(
+                        table, value, selected, focused, row, column);
+                component.setBorder(BorderFactory.createEmptyBorder(0, 10, 0, 6));
+                return component;
+            }
+        };
+        for (int column = 0; column < recordsTable.getColumnCount(); column++) {
+            recordsTable.getColumnModel().getColumn(column).setCellRenderer(paddedCell);
+        }
         recordsTable.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent event) {
                 if (event.getClickCount() >= 1) { selectRecord(); }
@@ -511,4 +589,8 @@ public class Dlg_good_moral_records extends JDialog {
         for (JPanel block : blocks) { row.add(block); }
         return row;
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel designSurface;
+    // End of variables declaration//GEN-END:variables
 }

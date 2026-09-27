@@ -22,6 +22,8 @@ import mijzcx.synapse.desk.utils.KeyMapping;
 import mijzcx.synapse.desk.utils.KeyMapping.KeyAction;
 import mijzcx.synapse.desk.utils.TableWidthUtilities;
 import java.util.Date;
+import java.util.concurrent.ExecutionException;
+import javax.swing.SwingWorker;
 import spires.util.Dlg_confirm_action;
 import synsoftech.fields.Button;
 import synsoftech.fields.Field;
@@ -583,6 +585,7 @@ public class Dlg_officials extends javax.swing.JDialog {
     // </editor-fold>
     private ArrayListModel tbl_employee_payroll_ALM;
     private TblInvoicesModel tbl_employee_payroll_M;
+    private int officialsLoadVersion;
 ////    
 
     private void init_tbl_official() {
@@ -668,21 +671,43 @@ public class Dlg_officials extends javax.swing.JDialog {
     }
 
     private void data_employee() {
-
+        final int loadVersion = ++officialsLoadVersion;
+        final String name = tf_search.getText();
         jProgressBar1.setString("Loading...Please wait...");
         jProgressBar1.setIndeterminate(true);
-        Thread t = new Thread(new Runnable() {
+        tbl_officials.setEnabled(false);
+        SwingWorker<List<Officials.to_officials>, Void> worker =
+                new SwingWorker<List<Officials.to_officials>, Void>() {
+            @Override
+            protected List<Officials.to_officials> doInBackground() {
+                String where = " where name like '%" + name + "%' order by name asc ";
+                return Officials.retData(where);
+            }
 
             @Override
-            public void run() {
-                String name = tf_search.getText();
-                String where = " where name like '%" + name + "%' order by name asc ";
-                loadData_baptism(Officials.retData(where));
-                jProgressBar1.setString("Finished...");
-                jProgressBar1.setIndeterminate(false);
+            protected void done() {
+                if (loadVersion != officialsLoadVersion) {
+                    return;
+                }
+                try {
+                    tbl_officials.clearSelection();
+                    loadData_baptism(get());
+                    jProgressBar1.setString("Finished...");
+                } catch (InterruptedException ex) {
+                    Thread.currentThread().interrupt();
+                    jProgressBar1.setString("Interrupted");
+                } catch (ExecutionException ex) {
+                    jProgressBar1.setString("Load failed");
+                    Throwable cause = ex.getCause() == null ? ex : ex.getCause();
+                    javax.swing.JOptionPane.showMessageDialog(Dlg_officials.this,
+                            cause.getMessage(), "Officials", javax.swing.JOptionPane.ERROR_MESSAGE);
+                } finally {
+                    jProgressBar1.setIndeterminate(false);
+                    tbl_officials.setEnabled(true);
+                }
             }
-        });
-        t.start();
+        };
+        worker.execute();
 
     }
 
@@ -717,8 +742,12 @@ public class Dlg_officials extends javax.swing.JDialog {
         if (row < 0) {
             return;
         }
-        to_officials to = (to_officials) tbl_employee_payroll_ALM.get(tbl_officials.
-                convertRowIndexToModel(row));
+        int modelRow = tbl_officials.convertRowIndexToModel(row);
+        if (modelRow < 0 || modelRow >= tbl_employee_payroll_ALM.size()) {
+            tbl_officials.clearSelection();
+            return;
+        }
+        to_officials to = (to_officials) tbl_employee_payroll_ALM.get(modelRow);
         tf_name.setText(to.name);
         tf_contact.setText(to.contact);
         tf_contact1.setText(to.title);
@@ -758,8 +787,12 @@ public class Dlg_officials extends javax.swing.JDialog {
         if (row < 0) {
             return;
         }
-        to_officials to = (to_officials) tbl_employee_payroll_ALM.get(tbl_officials.
-                convertRowIndexToModel(row));
+        int modelRow = tbl_officials.convertRowIndexToModel(row);
+        if (modelRow < 0 || modelRow >= tbl_employee_payroll_ALM.size()) {
+            tbl_officials.clearSelection();
+            return;
+        }
+        to_officials to = (to_officials) tbl_employee_payroll_ALM.get(modelRow);
         int id = to.id;
         String name = tf_name.getText();
         String designation = tf_contact1.getText();
@@ -782,8 +815,12 @@ public class Dlg_officials extends javax.swing.JDialog {
         if (row < 0) {
             return;
         }
-        final to_officials to = (to_officials) tbl_employee_payroll_ALM.get(tbl_officials.
-                convertRowIndexToModel(row));
+        int modelRow = tbl_officials.convertRowIndexToModel(row);
+        if (modelRow < 0 || modelRow >= tbl_employee_payroll_ALM.size()) {
+            tbl_officials.clearSelection();
+            return;
+        }
+        final to_officials to = (to_officials) tbl_employee_payroll_ALM.get(modelRow);
         Window p = (Window) this;
         Dlg_confirm_action nd = Dlg_confirm_action.create(p, true);
         nd.setTitle("");
