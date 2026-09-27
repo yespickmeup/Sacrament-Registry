@@ -29,7 +29,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -56,7 +55,7 @@ public class Dlg_good_moral_records extends JDialog {
     private JTextField designationField;
     private JTable recordsTable;
     private DefaultTableModel recordsModel;
-    private JSplitPane splitPane;
+    private JPanel body;
     private JPanel editorHolder;
     private JTextField protocolField;
     private JTextField nameField;
@@ -190,6 +189,7 @@ public class Dlg_good_moral_records extends JDialog {
         subtitle.setForeground(new Color(90, 102, 116));
         heading.add(subtitle, BorderLayout.SOUTH);
         JButton close = new JButton("Close");
+        setButtonIcon(close, "/spires/img_dashboard/direction102 (2).png");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { dispose(); }
         });
@@ -202,22 +202,21 @@ public class Dlg_good_moral_records extends JDialog {
         left.add(buildRecordsCard(), BorderLayout.CENTER);
         editorHolder = new JPanel(new BorderLayout());
         editorHolder.setOpaque(false);
-        editorHolder.setPreferredSize(new Dimension(455, 600));
+        editorHolder.setPreferredSize(new Dimension(440, 600));
         editorHolder.add(buildEditor(), BorderLayout.CENTER);
         editorHolder.setVisible(false);
 
-        splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, left, editorHolder);
-        splitPane.setOpaque(false);
-        splitPane.setBorder(null);
-        splitPane.setResizeWeight(1.0);
-        splitPane.setDividerSize(14);
-        page.add(splitPane, BorderLayout.CENTER);
+        body = new JPanel(new BorderLayout(16, 0));
+        body.setOpaque(false);
+        body.add(left, BorderLayout.CENTER);
+        body.add(editorHolder, BorderLayout.EAST);
+        page.add(body, BorderLayout.CENTER);
     }
 
     private JPanel buildSearchAndCertificateCard() {
         JPanel card = card();
         card.setLayout(new BoxLayout(card, BoxLayout.Y_AXIS));
-        card.add(sectionTitle("Find a certificate record"));
+        card.add(sectionTitle("Find a good moral record"));
         card.add(Box.createVerticalStrut(8));
         JPanel filters = new JPanel(new FlowLayout(FlowLayout.LEFT, 12, 0));
         filters.setOpaque(false);
@@ -235,7 +234,7 @@ public class Dlg_good_moral_records extends JDialog {
         searchField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { refreshRecords(); }
         });
-        card.add(fieldBlock("Search", searchField));
+        card.add(horizontalField(new JLabel("Entry:"), searchField));
         card.add(Box.createVerticalStrut(14));
         card.add(sectionTitle("Certificate preparation"));
         card.add(Box.createVerticalStrut(8));
@@ -249,6 +248,7 @@ public class Dlg_good_moral_records extends JDialog {
         priestInput.setOpaque(false);
         priestInput.add(priestField, BorderLayout.CENTER);
         JButton officialsSettings = new JButton("Settings...");
+        setButtonIcon(officialsSettings, "/spires/img_dashboard/cogwheels4 (3).png");
         officialsSettings.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { openOfficialsSettings(); }
         });
@@ -260,19 +260,16 @@ public class Dlg_good_moral_records extends JDialog {
         signatory.add(fieldBlock("Designation", designationField));
         card.add(signatory);
         card.add(Box.createVerticalStrut(10));
-        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
+        JPanel actions = new JPanel(new FlowLayout(FlowLayout.LEFT, 0, 0));
         actions.setOpaque(false);
         actions.setAlignmentX(LEFT_ALIGNMENT);
         JButton preprint = new JButton("Pre-print blank certificate...");
+        setButtonIcon(preprint, "/spires/img_dashboard/paper6.png");
         preprint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { previewBlankCertificate(); }
         });
-        JButton add = new JButton("New record");
-        add.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(ActionEvent event) { newRecord(); }
-        });
-        actions.add(preprint); actions.add(add);
-        JLabel hint = new JLabel("A4 form + signing priest; recipient details stay blank");
+        actions.add(preprint);
+        JLabel hint = new JLabel("  A4 form + priest name; recipient details stay blank");
         hint.setForeground(new Color(90, 102, 116));
         actions.add(hint);
         card.add(actions);
@@ -282,7 +279,17 @@ public class Dlg_good_moral_records extends JDialog {
     private JPanel buildRecordsCard() {
         JPanel card = card();
         card.setLayout(new BorderLayout(0, 10));
-        card.add(sectionTitle("Records"), BorderLayout.NORTH);
+        JPanel top = new JPanel(new BorderLayout());
+        top.setOpaque(false);
+        top.add(sectionTitle("Records"), BorderLayout.WEST);
+        JButton add = new JButton("New record");
+        setButtonIcon(add, "/spires/img_dashboard/refresh57.png");
+        add.setToolTipText("Create a good moral character record");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(ActionEvent event) { newRecord(); }
+        });
+        top.add(add, BorderLayout.EAST);
+        card.add(top, BorderLayout.NORTH);
         recordsModel = new DefaultTableModel(new Object[] {
             "Protocol", "Name", "Residence", "Issued", "Signing priest"
         }, 0) {
@@ -311,7 +318,7 @@ public class Dlg_good_moral_records extends JDialog {
         card.add(new JScrollPane(recordsTable), BorderLayout.CENTER);
         JPanel footer = new JPanel(new FlowLayout(FlowLayout.LEFT, 8, 0));
         footer.setOpaque(false);
-        footer.add(new JLabel("Total records:"));
+        footer.add(new JLabel("Total No. of Records:"));
         recordCount = new JLabel("0");
         footer.add(recordCount);
         card.add(footer, BorderLayout.SOUTH);
@@ -321,7 +328,7 @@ public class Dlg_good_moral_records extends JDialog {
     private JComponent buildEditor() {
         JPanel fields = card();
         fields.setLayout(new BoxLayout(fields, BoxLayout.Y_AXIS));
-        fields.add(sectionTitle("Certificate record"));
+        fields.add(sectionTitle("Selected record"));
         fields.add(Box.createVerticalStrut(10));
         protocolField = new JTextField();
         nameField = new JTextField();
@@ -348,19 +355,23 @@ public class Dlg_good_moral_records extends JDialog {
 
         JPanel actions = card();
         actions.setLayout(new FlowLayout(FlowLayout.LEFT, 8, 0));
-        JButton preview = new JButton("Preview certificate...");
+        JButton preview = new JButton("Preview...");
+        setButtonIcon(preview, "/spires/img_dashboard/paper6.png");
         preview.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { previewCertificate(); }
         });
         JButton save = new JButton("Save");
+        setButtonIcon(save, "/spires/img_dashboard/save-file.png");
         save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { saveRecord(); }
         });
         JButton delete = new JButton("Delete");
+        setButtonIcon(delete, "/spires/img_dashboard/rubbish12.png");
         delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { deleteRecord(); }
         });
-        JButton close = new JButton("Close details");
+        JButton close = new JButton("Close");
+        setButtonIcon(close, "/spires/img_dashboard/direction102 (2).png");
         close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(ActionEvent event) { hideEditor(); }
         });
@@ -519,16 +530,14 @@ public class Dlg_good_moral_records extends JDialog {
 
     private void showEditor() {
         editorHolder.setVisible(true);
-        splitPane.setDividerLocation(0.60);
-        splitPane.revalidate();
-        splitPane.repaint();
+        body.revalidate();
+        body.repaint();
     }
 
     private void hideEditor() {
         editorHolder.setVisible(false);
-        splitPane.setDividerLocation(1.0);
-        splitPane.revalidate();
-        splitPane.repaint();
+        body.revalidate();
+        body.repaint();
     }
 
     private void openOfficialsSettings() {
@@ -574,6 +583,22 @@ public class Dlg_good_moral_records extends JDialog {
         JLabel label = new JLabel(text); label.setAlignmentX(LEFT_ALIGNMENT);
         label.setForeground(INK_COLOR); label.setFont(label.getFont().deriveFont(Font.BOLD, 14f));
         return label;
+    }
+
+    private void setButtonIcon(JButton button, String resource) {
+        java.net.URL iconUrl = getClass().getResource(resource);
+        if (iconUrl != null) {
+            button.setIcon(new javax.swing.ImageIcon(iconUrl));
+        }
+    }
+
+    private JPanel horizontalField(JLabel label, JComponent field) {
+        JPanel row = new JPanel(new BorderLayout(10, 0));
+        row.setOpaque(false);
+        row.setAlignmentX(LEFT_ALIGNMENT);
+        row.add(label, BorderLayout.WEST);
+        row.add(field, BorderLayout.CENTER);
+        return row;
     }
 
     private JPanel fieldBlock(String title, JComponent field) {
